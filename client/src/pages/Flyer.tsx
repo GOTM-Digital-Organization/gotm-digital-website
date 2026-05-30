@@ -84,7 +84,7 @@ export default function Flyer() {
 
           {/* ── FLYER HEADER ── */}
           <div style={{
-            background: "linear-gradient(135deg, #0B0F18 0%, #141922 60%, #0B0F18 100%)",
+            background: "linear-gradient(135deg, #555555 0%, #606060 60%, #555555 100%)",
             border: "2px solid rgba(200,16,46,0.5)",
             borderRadius: "14px 14px 0 0",
             padding: "3rem 2.5rem 2.5rem",
@@ -130,14 +130,14 @@ export default function Flyer() {
               <span style={{ color: "#C8102E" }}>On The Map.</span>
             </h1>
 
-            <p style={{ fontSize: "1rem", color: "#B8C4D8", lineHeight: 1.75, maxWidth: 540, margin: "0 auto 1.5rem" }}>
+            <p style={{ fontSize: "1rem", color: "#EEEEEE", lineHeight: 1.75, maxWidth: 540, margin: "0 auto 1.5rem" }}>
               No setup fees. No big promises. No disappearing after you sign up. Just honest digital marketing that grows with your business — starting at{" "}
-              <strong style={{ color: "#FF8A9A" }}>$100/month</strong>.
+              <strong style={{ color: "#FF9EAA" }}>$100/month</strong>.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
               {["No Setup Fees", "No Long-Term Contracts", "No Empty Promises"].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "#A8B8CC" }}>
+                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "#DDDDDD" }}>
                   <CheckCircle2 size={13} style={{ color: "#C8102E" }} /> {item}
                 </div>
               ))}
@@ -361,7 +361,7 @@ export default function Flyer() {
 
           {/* ── FLYER CTA FOOTER ── */}
           <div style={{
-            background: "linear-gradient(135deg, #0B0F18 0%, #141922 60%, #0B0F18 100%)",
+            background: "linear-gradient(135deg, #555555 0%, #606060 60%, #555555 100%)",
             border: "2px solid rgba(200,16,46,0.4)",
             borderTop: "none",
             borderRadius: "0 0 14px 14px",
@@ -384,7 +384,7 @@ export default function Flyer() {
             }}>
               Ready to Get on the Map?
             </h2>
-            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#B8C4D8", marginBottom: "1.75rem", maxWidth: 500, margin: "0 auto 1.75rem" }}>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#EEEEEE", marginBottom: "1.75rem", maxWidth: 500, margin: "0 auto 1.75rem" }}>
               I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF" }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
             </p>
 
@@ -397,7 +397,7 @@ export default function Flyer() {
               </a>
             </div>
 
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", color: "#7A8599", textTransform: "uppercase" }}>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", color: "#CCCCCC", textTransform: "uppercase" }}>
               GOTM Digital · gotmdigital.com · Serving Local Businesses Nationwide
             </div>
           </div>
