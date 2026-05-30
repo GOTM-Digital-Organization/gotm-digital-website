@@ -84,7 +84,6 @@ export default function Flyer() {
 
           {/* ── FLYER HEADER ── */}
           <div style={{
-            background: "linear-gradient(135deg, #555555 0%, #606060 60%, #555555 100%)",
             border: "2px solid rgba(200,16,46,0.5)",
             borderRadius: "14px 14px 0 0",
             padding: "3rem 2.5rem 2.5rem",
@@ -92,6 +91,26 @@ export default function Flyer() {
             position: "relative",
             overflow: "hidden",
           }}>
+            {/* Hero background image */}
+            <div style={{
+              position: "absolute", inset: 0,
+              backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              opacity: 0.45,
+            }} />
+            {/* Dark overlay */}
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(160deg, rgba(10,10,20,0.82) 0%, rgba(10,10,20,0.62) 50%, rgba(10,10,20,0.78) 100%)",
+            }} />
+            {/* Radial red glow */}
+            <div style={{
+              position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)",
+              width: 600, height: 600,
+              background: "radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%)",
+              pointerEvents: "none",
+            }} />
             {/* Red corner accents */}
             <div style={{ position: "absolute", top: 0, left: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "14px 0 0 0" }} />
             <div style={{ position: "absolute", top: 0, right: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 14px 0 0" }} />
@@ -361,7 +380,6 @@ export default function Flyer() {
 
           {/* ── FLYER CTA FOOTER ── */}
           <div style={{
-            background: "linear-gradient(135deg, #555555 0%, #606060 60%, #555555 100%)",
             border: "2px solid rgba(200,16,46,0.4)",
             borderTop: "none",
             borderRadius: "0 0 14px 14px",
@@ -371,6 +389,26 @@ export default function Flyer() {
             overflow: "hidden",
             marginTop: "0.5rem",
           }}>
+            {/* Hero background image */}
+            <div style={{
+              position: "absolute", inset: 0,
+              backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              opacity: 0.45,
+            }} />
+            {/* Dark overlay */}
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(160deg, rgba(10,10,20,0.82) 0%, rgba(10,10,20,0.62) 50%, rgba(10,10,20,0.78) 100%)",
+            }} />
+            {/* Radial red glow */}
+            <div style={{
+              position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+              width: 500, height: 500,
+              background: "radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%)",
+              pointerEvents: "none",
+            }} />
             <div style={{ position: "absolute", bottom: 0, left: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "0 0 0 14px" }} />
             <div style={{ position: "absolute", bottom: 0, right: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 0 14px 0" }} />
 
