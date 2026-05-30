@@ -1,3 +1,11 @@
+/* ============================================================
+   GOTM DIGITAL — Design System
+   Philosophy: Dark Gold Authority
+   Movement: Refined Dark Luxury / Editorial
+   Colors: Deep navy-black bg, warm gold accents, light text
+   Typography: Playfair Display (display) + DM Sans (body)
+   ============================================================ */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -40,119 +48,101 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* GOTM Brand Colors */
+  --color-gold: #F4A12E;
+  --color-gold-light: #F9C46B;
+  --color-dark: #0B0F18;
+  --color-card-dark: #141922;
+  --color-card-dark2: #1C2333;
+  --color-border-dark: #252E42;
+  --color-text-primary: #D8E0EE;
+  --color-text-muted: #7A8599;
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
+  --radius: 0.5rem;
+  --background: oklch(0.09 0.015 255);
+  --foreground: oklch(0.88 0.01 255);
+  --card: oklch(0.12 0.015 255);
+  --card-foreground: oklch(0.88 0.01 255);
+  --popover: oklch(0.12 0.015 255);
+  --popover-foreground: oklch(0.88 0.01 255);
+  --primary: oklch(0.72 0.14 65);
+  --primary-foreground: oklch(0.09 0.015 255);
+  --secondary: oklch(0.16 0.015 255);
+  --secondary-foreground: oklch(0.88 0.01 255);
+  --muted: oklch(0.16 0.015 255);
+  --muted-foreground: oklch(0.55 0.02 255);
+  --accent: oklch(0.16 0.015 255);
+  --accent-foreground: oklch(0.88 0.01 255);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
-}
-
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --border: oklch(0.22 0.02 255);
+  --input: oklch(0.22 0.02 255);
+  --ring: oklch(0.72 0.14 65);
+  --chart-1: oklch(0.72 0.14 65);
+  --chart-2: oklch(0.65 0.12 65);
+  --chart-3: oklch(0.55 0.10 65);
+  --chart-4: oklch(0.45 0.08 65);
+  --chart-5: oklch(0.35 0.06 65);
+  --sidebar: oklch(0.12 0.015 255);
+  --sidebar-foreground: oklch(0.88 0.01 255);
+  --sidebar-primary: oklch(0.72 0.14 65);
+  --sidebar-primary-foreground: oklch(0.09 0.015 255);
+  --sidebar-accent: oklch(0.16 0.015 255);
+  --sidebar-accent-foreground: oklch(0.88 0.01 255);
+  --sidebar-border: oklch(0.22 0.02 255);
+  --sidebar-ring: oklch(0.72 0.14 65);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+    background-color: #0B0F18;
+    color: #D8E0EE;
+    -webkit-font-smoothing: antialiased;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
   [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
   a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
+  select:not(:disabled) {
     @apply cursor-pointer;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
   }
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    max-width: 1200px;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
   }
 
   .flex {
@@ -160,18 +150,111 @@
     min-width: 0;
   }
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
-    }
+  /* Gold CTA button */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #F4A12E;
+    color: #0B0F18;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.16s cubic-bezier(0.23,1,0.32,1), box-shadow 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-gold:hover {
+    background: #F9C46B;
+    box-shadow: 0 0 24px rgba(244,161,46,0.35);
+  }
+  .btn-gold:active {
+    transform: scale(0.97);
   }
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
-    }
+  /* Outline gold button */
+  .btn-gold-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: #F4A12E;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    padding: 0.8rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1.5px solid #F4A12E;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.16s cubic-bezier(0.23,1,0.32,1);
+    cursor: pointer;
+  }
+  .btn-gold-outline:hover {
+    background: rgba(244,161,46,0.1);
+  }
+  .btn-gold-outline:active {
+    transform: scale(0.97);
+  }
+
+  /* Section label */
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: #F4A12E;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Gold divider line */
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(244,161,46,0.4), transparent);
+    border: none;
+    margin: 0;
+  }
+
+  /* Card dark */
+  .card-dark {
+    background: #141922;
+    border: 1px solid #252E42;
+    border-radius: 10px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s cubic-bezier(0.23,1,0.32,1);
+  }
+  .card-dark:hover {
+    border-color: rgba(244,161,46,0.4);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+  }
+  .card-dark.featured {
+    border-color: #F4A12E;
+    box-shadow: 0 0 40px rgba(244,161,46,0.12);
+  }
+
+  /* Fade-up animation for scroll reveals */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s cubic-bezier(0.23,1,0.32,1), transform 0.6s cubic-bezier(0.23,1,0.32,1);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gold left-border callout */
+  .callout-gold {
+    border-left: 3px solid #F4A12E;
+    padding-left: 1.25rem;
+    background: rgba(244,161,46,0.05);
+    border-radius: 0 6px 6px 0;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-right: 1rem;
   }
 }
