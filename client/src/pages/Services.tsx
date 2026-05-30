@@ -107,15 +107,28 @@ export default function Services() {
       <section style={{
         paddingTop: "9rem",
         paddingBottom: "4rem",
-        background: "linear-gradient(160deg, #0B0F18 0%, #141922 100%)",
-        borderBottom: "1px solid #252E42",
         position: "relative",
         overflow: "hidden",
+        borderBottom: "1px solid rgba(200,16,46,0.4)",
       }}>
+        {/* Hero background image */}
         <div style={{
-          position: "absolute", top: "-100px", right: "-100px",
+          position: "absolute", inset: 0,
+          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.45,
+        }} />
+        {/* Dark overlay */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(160deg, rgba(11,15,24,0.88) 0%, rgba(11,15,24,0.75) 50%, rgba(11,15,24,0.92) 100%)",
+        }} />
+        {/* Red radial glow */}
+        <div style={{
+          position: "absolute", top: "50%", left: "60%", transform: "translate(-50%, -50%)",
           width: 500, height: 500,
-          background: "radial-gradient(circle, rgba(244,161,46,0.05) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
           pointerEvents: "none",
         }} />
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
@@ -124,18 +137,20 @@ export default function Services() {
             fontFamily: "'Playfair Display', serif",
             fontSize: "clamp(2rem, 5vw, 3.5rem)",
             fontWeight: 900,
-            color: "#111111",
+            color: "#FFFFFF",
             lineHeight: 1.1,
             marginBottom: "1.25rem",
+            textShadow: "0 2px 8px rgba(0,0,0,0.6)",
           }}>
             Services Built for<br />
             <span style={{ color: "#C8102E" }}>Local Service Businesses</span>
           </h1>
           <p className="fade-up" data-delay="160" style={{
             fontSize: "1.1rem",
-            color: "#444444",
+            color: "#E0E6F0",
             lineHeight: 1.75,
             maxWidth: 580,
+            textShadow: "0 1px 4px rgba(0,0,0,0.5)",
           }}>
             No fluff. No upsells. Just the four things that actually move the needle for local service businesses — done honestly and affordably.
           </p>
@@ -297,19 +312,38 @@ export default function Services() {
       <hr className="gold-rule" />
 
       {/* ── CTA ── */}
-      <section style={{ padding: "5rem 0" }}>
-        <div className="container" style={{ maxWidth: 700, textAlign: "center" }}>
-          <div className="fade-up" style={{
-            background: "linear-gradient(135deg, #141922, #0B0F18)",
-            border: "1px solid #252E42",
-            borderTop: "3px solid #F4A12E",
-            borderRadius: 12,
-            padding: "3rem 2rem",
-          }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 900, color: "#111111", marginBottom: "1rem" }}>
+      <section style={{
+        padding: "5rem 0",
+        position: "relative",
+        overflow: "hidden",
+        borderTop: "1px solid rgba(200,16,46,0.4)",
+      }}>
+        {/* Layer 1: Background image */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.45,
+        }} />
+        {/* Layer 2: Dark overlay */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(160deg, rgba(11,15,24,0.88) 0%, rgba(11,15,24,0.75) 50%, rgba(11,15,24,0.92) 100%)",
+        }} />
+        {/* Layer 3: Red radial glow */}
+        <div style={{
+          position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+          width: 500, height: 500,
+          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
+        <div className="container" style={{ maxWidth: 700, textAlign: "center", position: "relative", zIndex: 2 }}>
+          <div className="fade-up">
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 900, color: "#FFFFFF", marginBottom: "1rem", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
               Not Sure Where to Start?
             </h2>
-            <p style={{ fontSize: "1rem", color: "#444444", lineHeight: 1.75, marginBottom: "2rem", maxWidth: 480, margin: "0 auto 2rem" }}>
+            <p style={{ fontSize: "1rem", color: "#E0E6F0", lineHeight: 1.75, marginBottom: "2rem", maxWidth: 480, margin: "0 auto 2rem", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
               Call me and we'll talk through your situation honestly. No sales pitch, no pressure — just a real conversation about what makes sense for your business right now.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>

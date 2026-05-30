@@ -65,27 +65,50 @@ export default function Contact() {
       <section style={{
         paddingTop: "9rem",
         paddingBottom: "4rem",
-        background: "linear-gradient(160deg, #0B0F18 0%, #141922 100%)",
-        borderBottom: "1px solid #252E42",
+        position: "relative",
+        overflow: "hidden",
+        borderBottom: "1px solid rgba(200,16,46,0.4)",
       }}>
-        <div className="container">
+        {/* Layer 1: Background image */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.45,
+        }} />
+        {/* Layer 2: Dark overlay */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(160deg, rgba(11,15,24,0.88) 0%, rgba(11,15,24,0.75) 50%, rgba(11,15,24,0.92) 100%)",
+        }} />
+        {/* Layer 3: Red radial glow */}
+        <div style={{
+          position: "absolute", top: "50%", left: "60%", transform: "translate(-50%, -50%)",
+          width: 500, height: 500,
+          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Get In Touch</div>
           <h1 className="fade-up" data-delay="80" style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: "clamp(2rem, 5vw, 3.5rem)",
             fontWeight: 900,
-            color: "#111111",
+            color: "#FFFFFF",
             lineHeight: 1.1,
             marginBottom: "1.25rem",
+            textShadow: "0 2px 8px rgba(0,0,0,0.6)",
           }}>
             Let's Talk About<br />
-            <span style={{ color: "#C8102E" }}>Your Business</span>
+            <span style={{ color: "#F4A12E" }}>Your Business</span>
           </h1>
           <p className="fade-up" data-delay="160" style={{
             fontSize: "1.1rem",
-            color: "#444444",
+            color: "#E0E6F0",
             lineHeight: 1.75,
             maxWidth: 560,
+            textShadow: "0 1px 4px rgba(0,0,0,0.5)",
           }}>
             No sales pitch. No pressure. Just an honest conversation about where your business is and what digital marketing can realistically do for you.
           </p>
