@@ -112,10 +112,13 @@ export default function Flyer() {
               pointerEvents: "none",
             }} />
             {/* Red corner accents */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "14px 0 0 0" }} />
-            <div style={{ position: "absolute", top: 0, right: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 14px 0 0" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, width: 60, height: 60, borderBottom: "3px solid rgba(200,16,46,0.3)", borderLeft: "3px solid rgba(200,16,46,0.3)" }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: 60, height: 60, borderBottom: "3px solid rgba(200,16,46,0.3)", borderRight: "3px solid rgba(200,16,46,0.3)" }} />
+            <div style={{ position: "absolute", top: 0, left: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "14px 0 0 0", zIndex: 2 }} />
+            <div style={{ position: "absolute", top: 0, right: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 14px 0 0", zIndex: 2 }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, width: 60, height: 60, borderBottom: "3px solid rgba(200,16,46,0.3)", borderLeft: "3px solid rgba(200,16,46,0.3)", zIndex: 2 }} />
+            <div style={{ position: "absolute", bottom: 0, right: 0, width: 60, height: 60, borderBottom: "3px solid rgba(200,16,46,0.3)", borderRight: "3px solid rgba(200,16,46,0.3)", zIndex: 2 }} />
+
+            {/* Content wrapper — sits above background layers */}
+            <div style={{ position: "relative", zIndex: 3 }}>
 
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.5rem" }}>
               <GotmLogo size={220} />
@@ -123,13 +126,13 @@ export default function Flyer() {
 
             <div style={{
               display: "inline-block",
-              background: "rgba(200,16,46,0.12)",
-              border: "1px solid rgba(200,16,46,0.4)",
+              background: "rgba(200,16,46,0.35)",
+              border: "1px solid rgba(255,255,255,0.5)",
               borderRadius: 100,
               padding: "0.4rem 1.25rem",
               fontSize: "0.7rem",
               letterSpacing: "0.2em",
-              color: "#FF6B7A",
+              color: "#FFFFFF",
               textTransform: "uppercase",
               fontWeight: 700,
               marginBottom: "1.5rem",
@@ -144,23 +147,25 @@ export default function Flyer() {
               color: "#FFFFFF",
               lineHeight: 1.15,
               marginBottom: "1rem",
+              textShadow: "0 2px 12px rgba(0,0,0,0.9)",
             }}>
               Get Your Business<br />
               <span style={{ color: "#C8102E" }}>On The Map.</span>
             </h1>
 
-            <p style={{ fontSize: "1rem", color: "#EEEEEE", lineHeight: 1.75, maxWidth: 540, margin: "0 auto 1.5rem" }}>
+            <p style={{ fontSize: "1rem", color: "#FFFFFF", lineHeight: 1.75, maxWidth: 540, margin: "0 auto 1.5rem", textShadow: "0 1px 6px rgba(0,0,0,0.9)" }}>
               No setup fees. No big promises. No disappearing after you sign up. Just honest digital marketing that grows with your business — starting at{" "}
-              <strong style={{ color: "#FF9EAA" }}>$100/month</strong>.
+              <strong style={{ color: "#FFB3C1", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>$100/month</strong>.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
               {["No Setup Fees", "No Long-Term Contracts", "No Empty Promises"].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "#DDDDDD" }}>
+                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "#FFFFFF", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>
                   <CheckCircle2 size={13} style={{ color: "#C8102E" }} /> {item}
                 </div>
               ))}
             </div>
+            </div>{/* end content wrapper */}
           </div>
 
           {/* ── GOLD DIVIDER ── */}
@@ -409,8 +414,11 @@ export default function Flyer() {
               background: "radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%)",
               pointerEvents: "none",
             }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "0 0 0 14px" }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 0 14px 0" }} />
+            <div style={{ position: "absolute", bottom: 0, left: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "0 0 0 14px", zIndex: 2 }} />
+            <div style={{ position: "absolute", bottom: 0, right: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 0 14px 0", zIndex: 2 }} />
+
+            {/* Content wrapper — sits above background layers */}
+            <div style={{ position: "relative", zIndex: 3 }}>
 
             <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🎯</div>
             <h2 style={{
@@ -419,25 +427,28 @@ export default function Flyer() {
               fontWeight: 900,
               color: "#FFFFFF",
               marginBottom: "0.875rem",
+              textShadow: "0 2px 12px rgba(0,0,0,0.8)",
             }}>
               Ready to Get on the Map?
             </h2>
-            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#EEEEEE", marginBottom: "1.75rem", maxWidth: 500, margin: "0 auto 1.75rem" }}>
-              I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF" }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#FFFFFF", marginBottom: "1.75rem", maxWidth: 500, margin: "0 auto 1.75rem", textShadow: "0 1px 6px rgba(0,0,0,0.9)" }}>
+              I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF", fontWeight: 800 }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
             </p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center", marginBottom: "1.5rem" }}>
               <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1.1rem", padding: "0.875rem 2rem" }}>
                 <Phone size={18} /> (941) 328-8891
               </a>
-              <a href="mailto:info@gotmdigital.com" className="btn-gold-outline" style={{ padding: "0.875rem 2rem" }}>
+              <a href="mailto:info@gotmdigital.com" className="btn-gold-outline" style={{ padding: "0.875rem 2rem", color: "#FFFFFF", borderColor: "rgba(255,255,255,0.7)" }}>
                 info@gotmdigital.com
               </a>
             </div>
 
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", color: "#CCCCCC", textTransform: "uppercase" }}>
+            <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", color: "#FFFFFF", textTransform: "uppercase", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>
               GOTM Digital · gotmdigital.com · Serving Local Businesses Nationwide
             </div>
+
+            </div>{/* end content wrapper */}
           </div>
 
         </div>
