@@ -15,4 +15,6 @@
 - [x] Update index.html with fonts and SEO meta tags
 - [x] Add contact form tRPC endpoint with owner notification
 - [x] Run vitest to confirm auth tests pass
-- [ ] Save checkpoint
+- [x] Save checkpoint
+- [x] Rewrite Flyer.tsx: light grey backgrounds (#E8E8E8, #F4F4F4, #F8F8F8), 7 accordion/dropdown sections, dark header/footer with red accents
+- [x] Install dotenv package to fix ERR_MODULE_NOT_FOUND server error
