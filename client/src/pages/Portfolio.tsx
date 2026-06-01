@@ -47,7 +47,7 @@ const clients = [
   },
   {
     name: "Reel Smart Charters",
-    url: "https://reelsmartcharters.com",
+    url: "https://www.reelsmartcharters.com",
     industry: "Fishing Charters",
     location: "Florida",
     icon: "🐟",
