@@ -142,13 +142,20 @@ export default function Flyer() {
                   </filter>
                 </defs>
                 <g transform="translate(18, 10)" filter="url(#flyerGlowLogo)">
-                  <circle cx="36" cy="36" r="32" fill="none" stroke="url(#flyerGradLogo)" strokeWidth="2.5" />
-                  <circle cx="36" cy="36" r="20" fill="none" stroke="url(#flyerGradLogo)" strokeWidth="2" />
-                  <circle cx="36" cy="36" r="5" fill="url(#flyerGradLogo)" />
-                  <line x1="36" y1="0" x2="36" y2="13" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="36" y1="59" x2="36" y2="72" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="0" y1="36" x2="13" y2="36" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="59" y1="36" x2="72" y2="36" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
+                  {/* Outer circle */}
+                  <circle cx="36" cy="36" r="30" fill="none" stroke="url(#flyerGradLogo)" strokeWidth="2.5" />
+                  {/* Inner circle */}
+                  <circle cx="36" cy="36" r="18" fill="none" stroke="url(#flyerGradLogo)" strokeWidth="2" />
+                  {/* Centre dot */}
+                  <circle cx="36" cy="36" r="3.5" fill="url(#flyerGradLogo)" />
+                  {/* Top tick */}
+                  <line x1="36" y1="0"  x2="36" y2="14" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
+                  {/* Bottom tick */}
+                  <line x1="36" y1="58" x2="36" y2="72" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
+                  {/* Left tick */}
+                  <line x1="0"  y1="36" x2="14" y2="36" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
+                  {/* Right tick */}
+                  <line x1="58" y1="36" x2="72" y2="36" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
                 </g>
                 <text x="100" y="58" fontFamily="Playfair Display, Georgia, serif" fontWeight="900" fontSize="56" fill="#FFFFFF" letterSpacing="-1">GOTM</text>
                 <line x1="100" y1="68" x2="294" y2="68" stroke="url(#flyerGradLogo)" strokeWidth="1" opacity="0.5" />
