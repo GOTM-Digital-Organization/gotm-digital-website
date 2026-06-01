@@ -30,8 +30,7 @@ const clients = [
     url: "https://siestakeysportfishingcharters.com",
     industry: "Sport Fishing Charters",
     location: "Siesta Key, FL",
-    icon: "🎣",
-    color: "#E0EEF5",
+    ogImage: "/manus-storage/siesta_e3b43ce3.png",
     desc: "A premier sport fishing charter service operating out of Siesta Key, Florida. We built a custom HTML website that showcases their trips, pricing, and booking information — optimized for local search terms like 'Siesta Key fishing charters' and 'deep sea fishing Sarasota'.",
     services: ["Custom HTML Website", "Local SEO", "Google Business Profile"],
   },
@@ -39,9 +38,8 @@ const clients = [
     name: "Titan Up Marine Services",
     url: "https://titanupmarineservices.com",
     industry: "Marine Services",
-    location: "Florida",
-    icon: "⚓",
-    color: "#E0EAF5",
+    location: "Sarasota, FL",
+    ogImage: "/manus-storage/titan_67feea9b.webp",
     desc: "Professional marine services company covering boat maintenance, repair, and detailing. Their website is built for speed and local visibility, targeting boat owners across Florida who need reliable marine service professionals.",
     services: ["Custom HTML Website", "SEO Optimization", "Mobile-First Design"],
   },
@@ -50,8 +48,7 @@ const clients = [
     url: "https://www.reelsmartcharters.com",
     industry: "Fishing Charters",
     location: "Florida",
-    icon: "🐟",
-    color: "#E0F5EA",
+    ogImage: "/manus-storage/reel_d7c4a6b0.jpg",
     desc: "A fishing charter business built for conversion. The site is designed to turn visitors into bookings with clear calls-to-action, trip descriptions, and an easy-to-navigate layout that works great on mobile — where most charter bookings happen.",
     services: ["Custom HTML Website", "Conversion Optimization", "Local SEO"],
   },
@@ -60,8 +57,7 @@ const clients = [
     url: "https://poolleaksarasota.com",
     industry: "Pool Leak Detection & Repair",
     location: "Sarasota, FL",
-    icon: "🏊",
-    color: "#E0EAF5",
+    ogImage: "/manus-storage/pool_0c57702f.webp",
     desc: "A highly targeted local service website for pool leak detection and repair in the Sarasota area. Built with hyper-local SEO in mind — targeting specific neighborhoods and search terms that homeowners use when they have a pool problem.",
     services: ["Custom HTML Website", "Hyper-Local SEO", "Google Business Profile"],
   },
@@ -70,8 +66,7 @@ const clients = [
     url: "https://srqwash.com",
     industry: "Pressure Washing",
     location: "Sarasota, FL",
-    icon: "💧",
-    color: "#E0F5F5",
+    ogImage: "/manus-storage/srqwash_fc8827dc.webp",
     desc: "A pressure washing company serving the Sarasota-Bradenton area. Their website is clean, fast, and built to rank for local pressure washing searches. We also manage their Google Business Profile to keep reviews and posts flowing consistently.",
     services: ["Custom HTML Website", "Google Business Profile", "Weekly Content Posts"],
   },
@@ -80,8 +75,7 @@ const clients = [
     url: "https://sarasotawashandseal.com",
     industry: "Exterior Cleaning & Sealing",
     location: "Sarasota, FL",
-    icon: "✨",
-    color: "#EAEAF5",
+    ogImage: "/manus-storage/sarasotawashandseal_45ddc10a.png",
     desc: "Full-service exterior cleaning and sealing company. Their website targets homeowners and commercial property managers looking for driveway sealing, roof cleaning, and exterior washing services across the greater Sarasota region.",
     services: ["Custom HTML Website", "Local SEO", "Google Ads Landing Page"],
   },
@@ -159,31 +153,43 @@ export default function Portfolio() {
                 data-delay={String(i * 80)}
                 style={{ overflow: "hidden", display: "flex", flexDirection: "column" }}
               >
-                {/* Color accent bar */}
-                <div style={{ height: 4, background: "linear-gradient(90deg, #F4A12E, #F9C46B)" }} />
+                {/* OG Image thumbnail — clickable */}
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "block", overflow: "hidden", borderRadius: "0 0 0 0", lineHeight: 0 }}
+                >
+                  <img
+                    src={client.ogImage}
+                    alt={`${client.name} website preview`}
+                    style={{
+                      width: "100%",
+                      height: 200,
+                      objectFit: "cover",
+                      objectPosition: "top",
+                      display: "block",
+                      transition: "transform 0.35s cubic-bezier(0.23,1,0.32,1)",
+                    }}
+                    onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)")}
+                    onMouseLeave={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
+                  />
+                </a>
 
-                <div style={{ padding: "1.75rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                {/* Gold accent bar below image */}
+                <div style={{ height: 3, background: "linear-gradient(90deg, #C8102E, #F4A12E)" }} />
+
+                <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
                   {/* Header */}
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem", marginBottom: "1.25rem" }}>
-                    <div style={{
-                      width: 56, height: 56, borderRadius: 10,
-                      background: client.color,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "1.75rem", flexShrink: 0,
-                      border: "1px solid rgba(244,161,46,0.25)",
-                    }}>
-                      {client.icon}
+                  <div style={{ marginBottom: "1rem" }}>
+                    <div style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 600, marginBottom: "0.25rem" }}>
+                      {client.industry}
                     </div>
-                    <div>
-                      <div style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 600, marginBottom: "0.25rem" }}>
-                        {client.industry}
-                      </div>
-                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "#111111", lineHeight: 1.3 }}>
-                        {client.name}
-                      </h3>
-                      <div style={{ fontSize: "0.75rem", color: "#666666", display: "flex", alignItems: "center", gap: "0.3rem", marginTop: "0.25rem" }}>
-                        <MapPin size={11} /> {client.location}
-                      </div>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, color: "#111111", lineHeight: 1.3, marginBottom: "0.25rem" }}>
+                      {client.name}
+                    </h3>
+                    <div style={{ fontSize: "0.75rem", color: "#666666", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                      <MapPin size={11} /> {client.location}
                     </div>
                   </div>
 
