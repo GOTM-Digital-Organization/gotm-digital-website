@@ -39,7 +39,7 @@ const clients = [
     url: "https://titanupmarineservices.com",
     industry: "Marine Services",
     location: "Sarasota, FL",
-    ogImage: "/manus-storage/titan_67feea9b.webp",
+    ogImage: "/manus-storage/titan-og_debe9c5d.png",
     desc: "Professional marine services company covering boat maintenance, repair, and detailing. Their website is built for speed and local visibility, targeting boat owners across Florida who need reliable marine service professionals.",
     services: ["Custom HTML Website", "SEO Optimization", "Mobile-First Design"],
   },
