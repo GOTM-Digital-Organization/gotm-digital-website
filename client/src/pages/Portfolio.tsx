@@ -48,7 +48,7 @@ const clients = [
     url: "https://www.reelsmartcharters.com",
     industry: "Fishing Charters",
     location: "Florida",
-    ogImage: "/manus-storage/reel_d7c4a6b0.jpg",
+    ogImage: "/manus-storage/reel-og_b3fb7408.jpg",
     desc: "A fishing charter business built for conversion. The site is designed to turn visitors into bookings with clear calls-to-action, trip descriptions, and an easy-to-navigate layout that works great on mobile — where most charter bookings happen.",
     services: ["Custom HTML Website", "Conversion Optimization", "Local SEO"],
   },
