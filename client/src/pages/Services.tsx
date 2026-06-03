@@ -416,9 +416,9 @@ export default function Services() {
 
           <div className="fade-up" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.25rem" }}>
             {[
-              { name: "Starter", price: "$100/mo", includes: ["Custom HTML Website", "SEO Setup", "Google Business Profile", "Unlimited Updates"] },
-              { name: "Growth", price: "$300/mo", featured: true, includes: ["Everything in Starter", "Weekly Website Posts", "Weekly GBP Posts", "Content Strategy"] },
-              { name: "Full Service", price: "$500/mo", includes: ["Everything in Growth", "Google Ads Management", "Custom Landing Pages", "Ad Optimization"] },
+              { name: "Starter", price: "$100/mo", includes: ["Custom HTML Website", "SEO Setup", "AI Search Optimization Built In", "Google Business Profile", "Unlimited Updates"] },
+              { name: "Growth", price: "$300/mo", featured: true, includes: ["Everything in Starter", "Weekly Website Posts", "Weekly GBP Posts", "AI Search & Conversational Query Targeting", "Content Strategy"] },
+              { name: "Full Service", price: "$500/mo", includes: ["Everything in Growth", "Google Ads Management", "AI-Ready Landing Page Content", "Custom Landing Pages", "Ad Optimization"] },
             ].map((plan, i) => (
               <div key={i} className={`card-dark${plan.featured ? " featured" : ""}`} style={{ padding: "1.5rem", textAlign: "center" }}>
                 {plan.featured && (

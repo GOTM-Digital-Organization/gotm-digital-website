@@ -321,15 +321,15 @@ export default function Flyer() {
                 {[
                   {
                     name: "Starter", price: "$100", tagline: "Your foundation, done right", featured: false,
-                    features: ["Custom HTML website", "Full SEO optimization", "Google Business Profile setup", "Unlimited updates & edits", "Mobile-responsive design"],
+                    features: ["Custom HTML website", "Full SEO optimization", "AI search optimization built in", "Google Business Profile setup", "Unlimited updates & edits", "Mobile-responsive design"],
                   },
                   {
                     name: "Growth", price: "$300", tagline: "Stay active, stay visible", featured: true,
-                    features: ["Everything in Starter", "Weekly website posts", "Weekly Google Business posts", "Content strategy & keywords", "Monthly performance report"],
+                    features: ["Everything in Starter", "Weekly website posts", "Weekly Google Business posts", "AI search & conversational query targeting", "Content strategy & keywords", "Monthly performance report"],
                   },
                   {
                     name: "Full Service", price: "$500", tagline: "Leads now + growth long-term", featured: false,
-                    features: ["Everything in Growth", "Google Ads management", "Custom landing pages", "Ongoing ad optimization", "Full ROI reporting"],
+                    features: ["Everything in Growth", "Google Ads management", "Custom landing pages", "AI-ready landing page content", "Ongoing ad optimization", "Full ROI reporting"],
                   },
                 ].map((plan, i) => (
                   <div key={i} style={{
