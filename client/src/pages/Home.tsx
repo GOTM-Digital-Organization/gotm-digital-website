@@ -397,22 +397,22 @@ export default function Home() {
               {
                 icon: <Globe size={28} style={{ color: "#C8102E" }} />,
                 title: "Custom HTML Websites",
-                desc: "Lightning-fast, SEO-optimized websites built from scratch. No WordPress bloat — just clean code that Google loves.",
+                desc: "Modern, conversion-focused websites built to clearly communicate who you are, what you do, and where you work — optimized for Google, maps, and AI-powered search from day one.",
               },
               {
                 icon: <Search size={28} style={{ color: "#C8102E" }} />,
-                title: "SEO & Content Strategy",
-                desc: "Weekly content posts to your website and Google Business Profile. Consistent signals that build authority over time.",
+                title: "Local SEO & AI Search Optimization",
+                desc: "Modern search visibility built for how customers search now — traditional rankings, map results, conversational queries, structured content, and AI-answer readiness.",
               },
               {
                 icon: <Star size={28} style={{ color: "#C8102E" }} />,
-                title: "Google Business Profile",
-                desc: "Your most powerful free tool. We keep it active, optimized, and review-ready so you show up in the local map pack.",
+                title: "Google Business Profile Authority",
+                desc: "Your most powerful free tool. We optimize your profile so customers, Google, and AI-powered search results can clearly understand your business and local relevance.",
               },
               {
                 icon: <Megaphone size={28} style={{ color: "#C8102E" }} />,
-                title: "Google Ads Management",
-                desc: "Get leads today while your organic SEO matures. Campaigns that put you in front of buyers right now.",
+                title: "Google Ads & Conversion Tracking",
+                desc: "Get leads now while your organic SEO matures. Ads connected to strong landing pages, clear service messaging, and conversion tracking that improves your entire online presence.",
               },
             ].map((service, i) => (
               <div key={i} className="fade-up card-dark" data-delay={String(i * 80)} style={{ padding: "2rem" }}>
@@ -428,6 +428,68 @@ export default function Home() {
           <div className="fade-up" data-delay="0" style={{ textAlign: "center", marginTop: "2.5rem" }}>
             <Link href="/services" className="btn-gold-outline">
               View All Services <ArrowRight size={15} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <hr className="gold-rule" />
+
+      {/* ── AI SEARCH SHIFT SECTION ── */}
+      <section style={{ padding: "6rem 0", background: "#F8F8F8", borderTop: "1px solid #EBEBEB", borderBottom: "1px solid #EBEBEB" }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Is Changing Fast</div>
+            <h2 className="fade-up" data-delay="80" style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
+              fontWeight: 900,
+              color: "#111111",
+              lineHeight: 1.2,
+              marginBottom: "1.5rem",
+            }}>
+              Is Your Business Ready for the<br />
+              <span style={{ color: "#C8102E" }}>New Way Customers Search?</span>
+            </h2>
+            <p className="fade-up" data-delay="160" style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "#444444", maxWidth: 720, margin: "0 auto 1.5rem" }}>
+              Search is changing quickly. Customers are not just typing simple keywords into Google anymore. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted. If your website and online presence are outdated, unclear, or disconnected, your business may not be the one that gets found.
+            </p>
+            <p className="fade-up" data-delay="220" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#555555", maxWidth: 680, margin: "0 auto 2rem", fontStyle: "italic" }}>
+              Got'm Digital helps local businesses build websites, Google profiles, ads, and content that are ready for modern search.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.25rem", marginBottom: "2.5rem" }}>
+            {[
+              {
+                icon: "⚠️",
+                heading: "An Outdated Website Is a Visibility Problem",
+                text: "An outdated website is no longer just a design problem — it can become a visibility problem. If your site is unclear, slow, or built on a platform that is not keeping up, competitors who are easier to find and verify may be the ones customers see first.",
+              },
+              {
+                icon: "🤖",
+                heading: "People Are Asking AI Tools Who to Hire",
+                text: "Customers are no longer only Googling. They are asking AI tools, Google AI results, map results, and search engines who to hire. Got'm Digital builds your online presence so customers, Google, and AI tools can clearly understand who you are, what you do, and why your business should be trusted.",
+              },
+              {
+                icon: "🏆",
+                heading: "The Businesses That Win Online",
+                text: "The businesses that win online will be the ones whose websites, Google profiles, reviews, ads, and content are built for how people search now — and how they will search next. Your full presence should work together.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="fade-up card-dark" data-delay={String(i * 80)} style={{ padding: "1.75rem" }}>
+                <div style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>{item.icon}</div>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "#111111", marginBottom: "0.75rem", lineHeight: 1.3 }}>
+                  {item.heading}
+                </h3>
+                <p style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "#555555" }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="fade-up" data-delay="0" style={{ textAlign: "center" }}>
+            <Link href="/contact" className="btn-gold" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              Request a Web Presence Review <ArrowRight size={16} />
             </Link>
           </div>
         </div>

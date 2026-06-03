@@ -189,12 +189,12 @@ export default function Flyer() {
               marginBottom: "1rem",
               textShadow: "0 2px 12px rgba(0,0,0,0.9)",
             }}>
-              Get Your Business<br />
-              <span style={{ color: "#C8102E" }}>On The Map.</span>
+              Get Your Business Found on Google,<br />
+              <span style={{ color: "#C8102E" }}>Maps, and AI Search.</span>
             </h1>
 
-            <p style={{ fontSize: "1rem", color: "#FFFFFF", lineHeight: 1.75, maxWidth: 540, margin: "0 auto 1.5rem", textShadow: "0 1px 6px rgba(0,0,0,0.9)" }}>
-              No setup fees. No big promises. No disappearing after you sign up. Just honest digital marketing that grows with your business — starting at{" "}
+            <p style={{ fontSize: "1rem", color: "#FFFFFF", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 1.5rem", textShadow: "0 1px 6px rgba(0,0,0,0.9)" }}>
+              Websites, local SEO, Google Business Profiles, and Google Ads built for the new way customers search — no setup fees, no big promises, starting at{" "}
               <strong style={{ color: "#FFB3C1", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>$100/month</strong>.
             </p>
 
@@ -381,6 +381,32 @@ export default function Flyer() {
               </div>
             </AccordionSection>
 
+            {/* ── DROPDOWN 6b: AI Search Optimization ── */}
+            <AccordionSection emoji="🤖" title="AI Search Optimization — Built Into Everything We Do">
+              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0 0 1rem" }}>
+                Search is changing. Customers are no longer just typing short keywords into Google. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted.
+              </p>
+              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0 0 1rem" }}>
+                Got'm Digital builds every website, Google profile, and content strategy so your business is easier to find, understand, and trust in modern search — including traditional rankings, map results, conversational queries, and AI-answer readiness.
+              </p>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "0.75rem" }}>
+                {[
+                  { icon: "🌐", title: "AI-Ready Websites", desc: "Clear service pages, FAQs, schema, and structured content AI tools can read and recommend." },
+                  { icon: "📍", title: "Profile & Citation Match", desc: "Business info consistent across your site, Google profile, and directories." },
+                  { icon: "⭐", title: "Reviews & Trust Signals", desc: "Review strategy that builds credibility with customers and AI-powered search." },
+                  { icon: "📝", title: "Content That Answers Questions", desc: "What you do, where you work, what it costs — in a format search engines can use." },
+                ].map((item, i) => (
+                  <div key={i} style={{ background: "#F8F8F8", border: "1px solid #DEDEDE", borderTop: "2px solid #C8102E", borderRadius: 8, padding: "0.875rem", display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
+                    <span style={{ fontSize: "1.1rem", flexShrink: 0 }}>{item.icon}</span>
+                    <div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.8rem", fontWeight: 700, color: "#111111", marginBottom: "0.2rem" }}>{item.title}</div>
+                      <div style={{ fontSize: "0.72rem", color: "#666666", lineHeight: 1.6 }}>{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </AccordionSection>
+
             {/* ── DROPDOWN 7: Why GOTM Digital ── */}
             <AccordionSection emoji="🎯" title="Why GOTM Digital — Built Different. On Purpose.">
               <div style={{
@@ -421,6 +447,52 @@ export default function Flyer() {
               </div>
             </AccordionSection>
 
+          </div>
+
+          {/* ── AUDIT OFFER CALLOUT ── */}
+          <div style={{
+            background: "#FFFFFF",
+            border: "2px solid rgba(200,16,46,0.35)",
+            borderTop: "none",
+            padding: "2rem 2rem 2.25rem",
+            marginTop: 0,
+          }}>
+            <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+              <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.5rem" }}>New Offer</div>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", fontWeight: 900, color: "#111111", lineHeight: 1.2, marginBottom: "0.75rem" }}>
+                Web Presence &amp; AI Search Readiness Audit
+              </h2>
+              <p style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "#444444", maxWidth: 560, margin: "0 auto" }}>
+                A clear, honest review of your current website, Google Business Profile, reviews, local citations, and AI search readiness — with specific recommendations for what to fix, update, or improve.
+              </p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
+              {[
+                { label: "Website Review", items: ["Page speed & mobile", "Service page clarity", "Schema & structured data", "Meta tags & headings"] },
+                { label: "Google Business Profile", items: ["Profile completeness", "Category accuracy", "Review patterns", "Posts & Q&A activity"] },
+                { label: "AI Search Readiness", items: ["Business description clarity", "FAQ & Q&A content", "Citation consistency", "Trust signal assessment"] },
+              ].map((col, i) => (
+                <div key={i} style={{ background: "#F8F8F8", border: "1px solid #EBEBEB", borderRadius: 8, padding: "1rem" }}>
+                  <div style={{ fontSize: "0.62rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.625rem" }}>{col.label}</div>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    {col.items.map((item, j) => (
+                      <li key={j} style={{ display: "flex", gap: "0.4rem", fontSize: "0.75rem", lineHeight: 1.6, color: "#444444", marginBottom: "0.35rem" }}>
+                        <CheckCircle2 size={11} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} /> {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem", borderTop: "1px solid #EBEBEB", paddingTop: "1.25rem" }}>
+              <div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>$97</div>
+                <div style={{ fontSize: "0.72rem", color: "#666666", marginTop: "0.2rem" }}>One-time — credited toward first month if you sign up</div>
+              </div>
+              <a href="tel:9413288891" className="btn-gold" style={{ padding: "0.75rem 1.5rem", fontSize: "0.9rem" }}>
+                <Phone size={14} /> Call to Book Your Audit
+              </a>
+            </div>
           </div>
 
           {/* ── FLYER CTA FOOTER ── */}

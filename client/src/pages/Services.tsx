@@ -27,15 +27,15 @@ function useScrollReveal() {
 const services = [
   {
     icon: <Globe size={36} style={{ color: "#C8102E" }} />,
-    title: "Custom HTML Websites",
+    title: "Website Design & AI-Ready Local SEO",
     tagline: "The foundation of everything",
-    desc: "Every website we build is hand-coded in clean HTML, CSS, and JavaScript — no WordPress, no Wix, no page builders. This means your site loads faster, ranks better, and is built exactly to your needs without the bloat that slows most local business websites down.",
+    desc: "Your website should do more than look good. It should help Google, AI tools, and real customers understand exactly who you are, what you do, where you work, and why your business can be trusted. Got'm Digital builds modern websites with clear service pages, local SEO structure, trust signals, FAQs, conversion tracking, and AI-search-ready content built in from the start. Search is changing quickly — if your website is outdated, unclear, or built on a platform that is not keeping up with modern SEO and AI-driven search, your business may become harder to find while competitors gain visibility.",
     bullets: [
       "Mobile-first responsive design that looks great on every device",
-      "Schema markup and meta optimization baked in from day one",
+      "Schema markup, meta optimization, and structured data baked in",
       "Lightning-fast load times — Google's #1 ranking signal",
+      "Clear service pages, FAQs, and trust signals AI tools can understand",
       "Unlimited updates, edits, and new pages included",
-      "Hosted and maintained — you never touch the technical side",
       "Built to outrank WordPress, Wix, and Squarespace over time",
     ],
     timeline: "Live within 1–2 weeks of getting started",
@@ -44,15 +44,15 @@ const services = [
   },
   {
     icon: <Search size={36} style={{ color: "#C8102E" }} />,
-    title: "SEO & Content Strategy",
+    title: "Local SEO & AI Search Optimization",
     tagline: "The long game that pays off",
-    desc: "Search engine optimization is not a switch you flip — it's a compounding investment. We publish weekly content to your website and Google Business Profile, building the consistent signal that Google uses to determine who deserves to rank on page one. The businesses that publish consistently are the ones that win.",
+    desc: "Local SEO is no longer just about ranking for short keywords. Customers are asking detailed questions like who to hire, what a service costs, who serves their area, and which company is most trusted. Got'm Digital helps structure your website, content, Google profile, reviews, and online mentions so your business is easier to find, understand, and trust in modern search — including traditional Google rankings, map visibility, conversational search, structured content, schema, citations, and AI-answer readiness.",
     bullets: [
       "Weekly blog posts and service pages added to your website",
       "Weekly posts to your Google Business Profile",
-      "Local keyword research and targeting for your service area",
+      "Local keyword research targeting conversational and AI-style queries",
+      "Structured content, schema markup, and citation consistency",
       "Internal linking strategy to build site authority",
-      "Image optimization and alt text for every upload",
       "Monthly performance reporting so you can see the progress",
     ],
     timeline: "Results typically visible at 6–18 months",
@@ -61,13 +61,13 @@ const services = [
   },
   {
     icon: <Star size={36} style={{ color: "#C8102E" }} />,
-    title: "Google Business Profile Management",
+    title: "Google Business Profile Authority Build",
     tagline: "Your most powerful free tool",
-    desc: "While your website builds authority over time, your Google Business Profile can start generating calls and leads within weeks. We set it up correctly, keep it active with regular posts and photos, and help you build a consistent review pipeline that signals trust to both Google and potential customers.",
+    desc: "Your Google Business Profile is one of the most important parts of your local online presence. We help optimize your profile with accurate services, categories, photos, updates, review strategy, and business information that matches your website. This helps customers, Google, and AI-powered search results better understand your business and local relevance — reinforcing the same services, locations, and business facts shown on your website.",
     bullets: [
-      "Complete profile setup and optimization",
-      "Regular photo uploads and service updates",
-      "Weekly Google Business posts to stay active",
+      "Complete profile setup and optimization with accurate categories and services",
+      "Regular photo uploads and service updates that match your website",
+      "Weekly Google Business posts to stay active and relevant",
       "Review request strategy — we show you exactly how to ask",
       "Q&A monitoring and response management",
       "Tracking of profile views, calls, and direction requests",
@@ -78,16 +78,16 @@ const services = [
   },
   {
     icon: <Megaphone size={36} style={{ color: "#C8102E" }} />,
-    title: "Google Ads Management",
+    title: "Google Ads & Conversion Tracking",
     tagline: "Leads today, not in two years",
-    desc: "Google Ads are the bridge between where you are now and where your organic SEO will eventually take you. We build and manage campaigns that put your business in front of people actively searching for your services right now. You control the budget — we handle the strategy, the ads, and the landing pages.",
+    desc: "Google Ads can bring in leads now, but the best results happen when ads are connected to strong landing pages, clear service messaging, and accurate conversion tracking. Got'm Digital builds and manages ad campaigns that send customers to pages designed to convert — while using ad data to improve the rest of your online presence. Ads bridge the gap while your organic SEO matures, and the data they generate helps guide website and content improvements over time.",
     bullets: [
       "Full campaign setup, keyword research, and ad copywriting",
       "Custom HTML landing pages built specifically for conversions",
+      "Conversion tracking that feeds insights back into your SEO and content",
       "Ongoing bid optimization and A/B testing",
       "Negative keyword management to eliminate wasted spend",
       "Monthly performance reports with clear ROI tracking",
-      "Scale back or pause anytime — you're always in control",
     ],
     timeline: "Campaigns live within 3–5 business days",
     price: "Included in Full Service ($500/mo) — ad spend paid directly to Google",
@@ -142,17 +142,17 @@ export default function Services() {
             marginBottom: "1.25rem",
             textShadow: "0 2px 8px rgba(0,0,0,0.6)",
           }}>
-            Services Built for<br />
-            <span style={{ color: "#C8102E" }}>Local Service Businesses</span>
+            Websites, Google Ads, and Local SEO<br />
+            <span style={{ color: "#C8102E" }}>Built for the New Way Customers Search</span>
           </h1>
           <p className="fade-up" data-delay="160" style={{
             fontSize: "1.1rem",
             color: "#E0E6F0",
             lineHeight: 1.75,
-            maxWidth: 580,
+            maxWidth: 620,
             textShadow: "0 1px 4px rgba(0,0,0,0.5)",
           }}>
-            No fluff. No upsells. Just the four things that actually move the needle for local service businesses — done honestly and affordably.
+            Get found on Google, Maps, and AI-powered search with a modern online presence that clearly shows who you are, what you do, where you work, and why customers should trust you.
           </p>
         </div>
       </section>
@@ -257,6 +257,141 @@ export default function Services() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <hr className="gold-rule" />
+
+      {/* ── AI SEARCH OPTIMIZATION SECTION ── */}
+      <section style={{ padding: "5rem 0", background: "#F8F8F8", borderBottom: "1px solid #EBEBEB" }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Strategy</div>
+            <h2 className="fade-up" data-delay="80" style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+              fontWeight: 900,
+              color: "#111111",
+              lineHeight: 1.2,
+              marginBottom: "1.25rem",
+            }}>
+              AI Search Optimization Built Into<br />
+              <span style={{ color: "#C8102E" }}>Every Digital Strategy</span>
+            </h2>
+            <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#444444", maxWidth: 700, margin: "0 auto" }}>
+              Modern search is not just about keywords anymore. AI tools, voice search, and Google's own AI-powered results are changing how customers find and choose local businesses. Got'm Digital builds every website, Google profile, and content strategy with this in mind.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "1.25rem", marginBottom: "2.5rem" }}>
+            {[
+              {
+                icon: "🌐",
+                title: "Websites Built for AI Readability",
+                text: "Clear service pages, structured content, schema markup, FAQs, and business details that AI tools can read, understand, and use to recommend your business.",
+              },
+              {
+                icon: "📍",
+                title: "Google Profile & Citation Consistency",
+                text: "Your business name, address, phone, services, and categories match across your website, Google Business Profile, and online directories — a key trust signal for AI-powered search.",
+              },
+              {
+                icon: "⭐",
+                title: "Reviews & Trust Signals",
+                text: "Reviews, response patterns, and verified business information help AI tools identify your business as a credible local option worth recommending.",
+              },
+              {
+                icon: "📝",
+                title: "Content That Answers Real Questions",
+                text: "We create content that answers the questions customers actually ask — what you do, where you work, what it costs, and why you can be trusted — in a format search engines and AI tools can use.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="fade-up card-dark" data-delay={String(i * 80)} style={{ padding: "1.75rem" }}>
+                <div style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>{item.icon}</div>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 700, color: "#111111", marginBottom: "0.625rem", lineHeight: 1.3 }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "#555555" }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <hr className="gold-rule" />
+
+      {/* ── WEB PRESENCE AUDIT OFFER ── */}
+      <section style={{ padding: "5rem 0", background: "#FFFFFF" }}>
+        <div className="container" style={{ maxWidth: 860 }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>New Offer</div>
+            <h2 className="fade-up" data-delay="80" style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontWeight: 900,
+              color: "#111111",
+              lineHeight: 1.2,
+              marginBottom: "1rem",
+            }}>
+              Web Presence &amp; AI Search<br />
+              <span style={{ color: "#C8102E" }}>Readiness Audit</span>
+            </h2>
+            <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#444444", maxWidth: 640, margin: "0 auto" }}>
+              A clear, honest review of your current website, Google Business Profile, reviews, local citations, and overall AI search readiness — with specific recommendations for what to fix, update, or improve.
+            </p>
+          </div>
+
+          <div className="fade-up card-dark" style={{ padding: "2.5rem", marginBottom: "2rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
+              {[
+                {
+                  section: "Website Review",
+                  items: ["Page speed and mobile performance", "Service page clarity and completeness", "Schema markup and structured data", "Meta titles, descriptions, and headings", "Internal linking and site structure"],
+                },
+                {
+                  section: "Google Business Profile Review",
+                  items: ["Profile completeness and category accuracy", "Service and product listings", "Photo quality and recency", "Review volume, rating, and response patterns", "Posts and Q&A activity"],
+                },
+                {
+                  section: "AI Search Readiness Review",
+                  items: ["Business description clarity for AI tools", "FAQ and question-answer content", "Citation and directory consistency", "Trust signal assessment", "Content gap analysis"],
+                },
+              ].map((col, i) => (
+                <div key={i}>
+                  <div style={{ fontSize: "0.7rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "1rem" }}>
+                    {col.section}
+                  </div>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    {col.items.map((item, j) => (
+                      <li key={j} style={{ display: "flex", gap: "0.625rem", fontSize: "0.875rem", lineHeight: 1.65, color: "#444444", marginBottom: "0.625rem" }}>
+                        <CheckCircle2 size={14} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ borderTop: "1px solid #EBEBEB", marginTop: "2rem", paddingTop: "1.5rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
+              <div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>$97</div>
+                <div style={{ fontSize: "0.8rem", color: "#666666", marginTop: "0.25rem" }}>One-time fee — no ongoing commitment required</div>
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+                <a href="tel:9413288891" className="btn-gold" style={{ padding: "0.875rem 1.75rem" }}>
+                  <Phone size={15} /> Call to Book Your Audit
+                </a>
+                <Link href="/contact" className="btn-gold-outline" style={{ padding: "0.875rem 1.75rem" }}>
+                  Request Audit Online <ArrowRight size={15} />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <p className="fade-up" style={{ fontSize: "0.85rem", color: "#666666", lineHeight: 1.75, textAlign: "center", maxWidth: 600, margin: "0 auto" }}>
+            If you become a Got'm Digital client after the audit, the $97 fee is credited toward your first month. The audit report is yours to keep regardless.
+          </p>
         </div>
       </section>
 
