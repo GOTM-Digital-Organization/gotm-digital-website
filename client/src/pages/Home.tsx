@@ -21,7 +21,7 @@ function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -59,11 +59,11 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
     return () => observer.disconnect();
   }, []);
   return (
-    <div ref={ref} style={{ textAlign: "center" }}>
-      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>
+    <div ref={ref} style={{ padding: "2rem 1.5rem" }}>
+      <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.03em" }}>
         {count}{suffix}
       </div>
-      <div style={{ fontSize: "0.8rem", color: "#666666", marginTop: "0.4rem", letterSpacing: "0.05em", fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
+      <div style={{ fontSize: "0.62rem", color: "#555555", marginTop: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
     </div>
   );
 }
@@ -71,27 +71,22 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
 // ── FAQ Accordion ───────────────────────────────────────────
 const faqs = [
   {
-    icon: "🌱",
     q: "New Websites Take Time — Here's Why",
     a: "A brand-new domain won't rank on Google overnight. It typically takes 1–3 years to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal. Think of your website as an investment that compounds over time. The businesses that stay consistent are the ones that win.",
   },
   {
-    icon: "🏗️",
     q: "Why Custom HTML Beats WordPress & Others",
     a: "Custom HTML sites load faster and rank better — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code. Everything optimized from day one: meta tags, schema markup, mobile layout, image compression, and site structure. Over time, this foundation consistently outperforms WordPress, GoHighLevel, Wix, and Squarespace.",
   },
   {
-    icon: "⭐",
     q: "Google Business Profile — Your Most Powerful Free Tool",
     a: "Your Google Business Profile is your most powerful free tool while your website grows. Ask every single customer for a review — every time, no exceptions. Reviews build local trust fast. Keep your profile active: photos, hours, services, and regular posts all signal credibility to Google. This works independently of your website's age and can start showing results within weeks.",
   },
   {
-    icon: "⚡",
     q: "Need Leads Right Now? — Google Ads",
     a: "Google Ads put you in front of people actively searching for your services today — not in two years. We build dedicated landing pages in the same clean HTML format — fast, focused, and built to convert. You control the budget and only pay when someone clicks your ad. Ads bridge the gap while your organic SEO matures — scale back once the site takes off.",
   },
   {
-    icon: "🗺️",
     q: "The Growth Timeline — What to Expect",
     a: "Months 1–6: Website live, Google profile active, reviews rolling in, ads running if budget allows. Months 6–18: SEO gains traction, domain builds authority, content starts paying off. Year 2–3: Organic leads flow consistently. ROI accelerates. Ads become optional, not essential. The key is staying consistent — most businesses quit before the compounding kicks in.",
   },
@@ -100,41 +95,34 @@ const faqs = [
 function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="fade-up" data-delay={String(index * 80)} style={{ marginBottom: "0.625rem" }}>
+    <div className="fade-up" data-delay={String(index * 60)} style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
           width: "100%",
-          background: open ? "#F0F0F0" : "#F5F5F5",
-          border: `1px solid ${open ? "#C8102E" : "#DEDEDE"}`,
-          borderRadius: open ? "8px 8px 0 0" : "8px",
-          color: "#111111",
-          padding: "1.125rem 1.25rem",
+          background: "transparent",
+          border: "none",
+          color: "#FFFFFF",
+          padding: "1.5rem 0",
           display: "flex",
           alignItems: "center",
-          gap: "0.875rem",
+          gap: "1rem",
           cursor: "pointer",
           textAlign: "left",
-          transition: "border-color 0.2s, background 0.2s",
         }}
       >
-        <span style={{ fontSize: "1.375rem", flexShrink: 0 }}>{item.icon}</span>
-        <span style={{ flex: 1, fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", fontWeight: 600 }}>{item.q}</span>
+        <span style={{ flex: 1, fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", fontWeight: 600, color: "#FFFFFF", letterSpacing: "-0.01em" }}>{item.q}</span>
         <ChevronDown
-          size={18}
-          style={{ color: "#C8102E", flexShrink: 0, transition: "transform 0.25s", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+          size={16}
+          style={{ color: "#C8102E", flexShrink: 0, transition: "transform 0.25s cubic-bezier(0.23,1,0.32,1)", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </button>
       {open && (
         <div style={{
-          background: "#F0F0F0",
-          border: "1px solid #C8102E",
-          borderTop: "none",
-          borderRadius: "0 0 8px 8px",
-          padding: "1.25rem 1.25rem 1.375rem",
+          paddingBottom: "1.5rem",
           fontSize: "0.9rem",
-          lineHeight: 1.75,
-          color: "#444444",
+          lineHeight: 1.8,
+          color: "#888888",
           fontFamily: "'DM Sans', sans-serif",
         }}>
           {item.a}
@@ -146,60 +134,17 @@ function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
 
 // ── Real client portfolio items ─────────────────────────────
 const clientSites = [
-  {
-    name: "Siesta Key Sport Fishing Charters",
-    url: "https://siestakeysportfishingcharters.com",
-    industry: "Fishing Charters",
-    location: "Siesta Key, FL",
-    icon: "🎣",
-    color: "#E0EEF5",
-    desc: "Custom website for a premier sport fishing charter service on Siesta Key.",
-  },
-  {
-    name: "Titan Up Marine Services",
-    url: "https://titanupmarineservices.com",
-    industry: "Marine Services",
-    location: "Florida",
-    icon: "⚓",
-    color: "#E0EAF5",
-    desc: "Professional marine services website built for maximum local visibility.",
-  },
-  {
-    name: "Reel Smart Charters",
-    url: "https://reelsmartcharters.com",
-    industry: "Fishing Charters",
-    location: "Florida",
-    icon: "🐟",
-    color: "#E0F5EA",
-    desc: "Conversion-focused charter fishing website with SEO-optimized content.",
-  },
-  {
-    name: "Pool Leak Sarasota",
-    url: "https://poolleaksarasota.com",
-    industry: "Pool Services",
-    location: "Sarasota, FL",
-    icon: "🏊",
-    color: "#E0EAF5",
-    desc: "Local service website targeting pool leak detection and repair in Sarasota.",
-  },
-  {
-    name: "SRQ Wash",
-    url: "https://srqwash.com",
-    industry: "Pressure Washing",
-    location: "Sarasota, FL",
-    icon: "💧",
-    color: "#E0F5F5",
-    desc: "High-converting pressure washing website with Google Business optimization.",
-  },
-  {
-    name: "Sarasota Wash and Seal",
-    url: "https://sarasotawashandseal.com",
-    industry: "Exterior Cleaning",
-    location: "Sarasota, FL",
-    icon: "✨",
-    color: "#EAEAF5",
-    desc: "Full-service exterior cleaning website built for local search dominance.",
-  },
+  { name: "Siesta Key Sport Fishing Charters", url: "https://siestakeysportfishingcharters.com", industry: "Fishing Charters", location: "Siesta Key, FL", desc: "Custom website for a premier sport fishing charter service on Siesta Key." },
+  { name: "Titan Up Marine Services", url: "https://titanupmarineservices.com", industry: "Marine Services", location: "Florida", desc: "Professional marine services website built for maximum local visibility." },
+  { name: "Reel Smart Charters", url: "https://www.reelsmartcharters.com", industry: "Fishing Charters", location: "Florida", desc: "Conversion-focused charter fishing website with SEO-optimized content." },
+];
+
+// ── Services data ───────────────────────────────────────────
+const services = [
+  { icon: <Globe size={22} />, title: "Custom HTML Websites", desc: "Modern, conversion-focused websites built to clearly communicate who you are, what you do, and where you work — optimized for Google, maps, and AI-powered search from day one." },
+  { icon: <Search size={22} />, title: "Local SEO & AI Search Optimization", desc: "Modern search visibility built for how customers search now — traditional rankings, map results, conversational queries, structured content, and AI-answer readiness." },
+  { icon: <Star size={22} />, title: "Google Business Profile Authority", desc: "Your most powerful free tool. We optimize your profile so customers, Google, and AI-powered search results can clearly understand your business and local relevance." },
+  { icon: <Megaphone size={22} />, title: "Google Ads & Conversion Tracking", desc: "Get leads now while your organic SEO matures. Ads connected to strong landing pages, clear service messaging, and conversion tracking that improves your entire online presence." },
 ];
 
 // ── Main Home Component ─────────────────────────────────────
@@ -207,165 +152,191 @@ export default function Home() {
   useScrollReveal();
 
   return (
-    <div style={{ background: "#FFFFFF", color: "#111111", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
       <Navbar />
 
-      {/* ── HERO ── */}
-      <section style={{
-        position: "relative",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        overflow: "hidden",
-      }}>
+      {/* ═══════════════════════════════════════════════
+          HERO — Full-bleed cinematic
+          ═══════════════════════════════════════════════ */}
+      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
+        {/* Background image */}
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.45,
+          backgroundPosition: "center 30%",
         }} />
+        {/* Dark cinematic overlay — heavier at bottom */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(10,10,20,0.82) 0%, rgba(10,10,20,0.62) 50%, rgba(10,10,20,0.78) 100%)",
+          background: "linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.85) 75%, rgba(10,10,10,1) 100%)",
         }} />
+        {/* Subtle red glow */}
         <div style={{
-          position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)",
-          width: 700, height: 700,
-          background: "radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%)",
+          position: "absolute", bottom: "20%", left: "5%",
+          width: 600, height: 600,
+          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 65%)",
           pointerEvents: "none",
         }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "8rem", paddingBottom: "5rem" }}>
-          <div style={{ maxWidth: 760 }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1.5rem" }}>
-              Honest Digital Marketing · Local Service Businesses · Nationwide
-            </div>
+        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "10rem", paddingBottom: "7rem", width: "100%" }}>
+          {/* Eyebrow */}
+          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.75rem" }}>
+            Honest Digital Marketing · Local Service Businesses
+          </div>
 
-            <h1 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.5rem, 6vw, 4.25rem)",
-              fontWeight: 900,
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              marginBottom: "1.5rem",
-              letterSpacing: "-0.02em",
-            }}>
-              Get Your Business<br />
-              <span style={{ color: "#C8102E" }}>On The Map.</span><br />
-              The Honest Way.
-            </h1>
+          {/* Main headline — large editorial */}
+          <h1 className="fade-up" data-delay="80" style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "clamp(3rem, 8vw, 6.5rem)",
+            fontWeight: 900,
+            color: "#FFFFFF",
+            lineHeight: 1.0,
+            marginBottom: "2rem",
+            letterSpacing: "-0.03em",
+            maxWidth: 900,
+          }}>
+            Get Your Business<br />
+            Found on Google,<br />
+            <span style={{ color: "#C8102E" }}>Maps & AI Search.</span>
+          </h1>
 
-            <p className="fade-up" data-delay="160" style={{
-              fontSize: "clamp(1rem, 2vw, 1.2rem)",
-              color: "#D0D8E8",
-              lineHeight: 1.75,
-              marginBottom: "2.5rem",
-              maxWidth: 580,
-            }}>
-              No setup fees. No big promises. No disappearing after you sign up.
-              Just honest digital marketing that grows with your business — starting at{" "}
-              <strong style={{ color: "#FF8A9A" }}>$100/month</strong>.
-            </p>
+          {/* Subtext */}
+          <p className="fade-up" data-delay="160" style={{
+            fontSize: "clamp(0.95rem, 1.5vw, 1.15rem)",
+            color: "#888888",
+            lineHeight: 1.8,
+            marginBottom: "3rem",
+            maxWidth: 520,
+          }}>
+            No setup fees. No big promises. No disappearing after you sign up.
+            Honest digital marketing starting at <span style={{ color: "#FFFFFF", fontWeight: 700 }}>$100/month</span>.
+          </p>
 
-            <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
-              <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1.1rem", padding: "1rem 2.25rem" }}>
-                <Phone size={18} /> Call (941) 328-8891
-              </a>
-              <Link href="/portfolio" className="btn-gold-outline">
-                See Our Work <ChevronRight size={16} />
-              </Link>
-            </div>
+          {/* CTAs */}
+          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center", marginBottom: "3rem" }}>
+            <a href="tel:9413288891" className="btn-gold">
+              <Phone size={16} /> Call (941) 328-8891
+            </a>
+            <Link href="/portfolio" className="btn-primary">
+              View Our Work →
+            </Link>
+          </div>
 
-            <div className="fade-up" data-delay="320" style={{ marginTop: "2.5rem", display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
-              {["No setup fees", "No long-term contracts", "No empty promises"].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.875rem", color: "#A8B8CC" }}>
-                  <CheckCircle2 size={15} style={{ color: "#C8102E", flexShrink: 0 }} />
-                  {item}
-                </div>
-              ))}
-            </div>
+          {/* Trust pills */}
+          <div className="fade-up" data-delay="320" style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
+            {["No setup fees", "No long-term contracts", "No empty promises"].map((item) => (
+              <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "#555555", letterSpacing: "0.05em" }}>
+                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0 }} />
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div style={{
+          position: "absolute", bottom: "2rem", right: "2rem", zIndex: 2,
+          display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem",
+        }}>
+          <div style={{ width: 1, height: 48, background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.3))" }} />
+          <span style={{ fontSize: "0.55rem", letterSpacing: "0.3em", color: "#444444", textTransform: "uppercase", writingMode: "vertical-rl" }}>Scroll</span>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          STATS BAR
+          ═══════════════════════════════════════════════ */}
+      <section style={{ background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
+            {[
+              { value: 6, suffix: "+", label: "Client Websites Live" },
+              { value: 100, suffix: "%", label: "No Setup Fees" },
+              { value: 3, suffix: "yr", label: "Avg. Client Growth" },
+              { value: 5, suffix: "★", label: "Average Review Score" },
+            ].map((stat, i) => (
+              <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none" }}>
+                <StatCounter value={stat.value} suffix={stat.suffix} label={stat.label} />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── TRUST BAR ── */}
-      <section style={{ background: "#F8F8F8", borderTop: "1px solid #EBEBEB", borderBottom: "1px solid #EBEBEB", padding: "2.5rem 0" }}>
+      {/* ═══════════════════════════════════════════════
+          PHILOSOPHY / ABOUT — split layout
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "2rem" }}>
-            <StatCounter value={6} suffix="+" label="Client Websites Live" />
-            <StatCounter value={100} suffix="%" label="No Setup Fees" />
-            <StatCounter value={3} suffix="yr" label="Avg. Client Growth" />
-            <StatCounter value={5} suffix="★" label="Average Review Score" />
-          </div>
-        </div>
-      </section>
-
-      {/* ── PHILOSOPHY / ABOUT ── */}
-      <section style={{ padding: "6rem 0", background: "#FFFFFF" }}>
-        <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3.5rem", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "5rem", alignItems: "center" }}>
+            {/* Image */}
             <div className="fade-up" data-delay="0" style={{ position: "relative" }}>
               <img
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-local-business-gneDyCA3b7hrCUyM7FV78F.webp"
                 alt="Local service businesses across the USA"
-                style={{ width: "100%", borderRadius: "10px", display: "block", filter: "brightness(0.85)" }}
+                style={{ width: "100%", display: "block", filter: "brightness(0.7)" }}
               />
+              {/* Location badge */}
               <div style={{
-                position: "absolute", bottom: "1.5rem", left: "1.5rem", right: "1.5rem",
-                background: "rgba(255,255,255,0.92)",
-                border: "1px solid rgba(200,16,46,0.3)",
-                borderRadius: "8px",
-                padding: "1rem 1.25rem",
-                backdropFilter: "blur(8px)",
+                position: "absolute", bottom: "1.5rem", left: "1.5rem",
+                background: "rgba(10,10,10,0.9)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                padding: "0.875rem 1.25rem",
+                backdropFilter: "blur(12px)",
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <MapPin size={18} style={{ color: "#C8102E", flexShrink: 0 }} />
+                  <MapPin size={16} style={{ color: "#C8102E", flexShrink: 0 }} />
                   <div>
-                    <div style={{ fontSize: "0.75rem", color: "#666666", letterSpacing: "0.1em", textTransform: "uppercase" }}>Serving Local Businesses</div>
-                    <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "#111111" }}>Anywhere in the USA</div>
+                    <div style={{ fontSize: "0.6rem", color: "#555555", letterSpacing: "0.2em", textTransform: "uppercase" }}>Serving Local Businesses</div>
+                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF" }}>Anywhere in the USA</div>
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Text */}
             <div>
-              <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Our Philosophy</div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>About GOTM Digital</div>
               <h2 className="fade-up" data-delay="80" style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
+                fontSize: "clamp(2rem, 4vw, 3.25rem)",
                 fontWeight: 900,
-                color: "#111111",
-                lineHeight: 1.2,
-                marginBottom: "1.5rem",
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                marginBottom: "2rem",
+                letterSpacing: "-0.02em",
               }}>
                 The Honest Truth About<br />
                 <span style={{ color: "#C8102E" }}>Growing Online</span>
               </h2>
 
-              <div className="fade-up callout-gold" data-delay="160" style={{ marginBottom: "1.5rem" }}>
-                <p style={{ fontSize: "1rem", lineHeight: 1.75, color: "#333333", fontStyle: "italic" }}>
+              <blockquote className="fade-up" data-delay="160" style={{
+                borderLeft: "2px solid #C8102E",
+                paddingLeft: "1.5rem",
+                marginBottom: "2rem",
+              }}>
+                <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "#888888", fontStyle: "italic" }}>
                   "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay."
                 </p>
-              </div>
+              </blockquote>
 
-              <div className="fade-up" data-delay="240" style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              <div className="fade-up" data-delay="240" style={{ display: "flex", flexDirection: "column", gap: "1.25rem", marginBottom: "2.5rem" }}>
                 {[
-                  { icon: "💰", text: "Zero setup fees on anything. You pay monthly, starting small." },
-                  { icon: "📈", text: "Your investment compounds over time — like a savings account for your business." },
-                  { icon: "🤝", text: "My services grow with you. No upselling until you're ready." },
-                  { icon: "🎯", text: "Focused exclusively on local service businesses across the USA." },
-                ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", gap: "0.875rem", alignItems: "flex-start" }}>
-                    <span style={{ fontSize: "1.25rem", flexShrink: 0, marginTop: "0.1rem" }}>{item.icon}</span>
-                    <span style={{ fontSize: "0.95rem", lineHeight: 1.65, color: "#444444" }}>{item.text}</span>
+                  "Zero setup fees on anything. You pay monthly, starting small.",
+                  "Your investment compounds over time — like a savings account for your business.",
+                  "My services grow with you. No upselling until you're ready.",
+                  "Focused exclusively on local service businesses across the USA.",
+                ].map((text, i) => (
+                  <div key={i} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                    <span style={{ width: 1, height: 16, background: "#C8102E", flexShrink: 0, marginTop: "0.3rem" }} />
+                    <span style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "#888888" }}>{text}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="fade-up" data-delay="320" style={{ marginTop: "2rem" }}>
-                <Link href="/services" className="btn-gold-outline">
-                  Our Services <ArrowRight size={15} />
+              <div className="fade-up" data-delay="320">
+                <Link href="/services" className="btn-link">
+                  Our Services →
                 </Link>
               </div>
             </div>
@@ -373,219 +344,187 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── SERVICES PREVIEW ── */}
-      <section id="services" style={{ padding: "6rem 0", background: "#FFFFFF" }}>
+      {/* ═══════════════════════════════════════════════
+          SERVICES — dark grid
+          ═══════════════════════════════════════════════ */}
+      <section id="services" style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>What We Do</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-              fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
-            }}>
-              Everything You Need to<br />
-              <span style={{ color: "#C8102E" }}>Get Found & Get Leads</span>
-            </h2>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1.5rem" }}>
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What We Do</div>
+              <h2 className="fade-up" data-delay="80" style={{
+                fontSize: "clamp(2rem, 4vw, 3.25rem)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+              }}>
+                Everything You Need to<br />
+                Get Found & Get Leads.
+              </h2>
+            </div>
+            <div className="fade-up" data-delay="120">
+              <Link href="/services" className="btn-link">View All Services →</Link>
+            </div>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
-            {[
-              {
-                icon: <Globe size={28} style={{ color: "#C8102E" }} />,
-                title: "Custom HTML Websites",
-                desc: "Modern, conversion-focused websites built to clearly communicate who you are, what you do, and where you work — optimized for Google, maps, and AI-powered search from day one.",
-              },
-              {
-                icon: <Search size={28} style={{ color: "#C8102E" }} />,
-                title: "Local SEO & AI Search Optimization",
-                desc: "Modern search visibility built for how customers search now — traditional rankings, map results, conversational queries, structured content, and AI-answer readiness.",
-              },
-              {
-                icon: <Star size={28} style={{ color: "#C8102E" }} />,
-                title: "Google Business Profile Authority",
-                desc: "Your most powerful free tool. We optimize your profile so customers, Google, and AI-powered search results can clearly understand your business and local relevance.",
-              },
-              {
-                icon: <Megaphone size={28} style={{ color: "#C8102E" }} />,
-                title: "Google Ads & Conversion Tracking",
-                desc: "Get leads now while your organic SEO matures. Ads connected to strong landing pages, clear service messaging, and conversion tracking that improves your entire online presence.",
-              },
-            ].map((service, i) => (
-              <div key={i} className="fade-up card-dark" data-delay={String(i * 80)} style={{ padding: "2rem" }}>
-                <div style={{ marginBottom: "1.25rem" }}>{service.icon}</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 700, color: "#111111", marginBottom: "0.75rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
+            {services.map((service, i) => (
+              <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
+                background: "#111111",
+                padding: "2.5rem 2rem",
+                transition: "background 0.2s",
+              }}
+                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
+                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
+              >
+                <div style={{ color: "#C8102E", marginBottom: "1.5rem" }}>{service.icon}</div>
+                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
                   {service.title}
                 </h3>
-                <p style={{ fontSize: "0.875rem", lineHeight: 1.7, color: "#666666" }}>{service.desc}</p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.75, color: "#666666" }}>{service.desc}</p>
               </div>
             ))}
-          </div>
-
-          <div className="fade-up" data-delay="0" style={{ textAlign: "center", marginTop: "2.5rem" }}>
-            <Link href="/services" className="btn-gold-outline">
-              View All Services <ArrowRight size={15} />
-            </Link>
           </div>
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── AI SEARCH SHIFT SECTION ── */}
-      <section style={{ padding: "6rem 0", background: "#F8F8F8", borderTop: "1px solid #EBEBEB", borderBottom: "1px solid #EBEBEB" }}>
-        <div className="container" style={{ maxWidth: 900 }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Is Changing Fast</div>
+      {/* ═══════════════════════════════════════════════
+          AI SEARCH SHIFT
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+        <div className="container" style={{ maxWidth: 1000 }}>
+          <div style={{ marginBottom: "4rem" }}>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Is Changing Fast</div>
             <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
+              fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
-              marginBottom: "1.5rem",
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              maxWidth: 700,
             }}>
-              Is Your Business Ready for the<br />
-              <span style={{ color: "#C8102E" }}>New Way Customers Search?</span>
+              Is Your Business Ready for<br />
+              the <span style={{ color: "#C8102E" }}>New Way Customers Search?</span>
             </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "#444444", maxWidth: 720, margin: "0 auto 1.5rem" }}>
-              Search is changing quickly. Customers are not just typing simple keywords into Google anymore. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted. If your website and online presence are outdated, unclear, or disconnected, your business may not be the one that gets found.
-            </p>
-            <p className="fade-up" data-delay="220" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#555555", maxWidth: 680, margin: "0 auto 2rem", fontStyle: "italic" }}>
-              Got'm Digital helps local businesses build websites, Google profiles, ads, and content that are ready for modern search.
-            </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.25rem", marginBottom: "2.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", marginBottom: "3.5rem" }}>
             {[
               {
-                icon: "⚠️",
+                num: "01",
                 heading: "An Outdated Website Is a Visibility Problem",
                 text: "An outdated website is no longer just a design problem — it can become a visibility problem. If your site is unclear, slow, or built on a platform that is not keeping up, competitors who are easier to find and verify may be the ones customers see first.",
               },
               {
-                icon: "🤖",
+                num: "02",
                 heading: "People Are Asking AI Tools Who to Hire",
                 text: "Customers are no longer only Googling. They are asking AI tools, Google AI results, map results, and search engines who to hire. Got'm Digital builds your online presence so customers, Google, and AI tools can clearly understand who you are, what you do, and why your business should be trusted.",
               },
               {
-                icon: "🏆",
+                num: "03",
                 heading: "The Businesses That Win Online",
                 text: "The businesses that win online will be the ones whose websites, Google profiles, reviews, ads, and content are built for how people search now — and how they will search next. Your full presence should work together.",
               },
             ].map((item, i) => (
-              <div key={i} className="fade-up card-dark" data-delay={String(i * 80)} style={{ padding: "1.75rem" }}>
-                <div style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>{item.icon}</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "#111111", marginBottom: "0.75rem", lineHeight: 1.3 }}>
+              <div key={i} className="fade-up" data-delay={String(i * 80)}>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(200,16,46,0.12)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
+                  {item.num}
+                </div>
+                <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
                   {item.heading}
                 </h3>
-                <p style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "#555555" }}>{item.text}</p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#666666" }}>{item.text}</p>
               </div>
             ))}
           </div>
 
-          <div className="fade-up" data-delay="0" style={{ textAlign: "center" }}>
-            <Link href="/contact" className="btn-gold" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
-              Request a Web Presence Review <ArrowRight size={16} />
+          <div className="fade-up" data-delay="0">
+            <Link href="/contact" className="btn-gold">
+              Request a Web Presence Review →
             </Link>
           </div>
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── PORTFOLIO PREVIEW ── */}
-      <section style={{ padding: "6rem 0", background: "#FFFFFF" }}>
+      {/* ═══════════════════════════════════════════════
+          PORTFOLIO PREVIEW — dark cards
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Our Work</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-              fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
-            }}>
-              Local Businesses We've<br />
-              <span style={{ color: "#C8102E" }}>Put on the Map</span>
-            </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#666666", maxWidth: 520, margin: "1rem auto 0", lineHeight: 1.75 }}>
-              Real businesses, real websites. Every one of these started exactly where you are right now.
-            </p>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1.5rem" }}>
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Selected Work</div>
+              <h2 className="fade-up" data-delay="80" style={{
+                fontSize: "clamp(2rem, 4vw, 3.25rem)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+              }}>
+                Local Businesses We've<br />
+                Put on the Map.
+              </h2>
+            </div>
+            <div className="fade-up" data-delay="120">
+              <Link href="/portfolio" className="btn-link">View All 6 Sites →</Link>
+            </div>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.25rem" }}>
-            {clientSites.slice(0, 3).map((site, i) => (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
+            {clientSites.map((site, i) => (
               <a
                 key={i}
                 href={site.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fade-up card-dark"
+                className="fade-up"
                 data-delay={String(i * 80)}
-                style={{ padding: "1.75rem", textDecoration: "none", display: "block", position: "relative", overflow: "hidden" }}
+                style={{
+                  background: "#111111",
+                  padding: "2.5rem 2rem",
+                  textDecoration: "none",
+                  display: "block",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
+                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
               >
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, #C8102E, #E8304A)" }} />
-                <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem", marginBottom: "1rem" }}>
-                  <div style={{
-                    width: 48, height: 48, borderRadius: 8,
-                    background: site.color,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: "1.5rem", flexShrink: 0,
-                    border: "1px solid rgba(200,16,46,0.2)",
-                  }}>
-                    {site.icon}
-                  </div>
-                  <div>
-                    <div style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 600, marginBottom: "0.2rem" }}>{site.industry}</div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 700, color: "#111111" }}>{site.name}</div>
-                    <div style={{ fontSize: "0.75rem", color: "#666666", display: "flex", alignItems: "center", gap: "0.3rem", marginTop: "0.2rem" }}>
-                      <MapPin size={10} /> {site.location}
-                    </div>
-                  </div>
+                <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.75rem" }}>{site.industry}</div>
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{site.name}</h3>
+                <div style={{ fontSize: "0.75rem", color: "#555555", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "1rem" }}>
+                  <MapPin size={10} /> {site.location}
                 </div>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.65, color: "#444444", marginBottom: "1rem" }}>{site.desc}</p>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "#C8102E" }}>
-                  <ExternalLink size={12} /> Visit Website
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#666666", marginBottom: "1.5rem" }}>{site.desc}</p>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>
+                  <ExternalLink size={11} /> Visit Website
                 </div>
               </a>
             ))}
           </div>
-
-          <div className="fade-up" data-delay="0" style={{ textAlign: "center", marginTop: "2.5rem" }}>
-            <Link href="/portfolio" className="btn-gold">
-              View All 6 Client Sites <ArrowRight size={15} />
-            </Link>
-          </div>
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── PRICING ── */}
-      <section id="pricing" style={{ padding: "6rem 0", background: "#FFFFFF" }}>
+      {/* ═══════════════════════════════════════════════
+          PRICING — dark cards
+          ═══════════════════════════════════════════════ */}
+      <section id="pricing" style={{ padding: "8rem 0", background: "#0A0A0A" }}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Simple, Honest Pricing</div>
+          <div style={{ marginBottom: "4rem" }}>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple, Honest Pricing</div>
             <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
+              fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
             }}>
               No Setup Fees.<br />
-              <span style={{ color: "#C8102E" }}>No Surprises. Ever.</span>
+              No Surprises. Ever.
             </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#666666", maxWidth: 500, margin: "1rem auto 0", lineHeight: 1.75 }}>
-              Start small. Grow at your own pace. Upgrade only when you're ready.
-            </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem", maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", maxWidth: 1000 }}>
             {[
               {
                 name: "Starter",
@@ -595,8 +534,9 @@ export default function Home() {
                 features: [
                   "High-performing custom HTML website",
                   "Fully SEO-optimized from day one",
+                  "AI Search Optimization Built In",
                   "Faster and cleaner than any template builder",
-                  "Updates, edits, and additions whenever you need them",
+                  "Updates, edits, and additions whenever you need",
                   "Mobile-responsive and built to rank over time",
                 ],
                 note: null,
@@ -610,6 +550,7 @@ export default function Home() {
                   "Everything in Starter",
                   "Weekly posts added to your website",
                   "Weekly posts to your Google Business Profile",
+                  "AI Search & Conversational Query Targeting",
                   "Consistent content signals that Google rewards over time",
                   "Keeps your profile fresh and your brand active",
                 ],
@@ -624,122 +565,128 @@ export default function Home() {
                   "Everything in Growth",
                   "Full Google Ads campaign management",
                   "Custom HTML landing pages built for conversions",
+                  "AI-Ready Landing Page Content",
                   "Ongoing ad optimization and performance monitoring",
                 ],
-                note: "📌 Ad spend is paid directly by you to Google — this fee covers strategy, setup, and management only.",
+                note: "Ad spend is paid directly by you to Google — this fee covers strategy, setup, and management only.",
               },
             ].map((plan, i) => (
-              <div key={i} className={`fade-up card-dark${plan.featured ? " featured" : ""}`} data-delay={String(i * 80)} style={{ overflow: "hidden" }}>
+              <div key={i} style={{
+                background: plan.featured ? "#111111" : "#0A0A0A",
+                padding: "2.5rem 2rem",
+                position: "relative",
+                borderTop: plan.featured ? "2px solid #C8102E" : "2px solid transparent",
+              }}
+                className="fade-up"
+                data-delay={String(i * 80)}
+              >
                 {plan.featured && (
-                  <div style={{ background: "#C8102E", color: "#111111", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", padding: "0.4rem" }}>
+                  <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "1rem" }}>
                     Most Popular
                   </div>
                 )}
-                <div style={{ padding: "1.75rem 1.75rem 0" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
-                    <div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.35rem", fontWeight: 700, color: "#111111", marginBottom: "0.25rem" }}>{plan.name}</div>
-                      <div style={{ fontSize: "0.8rem", color: "#666666" }}>{plan.tagline}</div>
-                    </div>
-                    <div style={{ textAlign: "right" }}>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.25rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>{plan.price}</div>
-                      <div style={{ fontSize: "0.75rem", color: "#666666", marginTop: "0.2rem" }}>/ month</div>
-                    </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
+                  <div>
+                    <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
+                    <div style={{ fontSize: "0.75rem", color: "#555555" }}>{plan.tagline}</div>
                   </div>
-                  <hr style={{ border: "none", borderTop: "1px solid #EBEBEB", margin: "0 0 1.25rem" }} />
+                  <div style={{ textAlign: "right" }}>
+                    <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>{plan.price}</div>
+                    <div style={{ fontSize: "0.65rem", color: "#555555", letterSpacing: "0.1em", textTransform: "uppercase" }}>/ month</div>
+                  </div>
                 </div>
-                <ul style={{ listStyle: "none", padding: "0 1.75rem 1.5rem", margin: 0 }}>
+                <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1.5rem" }} />
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.features.map((f, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.625rem", fontSize: "0.875rem", lineHeight: 1.6, color: "#444444", marginBottom: "0.75rem" }}>
-                      <CheckCircle2 size={15} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} />
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.85rem", lineHeight: 1.6, color: "#888888", marginBottom: "0.875rem" }}>
+                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                       {f}
                     </li>
                   ))}
                 </ul>
                 {plan.note && (
-                  <div style={{ background: "rgba(200,16,46,0.06)", borderTop: "1px solid rgba(200,16,46,0.2)", padding: "0.875rem 1.75rem", fontSize: "0.8rem", color: "#E8304A", lineHeight: 1.6 }}>
+                  <div style={{ fontSize: "0.75rem", color: "#555555", lineHeight: 1.6, marginBottom: "1.5rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                     {plan.note}
                   </div>
                 )}
-                <div style={{ padding: "1.25rem 1.75rem 1.75rem" }}>
-                  <a href="tel:9413288891" className={plan.featured ? "btn-gold" : "btn-gold-outline"} style={{ width: "100%", justifyContent: "center" }}>
-                    <Phone size={15} /> {plan.featured ? "Call to Get Started" : "Get Started"}
-                  </a>
-                </div>
+                <a href="tel:9413288891" className={plan.featured ? "btn-gold" : "btn-primary"} style={{ width: "100%", justifyContent: "center" }}>
+                  <Phone size={14} /> {plan.featured ? "Call to Get Started" : "Get Started"}
+                </a>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── FAQ ── */}
-      <section id="faq" style={{ padding: "6rem 0", background: "#FFFFFF" }}>
-        <div className="container" style={{ maxWidth: 760 }}>
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>What You Need to Know</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-              fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
-            }}>
-              The Honest Answers<br />
-              <span style={{ color: "#C8102E" }}>Nobody Else Will Give You</span>
-            </h2>
-          </div>
-          {faqs.map((item, i) => (
-            <FaqItem key={i} item={item} index={i} />
-          ))}
-          <div className="fade-up" data-delay="0" style={{ textAlign: "center", marginTop: "2.5rem" }}>
-            <Link href="/flyer" className="btn-gold-outline">
-              Download Our Flyer <ArrowRight size={15} />
-            </Link>
+      {/* ═══════════════════════════════════════════════
+          FAQ — dark editorial
+          ═══════════════════════════════════════════════ */}
+      <section id="faq" style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "5rem", alignItems: "start" }}>
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What You Need to Know</div>
+              <h2 className="fade-up" data-delay="80" style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                marginBottom: "2rem",
+              }}>
+                The Honest Answers<br />
+                Nobody Else<br />
+                Will Give You.
+              </h2>
+              <div className="fade-up" data-delay="160">
+                <Link href="/flyer" className="btn-link">Download Our Flyer →</Link>
+              </div>
+            </div>
+            <div>
+              {faqs.map((item, i) => (
+                <FaqItem key={i} item={item} index={i} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <hr className="gold-rule" />
+      {/* ═══════════════════════════════════════════════
+          FINAL CTA — full-bleed dark
+          ═══════════════════════════════════════════════ */}
+      <section style={{ position: "relative", padding: "10rem 0", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "brightness(0.15)",
+        }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.7)" }} />
 
-      {/* ── FINAL CTA ── */}
-      <section style={{ padding: "6rem 0", background: "#FFFFFF" }}>
-        <div className="container" style={{ maxWidth: 760 }}>
-          <div className="fade-up" style={{
-            background: "linear-gradient(135deg, #F8F8F8, #FFFFFF)",
-            border: "1px solid #DEDEDE",
-            borderTop: "3px solid #C8102E",
-            borderRadius: 12,
-            padding: "3rem 2.5rem",
-            textAlign: "center",
+        <div className="container" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
+          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Build?</div>
+          <h2 className="fade-up" data-delay="80" style={{
+            fontSize: "clamp(2.5rem, 6vw, 5rem)",
+            fontWeight: 900,
+            color: "#FFFFFF",
+            lineHeight: 1.0,
+            letterSpacing: "-0.03em",
+            marginBottom: "2rem",
           }}>
-            <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>🎯</div>
-            <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-              fontWeight: 900,
-              color: "#111111",
-              marginBottom: "1.25rem",
-              lineHeight: 1.2,
-            }}>
-              Ready to Get on the Map?
-            </h2>
-            <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "#333333", marginBottom: "2rem", fontStyle: "italic", maxWidth: 540, margin: "0 auto 2rem" }}>
-              I'm not going to promise overnight results — because nobody who's honest can. What I{" "}
-              <strong style={{ color: "#111111", fontStyle: "normal" }}>will</strong> promise is that every dollar you invest is building something that compounds over time. The businesses that stay consistent are the ones that win online.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-              <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1.2rem", padding: "1rem 2.5rem" }}>
-                <Phone size={20} /> (941) 328-8891
-              </a>
-              <Link href="/contact" className="btn-gold-outline" style={{ fontSize: "1rem", padding: "1rem 2rem" }}>
-                Send a Message <ArrowRight size={16} />
-              </Link>
-            </div>
-            <div style={{ fontSize: "0.75rem", letterSpacing: "0.2em", color: "#666666", textTransform: "uppercase", marginTop: "1.25rem" }}>
-              GOTM Digital · Let's get you on the map
-            </div>
+            Let's Get Your Business<br />
+            <span style={{ color: "#C8102E" }}>On the Map.</span>
+          </h2>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#888888", marginBottom: "3rem", maxWidth: 560, margin: "0 auto 3rem" }}>
+            I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF" }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
+          </p>
+          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
+            <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1rem", padding: "1rem 2.5rem" }}>
+              <Phone size={18} /> (941) 328-8891
+            </a>
+            <Link href="/contact" className="btn-primary" style={{ fontSize: "1rem", padding: "1rem 2.5rem" }}>
+              Send a Message →
+            </Link>
           </div>
         </div>
       </section>

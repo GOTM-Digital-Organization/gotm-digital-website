@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Phone, Menu, X } from "lucide-react";
 import GotmLogo from "./GotmLogo";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/contact", label: "Contact" },
@@ -25,147 +23,224 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location]);
+  useEffect(() => { setMobileOpen(false); }, [location]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
   return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 100,
-        background: scrolled || mobileOpen ? "rgba(255,255,255,0.98)" : "#FFFFFF",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: "1px solid #DEDEDE",
-        boxShadow: scrolled ? "0 2px 16px rgba(0,0,0,0.08)" : "none",
-        transition: "box-shadow 0.3s, background 0.3s",
-        padding: "0 1.5rem",
-      }}
-    >
-      <div style={{
-        maxWidth: 1200,
-        margin: "0 auto",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        height: 70,
-      }}>
-        <Link href="/" style={{ textDecoration: "none" }}>
-          <GotmLogo size={140} />
-        </Link>
+    <>
+      <nav
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          background: scrolled ? "rgba(10,10,10,0.95)" : "transparent",
+          backdropFilter: scrolled ? "blur(16px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
+          transition: "background 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, backdrop-filter 0.4s",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1400,
+            margin: "0 auto",
+            padding: "0 2rem",
+            height: 72,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* Logo */}
+          <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
+            <GotmLogo size={130} textColor="#FFFFFF" />
+          </Link>
 
-        {/* Desktop nav — hidden on mobile */}
-        {!isMobile && (
-          <div style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
+          {/* Desktop nav */}
+          {!isMobile && (
+            <div style={{ display: "flex", alignItems: "center", gap: "2.5rem" }}>
+              {navLinks.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase" as const,
+                    color: location === href ? "#C8102E" : "#AAAAAA",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                    borderBottom: location === href ? "1px solid #C8102E" : "1px solid transparent",
+                    paddingBottom: "2px",
+                  }}
+                  onMouseEnter={(e) => { if (location !== href) (e.currentTarget as HTMLElement).style.color = "#FFFFFF"; }}
+                  onMouseLeave={(e) => { if (location !== href) (e.currentTarget as HTMLElement).style.color = "#AAAAAA"; }}
+                >
+                  {label}
+                </Link>
+              ))}
+              <a
+                href="tel:9413288891"
                 style={{
-                  color: location === href ? "#C8102E" : "#444444",
-                  textDecoration: "none",
-                  fontSize: "0.875rem",
-                  fontWeight: location === href ? 700 : 500,
-                  transition: "color 0.2s",
-                  letterSpacing: "0.02em",
                   fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase" as const,
+                  color: "#FFFFFF",
+                  textDecoration: "none",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  padding: "0.55rem 1.25rem",
+                  borderRadius: "2px",
+                  transition: "border-color 0.2s, color 0.2s",
                 }}
-                onMouseEnter={(e) => { if (location !== href) (e.currentTarget as HTMLElement).style.color = "#C8102E"; }}
-                onMouseLeave={(e) => { if (location !== href) (e.currentTarget as HTMLElement).style.color = "#444444"; }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "#C8102E";
+                  (e.currentTarget as HTMLElement).style.color = "#C8102E";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.3)";
+                  (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                }}
               >
-                {label}
-              </Link>
-            ))}
-            <a href="tel:9413288891" className="btn-gold" style={{ padding: "0.55rem 1.1rem", fontSize: "0.85rem" }}>
-              <Phone size={14} /> (941) 328-8891
-            </a>
-          </div>
-        )}
+                (941) 328-8891
+              </a>
+            </div>
+          )}
 
-        {/* Mobile hamburger button */}
-        {isMobile && (
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            style={{
-              background: "none",
-              border: "none",
-              color: "#111111",
-              padding: "0.5rem",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        )}
-      </div>
+          {/* Mobile hamburger */}
+          {isMobile && (
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              style={{
+                background: "none",
+                border: "none",
+                padding: "0.5rem",
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                gap: "5px",
+              }}
+            >
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: "block",
+                    width: 24,
+                    height: 1.5,
+                    background: "#FFFFFF",
+                    borderRadius: 1,
+                    transition: "transform 0.25s, opacity 0.25s",
+                    transform: mobileOpen
+                      ? i === 0 ? "translateY(6.5px) rotate(45deg)"
+                      : i === 2 ? "translateY(-6.5px) rotate(-45deg)"
+                      : "scaleX(0)"
+                      : "none",
+                    opacity: mobileOpen && i === 1 ? 0 : 1,
+                  }}
+                />
+              ))}
+            </button>
+          )}
+        </div>
+      </nav>
 
-      {/* Mobile drawer */}
+      {/* Mobile full-screen drawer */}
       {isMobile && (
         <div
           style={{
             position: "fixed",
-            top: 70,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: "#FFFFFF",
+            inset: 0,
             zIndex: 99,
-            padding: "1.5rem",
+            background: "#0A0A0A",
+            transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
+            transition: "transform 0.35s cubic-bezier(0.23,1,0.32,1)",
             display: "flex",
             flexDirection: "column",
-            transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
-            transition: "transform 0.28s cubic-bezier(0.23,1,0.32,1)",
-            overflowY: "auto",
-            borderTop: "1px solid #EBEBEB",
+            paddingTop: 96,
+            paddingLeft: "2rem",
+            paddingRight: "2rem",
           }}
         >
-          {navLinks.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {[{ href: "/", label: "Home" }, ...navLinks].map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "clamp(1.75rem, 7vw, 2.5rem)",
+                  fontWeight: 800,
+                  letterSpacing: "-0.02em",
+                  color: location === link.href ? "#C8102E" : "#FFFFFF",
+                  textDecoration: "none",
+                  padding: "0.85rem 0",
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                  transition: `color 0.2s, opacity 0.3s ${i * 40}ms, transform 0.3s ${i * 40}ms`,
+                  opacity: mobileOpen ? 1 : 0,
+                  transform: mobileOpen ? "translateX(0)" : "translateX(20px)",
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "auto", paddingBottom: "3rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <a
+              href="tel:9413288891"
               style={{
                 display: "block",
-                color: location === href ? "#C8102E" : "#222222",
-                textDecoration: "none",
-                fontSize: "1.25rem",
-                fontWeight: location === href ? 700 : 500,
-                padding: "1rem 0",
-                borderBottom: "1px solid #F0F0F0",
                 fontFamily: "'DM Sans', sans-serif",
-                letterSpacing: "0.01em",
+                fontSize: "1rem",
+                fontWeight: 700,
+                letterSpacing: "0.05em",
+                color: "#FFFFFF",
+                textDecoration: "none",
+                border: "1px solid rgba(255,255,255,0.2)",
+                padding: "1rem 1.5rem",
+                borderRadius: "2px",
+                textAlign: "center",
               }}
             >
-              {label}
+              Call (941) 328-8891
+            </a>
+            <Link
+              href="/contact"
+              style={{
+                display: "block",
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "#FFFFFF",
+                textDecoration: "none",
+                background: "#C8102E",
+                padding: "1rem 1.5rem",
+                borderRadius: "2px",
+                textAlign: "center",
+              }}
+            >
+              Get a Free Consultation
             </Link>
-          ))}
-          <a
-            href="tel:9413288891"
-            className="btn-gold"
-            style={{ display: "flex", marginTop: "2rem", justifyContent: "center", fontSize: "1.1rem", padding: "0.875rem 1.5rem" }}
-          >
-            <Phone size={18} /> (941) 328-8891
-          </a>
+          </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }

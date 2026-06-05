@@ -42,64 +42,66 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* GOTM Digital — White / Red / Grey Theme */
+/* ═══════════════════════════════════════════════════
+   GOTM Digital — Cinematic Dark Theme
+   Inspired by Pure Development editorial aesthetic
+   ═══════════════════════════════════════════════════ */
 :root {
-  --radius: 0.5rem;
+  --radius: 0.25rem;
 
   /* Brand palette */
-  --gotm-red:        #C8102E;   /* primary red */
-  --gotm-red-light:  #E8304A;   /* hover red */
-  --gotm-red-dark:   #9B0C23;   /* deep red */
+  --gotm-red:        #C8102E;
+  --gotm-red-light:  #E8304A;
+  --gotm-red-dark:   #9B0C23;
 
-  /* Page backgrounds */
-  --gotm-bg:         #FFFFFF;   /* page white */
-  --gotm-bg2:        #F5F5F5;   /* light grey sections */
-  --gotm-bg3:        #EBEBEB;   /* slightly darker grey */
+  /* Cinematic dark backgrounds */
+  --gotm-bg:         #0A0A0A;   /* near-black page bg */
+  --gotm-bg2:        #111111;   /* slightly lighter section */
+  --gotm-bg3:        #1A1A1A;   /* card / surface */
+  --gotm-bg4:        #222222;   /* elevated surface */
 
-  /* Cards / surfaces */
-  --gotm-card:       #FFFFFF;
-  --gotm-card2:      #F9F9F9;
-  --gotm-border:     #DEDEDE;
-  --gotm-border2:    #CCCCCC;
+  /* Borders */
+  --gotm-border:     rgba(255,255,255,0.08);
+  --gotm-border2:    rgba(255,255,255,0.14);
 
   /* Text */
-  --gotm-text:       #1A1A1A;   /* near-black body */
-  --gotm-heading:    #111111;   /* headings */
-  --gotm-muted:      #6B6B6B;   /* secondary text */
-  --gotm-light:      #999999;   /* placeholder / tertiary */
+  --gotm-text:       #E8E8E8;   /* primary body text */
+  --gotm-heading:    #FFFFFF;   /* headings */
+  --gotm-muted:      #888888;   /* secondary text */
+  --gotm-light:      #555555;   /* tertiary / placeholder */
 
-  /* Shadcn tokens mapped to GOTM palette */
-  --background:           oklch(1 0 0);
-  --foreground:           oklch(0.13 0 0);
-  --card:                 oklch(1 0 0);
-  --card-foreground:      oklch(0.13 0 0);
-  --popover:              oklch(1 0 0);
-  --popover-foreground:   oklch(0.13 0 0);
-  --primary:              oklch(0.44 0.19 19);   /* red */
+  /* Shadcn tokens mapped to dark palette */
+  --background:           oklch(0.07 0 0);
+  --foreground:           oklch(0.92 0 0);
+  --card:                 oklch(0.1 0 0);
+  --card-foreground:      oklch(0.92 0 0);
+  --popover:              oklch(0.1 0 0);
+  --popover-foreground:   oklch(0.92 0 0);
+  --primary:              oklch(0.44 0.19 19);
   --primary-foreground:   oklch(1 0 0);
-  --secondary:            oklch(0.96 0 0);
-  --secondary-foreground: oklch(0.25 0 0);
-  --muted:                oklch(0.96 0 0);
-  --muted-foreground:     oklch(0.45 0 0);
-  --accent:               oklch(0.96 0 0);
-  --accent-foreground:    oklch(0.13 0 0);
+  --secondary:            oklch(0.14 0 0);
+  --secondary-foreground: oklch(0.85 0 0);
+  --muted:                oklch(0.14 0 0);
+  --muted-foreground:     oklch(0.55 0 0);
+  --accent:               oklch(0.14 0 0);
+  --accent-foreground:    oklch(0.92 0 0);
   --destructive:          oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border:               oklch(0.88 0 0);
-  --input:                oklch(0.88 0 0);
+  --border:               oklch(0.22 0 0);
+  --input:                oklch(0.18 0 0);
   --ring:                 oklch(0.44 0.19 19);
   --chart-1:              oklch(0.44 0.19 19);
   --chart-2:              oklch(0.55 0.15 19);
   --chart-3:              oklch(0.65 0.1 19);
   --chart-4:              oklch(0.75 0.06 19);
   --chart-5:              oklch(0.85 0.03 19);
-  --sidebar:              oklch(0.97 0 0);
-  --sidebar-foreground:   oklch(0.13 0 0);
+  --sidebar:              oklch(0.09 0 0);
+  --sidebar-foreground:   oklch(0.92 0 0);
   --sidebar-primary:      oklch(0.44 0.19 19);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent:       oklch(0.96 0 0);
-  --sidebar-accent-foreground: oklch(0.13 0 0);
-  --sidebar-border:       oklch(0.88 0 0);
+  --sidebar-accent:       oklch(0.14 0 0);
+  --sidebar-accent-foreground: oklch(0.92 0 0);
+  --sidebar-border:       oklch(0.18 0 0);
   --sidebar-ring:         oklch(0.44 0.19 19);
 }
 
@@ -107,13 +109,19 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: #0A0A0A;
+  }
   body {
-    @apply bg-background text-foreground;
+    background-color: #0A0A0A;
+    color: #E8E8E8;
     font-family: 'DM Sans', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    color: #111111;
+    font-family: 'DM Sans', sans-serif;
+    color: #FFFFFF;
+    font-weight: 800;
+    letter-spacing: -0.02em;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -133,8 +141,8 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .flex {
@@ -144,20 +152,66 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1400px;
     }
   }
 
-  /* ── Primary action button — solid red ── */
+  /* ── Eyebrow label — cinematic all-caps ── */
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: #C8102E;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ── Section label (alias) ── */
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: #C8102E;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ── Primary CTA — outlined white (cinematic style) ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: border-color 0.2s cubic-bezier(0.23,1,0.32,1),
+                background 0.2s cubic-bezier(0.23,1,0.32,1),
+                transform 0.16s;
+  }
+  .btn-primary:hover {
+    border-color: #FFFFFF;
+    background: rgba(255,255,255,0.06);
+  }
+  .btn-primary:active { transform: scale(0.97); }
+
+  /* ── Red CTA — solid red ── */
   .btn-gold {
     display: inline-flex;
     align-items: center;
@@ -165,19 +219,20 @@
     background: #C8102E;
     color: #FFFFFF;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
-    padding: 0.7rem 1.5rem;
-    border-radius: 6px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
     text-decoration: none;
-    border: none;
-    transition: background 0.18s cubic-bezier(0.23,1,0.32,1), transform 0.16s;
+    border: 1px solid #C8102E;
+    transition: background 0.2s cubic-bezier(0.23,1,0.32,1), transform 0.16s;
   }
-  .btn-gold:hover { background: #E8304A; }
+  .btn-gold:hover { background: #E8304A; border-color: #E8304A; }
   .btn-gold:active { transform: scale(0.97); }
 
-  /* ── Secondary outline button — red outline ── */
+  /* ── Red outline button ── */
   .btn-gold-outline {
     display: inline-flex;
     align-items: center;
@@ -185,57 +240,65 @@
     background: transparent;
     color: #C8102E;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    padding: 0.7rem 1.5rem;
-    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
     text-decoration: none;
-    border: 1.5px solid rgba(200,16,46,0.5);
-    transition: border-color 0.18s, background 0.18s, transform 0.16s;
+    border: 1px solid #C8102E;
+    transition: background 0.2s, transform 0.16s;
   }
-  .btn-gold-outline:hover { border-color: #C8102E; background: rgba(200,16,46,0.06); }
+  .btn-gold-outline:hover { background: rgba(200,16,46,0.08); }
   .btn-gold-outline:active { transform: scale(0.97); }
 
-  /* ── Card — white with grey border ── */
+  /* ── Text link with arrow ── */
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-link:hover { border-color: #C8102E; color: #C8102E; }
+
+  /* ── Dark card — cinematic ── */
   .card-dark {
-    background: #FFFFFF;
-    border: 1px solid #DEDEDE;
-    border-radius: 10px;
-    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    background: #111111;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2px;
+    transition: border-color 0.2s, transform 0.2s;
   }
   .card-dark:hover {
-    border-color: rgba(200,16,46,0.3);
-    box-shadow: 0 4px 20px rgba(200,16,46,0.07);
+    border-color: rgba(200,16,46,0.35);
   }
   .card-dark.featured {
     border-color: #C8102E;
-    box-shadow: 0 0 30px rgba(200,16,46,0.12);
-  }
-
-  /* ── Section label — red uppercase ── */
-  .section-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    color: #C8102E;
-    text-transform: uppercase;
-    font-weight: 700;
+    box-shadow: 0 0 40px rgba(200,16,46,0.12);
   }
 
   /* ── Divider rule ── */
   .gold-rule {
     border: none;
-    border-top: 1px solid #DEDEDE;
+    border-top: 1px solid rgba(255,255,255,0.08);
     margin: 0;
   }
 
-  /* ── Callout block — red left border ── */
+  /* ── Callout block ── */
   .callout-gold {
-    border-left: 3px solid #C8102E;
+    border-left: 2px solid #C8102E;
     padding-left: 1.25rem;
-    background: rgba(200,16,46,0.03);
-    border-radius: 0 6px 6px 0;
+    background: rgba(200,16,46,0.04);
+    border-radius: 0 2px 2px 0;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-right: 1rem;
@@ -244,8 +307,9 @@
   /* ── Scroll reveal ── */
   .fade-up {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.55s cubic-bezier(0.23,1,0.32,1), transform 0.55s cubic-bezier(0.23,1,0.32,1);
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.23,1,0.32,1),
+                transform 0.65s cubic-bezier(0.23,1,0.32,1);
   }
   .fade-up.visible {
     opacity: 1;
@@ -258,5 +322,67 @@
       transform: none;
       transition: none;
     }
+  }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .stats-bar-item {
+    padding: 2rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stats-bar-item:last-child { border-right: none; }
+  .stats-bar-number {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stats-bar-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #666666;
+    margin-top: 0.4rem;
+  }
+
+  /* ── Full-bleed section with image overlay ── */
+  .section-cinematic {
+    position: relative;
+    overflow: hidden;
+  }
+  .section-cinematic-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+  }
+  .section-cinematic-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Input fields — dark style ── */
+  .input-dark {
+    background: #111111;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #E8E8E8;
+    border-radius: 2px;
+    padding: 0.85rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  .input-dark::placeholder { color: #555555; }
+  .input-dark:focus {
+    outline: none;
+    border-color: rgba(200,16,46,0.5);
   }
 }

@@ -17,7 +17,7 @@ function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -26,10 +26,11 @@ function useScrollReveal() {
 
 const services = [
   {
-    icon: <Globe size={36} style={{ color: "#C8102E" }} />,
+    icon: <Globe size={28} />,
+    num: "01",
     title: "Website Design & AI-Ready Local SEO",
     tagline: "The foundation of everything",
-    desc: "Your website should do more than look good. It should help Google, AI tools, and real customers understand exactly who you are, what you do, where you work, and why your business can be trusted. Got'm Digital builds modern websites with clear service pages, local SEO structure, trust signals, FAQs, conversion tracking, and AI-search-ready content built in from the start. Search is changing quickly — if your website is outdated, unclear, or built on a platform that is not keeping up with modern SEO and AI-driven search, your business may become harder to find while competitors gain visibility.",
+    desc: "Your website should do more than look good. It should help Google, AI tools, and real customers understand exactly who you are, what you do, where you work, and why your business can be trusted. Got'm Digital builds modern websites with clear service pages, local SEO structure, trust signals, FAQs, conversion tracking, and AI-search-ready content built in from the start.",
     bullets: [
       "Mobile-first responsive design that looks great on every device",
       "Schema markup, meta optimization, and structured data baked in",
@@ -40,13 +41,14 @@ const services = [
     ],
     timeline: "Live within 1–2 weeks of getting started",
     price: "Included in all plans starting at $100/month",
-    color: "#E0EEF5",
+    note: null,
   },
   {
-    icon: <Search size={36} style={{ color: "#C8102E" }} />,
+    icon: <Search size={28} />,
+    num: "02",
     title: "Local SEO & AI Search Optimization",
     tagline: "The long game that pays off",
-    desc: "Local SEO is no longer just about ranking for short keywords. Customers are asking detailed questions like who to hire, what a service costs, who serves their area, and which company is most trusted. Got'm Digital helps structure your website, content, Google profile, reviews, and online mentions so your business is easier to find, understand, and trust in modern search — including traditional Google rankings, map visibility, conversational search, structured content, schema, citations, and AI-answer readiness.",
+    desc: "Local SEO is no longer just about ranking for short keywords. Customers are asking detailed questions like who to hire, what a service costs, who serves their area, and which company is most trusted. Got'm Digital helps structure your website, content, Google profile, reviews, and online mentions so your business is easier to find, understand, and trust in modern search.",
     bullets: [
       "Weekly blog posts and service pages added to your website",
       "Weekly posts to your Google Business Profile",
@@ -57,13 +59,14 @@ const services = [
     ],
     timeline: "Results typically visible at 6–18 months",
     price: "Included in Growth ($300/mo) and Full Service ($500/mo)",
-    color: "#E0F5EA",
+    note: null,
   },
   {
-    icon: <Star size={36} style={{ color: "#C8102E" }} />,
+    icon: <Star size={28} />,
+    num: "03",
     title: "Google Business Profile Authority Build",
     tagline: "Your most powerful free tool",
-    desc: "Your Google Business Profile is one of the most important parts of your local online presence. We help optimize your profile with accurate services, categories, photos, updates, review strategy, and business information that matches your website. This helps customers, Google, and AI-powered search results better understand your business and local relevance — reinforcing the same services, locations, and business facts shown on your website.",
+    desc: "Your Google Business Profile is one of the most important parts of your local online presence. We help optimize your profile with accurate services, categories, photos, updates, review strategy, and business information that matches your website — reinforcing the same services, locations, and business facts shown on your website.",
     bullets: [
       "Complete profile setup and optimization with accurate categories and services",
       "Regular photo uploads and service updates that match your website",
@@ -74,13 +77,14 @@ const services = [
     ],
     timeline: "Can start generating results within 2–8 weeks",
     price: "Included in all plans starting at $100/month",
-    color: "#1A1A0A",
+    note: null,
   },
   {
-    icon: <Megaphone size={36} style={{ color: "#C8102E" }} />,
+    icon: <Megaphone size={28} />,
+    num: "04",
     title: "Google Ads & Conversion Tracking",
     tagline: "Leads today, not in two years",
-    desc: "Google Ads can bring in leads now, but the best results happen when ads are connected to strong landing pages, clear service messaging, and accurate conversion tracking. Got'm Digital builds and manages ad campaigns that send customers to pages designed to convert — while using ad data to improve the rest of your online presence. Ads bridge the gap while your organic SEO matures, and the data they generate helps guide website and content improvements over time.",
+    desc: "Google Ads can bring in leads now, but the best results happen when ads are connected to strong landing pages, clear service messaging, and accurate conversion tracking. Got'm Digital builds and manages ad campaigns that send customers to pages designed to convert — while using ad data to improve the rest of your online presence.",
     bullets: [
       "Full campaign setup, keyword research, and ad copywriting",
       "Custom HTML landing pages built specifically for conversions",
@@ -91,7 +95,6 @@ const services = [
     ],
     timeline: "Campaigns live within 3–5 business days",
     price: "Included in Full Service ($500/mo) — ad spend paid directly to Google",
-    color: "#1A0A1A",
     note: "Ad spend is paid directly by you to Google. Our fee covers strategy, setup, and management only. You stay in full control of your budget.",
   },
 ];
@@ -100,77 +103,64 @@ export default function Services() {
   useScrollReveal();
 
   return (
-    <div style={{ background: "#FFFFFF", color: "#222222", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
       <Navbar />
 
-      {/* ── PAGE HEADER ── */}
-      <section style={{
-        paddingTop: "9rem",
-        paddingBottom: "4rem",
-        position: "relative",
-        overflow: "hidden",
-        borderBottom: "1px solid rgba(200,16,46,0.4)",
-      }}>
-        {/* Hero background image */}
+      {/* ═══════════════════════════════════════════════
+          PAGE HEADER — full-bleed cinematic
+          ═══════════════════════════════════════════════ */}
+      <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.45,
+          backgroundPosition: "center 30%",
         }} />
-        {/* Dark overlay */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(11,15,24,0.88) 0%, rgba(11,15,24,0.75) 50%, rgba(11,15,24,0.92) 100%)",
+          background: "linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.5) 40%, rgba(10,10,10,0.9) 80%, rgba(10,10,10,1) 100%)",
         }} />
-        {/* Red radial glow */}
-        <div style={{
-          position: "absolute", top: "50%", left: "60%", transform: "translate(-50%, -50%)",
-          width: 500, height: 500,
-          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-        <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>What We Do</div>
+        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
+          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>What We Do</div>
           <h1 className="fade-up" data-delay="80" style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontSize: "clamp(2.5rem, 6vw, 5rem)",
             fontWeight: 900,
             color: "#FFFFFF",
-            lineHeight: 1.1,
-            marginBottom: "1.25rem",
-            textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+            lineHeight: 1.0,
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.03em",
+            maxWidth: 800,
           }}>
-            Websites, Google Ads, and Local SEO<br />
-            <span style={{ color: "#C8102E" }}>Built for the New Way Customers Search</span>
+            Websites, Google Ads,<br />
+            and Local SEO Built for<br />
+            <span style={{ color: "#C8102E" }}>the New Way Customers Search.</span>
           </h1>
-          <p className="fade-up" data-delay="160" style={{
-            fontSize: "1.1rem",
-            color: "#E0E6F0",
-            lineHeight: 1.75,
-            maxWidth: 620,
-            textShadow: "0 1px 4px rgba(0,0,0,0.5)",
-          }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, maxWidth: 560 }}>
             Get found on Google, Maps, and AI-powered search with a modern online presence that clearly shows who you are, what you do, where you work, and why customers should trust you.
           </p>
         </div>
       </section>
 
-      {/* ── WHY SECTION ── */}
-      <section style={{ padding: "4rem 0", background: "#F5F5F5", borderBottom: "1px solid #252E42" }}>
-        <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2rem" }}>
+      {/* ═══════════════════════════════════════════════
+          WHY BAR
+          ═══════════════════════════════════════════════ */}
+      <section style={{ background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
             {[
-              { icon: <Shield size={22} style={{ color: "#C8102E" }} />, title: "No Setup Fees", desc: "You pay monthly. Nothing upfront, ever." },
-              { icon: <Clock size={22} style={{ color: "#C8102E" }} />, title: "No Long Contracts", desc: "Stay because it's working, not because you're locked in." },
-              { icon: <TrendingUp size={22} style={{ color: "#C8102E" }} />, title: "Grows With You", desc: "Start small, upgrade when you're ready." },
+              { icon: <Shield size={18} />, title: "No Setup Fees", desc: "You pay monthly. Nothing upfront, ever." },
+              { icon: <Clock size={18} />, title: "No Long Contracts", desc: "Stay because it's working, not because you're locked in." },
+              { icon: <TrendingUp size={18} />, title: "Grows With You", desc: "Start small, upgrade when you're ready." },
             ].map((item, i) => (
-              <div key={i} className="fade-up" data-delay={String(i * 80)} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-                <div style={{ flexShrink: 0, marginTop: "0.1rem" }}>{item.icon}</div>
+              <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
+                display: "flex", gap: "1rem", alignItems: "flex-start",
+                padding: "2rem 1.75rem",
+                borderRight: i < 2 ? "1px solid rgba(255,255,255,0.05)" : "none",
+              }}>
+                <div style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }}>{item.icon}</div>
                 <div>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 700, color: "#111111", marginBottom: "0.25rem" }}>{item.title}</div>
-                  <div style={{ fontSize: "0.875rem", color: "#666666", lineHeight: 1.6 }}>{item.desc}</div>
+                  <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.25rem" }}>{item.title}</div>
+                  <div style={{ fontSize: "0.8rem", color: "#666666", lineHeight: 1.6 }}>{item.desc}</div>
                 </div>
               </div>
             ))}
@@ -178,10 +168,12 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ── SERVICE DETAILS ── */}
-      <section style={{ padding: "5rem 0" }}>
+      {/* ═══════════════════════════════════════════════
+          SERVICE DETAILS — alternating layout
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "6rem 0", background: "#0A0A0A" }}>
         <div className="container">
-          <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
             {services.map((service, i) => (
               <div
                 key={i}
@@ -190,65 +182,69 @@ export default function Services() {
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                  gap: "3rem",
-                  alignItems: "start",
-                  paddingBottom: "4rem",
-                  borderBottom: i < services.length - 1 ? "1px solid #252E42" : "none",
+                  gap: "0",
+                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  paddingBottom: "0",
                 }}
               >
                 {/* Left: Info */}
-                <div>
-                  <div style={{ marginBottom: "1.25rem" }}>{service.icon}</div>
-                  <div className="section-label" style={{ marginBottom: "0.5rem" }}>{service.tagline}</div>
-                  <h2 style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                <div style={{ padding: "4rem 3rem 4rem 0", borderRight: "1px solid rgba(255,255,255,0.05)" }}>
+                  <div style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "4rem",
                     fontWeight: 900,
-                    color: "#111111",
-                    lineHeight: 1.2,
+                    color: "rgba(200,16,46,0.1)",
+                    lineHeight: 1,
+                    marginBottom: "1.5rem",
+                    letterSpacing: "-0.05em",
+                  }}>
+                    {service.num}
+                  </div>
+                  <div style={{ color: "#C8102E", marginBottom: "1.25rem" }}>{service.icon}</div>
+                  <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>{service.tagline}</div>
+                  <h2 style={{
+                    fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
+                    fontWeight: 800,
+                    color: "#FFFFFF",
+                    lineHeight: 1.15,
                     marginBottom: "1.25rem",
+                    letterSpacing: "-0.02em",
                   }}>
                     {service.title}
                   </h2>
-                  <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#444444", marginBottom: "1.5rem" }}>
+                  <p style={{ fontSize: "0.875rem", lineHeight: 1.85, color: "#666666", marginBottom: "1.75rem" }}>
                     {service.desc}
                   </p>
-
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1.5rem" }}>
-                    <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", fontSize: "0.8rem", color: "#666666" }}>
-                      <Clock size={13} style={{ color: "#C8102E", flexShrink: 0 }} />
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: service.note ? "1.5rem" : "0" }}>
+                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: "#555555" }}>
+                      <Clock size={12} style={{ color: "#C8102E", flexShrink: 0 }} />
                       {service.timeline}
                     </div>
-                    <div style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", fontSize: "0.8rem", color: "#666666" }}>
-                      <TrendingUp size={13} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
+                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: "#555555" }}>
+                      <TrendingUp size={12} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
                       {service.price}
                     </div>
                   </div>
-
                   {service.note && (
                     <div style={{
-                      background: "rgba(200,16,46,0.06)",
-                      border: "1px solid rgba(200,16,46,0.2)",
-                      borderRadius: 8,
-                      padding: "0.875rem 1rem",
-                      fontSize: "0.8rem",
-                      color: "#E8304A",
-                      lineHeight: 1.65,
+                      borderLeft: "2px solid rgba(200,16,46,0.4)",
+                      paddingLeft: "1rem",
+                      fontSize: "0.75rem",
+                      color: "#555555",
+                      lineHeight: 1.7,
                     }}>
-                      📌 {service.note}
+                      {service.note}
                     </div>
                   )}
                 </div>
 
                 {/* Right: Bullets */}
-                <div className="card-dark" style={{ padding: "1.75rem" }}>
-                  <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 600, marginBottom: "1.25rem" }}>
-                    What's Included
-                  </div>
+                <div style={{ padding: "4rem 0 4rem 3rem" }}>
+                  <div className="eyebrow" style={{ marginBottom: "1.5rem" }}>What's Included</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {service.bullets.map((bullet, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.9rem", lineHeight: 1.65, color: "#444444", marginBottom: "0.875rem" }}>
-                        <CheckCircle2 size={16} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
+                      <li key={j} style={{ display: "flex", gap: "1rem", fontSize: "0.875rem", lineHeight: 1.7, color: "#888888", marginBottom: "1rem" }}>
+                        <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.5rem" }} />
                         {bullet}
                       </li>
                     ))}
@@ -260,89 +256,83 @@ export default function Services() {
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── AI SEARCH OPTIMIZATION SECTION ── */}
-      <section style={{ padding: "5rem 0", background: "#F8F8F8", borderBottom: "1px solid #EBEBEB" }}>
-        <div className="container" style={{ maxWidth: 900 }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Strategy</div>
+      {/* ═══════════════════════════════════════════════
+          AI SEARCH OPTIMIZATION
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container" style={{ maxWidth: 1000 }}>
+          <div style={{ marginBottom: "4rem" }}>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Strategy</div>
             <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+              fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
-              marginBottom: "1.25rem",
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              maxWidth: 700,
             }}>
               AI Search Optimization Built Into<br />
-              <span style={{ color: "#C8102E" }}>Every Digital Strategy</span>
+              Every Digital Strategy.
             </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#444444", maxWidth: 700, margin: "0 auto" }}>
-              Modern search is not just about keywords anymore. AI tools, voice search, and Google's own AI-powered results are changing how customers find and choose local businesses. Got'm Digital builds every website, Google profile, and content strategy with this in mind.
-            </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "1.25rem", marginBottom: "2.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
             {[
-              {
-                icon: "🌐",
-                title: "Websites Built for AI Readability",
-                text: "Clear service pages, structured content, schema markup, FAQs, and business details that AI tools can read, understand, and use to recommend your business.",
-              },
-              {
-                icon: "📍",
-                title: "Google Profile & Citation Consistency",
-                text: "Your business name, address, phone, services, and categories match across your website, Google Business Profile, and online directories — a key trust signal for AI-powered search.",
-              },
-              {
-                icon: "⭐",
-                title: "Reviews & Trust Signals",
-                text: "Reviews, response patterns, and verified business information help AI tools identify your business as a credible local option worth recommending.",
-              },
-              {
-                icon: "📝",
-                title: "Content That Answers Real Questions",
-                text: "We create content that answers the questions customers actually ask — what you do, where you work, what it costs, and why you can be trusted — in a format search engines and AI tools can use.",
-              },
+              { num: "01", title: "Websites Built for AI Readability", text: "Clear service pages, structured content, schema markup, FAQs, and business details that AI tools can read, understand, and use to recommend your business." },
+              { num: "02", title: "Google Profile & Citation Consistency", text: "Your business name, address, phone, services, and categories match across your website, Google Business Profile, and online directories — a key trust signal for AI-powered search." },
+              { num: "03", title: "Reviews & Trust Signals", text: "Reviews, response patterns, and verified business information help AI tools identify your business as a credible local option worth recommending." },
+              { num: "04", title: "Content That Answers Real Questions", text: "We create content that answers the questions customers actually ask — what you do, where you work, what it costs, and why you can be trusted — in a format search engines and AI tools can use." },
             ].map((item, i) => (
-              <div key={i} className="fade-up card-dark" data-delay={String(i * 80)} style={{ padding: "1.75rem" }}>
-                <div style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>{item.icon}</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1rem", fontWeight: 700, color: "#111111", marginBottom: "0.625rem", lineHeight: 1.3 }}>
+              <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
+                background: "#111111",
+                padding: "2.5rem 2rem",
+                transition: "background 0.2s",
+              }}
+                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
+                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
+              >
+                <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "rgba(200,16,46,0.12)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
+                  {item.num}
+                </div>
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.75rem", letterSpacing: "-0.01em" }}>
                   {item.title}
                 </h3>
-                <p style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "#555555" }}>{item.text}</p>
+                <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#666666" }}>{item.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── WEB PRESENCE AUDIT OFFER ── */}
-      <section style={{ padding: "5rem 0", background: "#FFFFFF" }}>
-        <div className="container" style={{ maxWidth: 860 }}>
-          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>New Offer</div>
+      {/* ═══════════════════════════════════════════════
+          WEB PRESENCE AUDIT OFFER
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <div style={{ marginBottom: "3.5rem" }}>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>New Offer</div>
             <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
-              marginBottom: "1rem",
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
             }}>
               Web Presence &amp; AI Search<br />
-              <span style={{ color: "#C8102E" }}>Readiness Audit</span>
+              <span style={{ color: "#C8102E" }}>Readiness Audit.</span>
             </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#444444", maxWidth: 640, margin: "0 auto" }}>
+            <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#666666", maxWidth: 600, marginTop: "1.25rem" }}>
               A clear, honest review of your current website, Google Business Profile, reviews, local citations, and overall AI search readiness — with specific recommendations for what to fix, update, or improve.
             </p>
           </div>
 
-          <div className="fade-up card-dark" style={{ padding: "2.5rem", marginBottom: "2rem" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem" }}>
+          <div className="fade-up" style={{
+            border: "1px solid rgba(255,255,255,0.07)",
+            background: "#111111",
+            padding: "3rem",
+            marginBottom: "2rem",
+          }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2.5rem", marginBottom: "2.5rem" }}>
               {[
                 {
                   section: "Website Review",
@@ -358,13 +348,11 @@ export default function Services() {
                 },
               ].map((col, i) => (
                 <div key={i}>
-                  <div style={{ fontSize: "0.7rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "1rem" }}>
-                    {col.section}
-                  </div>
+                  <div className="eyebrow" style={{ marginBottom: "1.25rem" }}>{col.section}</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {col.items.map((item, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.625rem", fontSize: "0.875rem", lineHeight: 1.65, color: "#444444", marginBottom: "0.625rem" }}>
-                        <CheckCircle2 size={14} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} />
+                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", lineHeight: 1.7, color: "#888888", marginBottom: "0.75rem" }}>
+                        <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                         {item}
                       </li>
                     ))}
@@ -373,69 +361,78 @@ export default function Services() {
               ))}
             </div>
 
-            <div style={{ borderTop: "1px solid #EBEBEB", marginTop: "2rem", paddingTop: "1.5rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
               <div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>$97</div>
-                <div style={{ fontSize: "0.8rem", color: "#666666", marginTop: "0.25rem" }}>One-time fee — no ongoing commitment required</div>
+                <div style={{ fontSize: "3rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>$97</div>
+                <div style={{ fontSize: "0.75rem", color: "#555555", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-                <a href="tel:9413288891" className="btn-gold" style={{ padding: "0.875rem 1.75rem" }}>
+                <a href="tel:9413288891" className="btn-gold">
                   <Phone size={15} /> Call to Book Your Audit
                 </a>
-                <Link href="/contact" className="btn-gold-outline" style={{ padding: "0.875rem 1.75rem" }}>
-                  Request Audit Online <ArrowRight size={15} />
+                <Link href="/contact" className="btn-primary">
+                  Request Audit Online →
                 </Link>
               </div>
             </div>
           </div>
 
-          <p className="fade-up" style={{ fontSize: "0.85rem", color: "#666666", lineHeight: 1.75, textAlign: "center", maxWidth: 600, margin: "0 auto" }}>
+          <p className="fade-up" style={{ fontSize: "0.8rem", color: "#444444", lineHeight: 1.75, maxWidth: 580 }}>
             If you become a Got'm Digital client after the audit, the $97 fee is credited toward your first month. The audit report is yours to keep regardless.
           </p>
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── PRICING SUMMARY ── */}
-      <section style={{ padding: "5rem 0", background: "#F5F5F5" }}>
-        <div className="container" style={{ maxWidth: 800 }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Simple Pricing</div>
+      {/* ═══════════════════════════════════════════════
+          PRICING SUMMARY
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <div style={{ marginBottom: "4rem" }}>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple Pricing</div>
             <h2 className="fade-up" data-delay="80" style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+              fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.2,
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
             }}>
-              All Services. No Setup Fees.<br />
-              <span style={{ color: "#C8102E" }}>Start at $100/Month.</span>
+              All Services.<br />
+              No Setup Fees.<br />
+              Start at $100/Month.
             </h2>
           </div>
 
-          <div className="fade-up" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.25rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)" }}>
             {[
-              { name: "Starter", price: "$100/mo", includes: ["Custom HTML Website", "SEO Setup", "AI Search Optimization Built In", "Google Business Profile", "Unlimited Updates"] },
-              { name: "Growth", price: "$300/mo", featured: true, includes: ["Everything in Starter", "Weekly Website Posts", "Weekly GBP Posts", "AI Search & Conversational Query Targeting", "Content Strategy"] },
-              { name: "Full Service", price: "$500/mo", includes: ["Everything in Growth", "Google Ads Management", "AI-Ready Landing Page Content", "Custom Landing Pages", "Ad Optimization"] },
+              { name: "Starter", price: "$100", period: "/mo", featured: false, includes: ["Custom HTML Website", "SEO Setup", "AI Search Optimization Built In", "Google Business Profile", "Unlimited Updates"] },
+              { name: "Growth", price: "$300", period: "/mo", featured: true, includes: ["Everything in Starter", "Weekly Website Posts", "Weekly GBP Posts", "AI Search & Conversational Query Targeting", "Content Strategy"] },
+              { name: "Full Service", price: "$500", period: "/mo", featured: false, includes: ["Everything in Growth", "Google Ads Management", "AI-Ready Landing Page Content", "Custom Landing Pages", "Ad Optimization"] },
             ].map((plan, i) => (
-              <div key={i} className={`card-dark${plan.featured ? " featured" : ""}`} style={{ padding: "1.5rem", textAlign: "center" }}>
+              <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
+                background: plan.featured ? "#111111" : "#0D0D0D",
+                padding: "2.5rem 2rem",
+                borderTop: plan.featured ? "2px solid #C8102E" : "2px solid transparent",
+                position: "relative",
+              }}>
                 {plan.featured && (
-                  <div style={{ background: "#C8102E", color: "#111111", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "0.3rem", borderRadius: "4px 4px 0 0", margin: "-1.5rem -1.5rem 1.25rem", textAlign: "center" }}>
-                    Most Popular
-                  </div>
+                  <div className="eyebrow" style={{ marginBottom: "1rem", color: "#C8102E" }}>Most Popular</div>
                 )}
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, color: "#111111", marginBottom: "0.25rem" }}>{plan.name}</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", marginBottom: "1rem" }}>{plan.price}</div>
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1.25rem", textAlign: "left" }}>
+                <div style={{ fontSize: "1rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "0.25rem", marginBottom: "1.5rem" }}>
+                  <span style={{ fontSize: "2.5rem", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-0.04em" }}>{plan.price}</span>
+                  <span style={{ fontSize: "0.75rem", color: "#555555", letterSpacing: "0.1em", textTransform: "uppercase" }}>{plan.period}</span>
+                </div>
+                <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1.5rem" }} />
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.includes.map((item, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.8rem", color: "#444444", marginBottom: "0.5rem" }}>
-                      <span style={{ color: "#C8102E", fontWeight: 900, flexShrink: 0 }}>→</span> {item}
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", color: "#888888", marginBottom: "0.75rem", lineHeight: 1.5 }}>
+                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
+                      {item}
                     </li>
                   ))}
                 </ul>
-                <a href="tel:9413288891" className={plan.featured ? "btn-gold" : "btn-gold-outline"} style={{ width: "100%", justifyContent: "center", fontSize: "0.85rem" }}>
+                <a href="tel:9413288891" className={plan.featured ? "btn-gold" : "btn-primary"} style={{ width: "100%", justifyContent: "center" }}>
                   <Phone size={13} /> Get Started
                 </a>
               </div>
@@ -444,51 +441,40 @@ export default function Services() {
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── CTA ── */}
-      <section style={{
-        padding: "5rem 0",
-        position: "relative",
-        overflow: "hidden",
-        borderTop: "1px solid rgba(200,16,46,0.4)",
-      }}>
-        {/* Layer 1: Background image */}
+      {/* ═══════════════════════════════════════════════
+          CTA — full-bleed dark
+          ═══════════════════════════════════════════════ */}
+      <section style={{ position: "relative", padding: "8rem 0", overflow: "hidden" }}>
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.45,
+          filter: "brightness(0.15)",
         }} />
-        {/* Layer 2: Dark overlay */}
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(11,15,24,0.88) 0%, rgba(11,15,24,0.75) 50%, rgba(11,15,24,0.92) 100%)",
-        }} />
-        {/* Layer 3: Red radial glow */}
-        <div style={{
-          position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          width: 500, height: 500,
-          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.7)" }} />
         <div className="container" style={{ maxWidth: 700, textAlign: "center", position: "relative", zIndex: 2 }}>
-          <div className="fade-up">
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 900, color: "#FFFFFF", marginBottom: "1rem", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
-              Not Sure Where to Start?
-            </h2>
-            <p style={{ fontSize: "1rem", color: "#E0E6F0", lineHeight: 1.75, marginBottom: "2rem", maxWidth: 480, margin: "0 auto 2rem", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
-              Call me and we'll talk through your situation honestly. No sales pitch, no pressure — just a real conversation about what makes sense for your business right now.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-              <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1.1rem", padding: "0.875rem 2rem" }}>
-                <Phone size={18} /> (941) 328-8891
-              </a>
-              <Link href="/contact" className="btn-gold-outline" style={{ padding: "0.875rem 2rem" }}>
-                Send a Message <ArrowRight size={15} />
-              </Link>
-            </div>
+          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Start?</div>
+          <h2 className="fade-up" data-delay="80" style={{
+            fontSize: "clamp(2rem, 4vw, 3.5rem)",
+            fontWeight: 900,
+            color: "#FFFFFF",
+            lineHeight: 1.0,
+            letterSpacing: "-0.03em",
+            marginBottom: "1.5rem",
+          }}>
+            Not Sure Where to Start?
+          </h2>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
+            Call me and we'll talk through your situation honestly. No sales pitch, no pressure — just a real conversation about what makes sense for your business right now.
+          </p>
+          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
+            <a href="tel:9413288891" className="btn-gold">
+              <Phone size={16} /> (941) 328-8891
+            </a>
+            <Link href="/contact" className="btn-primary">
+              Send a Message →
+            </Link>
           </div>
         </div>
       </section>

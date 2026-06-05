@@ -1,7 +1,4 @@
-export default function GotmLogo({ size = 200 }: { size?: number }) {
-  const iconSize = size * (72 / 300);   // icon occupies ~72px of a 300-wide canvas
-  const textX = 100;
-
+export default function GotmLogo({ size = 200, textColor = "#FFFFFF" }: { size?: number; textColor?: string }) {
   return (
     <svg
       width={size}
@@ -32,7 +29,7 @@ export default function GotmLogo({ size = 200 }: { size?: number }) {
         {/* Centre dot */}
         <circle cx="36" cy="36" r="3.5" fill="url(#goldGradLogo)" />
 
-        {/* Top tick — starts outside outer circle, ends inside inner circle */}
+        {/* Top tick */}
         <line x1="36" y1="0"  x2="36" y2="14" stroke="url(#goldGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
         {/* Bottom tick */}
         <line x1="36" y1="58" x2="36" y2="72" stroke="url(#goldGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
@@ -43,10 +40,10 @@ export default function GotmLogo({ size = 200 }: { size?: number }) {
       </g>
 
       {/* ── Wordmark ── */}
-      <text x={textX} y="58" fontFamily="Playfair Display, Georgia, serif" fontWeight="900" fontSize="56" fill="#111111" letterSpacing="-1">GOTM</text>
-      <line x1={textX} y1="68" x2="294" y2="68" stroke="url(#goldGradLogo)" strokeWidth="1" opacity="0.5" />
+      <text x="100" y="58" fontFamily="DM Sans, sans-serif" fontWeight="900" fontSize="56" fill={textColor} letterSpacing="-1">GOTM</text>
+      <line x1="100" y1="68" x2="294" y2="68" stroke="url(#goldGradLogo)" strokeWidth="1" opacity="0.5" />
       <text x="197" y="84" fontFamily="DM Sans, sans-serif" fontWeight="600" fontSize="13" fill="url(#goldGradLogo)" textAnchor="middle" letterSpacing="5">DIGITAL</text>
-      <text x="197" y="100" fontFamily="DM Sans, sans-serif" fontWeight="400" fontSize="10" fill="#999999" textAnchor="middle" letterSpacing="2">MARKETING THAT WORKS</text>
+      <text x="197" y="100" fontFamily="DM Sans, sans-serif" fontWeight="400" fontSize="10" fill="#777777" textAnchor="middle" letterSpacing="2">MARKETING THAT WORKS</text>
     </svg>
   );
 }

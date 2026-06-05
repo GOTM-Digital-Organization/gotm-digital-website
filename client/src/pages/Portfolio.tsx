@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { MapPin, ExternalLink, Phone, ArrowRight } from "lucide-react";
+import { MapPin, ExternalLink, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -17,7 +17,7 @@ function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -85,131 +85,141 @@ export default function Portfolio() {
   useScrollReveal();
 
   return (
-    <div style={{ background: "#FFFFFF", color: "#222222", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
       <Navbar />
 
-      {/* ── PAGE HEADER ── */}
-      <section style={{
-        paddingTop: "9rem",
-        paddingBottom: "4rem",
-        position: "relative",
-        overflow: "hidden",
-        borderBottom: "1px solid rgba(200,16,46,0.4)",
-      }}>
-        {/* Layer 1: Background image */}
+      {/* ═══════════════════════════════════════════════
+          PAGE HEADER — full-bleed cinematic
+          ═══════════════════════════════════════════════ */}
+      <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.45,
+          backgroundPosition: "center 30%",
         }} />
-        {/* Layer 2: Dark overlay */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(11,15,24,0.88) 0%, rgba(11,15,24,0.75) 50%, rgba(11,15,24,0.92) 100%)",
+          background: "linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.9) 80%, rgba(10,10,10,1) 100%)",
         }} />
-        {/* Layer 3: Red radial glow */}
-        <div style={{
-          position: "absolute", top: "50%", left: "60%", transform: "translate(-50%, -50%)",
-          width: 500, height: 500,
-          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
-        <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <div className="section-label fade-up" data-delay="0" style={{ marginBottom: "1rem" }}>Our Work</div>
+        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
+          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>Our Work</div>
           <h1 className="fade-up" data-delay="80" style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontSize: "clamp(2.5rem, 6vw, 5rem)",
             fontWeight: 900,
             color: "#FFFFFF",
-            lineHeight: 1.1,
-            marginBottom: "1.25rem",
-            textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+            lineHeight: 1.0,
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.03em",
+            maxWidth: 800,
           }}>
             Local Businesses We've<br />
-            <span style={{ color: "#F4A12E" }}>Put on the Map</span>
+            <span style={{ color: "#C8102E" }}>Put on the Map.</span>
           </h1>
-          <p className="fade-up" data-delay="160" style={{
-            fontSize: "1.1rem",
-            color: "#E0E6F0",
-            lineHeight: 1.75,
-            maxWidth: 580,
-            textShadow: "0 1px 4px rgba(0,0,0,0.5)",
-          }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, maxWidth: 540 }}>
             Every one of these businesses started exactly where you are — with no online presence and no idea where to begin. Here's what we built for them.
           </p>
         </div>
       </section>
 
-      {/* ── CLIENT GRID ── */}
-      <section style={{ padding: "5rem 0" }}>
+      {/* ═══════════════════════════════════════════════
+          CLIENT GRID
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "6rem 0", background: "#0A0A0A" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
             {clients.map((client, i) => (
               <div
                 key={i}
-                className="fade-up card-dark"
-                data-delay={String(i * 80)}
-                style={{ overflow: "hidden", display: "flex", flexDirection: "column" }}
+                className="fade-up"
+                data-delay={String((i % 3) * 80)}
+                style={{
+                  background: "#0A0A0A",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#0F0F0F"}
+                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#0A0A0A"}
               >
                 {/* OG Image thumbnail — clickable */}
                 <a
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ display: "block", overflow: "hidden", borderRadius: "0 0 0 0", lineHeight: 0 }}
+                  style={{ display: "block", overflow: "hidden", lineHeight: 0, position: "relative" }}
                 >
                   <img
                     src={client.ogImage}
                     alt={`${client.name} website preview`}
                     style={{
                       width: "100%",
-                      height: 200,
+                      height: 210,
                       objectFit: "cover",
                       objectPosition: "top",
                       display: "block",
-                      transition: "transform 0.35s cubic-bezier(0.23,1,0.32,1)",
+                      transition: "transform 0.5s cubic-bezier(0.23,1,0.32,1)",
                     }}
-                    onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)")}
+                    onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)")}
                     onMouseLeave={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
                   />
+                  {/* Hover overlay */}
+                  <div style={{
+                    position: "absolute", inset: 0,
+                    background: "rgba(200,16,46,0.0)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    transition: "background 0.3s",
+                  }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0.15)"}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0)"}
+                  >
+                    <ExternalLink size={28} style={{ color: "#FFFFFF", opacity: 0, transition: "opacity 0.3s" }}
+                      onMouseEnter={e => (e.currentTarget as SVGElement).style.opacity = "1"}
+                    />
+                  </div>
                 </a>
 
-                {/* Gold accent bar below image */}
-                <div style={{ height: 3, background: "linear-gradient(90deg, #C8102E, #F4A12E)" }} />
+                {/* Red accent bar */}
+                <div style={{ height: 2, background: "linear-gradient(90deg, #C8102E 0%, rgba(200,16,46,0.2) 100%)" }} />
 
-                <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                <div style={{ padding: "1.75rem", flex: 1, display: "flex", flexDirection: "column" }}>
                   {/* Header */}
                   <div style={{ marginBottom: "1rem" }}>
-                    <div style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 600, marginBottom: "0.25rem" }}>
+                    <div className="eyebrow" style={{ marginBottom: "0.4rem", fontSize: "0.6rem" }}>
                       {client.industry}
                     </div>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, color: "#111111", lineHeight: 1.3, marginBottom: "0.25rem" }}>
+                    <h3 style={{
+                      fontSize: "1.05rem",
+                      fontWeight: 800,
+                      color: "#FFFFFF",
+                      lineHeight: 1.25,
+                      marginBottom: "0.35rem",
+                      letterSpacing: "-0.01em",
+                    }}>
                       {client.name}
                     </h3>
-                    <div style={{ fontSize: "0.75rem", color: "#666666", display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                      <MapPin size={11} /> {client.location}
+                    <div style={{ fontSize: "0.72rem", color: "#555555", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                      <MapPin size={10} /> {client.location}
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "#444444", marginBottom: "1.25rem", flex: 1 }}>
+                  <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#666666", marginBottom: "1.25rem", flex: 1 }}>
                     {client.desc}
                   </p>
 
                   {/* Services tags */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1.5rem" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "1.5rem" }}>
                     {client.services.map((s, j) => (
                       <span key={j} style={{
-                        background: "rgba(244,161,46,0.08)",
-                        border: "1px solid rgba(200,16,46,0.2)",
-                        color: "#E8304A",
-                        fontSize: "0.7rem",
+                        border: "1px solid rgba(200,16,46,0.25)",
+                        color: "#C8102E",
+                        fontSize: "0.65rem",
                         fontWeight: 600,
-                        letterSpacing: "0.05em",
-                        padding: "0.25rem 0.625rem",
-                        borderRadius: 100,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        padding: "0.2rem 0.6rem",
                       }}>
                         {s}
                       </span>
@@ -221,10 +231,10 @@ export default function Portfolio() {
                     href={client.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-gold-outline"
+                    className="btn-primary"
                     style={{ justifyContent: "center" }}
                   >
-                    <ExternalLink size={14} /> Visit {client.name.split(" ")[0]} Website
+                    <ExternalLink size={13} /> Visit {client.name.split(" ")[0]} Website
                   </a>
                 </div>
               </div>
@@ -233,51 +243,40 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <hr className="gold-rule" />
-
-      {/* ── CTA ── */}
-      <section style={{
-        padding: "5rem 0",
-        position: "relative",
-        overflow: "hidden",
-        borderTop: "1px solid rgba(200,16,46,0.4)",
-      }}>
-        {/* Layer 1: Background image */}
+      {/* ═══════════════════════════════════════════════
+          CTA — full-bleed dark
+          ═══════════════════════════════════════════════ */}
+      <section style={{ position: "relative", padding: "8rem 0", overflow: "hidden" }}>
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.45,
+          filter: "brightness(0.12)",
         }} />
-        {/* Layer 2: Dark overlay */}
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(11,15,24,0.88) 0%, rgba(11,15,24,0.75) 50%, rgba(11,15,24,0.92) 100%)",
-        }} />
-        {/* Layer 3: Red radial glow */}
-        <div style={{
-          position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          width: 500, height: 500,
-          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.75)" }} />
         <div className="container" style={{ maxWidth: 700, textAlign: "center", position: "relative", zIndex: 2 }}>
-          <div className="fade-up">
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 900, color: "#FFFFFF", marginBottom: "1rem", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
-              Want Your Business Here?
-            </h2>
-            <p style={{ fontSize: "1rem", color: "#E0E6F0", lineHeight: 1.75, marginBottom: "2rem", maxWidth: 480, margin: "0 auto 2rem", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>
-              Every business on this page started with a single conversation. No setup fees, no pressure — just an honest discussion about what's possible for your business.
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-              <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1.1rem", padding: "0.875rem 2rem" }}>
-                <Phone size={18} /> (941) 328-8891
-              </a>
-              <Link href="/contact" className="btn-gold-outline" style={{ padding: "0.875rem 2rem" }}>
-                Send a Message <ArrowRight size={15} />
-              </Link>
-            </div>
+          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Start?</div>
+          <h2 className="fade-up" data-delay="80" style={{
+            fontSize: "clamp(2rem, 4vw, 3.5rem)",
+            fontWeight: 900,
+            color: "#FFFFFF",
+            lineHeight: 1.0,
+            letterSpacing: "-0.03em",
+            marginBottom: "1.5rem",
+          }}>
+            Want Your Business Here?
+          </h2>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
+            Every business on this page started with a single conversation. No setup fees, no pressure — just an honest discussion about what's possible for your business.
+          </p>
+          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
+            <a href="tel:9413288891" className="btn-gold">
+              <Phone size={16} /> (941) 328-8891
+            </a>
+            <Link href="/contact" className="btn-primary">
+              Send a Message →
+            </Link>
           </div>
         </div>
       </section>
