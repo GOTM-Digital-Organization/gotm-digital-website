@@ -116,7 +116,7 @@ export default function Portfolio() {
             Local Businesses We've<br />
             <span style={{ color: "#C8102E" }}>Put on the Map.</span>
           </h1>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, maxWidth: 540 }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, maxWidth: 540 }}>
             Every one of these businesses started exactly where you are — with no online presence and no idea where to begin. Here's what we built for them.
           </p>
         </div>
@@ -199,13 +199,13 @@ export default function Portfolio() {
                     }}>
                       {client.name}
                     </h3>
-                    <div style={{ fontSize: "0.72rem", color: "#555555", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                    <div style={{ fontSize: "0.72rem", color: "#AAAAAA", display: "flex", alignItems: "center", gap: "0.3rem" }}>
                       <MapPin size={10} /> {client.location}
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#666666", marginBottom: "1.25rem", flex: 1 }}>
+                  <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#C0C0C0", marginBottom: "1.25rem", flex: 1 }}>
                     {client.desc}
                   </p>
 
@@ -267,7 +267,7 @@ export default function Portfolio() {
           }}>
             Want Your Business Here?
           </h2>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
             Every business on this page started with a single conversation. No setup fees, no pressure — just an honest discussion about what's possible for your business.
           </p>
           <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>

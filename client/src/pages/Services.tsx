@@ -135,7 +135,7 @@ export default function Services() {
             and Local SEO Built for<br />
             <span style={{ color: "#C8102E" }}>the New Way Customers Search.</span>
           </h1>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, maxWidth: 560 }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, maxWidth: 560 }}>
             Get found on Google, Maps, and AI-powered search with a modern online presence that clearly shows who you are, what you do, where you work, and why customers should trust you.
           </p>
         </div>
@@ -160,7 +160,7 @@ export default function Services() {
                 <div style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }}>{item.icon}</div>
                 <div>
                   <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.25rem" }}>{item.title}</div>
-                  <div style={{ fontSize: "0.8rem", color: "#666666", lineHeight: 1.6 }}>{item.desc}</div>
+                  <div style={{ fontSize: "0.8rem", color: "#C0C0C0", lineHeight: 1.6 }}>{item.desc}</div>
                 </div>
               </div>
             ))}
@@ -193,7 +193,7 @@ export default function Services() {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "4rem",
                     fontWeight: 900,
-                    color: "rgba(200,16,46,0.35)",
+                    color: "rgba(200,16,46,0.72)",
                     lineHeight: 1,
                     marginBottom: "1.5rem",
                     letterSpacing: "-0.05em",
@@ -212,15 +212,15 @@ export default function Services() {
                   }}>
                     {service.title}
                   </h2>
-                  <p style={{ fontSize: "0.875rem", lineHeight: 1.85, color: "#666666", marginBottom: "1.75rem" }}>
+                  <p style={{ fontSize: "0.875rem", lineHeight: 1.85, color: "#C0C0C0", marginBottom: "1.75rem" }}>
                     {service.desc}
                   </p>
                   <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: service.note ? "1.5rem" : "0" }}>
-                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: "#555555" }}>
+                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: "#AAAAAA" }}>
                       <Clock size={12} style={{ color: "#C8102E", flexShrink: 0 }} />
                       {service.timeline}
                     </div>
-                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: "#555555" }}>
+                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: "#AAAAAA" }}>
                       <TrendingUp size={12} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
                       {service.price}
                     </div>
@@ -230,7 +230,7 @@ export default function Services() {
                       borderLeft: "2px solid rgba(200,16,46,0.4)",
                       paddingLeft: "1rem",
                       fontSize: "0.75rem",
-                      color: "#555555",
+                      color: "#AAAAAA",
                       lineHeight: 1.7,
                     }}>
                       {service.note}
@@ -243,7 +243,7 @@ export default function Services() {
                   <div className="eyebrow" style={{ marginBottom: "1.5rem" }}>What's Included</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {service.bullets.map((bullet, j) => (
-                      <li key={j} style={{ display: "flex", gap: "1rem", fontSize: "0.875rem", lineHeight: 1.7, color: "#888888", marginBottom: "1rem" }}>
+                      <li key={j} style={{ display: "flex", gap: "1rem", fontSize: "0.875rem", lineHeight: 1.7, color: "#C8C8C8", marginBottom: "1rem" }}>
                         <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.5rem" }} />
                         {bullet}
                       </li>
@@ -291,13 +291,13 @@ export default function Services() {
                 onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
                 onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
               >
-                <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "rgba(200,16,46,0.35)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
+                <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "rgba(200,16,46,0.72)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
                   {item.num}
                 </div>
                 <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.75rem", letterSpacing: "-0.01em" }}>
                   {item.title}
                 </h3>
-                <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#666666" }}>{item.text}</p>
+                <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#C0C0C0" }}>{item.text}</p>
               </div>
             ))}
           </div>
@@ -321,7 +321,7 @@ export default function Services() {
               Web Presence &amp; AI Search<br />
               <span style={{ color: "#C8102E" }}>Readiness Audit.</span>
             </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#666666", maxWidth: 600, marginTop: "1.25rem" }}>
+            <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#C0C0C0", maxWidth: 600, marginTop: "1.25rem" }}>
               A clear, honest review of your current website, Google Business Profile, reviews, local citations, and overall AI search readiness — with specific recommendations for what to fix, update, or improve.
             </p>
           </div>
@@ -351,7 +351,7 @@ export default function Services() {
                   <div className="eyebrow" style={{ marginBottom: "1.25rem" }}>{col.section}</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {col.items.map((item, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", lineHeight: 1.7, color: "#888888", marginBottom: "0.75rem" }}>
+                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", lineHeight: 1.7, color: "#C8C8C8", marginBottom: "0.75rem" }}>
                         <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                         {item}
                       </li>
@@ -364,7 +364,7 @@ export default function Services() {
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
               <div>
                 <div style={{ fontSize: "3rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>$97</div>
-                <div style={{ fontSize: "0.75rem", color: "#555555", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
+                <div style={{ fontSize: "0.75rem", color: "#AAAAAA", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                 <a href="tel:9413288891" className="btn-gold">
@@ -421,12 +421,12 @@ export default function Services() {
                 <div style={{ fontSize: "1rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: "0.25rem", marginBottom: "1.5rem" }}>
                   <span style={{ fontSize: "2.5rem", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-0.04em" }}>{plan.price}</span>
-                  <span style={{ fontSize: "0.75rem", color: "#555555", letterSpacing: "0.1em", textTransform: "uppercase" }}>{plan.period}</span>
+                  <span style={{ fontSize: "0.75rem", color: "#AAAAAA", letterSpacing: "0.1em", textTransform: "uppercase" }}>{plan.period}</span>
                 </div>
                 <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1.5rem" }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.includes.map((item, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", color: "#888888", marginBottom: "0.75rem", lineHeight: 1.5 }}>
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", color: "#C8C8C8", marginBottom: "0.75rem", lineHeight: 1.5 }}>
                       <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                       {item}
                     </li>
@@ -465,7 +465,7 @@ export default function Services() {
           }}>
             Not Sure Where to Start?
           </h2>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
             Call me and we'll talk through your situation honestly. No sales pitch, no pressure — just a real conversation about what makes sense for your business right now.
           </p>
           <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>

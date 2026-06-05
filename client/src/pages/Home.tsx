@@ -63,7 +63,7 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
       <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.03em" }}>
         {count}{suffix}
       </div>
-      <div style={{ fontSize: "0.62rem", color: "#555555", marginTop: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
+      <div style={{ fontSize: "0.62rem", color: "#AAAAAA", marginTop: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
     </div>
   );
 }
@@ -122,7 +122,7 @@ function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
           paddingBottom: "1.5rem",
           fontSize: "0.9rem",
           lineHeight: 1.8,
-          color: "#888888",
+          color: "#C8C8C8",
           fontFamily: "'DM Sans', sans-serif",
         }}>
           {item.a}
@@ -204,7 +204,7 @@ export default function Home() {
           {/* Subtext */}
           <p className="fade-up" data-delay="160" style={{
             fontSize: "clamp(0.95rem, 1.5vw, 1.15rem)",
-            color: "#888888",
+            color: "#C8C8C8",
             lineHeight: 1.8,
             marginBottom: "3rem",
             maxWidth: 520,
@@ -226,7 +226,7 @@ export default function Home() {
           {/* Trust pills */}
           <div className="fade-up" data-delay="320" style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
             {["No setup fees", "No long-term contracts", "No empty promises"].map((item) => (
-              <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "#555555", letterSpacing: "0.05em" }}>
+              <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "#AAAAAA", letterSpacing: "0.05em" }}>
                 <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0 }} />
                 {item}
               </div>
@@ -288,7 +288,7 @@ export default function Home() {
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                   <MapPin size={16} style={{ color: "#C8102E", flexShrink: 0 }} />
                   <div>
-                    <div style={{ fontSize: "0.6rem", color: "#555555", letterSpacing: "0.2em", textTransform: "uppercase" }}>Serving Local Businesses</div>
+                    <div style={{ fontSize: "0.6rem", color: "#AAAAAA", letterSpacing: "0.2em", textTransform: "uppercase" }}>Serving Local Businesses</div>
                     <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF" }}>Anywhere in the USA</div>
                   </div>
                 </div>
@@ -315,7 +315,7 @@ export default function Home() {
                 paddingLeft: "1.5rem",
                 marginBottom: "2rem",
               }}>
-                <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "#888888", fontStyle: "italic" }}>
+                <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "#C8C8C8", fontStyle: "italic" }}>
                   "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay."
                 </p>
               </blockquote>
@@ -329,7 +329,7 @@ export default function Home() {
                 ].map((text, i) => (
                   <div key={i} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                     <span style={{ width: 1, height: 16, background: "#C8102E", flexShrink: 0, marginTop: "0.3rem" }} />
-                    <span style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "#888888" }}>{text}</span>
+                    <span style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "#C8C8C8" }}>{text}</span>
                   </div>
                 ))}
               </div>
@@ -382,7 +382,7 @@ export default function Home() {
                 <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
                   {service.title}
                 </h3>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.75, color: "#666666" }}>{service.desc}</p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.75, color: "#C0C0C0" }}>{service.desc}</p>
               </div>
             ))}
           </div>
@@ -428,13 +428,13 @@ export default function Home() {
               },
             ].map((item, i) => (
               <div key={i} className="fade-up" data-delay={String(i * 80)}>
-                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(200,16,46,0.35)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(200,16,46,0.72)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
                   {item.num}
                 </div>
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
                   {item.heading}
                 </h3>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#666666" }}>{item.text}</p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#C0C0C0" }}>{item.text}</p>
               </div>
             ))}
           </div>
@@ -492,10 +492,10 @@ export default function Home() {
               >
                 <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.75rem" }}>{site.industry}</div>
                 <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{site.name}</h3>
-                <div style={{ fontSize: "0.75rem", color: "#555555", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "1rem" }}>
+                <div style={{ fontSize: "0.75rem", color: "#AAAAAA", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "1rem" }}>
                   <MapPin size={10} /> {site.location}
                 </div>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#666666", marginBottom: "1.5rem" }}>{site.desc}</p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#C0C0C0", marginBottom: "1.5rem" }}>{site.desc}</p>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>
                   <ExternalLink size={11} /> Visit Website
                 </div>
@@ -588,24 +588,24 @@ export default function Home() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
                   <div>
                     <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
-                    <div style={{ fontSize: "0.75rem", color: "#555555" }}>{plan.tagline}</div>
+                    <div style={{ fontSize: "0.75rem", color: "#AAAAAA" }}>{plan.tagline}</div>
                   </div>
                   <div style={{ textAlign: "right" }}>
                     <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>{plan.price}</div>
-                    <div style={{ fontSize: "0.65rem", color: "#555555", letterSpacing: "0.1em", textTransform: "uppercase" }}>/ month</div>
+                    <div style={{ fontSize: "0.65rem", color: "#AAAAAA", letterSpacing: "0.1em", textTransform: "uppercase" }}>/ month</div>
                   </div>
                 </div>
                 <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1.5rem" }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.features.map((f, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.85rem", lineHeight: 1.6, color: "#888888", marginBottom: "0.875rem" }}>
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.85rem", lineHeight: 1.6, color: "#C8C8C8", marginBottom: "0.875rem" }}>
                       <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                       {f}
                     </li>
                   ))}
                 </ul>
                 {plan.note && (
-                  <div style={{ fontSize: "0.75rem", color: "#555555", lineHeight: 1.6, marginBottom: "1.5rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                  <div style={{ fontSize: "0.75rem", color: "#AAAAAA", lineHeight: 1.6, marginBottom: "1.5rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                     {plan.note}
                   </div>
                 )}
@@ -677,7 +677,7 @@ export default function Home() {
             Let's Get Your Business<br />
             <span style={{ color: "#C8102E" }}>On the Map.</span>
           </h2>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#888888", marginBottom: "3rem", maxWidth: 560, margin: "0 auto 3rem" }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#C8C8C8", marginBottom: "3rem", maxWidth: 560, margin: "0 auto 3rem" }}>
             I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF" }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
           </p>
           <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>

@@ -187,7 +187,7 @@ export default function Flyer() {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
             {["No Setup Fees", "No Long-Term Contracts", "No Empty Promises"].map((item) => (
-              <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "#888888", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+              <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "#C8C8C8", letterSpacing: "0.05em", textTransform: "uppercase" }}>
                 <div style={{ width: 6, height: 6, background: "#C8102E", borderRadius: "50%" }} />
                 {item}
               </div>
@@ -211,7 +211,7 @@ export default function Flyer() {
           ].map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
               <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, marginBottom: "0.4rem" }}>{s.num}</div>
-              <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#666666", textTransform: "uppercase" }}>{s.label}</div>
+              <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#C0C0C0", textTransform: "uppercase" }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -286,11 +286,11 @@ export default function Flyer() {
               }}>
                 <div style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>{step.phase}</div>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{step.title}</div>
-                <div style={{ fontSize: "0.78rem", lineHeight: 1.7, color: "#888888" }}>{step.desc}</div>
+                <div style={{ fontSize: "0.78rem", lineHeight: 1.7, color: "#C8C8C8" }}>{step.desc}</div>
               </div>
             ))}
           </div>
-          <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#666666", margin: 0, fontStyle: "italic" }}>
+          <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#C0C0C0", margin: 0, fontStyle: "italic" }}>
             The key is staying consistent — most businesses quit before the compounding kicks in.
           </p>
         </AccordionSection>
@@ -326,11 +326,11 @@ export default function Flyer() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
                     <div>
                       <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "#FFFFFF" }}>{plan.name}</div>
-                      <div style={{ fontSize: "0.72rem", color: "#666666" }}>{plan.tagline}</div>
+                      <div style={{ fontSize: "0.72rem", color: "#C0C0C0" }}>{plan.tagline}</div>
                     </div>
                     <div style={{ textAlign: "right" }}>
                       <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>{plan.price}</div>
-                      <div style={{ fontSize: "0.62rem", color: "#666666" }}>/month</div>
+                      <div style={{ fontSize: "0.62rem", color: "#C0C0C0" }}>/month</div>
                     </div>
                   </div>
                   <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1rem" }} />
@@ -373,7 +373,7 @@ export default function Flyer() {
             ].map((item, i) => (
               <div key={i} style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{item.title}</div>
-                <div style={{ fontSize: "0.78rem", color: "#888888", lineHeight: 1.7 }}>{item.desc}</div>
+                <div style={{ fontSize: "0.78rem", color: "#C8C8C8", lineHeight: 1.7 }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -399,7 +399,7 @@ export default function Flyer() {
             ].map((item, i) => (
               <div key={i} style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)", padding: "1.25rem" }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.3rem" }}>{item.title}</div>
-                <div style={{ fontSize: "0.78rem", color: "#888888", lineHeight: 1.7 }}>{item.desc}</div>
+                <div style={{ fontSize: "0.78rem", color: "#C8C8C8", lineHeight: 1.7 }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -452,7 +452,7 @@ export default function Flyer() {
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
             <div>
               <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1 }}>$97</div>
-              <div style={{ fontSize: "0.78rem", color: "#666666", marginTop: "0.3rem" }}>One-time — credited toward first month if you sign up</div>
+              <div style={{ fontSize: "0.78rem", color: "#C0C0C0", marginTop: "0.3rem" }}>One-time — credited toward first month if you sign up</div>
             </div>
             <a href="tel:9413288891" className="btn-primary" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
               <Phone size={16} /> Call to Book Your Audit
@@ -520,7 +520,7 @@ export default function Flyer() {
             </a>
           </div>
 
-          <div style={{ fontSize: "0.65rem", letterSpacing: "0.25em", color: "#555555", textTransform: "uppercase" }}>
+          <div style={{ fontSize: "0.65rem", letterSpacing: "0.25em", color: "#AAAAAA", textTransform: "uppercase" }}>
             GOTM Digital · gotmdigital.com · Serving Local Businesses Nationwide
           </div>
         </div>

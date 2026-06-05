@@ -103,7 +103,7 @@ export default function Contact() {
             Let's Talk About<br />
             <span style={{ color: "#C8102E" }}>Your Business.</span>
           </h1>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#888888", lineHeight: 1.8, maxWidth: 520 }}>
+          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, maxWidth: 520 }}>
             No sales pitch. No pressure. Just an honest conversation about where your business is and what digital marketing can realistically do for you.
           </p>
         </div>
@@ -185,7 +185,7 @@ export default function Contact() {
                   paddingLeft: "1.25rem",
                   marginBottom: "2.5rem",
                 }}>
-                  <p style={{ fontSize: "0.875rem", lineHeight: 1.8, color: "#888888", margin: 0 }}>
+                  <p style={{ fontSize: "0.875rem", lineHeight: 1.8, color: "#C8C8C8", margin: 0 }}>
                     <span style={{ color: "#FFFFFF", fontWeight: 600 }}>What to expect:</span> I'll ask about your business, your goals, and your budget. I'll tell you honestly what I think will work and what timeline is realistic. No pressure, no upsell.
                   </p>
                 </div>
@@ -210,7 +210,7 @@ export default function Contact() {
                       }}>
                         {i + 1}
                       </div>
-                      <span style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#888888" }}>{step}</span>
+                      <span style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#C8C8C8" }}>{step}</span>
                     </div>
                   ))}
                 </div>
@@ -230,7 +230,7 @@ export default function Contact() {
                   <h3 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>
                     Message Received.
                   </h3>
-                  <p style={{ fontSize: "0.9rem", color: "#888888", lineHeight: 1.8, marginBottom: "2rem" }}>
+                  <p style={{ fontSize: "0.9rem", color: "#C8C8C8", lineHeight: 1.8, marginBottom: "2rem" }}>
                     I'll be in touch within 24 hours. If you need to talk sooner, call or text me directly at (941) 328-8891.
                   </p>
                   <a href="tel:9413288891" className="btn-gold" style={{ justifyContent: "center" }}>
@@ -247,7 +247,7 @@ export default function Contact() {
 
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "rgba(255,255,255,0.06)", marginBottom: "1px" }}>
                     <div style={{ background: "#111111", padding: "1rem" }}>
-                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#555555", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                         Your Name *
                       </label>
                       <input
@@ -262,7 +262,7 @@ export default function Contact() {
                       />
                     </div>
                     <div style={{ background: "#111111", padding: "1rem" }}>
-                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#555555", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                         Phone Number *
                       </label>
                       <input
@@ -280,7 +280,7 @@ export default function Contact() {
 
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "rgba(255,255,255,0.06)", marginBottom: "1px" }}>
                     <div style={{ background: "#111111", padding: "1rem" }}>
-                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#555555", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                         Email Address
                       </label>
                       <input
@@ -294,7 +294,7 @@ export default function Contact() {
                       />
                     </div>
                     <div style={{ background: "#111111", padding: "1rem" }}>
-                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#555555", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                      <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                         Business Name
                       </label>
                       <input
@@ -310,7 +310,7 @@ export default function Contact() {
                   </div>
 
                   <div style={{ background: "#111111", padding: "1rem", marginBottom: "1px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#555555", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                       I'm Interested In
                     </label>
                     <select
@@ -329,7 +329,7 @@ export default function Contact() {
                   </div>
 
                   <div style={{ background: "#111111", padding: "1rem", borderTop: "1px solid rgba(255,255,255,0.06)", marginBottom: "1.5rem" }}>
-                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#555555", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                       Tell Me About Your Business
                     </label>
                     <textarea

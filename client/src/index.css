@@ -65,10 +65,10 @@
   --gotm-border2:    rgba(255,255,255,0.14);
 
   /* Text */
-  --gotm-text:       #E8E8E8;   /* primary body text */
+  --gotm-text:       #F0F0F0;   /* primary body text — near white */
   --gotm-heading:    #FFFFFF;   /* headings */
-  --gotm-muted:      #888888;   /* secondary text */
-  --gotm-light:      #555555;   /* tertiary / placeholder */
+  --gotm-muted:      #C8C8C8;   /* secondary text — light grey, easy to read */
+  --gotm-light:      #999999;   /* tertiary / placeholder */
 
   /* Shadcn tokens mapped to dark palette */
   --background:           oklch(0.07 0 0);
