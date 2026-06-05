@@ -2,50 +2,57 @@ import { useState } from "react";
 import { Phone, CheckCircle2, ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
-import GotmLogo from "@/components/GotmLogo";
 
-// ── Accordion Item ──────────────────────────────────────────
+const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp";
+
+// ── Dark Accordion ──────────────────────────────────────────
 function AccordionSection({
-  emoji,
   title,
   children,
   defaultOpen = false,
+  num,
 }: {
-  emoji: string;
   title: string;
   children: React.ReactNode;
   defaultOpen?: boolean;
+  num?: string;
 }) {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div style={{ marginBottom: "0.5rem" }}>
+    <div style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
           width: "100%",
-          background: open ? "#FFFFFF" : "#F4F4F4",
-          border: `1px solid ${open ? "#C8102E" : "#DEDEDE"}`,
-          borderBottom: open ? "none" : `1px solid ${open ? "#C8102E" : "#DEDEDE"}`,
-          borderRadius: open ? "10px 10px 0 0" : "10px",
-          color: "#111111",
-          padding: "1.1rem 1.25rem",
+          background: "transparent",
+          border: "none",
+          color: "#FFFFFF",
+          padding: "1.5rem 0",
           display: "flex",
           alignItems: "center",
-          gap: "0.875rem",
+          gap: "1rem",
           cursor: "pointer",
           textAlign: "left",
-          transition: "border-color 0.2s, background 0.2s",
         }}
       >
-        <span style={{ fontSize: "1.375rem", flexShrink: 0 }}>{emoji}</span>
+        {num && (
+          <span style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "1.1rem",
+            fontWeight: 900,
+            color: "rgba(200,16,46,0.5)",
+            minWidth: "2rem",
+            letterSpacing: "-0.02em",
+          }}>{num}</span>
+        )}
         <span style={{
           flex: 1,
           fontFamily: "'DM Sans', sans-serif",
           fontSize: "1rem",
-          fontWeight: 600,
-          color: "#111111",
-          letterSpacing: "0.01em",
+          fontWeight: 700,
+          color: "#FFFFFF",
+          letterSpacing: "-0.01em",
         }}>
           {title}
         </span>
@@ -61,11 +68,8 @@ function AccordionSection({
       </button>
       {open && (
         <div style={{
-          background: "#FFFFFF",
-          border: "1px solid #C8102E",
-          borderTop: "none",
-          borderRadius: "0 0 10px 10px",
-          padding: "1.25rem 1.5rem 1.5rem",
+          paddingBottom: "1.75rem",
+          paddingLeft: num ? "3rem" : "0",
         }}>
           {children}
         </div>
@@ -76,495 +80,451 @@ function AccordionSection({
 
 export default function Flyer() {
   return (
-    <div style={{ background: "#F0F0F0", color: "#222222", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: "#0A0A0A", color: "#FFFFFF", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
       <Navbar />
 
-      <div style={{ paddingTop: "5rem" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto", padding: "2rem 1.5rem 4rem" }}>
+      {/* ── HERO ── */}
+      <section style={{
+        position: "relative",
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        overflow: "hidden",
+      }}>
+        {/* Background image */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `url(${HERO_BG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.35,
+        }} />
+        {/* Dark overlay */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(160deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.72) 50%, rgba(5,5,10,0.88) 100%)",
+        }} />
+        {/* Red glow */}
+        <div style={{
+          position: "absolute", top: "40%", left: "50%", transform: "translate(-50%, -50%)",
+          width: 800, height: 800,
+          background: "radial-gradient(circle, rgba(200,16,46,0.08) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
 
-          {/* ── FLYER HEADER ── */}
-          <div style={{
-            border: "2px solid rgba(200,16,46,0.5)",
-            borderRadius: "14px 14px 0 0",
-            padding: "3rem 2.5rem 2.5rem",
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden",
-          }}>
-            {/* Hero background image */}
-            <div style={{
-              position: "absolute", inset: 0,
-              backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: 0.45,
-            }} />
-            {/* Dark overlay */}
-            <div style={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(160deg, rgba(10,10,20,0.82) 0%, rgba(10,10,20,0.62) 50%, rgba(10,10,20,0.78) 100%)",
-            }} />
-            {/* Radial red glow */}
-            <div style={{
-              position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)",
-              width: 600, height: 600,
-              background: "radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%)",
-              pointerEvents: "none",
-            }} />
-            {/* Red corner accents */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "14px 0 0 0", zIndex: 2 }} />
-            <div style={{ position: "absolute", top: 0, right: 0, width: 60, height: 60, borderTop: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 14px 0 0", zIndex: 2 }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, width: 60, height: 60, borderBottom: "3px solid rgba(200,16,46,0.3)", borderLeft: "3px solid rgba(200,16,46,0.3)", zIndex: 2 }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: 60, height: 60, borderBottom: "3px solid rgba(200,16,46,0.3)", borderRight: "3px solid rgba(200,16,46,0.3)", zIndex: 2 }} />
+        {/* Corner accents */}
+        <div style={{ position: "absolute", top: 80, left: 32, width: 48, height: 48, borderTop: "1px solid rgba(200,16,46,0.6)", borderLeft: "1px solid rgba(200,16,46,0.6)", zIndex: 2 }} />
+        <div style={{ position: "absolute", top: 80, right: 32, width: 48, height: 48, borderTop: "1px solid rgba(200,16,46,0.6)", borderRight: "1px solid rgba(200,16,46,0.6)", zIndex: 2 }} />
 
-            {/* Content wrapper — sits above background layers */}
-            <div style={{ position: "relative", zIndex: 3 }}>
+        <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: 900, margin: "0 auto", padding: "8rem 2rem 5rem" }}>
 
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.5rem" }}>
-              {/* Flyer-specific logo with white GOTM text */}
-              <svg
-                width={220}
-                height={220 * (110 / 300)}
-                viewBox="0 0 300 110"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <defs>
-                  <linearGradient id="flyerGradLogo" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: "#E8304A", stopOpacity: 1 }} />
-                    <stop offset="100%" style={{ stopColor: "#C8102E", stopOpacity: 1 }} />
-                  </linearGradient>
-                  <filter id="flyerGlowLogo">
-                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
-                    <feMerge>
-                      <feMergeNode in="coloredBlur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-                <g transform="translate(18, 10)" filter="url(#flyerGlowLogo)">
-                  {/* Outer circle */}
-                  <circle cx="36" cy="36" r="30" fill="none" stroke="url(#flyerGradLogo)" strokeWidth="2.5" />
-                  {/* Inner circle */}
-                  <circle cx="36" cy="36" r="18" fill="none" stroke="url(#flyerGradLogo)" strokeWidth="2" />
-                  {/* Centre dot */}
-                  <circle cx="36" cy="36" r="3.5" fill="url(#flyerGradLogo)" />
-                  {/* Top tick */}
-                  <line x1="36" y1="0"  x2="36" y2="14" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-                  {/* Bottom tick */}
-                  <line x1="36" y1="58" x2="36" y2="72" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-                  {/* Left tick */}
-                  <line x1="0"  y1="36" x2="14" y2="36" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-                  {/* Right tick */}
-                  <line x1="58" y1="36" x2="72" y2="36" stroke="url(#flyerGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-                </g>
-                <text x="100" y="58" fontFamily="Playfair Display, Georgia, serif" fontWeight="900" fontSize="56" fill="#FFFFFF" letterSpacing="-1">GOTM</text>
-                <line x1="100" y1="68" x2="294" y2="68" stroke="url(#flyerGradLogo)" strokeWidth="1" opacity="0.5" />
-                <text x="197" y="84" fontFamily="DM Sans, sans-serif" fontWeight="600" fontSize="13" fill="url(#flyerGradLogo)" textAnchor="middle" letterSpacing="5">DIGITAL</text>
-                <text x="197" y="100" fontFamily="DM Sans, sans-serif" fontWeight="400" fontSize="10" fill="#CCCCCC" textAnchor="middle" letterSpacing="2">MARKETING THAT WORKS</text>
-              </svg>
-            </div>
-
-            <div style={{
-              display: "inline-block",
-              background: "rgba(200,16,46,0.35)",
-              border: "1px solid rgba(255,255,255,0.5)",
-              borderRadius: 100,
-              padding: "0.4rem 1.25rem",
-              fontSize: "0.7rem",
-              letterSpacing: "0.2em",
-              color: "#FFFFFF",
-              textTransform: "uppercase",
-              fontWeight: 700,
-              marginBottom: "1.5rem",
-            }}>
-              Honest Digital Marketing for Local Service Businesses
-            </div>
-
-            <h1 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.75rem, 5vw, 3rem)",
-              fontWeight: 900,
-              color: "#FFFFFF",
-              lineHeight: 1.15,
-              marginBottom: "1rem",
-              textShadow: "0 2px 12px rgba(0,0,0,0.9)",
-            }}>
-              Get Your Business Found on Google,<br />
-              <span style={{ color: "#C8102E" }}>Maps, and AI Search.</span>
-            </h1>
-
-            <p style={{ fontSize: "1rem", color: "#FFFFFF", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 1.5rem", textShadow: "0 1px 6px rgba(0,0,0,0.9)" }}>
-              Websites, local SEO, Google Business Profiles, and Google Ads built for the new way customers search — no setup fees, no big promises, starting at{" "}
-              <strong style={{ color: "#FFB3C1", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>$100/month</strong>.
-            </p>
-
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-              {["No Setup Fees", "No Long-Term Contracts", "No Empty Promises"].map((item) => (
-                <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "#FFFFFF", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>
-                  <CheckCircle2 size={13} style={{ color: "#C8102E" }} /> {item}
-                </div>
-              ))}
-            </div>
-            </div>{/* end content wrapper */}
+          {/* Logo SVG */}
+          <div style={{ marginBottom: "2.5rem" }}>
+            <svg width={200} height={200 * (110 / 300)} viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="flyerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: "#E8304A", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "#C8102E", stopOpacity: 1 }} />
+                </linearGradient>
+              </defs>
+              <g transform="translate(18, 10)">
+                <circle cx="36" cy="36" r="30" fill="none" stroke="url(#flyerGrad)" strokeWidth="2.5" />
+                <circle cx="36" cy="36" r="18" fill="none" stroke="url(#flyerGrad)" strokeWidth="2" />
+                <circle cx="36" cy="36" r="3.5" fill="url(#flyerGrad)" />
+                <line x1="36" y1="0"  x2="36" y2="14" stroke="url(#flyerGrad)" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="36" y1="58" x2="36" y2="72" stroke="url(#flyerGrad)" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="0"  y1="36" x2="14" y2="36" stroke="url(#flyerGrad)" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="58" y1="36" x2="72" y2="36" stroke="url(#flyerGrad)" strokeWidth="2.5" strokeLinecap="round" />
+              </g>
+              <text x="100" y="58" fontFamily="Playfair Display, Georgia, serif" fontWeight="900" fontSize="56" fill="#FFFFFF" letterSpacing="-1">GOTM</text>
+              <line x1="100" y1="68" x2="294" y2="68" stroke="url(#flyerGrad)" strokeWidth="1" opacity="0.5" />
+              <text x="197" y="84" fontFamily="DM Sans, sans-serif" fontWeight="600" fontSize="13" fill="url(#flyerGrad)" textAnchor="middle" letterSpacing="5">DIGITAL</text>
+              <text x="197" y="100" fontFamily="DM Sans, sans-serif" fontWeight="400" fontSize="10" fill="#AAAAAA" textAnchor="middle" letterSpacing="2">MARKETING THAT WORKS</text>
+            </svg>
           </div>
 
-          {/* ── GOLD DIVIDER ── */}
-          <div style={{ height: 4, background: "linear-gradient(90deg, transparent, #C8102E, transparent)" }} />
-
-          {/* ── ACCORDION SECTIONS ── */}
-          <div style={{
-            background: "#E8E8E8",
-            border: "1px solid #D0D0D0",
-            borderTop: "none",
-            padding: "2rem 2rem 2.5rem",
-            borderRadius: "0 0 14px 14px",
-          }}>
-
-            {/* Section header */}
-            <div style={{ textAlign: "center", marginBottom: "1.75rem" }}>
-              <div style={{
-                display: "inline-block",
-                fontSize: "0.65rem",
-                letterSpacing: "0.2em",
-                color: "#C8102E",
-                textTransform: "uppercase",
-                fontWeight: 700,
-                marginBottom: "0.5rem",
-              }}>
-                The Honest Truth
-              </div>
-              <h2 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
-                fontWeight: 900,
-                color: "#111111",
-                lineHeight: 1.2,
-                margin: 0,
-              }}>
-                What Nobody Else Will Tell You About{" "}
-                <span style={{ color: "#C8102E" }}>Digital Marketing</span>
-              </h2>
-            </div>
-
-            {/* ── DROPDOWN 1: New Websites Take Time ── */}
-            <AccordionSection emoji="🌱" title="New Websites Take Time — Here's Why" defaultOpen={true}>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: 0 }}>
-                A brand-new domain won't rank on Google overnight. It typically takes <strong>1–3 years</strong> to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal.
-              </p>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0.75rem 0 0" }}>
-                Think of your website as an investment that <strong>compounds over time</strong>. The businesses that stay consistent are the ones that win. That's why we keep your monthly costs low — so you can stay in the game long enough for it to pay off.
-              </p>
-            </AccordionSection>
-
-            {/* ── DROPDOWN 2: Custom HTML ── */}
-            <AccordionSection emoji="🏗️" title="Why Custom HTML Beats WordPress & Others">
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: 0 }}>
-                Custom HTML sites <strong>load faster and rank better</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one: meta tags, schema markup, mobile layout, image compression, and site structure.
-              </p>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0.75rem 0 0" }}>
-                Over time, this foundation consistently outperforms WordPress, GoHighLevel, Wix, and Squarespace — especially for local service businesses where page speed and local SEO signals matter most.
-              </p>
-            </AccordionSection>
-
-            {/* ── DROPDOWN 3: Google Business Profile ── */}
-            <AccordionSection emoji="⭐" title="Google Business Profile — Your Most Powerful Free Tool">
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: 0 }}>
-                Your Google Business Profile is your most powerful free tool while your website grows. <strong>Ask every single customer for a review — every time, no exceptions.</strong> Reviews build local trust fast and can start showing results within weeks.
-              </p>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0.75rem 0 0" }}>
-                Keep your profile active: photos, hours, services, and regular posts all signal credibility to Google. This works independently of your website's age — it's your fastest path to local visibility right now.
-              </p>
-            </AccordionSection>
-
-            {/* ── DROPDOWN 4: Google Ads ── */}
-            <AccordionSection emoji="⚡" title="Need Leads Right Now? — Google Ads">
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: 0 }}>
-                Google Ads put you in front of people <strong>actively searching for your services today</strong> — not in two years. We build dedicated landing pages in the same clean HTML format — fast, focused, and built to convert.
-              </p>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0.75rem 0 0" }}>
-                You control the budget and only pay when someone clicks your ad. Ads bridge the gap while your organic SEO matures — scale back once the site takes off. <strong>Ad spend is paid directly by you to Google</strong> — our fee covers strategy, setup, and management only.
-              </p>
-            </AccordionSection>
-
-            {/* ── DROPDOWN 5: Growth Timeline ── */}
-            <AccordionSection emoji="🗺️" title="The Growth Timeline — What to Expect">
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "0.875rem", marginBottom: "1rem" }}>
-                {[
-                  { phase: "Day 1", icon: "🚀", title: "We Get to Work", desc: "Website live, SEO configured, Google Business Profile optimized." },
-                  { phase: "Months 1–6", icon: "📈", title: "Foundation Built", desc: "Profile active, reviews rolling in, ads running if budget allows." },
-                  { phase: "Months 6–18", icon: "⭐", title: "SEO Gains Traction", desc: "Domain builds authority. Content starts paying off. Rankings improve." },
-                  { phase: "Year 2–3", icon: "🏆", title: "Organic Leads Flow", desc: "ROI accelerates. Ads become optional. Your website works while you sleep." },
-                ].map((step, i) => (
-                  <div key={i} style={{
-                    background: "#F8F8F8",
-                    border: "1px solid #DEDEDE",
-                    borderTop: "2px solid #C8102E",
-                    borderRadius: 8,
-                    padding: "1rem",
-                    textAlign: "center",
-                  }}>
-                    <div style={{ fontSize: "1.375rem", marginBottom: "0.4rem" }}>{step.icon}</div>
-                    <div style={{ fontSize: "0.6rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.3rem" }}>{step.phase}</div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.85rem", fontWeight: 700, color: "#111111", marginBottom: "0.3rem" }}>{step.title}</div>
-                    <div style={{ fontSize: "0.75rem", lineHeight: 1.6, color: "#666666" }}>{step.desc}</div>
-                  </div>
-                ))}
-              </div>
-              <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#666666", margin: 0, textAlign: "center", fontStyle: "italic" }}>
-                The key is staying consistent — most businesses quit before the compounding kicks in.
-              </p>
-            </AccordionSection>
-
-            {/* ── DROPDOWN 6: Services & Pricing ── */}
-            <AccordionSection emoji="💰" title="Services & Pricing — No Setup Fees. No Surprises. Ever.">
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: "1rem", marginBottom: "1rem" }}>
-                {[
-                  {
-                    name: "Starter", price: "$100", tagline: "Your foundation, done right", featured: false,
-                    features: ["Custom HTML website", "Full SEO optimization", "AI search optimization built in", "Google Business Profile setup", "Unlimited updates & edits", "Mobile-responsive design"],
-                  },
-                  {
-                    name: "Growth", price: "$300", tagline: "Stay active, stay visible", featured: true,
-                    features: ["Everything in Starter", "Weekly website posts", "Weekly Google Business posts", "AI search & conversational query targeting", "Content strategy & keywords", "Monthly performance report"],
-                  },
-                  {
-                    name: "Full Service", price: "$500", tagline: "Leads now + growth long-term", featured: false,
-                    features: ["Everything in Growth", "Google Ads management", "Custom landing pages", "AI-ready landing page content", "Ongoing ad optimization", "Full ROI reporting"],
-                  },
-                ].map((plan, i) => (
-                  <div key={i} style={{
-                    background: plan.featured ? "#FFFFFF" : "#F8F8F8",
-                    border: `1px solid ${plan.featured ? "#C8102E" : "#DEDEDE"}`,
-                    borderTop: `3px solid ${plan.featured ? "#C8102E" : "#DEDEDE"}`,
-                    borderRadius: 8,
-                    overflow: "hidden",
-                  }}>
-                    {plan.featured && (
-                      <div style={{ background: "#C8102E", color: "#FFFFFF", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", padding: "0.3rem" }}>
-                        Most Popular
-                      </div>
-                    )}
-                    <div style={{ padding: "1.1rem" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.875rem" }}>
-                        <div>
-                          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: "#111111" }}>{plan.name}</div>
-                          <div style={{ fontSize: "0.72rem", color: "#666666" }}>{plan.tagline}</div>
-                        </div>
-                        <div style={{ textAlign: "right" }}>
-                          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>{plan.price}</div>
-                          <div style={{ fontSize: "0.62rem", color: "#666666" }}>/month</div>
-                        </div>
-                      </div>
-                      <hr style={{ border: "none", borderTop: "1px solid #EBEBEB", margin: "0 0 0.875rem" }} />
-                      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                        {plan.features.map((f, j) => (
-                          <li key={j} style={{ display: "flex", gap: "0.4rem", fontSize: "0.78rem", lineHeight: 1.6, color: "#444444", marginBottom: "0.4rem" }}>
-                            <CheckCircle2 size={12} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} /> {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div style={{
-                background: "rgba(200,16,46,0.06)",
-                border: "1px solid rgba(200,16,46,0.2)",
-                borderRadius: 8,
-                padding: "0.875rem 1rem",
-                fontSize: "0.78rem",
-                color: "#C8102E",
-                lineHeight: 1.65,
-                textAlign: "center",
-              }}>
-                📌 <strong>Ad spend for Google Ads is paid directly by you to Google.</strong> Our fee covers strategy, setup, and management only. You stay in full control of your budget.
-              </div>
-            </AccordionSection>
-
-            {/* ── DROPDOWN 6b: AI Search Optimization ── */}
-            <AccordionSection emoji="🤖" title="AI Search Optimization — Built Into Everything We Do">
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0 0 1rem" }}>
-                Search is changing. Customers are no longer just typing short keywords into Google. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted.
-              </p>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#444444", margin: "0 0 1rem" }}>
-                Got'm Digital builds every website, Google profile, and content strategy so your business is easier to find, understand, and trust in modern search — including traditional rankings, map results, conversational queries, and AI-answer readiness.
-              </p>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "0.75rem" }}>
-                {[
-                  { icon: "🌐", title: "AI-Ready Websites", desc: "Clear service pages, FAQs, schema, and structured content AI tools can read and recommend." },
-                  { icon: "📍", title: "Profile & Citation Match", desc: "Business info consistent across your site, Google profile, and directories." },
-                  { icon: "⭐", title: "Reviews & Trust Signals", desc: "Review strategy that builds credibility with customers and AI-powered search." },
-                  { icon: "📝", title: "Content That Answers Questions", desc: "What you do, where you work, what it costs — in a format search engines can use." },
-                ].map((item, i) => (
-                  <div key={i} style={{ background: "#F8F8F8", border: "1px solid #DEDEDE", borderTop: "2px solid #C8102E", borderRadius: 8, padding: "0.875rem", display: "flex", gap: "0.625rem", alignItems: "flex-start" }}>
-                    <span style={{ fontSize: "1.1rem", flexShrink: 0 }}>{item.icon}</span>
-                    <div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.8rem", fontWeight: 700, color: "#111111", marginBottom: "0.2rem" }}>{item.title}</div>
-                      <div style={{ fontSize: "0.72rem", color: "#666666", lineHeight: 1.6 }}>{item.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </AccordionSection>
-
-            {/* ── DROPDOWN 7: Why GOTM Digital ── */}
-            <AccordionSection emoji="🎯" title="Why GOTM Digital — Built Different. On Purpose.">
-              <div style={{
-                background: "rgba(200,16,46,0.04)",
-                border: "1px solid rgba(200,16,46,0.15)",
-                borderLeft: "3px solid #C8102E",
-                borderRadius: "0 8px 8px 0",
-                padding: "1rem 1.25rem",
-                marginBottom: "1.25rem",
-              }}>
-                <p style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#333333", fontStyle: "italic", margin: 0 }}>
-                  "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay. I built this company to be honest about how it really works, keep your upfront costs low with no setup fees, and grow with you as you grow."
-                </p>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "0.875rem" }}>
-                {[
-                  { icon: "💰", title: "Zero Setup Fees", desc: "On anything. You pay monthly, starting small." },
-                  { icon: "📈", title: "Compounds Over Time", desc: "Like a savings account for your business." },
-                  { icon: "🤝", title: "Grows With You", desc: "No upselling until you're ready." },
-                  { icon: "🎯", title: "Local Service Focus", desc: "Exclusively for local service businesses." },
-                ].map((item, i) => (
-                  <div key={i} style={{
-                    background: "#F8F8F8",
-                    border: "1px solid #DEDEDE",
-                    borderRadius: 8,
-                    padding: "1rem",
-                    display: "flex",
-                    gap: "0.75rem",
-                    alignItems: "flex-start",
-                  }}>
-                    <span style={{ fontSize: "1.25rem", flexShrink: 0 }}>{item.icon}</span>
-                    <div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.875rem", fontWeight: 700, color: "#111111", marginBottom: "0.2rem" }}>{item.title}</div>
-                      <div style={{ fontSize: "0.78rem", color: "#666666", lineHeight: 1.6 }}>{item.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </AccordionSection>
-
+          <div className="eyebrow" style={{ marginBottom: "1.5rem" }}>
+            Honest Digital Marketing · Local Service Businesses
           </div>
 
-          {/* ── AUDIT OFFER CALLOUT ── */}
-          <div style={{
-            background: "#FFFFFF",
-            border: "2px solid rgba(200,16,46,0.35)",
-            borderTop: "none",
-            padding: "2rem 2rem 2.25rem",
-            marginTop: 0,
+          <h1 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(2.5rem, 7vw, 5rem)",
+            fontWeight: 900,
+            color: "#FFFFFF",
+            lineHeight: 1.05,
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.03em",
           }}>
-            <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-              <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.5rem" }}>New Offer</div>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", fontWeight: 900, color: "#111111", lineHeight: 1.2, marginBottom: "0.75rem" }}>
-                Web Presence &amp; AI Search Readiness Audit
-              </h2>
-              <p style={{ fontSize: "0.875rem", lineHeight: 1.75, color: "#444444", maxWidth: 560, margin: "0 auto" }}>
-                A clear, honest review of your current website, Google Business Profile, reviews, local citations, and AI search readiness — with specific recommendations for what to fix, update, or improve.
-              </p>
+            Get Your Business Found<br />
+            on Google, Maps,<br />
+            <span style={{ color: "#C8102E" }}>and AI Search.</span>
+          </h1>
+
+          <p style={{ fontSize: "1.1rem", color: "#AAAAAA", lineHeight: 1.8, maxWidth: 560, marginBottom: "2.5rem" }}>
+            Websites, local SEO, Google Business Profiles, and Google Ads built for the new way customers search — no setup fees, no big promises, starting at{" "}
+            <strong style={{ color: "#FFFFFF" }}>$100/month</strong>.
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginBottom: "3rem" }}>
+            <a href="tel:9413288891" className="btn-primary" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              <Phone size={16} /> (941) 328-8891
+            </a>
+            <a href="mailto:info@gotmdigital.com" style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              padding: "0.875rem 2rem",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "#FFFFFF",
+              fontSize: "0.9rem",
+              fontWeight: 600,
+              letterSpacing: "0.05em",
+              textDecoration: "none",
+              transition: "border-color 0.2s",
+            }}>
+              info@gotmdigital.com
+            </a>
+          </div>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
+            {["No Setup Fees", "No Long-Term Contracts", "No Empty Promises"].map((item) => (
+              <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "#888888", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+                <div style={{ width: 6, height: 6, background: "#C8102E", borderRadius: "50%" }} />
+                {item}
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── RED DIVIDER ── */}
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #C8102E 30%, #C8102E 70%, transparent)" }} />
+
+      {/* ── STATS BAR ── */}
+      <section style={{ background: "#0D0D0D", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "2.5rem 2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "2rem" }}>
+          {[
+            { num: "100+", label: "Clients Served" },
+            { num: "$0", label: "Setup Fees. Ever." },
+            { num: "6", label: "Active Client Sites" },
+            { num: "1–2 wks", label: "Avg. Launch Time" },
+          ].map((s, i) => (
+            <div key={i} style={{ textAlign: "center" }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, marginBottom: "0.4rem" }}>{s.num}</div>
+              <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#666666", textTransform: "uppercase" }}>{s.label}</div>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
-              {[
-                { label: "Website Review", items: ["Page speed & mobile", "Service page clarity", "Schema & structured data", "Meta tags & headings"] },
-                { label: "Google Business Profile", items: ["Profile completeness", "Category accuracy", "Review patterns", "Posts & Q&A activity"] },
-                { label: "AI Search Readiness", items: ["Business description clarity", "FAQ & Q&A content", "Citation consistency", "Trust signal assessment"] },
-              ].map((col, i) => (
-                <div key={i} style={{ background: "#F8F8F8", border: "1px solid #EBEBEB", borderRadius: 8, padding: "1rem" }}>
-                  <div style={{ fontSize: "0.62rem", letterSpacing: "0.15em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.625rem" }}>{col.label}</div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── ACCORDION CONTENT ── */}
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 2rem" }}>
+
+        <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>The Honest Truth</div>
+        <h2 style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
+          fontWeight: 900,
+          color: "#FFFFFF",
+          lineHeight: 1.15,
+          marginBottom: "3rem",
+          letterSpacing: "-0.02em",
+        }}>
+          What Nobody Else Will Tell You About{" "}
+          <span style={{ color: "#C8102E" }}>Digital Marketing</span>
+        </h2>
+
+        <AccordionSection num="01" title="New Websites Take Time — Here's Why" defaultOpen={true}>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
+            A brand-new domain won't rank on Google overnight. It typically takes <strong style={{ color: "#FFFFFF" }}>1–3 years</strong> to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal.
+          </p>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
+            Think of your website as an investment that <strong style={{ color: "#FFFFFF" }}>compounds over time</strong>. The businesses that stay consistent are the ones that win. That's why we keep your monthly costs low — so you can stay in the game long enough for it to pay off.
+          </p>
+        </AccordionSection>
+
+        <AccordionSection num="02" title="Why Custom HTML Beats WordPress & Others">
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
+            Custom HTML sites <strong style={{ color: "#FFFFFF" }}>load faster and rank better</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one: meta tags, schema markup, mobile layout, image compression, and site structure.
+          </p>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
+            Over time, this foundation consistently outperforms WordPress, GoHighLevel, Wix, and Squarespace — especially for local service businesses where page speed and local SEO signals matter most.
+          </p>
+        </AccordionSection>
+
+        <AccordionSection num="03" title="Google Business Profile — Your Most Powerful Free Tool">
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
+            Your Google Business Profile is your most powerful free tool while your website grows. <strong style={{ color: "#FFFFFF" }}>Ask every single customer for a review — every time, no exceptions.</strong> Reviews build local trust fast and can start showing results within weeks.
+          </p>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
+            Keep your profile active: photos, hours, services, and regular posts all signal credibility to Google. This works independently of your website's age — it's your fastest path to local visibility right now.
+          </p>
+        </AccordionSection>
+
+        <AccordionSection num="04" title="Need Leads Right Now? — Google Ads">
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
+            Google Ads put you in front of people <strong style={{ color: "#FFFFFF" }}>actively searching for your services today</strong> — not in two years. We build dedicated landing pages in the same clean HTML format — fast, focused, and built to convert.
+          </p>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
+            You control the budget and only pay when someone clicks your ad. Ads bridge the gap while your organic SEO matures — scale back once the site takes off. <strong style={{ color: "#FFFFFF" }}>Ad spend is paid directly by you to Google</strong> — our fee covers strategy, setup, and management only.
+          </p>
+        </AccordionSection>
+
+        <AccordionSection num="05" title="The Growth Timeline — What to Expect">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", marginBottom: "1rem" }}>
+            {[
+              { phase: "Day 1", title: "We Get to Work", desc: "Website live, SEO configured, Google Business Profile optimized." },
+              { phase: "Months 1–6", title: "Foundation Built", desc: "Profile active, reviews rolling in, ads running if budget allows." },
+              { phase: "Months 6–18", title: "SEO Gains Traction", desc: "Domain builds authority. Content starts paying off. Rankings improve." },
+              { phase: "Year 2–3", title: "Organic Leads Flow", desc: "ROI accelerates. Ads become optional. Your website works while you sleep." },
+            ].map((step, i) => (
+              <div key={i} style={{
+                background: "#111111",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderTop: "2px solid #C8102E",
+                padding: "1.25rem",
+              }}>
+                <div style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>{step.phase}</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{step.title}</div>
+                <div style={{ fontSize: "0.78rem", lineHeight: 1.7, color: "#888888" }}>{step.desc}</div>
+              </div>
+            ))}
+          </div>
+          <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#666666", margin: 0, fontStyle: "italic" }}>
+            The key is staying consistent — most businesses quit before the compounding kicks in.
+          </p>
+        </AccordionSection>
+
+        <AccordionSection num="06" title="Services & Pricing — No Setup Fees. No Surprises. Ever.">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem", marginBottom: "1rem" }}>
+            {[
+              {
+                name: "Starter", price: "$100", tagline: "Your foundation, done right", featured: false,
+                features: ["Custom HTML website", "Full SEO optimization", "AI search optimization built in", "Google Business Profile setup", "Unlimited updates & edits", "Mobile-responsive design"],
+              },
+              {
+                name: "Growth", price: "$300", tagline: "Stay active, stay visible", featured: true,
+                features: ["Everything in Starter", "Weekly website posts", "Weekly Google Business posts", "AI search & conversational query targeting", "Content strategy & keywords", "Monthly performance report"],
+              },
+              {
+                name: "Full Service", price: "$500", tagline: "Leads now + growth long-term", featured: false,
+                features: ["Everything in Growth", "Google Ads management", "Custom landing pages", "AI-ready landing page content", "Ongoing ad optimization", "Full ROI reporting"],
+              },
+            ].map((plan, i) => (
+              <div key={i} style={{
+                background: plan.featured ? "#111111" : "#0D0D0D",
+                border: `1px solid ${plan.featured ? "rgba(200,16,46,0.5)" : "rgba(255,255,255,0.06)"}`,
+                borderTop: `2px solid ${plan.featured ? "#C8102E" : "rgba(255,255,255,0.1)"}`,
+                overflow: "hidden",
+              }}>
+                {plan.featured && (
+                  <div style={{ background: "#C8102E", color: "#FFFFFF", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", padding: "0.3rem" }}>
+                    Most Popular
+                  </div>
+                )}
+                <div style={{ padding: "1.25rem" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+                    <div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "#FFFFFF" }}>{plan.name}</div>
+                      <div style={{ fontSize: "0.72rem", color: "#666666" }}>{plan.tagline}</div>
+                    </div>
+                    <div style={{ textAlign: "right" }}>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>{plan.price}</div>
+                      <div style={{ fontSize: "0.62rem", color: "#666666" }}>/month</div>
+                    </div>
+                  </div>
+                  <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1rem" }} />
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                    {col.items.map((item, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.4rem", fontSize: "0.75rem", lineHeight: 1.6, color: "#444444", marginBottom: "0.35rem" }}>
-                        <CheckCircle2 size={11} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} /> {item}
+                    {plan.features.map((f, j) => (
+                      <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.8rem", lineHeight: 1.7, color: "#AAAAAA", marginBottom: "0.4rem" }}>
+                        <CheckCircle2 size={13} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} /> {f}
                       </li>
                     ))}
                   </ul>
                 </div>
-              ))}
-            </div>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem", borderTop: "1px solid #EBEBEB", paddingTop: "1.25rem" }}>
-              <div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>$97</div>
-                <div style={{ fontSize: "0.72rem", color: "#666666", marginTop: "0.2rem" }}>One-time — credited toward first month if you sign up</div>
               </div>
-              <a href="tel:9413288891" className="btn-gold" style={{ padding: "0.75rem 1.5rem", fontSize: "0.9rem" }}>
-                <Phone size={14} /> Call to Book Your Audit
-              </a>
-            </div>
+            ))}
           </div>
-
-          {/* ── FLYER CTA FOOTER ── */}
           <div style={{
-            border: "2px solid rgba(200,16,46,0.4)",
-            borderTop: "none",
-            borderRadius: "0 0 14px 14px",
-            padding: "2.5rem",
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden",
-            marginTop: "0.5rem",
+            background: "rgba(200,16,46,0.06)",
+            border: "1px solid rgba(200,16,46,0.2)",
+            padding: "0.875rem 1rem",
+            fontSize: "0.78rem",
+            color: "#AAAAAA",
+            lineHeight: 1.65,
           }}>
-            {/* Hero background image */}
-            <div style={{
-              position: "absolute", inset: 0,
-              backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: 0.45,
-            }} />
-            {/* Dark overlay */}
-            <div style={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(160deg, rgba(10,10,20,0.82) 0%, rgba(10,10,20,0.62) 50%, rgba(10,10,20,0.78) 100%)",
-            }} />
-            {/* Radial red glow */}
-            <div style={{
-              position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-              width: 500, height: 500,
-              background: "radial-gradient(circle, rgba(200,16,46,0.06) 0%, transparent 70%)",
-              pointerEvents: "none",
-            }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderLeft: "3px solid #C8102E", borderRadius: "0 0 0 14px", zIndex: 2 }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: 60, height: 60, borderBottom: "3px solid #C8102E", borderRight: "3px solid #C8102E", borderRadius: "0 0 14px 0", zIndex: 2 }} />
+            📌 <strong style={{ color: "#FFFFFF" }}>Ad spend for Google Ads is paid directly by you to Google.</strong> Our fee covers strategy, setup, and management only. You stay in full control of your budget.
+          </div>
+        </AccordionSection>
 
-            {/* Content wrapper — sits above background layers */}
-            <div style={{ position: "relative", zIndex: 3 }}>
+        <AccordionSection num="07" title="AI Search Optimization — Built Into Everything We Do">
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0 0 1rem" }}>
+            Search is changing. Customers are no longer just typing short keywords into Google. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted.
+          </p>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0 0 1.5rem" }}>
+            Got'm Digital builds every website, Google profile, and content strategy so your business is easier to find, understand, and trust in modern search — including traditional rankings, map results, conversational queries, and AI-answer readiness.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.875rem" }}>
+            {[
+              { title: "AI-Ready Websites", desc: "Clear service pages, FAQs, schema, and structured content AI tools can read and recommend." },
+              { title: "Profile & Citation Match", desc: "Business info consistent across your site, Google profile, and directories." },
+              { title: "Reviews & Trust Signals", desc: "Review strategy that builds credibility with customers and AI-powered search." },
+              { title: "Content That Answers Questions", desc: "What you do, where you work, what it costs — in a format search engines can use." },
+            ].map((item, i) => (
+              <div key={i} style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{item.title}</div>
+                <div style={{ fontSize: "0.78rem", color: "#888888", lineHeight: 1.7 }}>{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </AccordionSection>
 
-            <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🎯</div>
-            <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
-              fontWeight: 900,
-              color: "#FFFFFF",
-              marginBottom: "0.875rem",
-              textShadow: "0 2px 12px rgba(0,0,0,0.8)",
-            }}>
-              Ready to Get on the Map?
-            </h2>
-            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#FFFFFF", marginBottom: "1.75rem", maxWidth: 500, margin: "0 auto 1.75rem", textShadow: "0 1px 6px rgba(0,0,0,0.9)" }}>
-              I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF", fontWeight: 800 }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
+        <AccordionSection num="08" title="Why GOTM Digital — Built Different. On Purpose.">
+          <div style={{
+            background: "#111111",
+            borderLeft: "3px solid #C8102E",
+            padding: "1.25rem 1.5rem",
+            marginBottom: "1.5rem",
+          }}>
+            <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", fontStyle: "italic", margin: 0 }}>
+              "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay. I built this company to be honest about how it really works, keep your upfront costs low with no setup fees, and grow with you as you grow."
             </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "1rem" }}>
+            {[
+              { title: "Zero Setup Fees", desc: "On anything. You pay monthly, starting small." },
+              { title: "Compounds Over Time", desc: "Like a savings account for your business." },
+              { title: "Grows With You", desc: "No upselling until you're ready." },
+              { title: "Local Service Focus", desc: "Exclusively for local service businesses." },
+            ].map((item, i) => (
+              <div key={i} style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)", padding: "1.25rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.3rem" }}>{item.title}</div>
+                <div style={{ fontSize: "0.78rem", color: "#888888", lineHeight: 1.7 }}>{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </AccordionSection>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center", marginBottom: "1.5rem" }}>
-              <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1.1rem", padding: "0.875rem 2rem" }}>
-                <Phone size={18} /> (941) 328-8891
-              </a>
-              <a href="mailto:info@gotmdigital.com" className="btn-gold-outline" style={{ padding: "0.875rem 2rem", color: "#FFFFFF", borderColor: "rgba(255,255,255,0.7)" }}>
-                info@gotmdigital.com
-              </a>
-            </div>
+      </section>
 
-            <div style={{ fontSize: "0.7rem", letterSpacing: "0.2em", color: "#FFFFFF", textTransform: "uppercase", textShadow: "0 1px 4px rgba(0,0,0,0.8)" }}>
-              GOTM Digital · gotmdigital.com · Serving Local Businesses Nationwide
-            </div>
+      {/* ── RED DIVIDER ── */}
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #C8102E 30%, #C8102E 70%, transparent)" }} />
 
-            </div>{/* end content wrapper */}
+      {/* ── AUDIT OFFER ── */}
+      <section style={{ background: "#0D0D0D", padding: "5rem 2rem" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>New Offer</div>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+            fontWeight: 900,
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            marginBottom: "1rem",
+            letterSpacing: "-0.02em",
+          }}>
+            Web Presence &amp; AI Search<br />
+            <span style={{ color: "#C8102E" }}>Readiness Audit</span>
+          </h2>
+          <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "#AAAAAA", maxWidth: 580, marginBottom: "3rem" }}>
+            A clear, honest review of your current website, Google Business Profile, reviews, local citations, and AI search readiness — with specific recommendations for what to fix, update, or improve.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", marginBottom: "3rem" }}>
+            {[
+              { label: "Website Review", items: ["Page speed & mobile", "Service page clarity", "Schema & structured data", "Meta tags & headings"] },
+              { label: "Google Business Profile", items: ["Profile completeness", "Category accuracy", "Review patterns", "Posts & Q&A activity"] },
+              { label: "AI Search Readiness", items: ["Business description clarity", "FAQ & Q&A content", "Citation consistency", "Trust signal assessment"] },
+            ].map((col, i) => (
+              <div key={i} style={{ background: "#0D0D0D", padding: "2rem" }}>
+                <div className="eyebrow" style={{ marginBottom: "1rem" }}>{col.label}</div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {col.items.map((item, j) => (
+                    <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.85rem", lineHeight: 1.7, color: "#AAAAAA", marginBottom: "0.5rem" }}>
+                      <CheckCircle2 size={13} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.2rem" }} /> {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
+            <div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "3rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1 }}>$97</div>
+              <div style={{ fontSize: "0.78rem", color: "#666666", marginTop: "0.3rem" }}>One-time — credited toward first month if you sign up</div>
+            </div>
+            <a href="tel:9413288891" className="btn-primary" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
+              <Phone size={16} /> Call to Book Your Audit
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* ── RED DIVIDER ── */}
+      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #C8102E 30%, #C8102E 70%, transparent)" }} />
+
+      {/* ── CTA FOOTER ── */}
+      <section style={{ position: "relative", overflow: "hidden", padding: "8rem 2rem" }}>
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: `url(${HERO_BG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.25,
+        }} />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(160deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.75) 50%, rgba(5,5,10,0.92) 100%)",
+        }} />
+        <div style={{
+          position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+          width: 700, height: 700,
+          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
+
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+          <div className="eyebrow" style={{ marginBottom: "1rem" }}>Ready to Get on the Map?</div>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontWeight: 900,
+            color: "#FFFFFF",
+            lineHeight: 1.1,
+            marginBottom: "1.5rem",
+            letterSpacing: "-0.03em",
+          }}>
+            Let's Build Something<br />
+            <span style={{ color: "#C8102E" }}>That Lasts.</span>
+          </h2>
+          <p style={{ fontSize: "1rem", lineHeight: 1.85, color: "#AAAAAA", marginBottom: "2.5rem", maxWidth: 520, margin: "0 auto 2.5rem" }}>
+            I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF" }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center", marginBottom: "2.5rem" }}>
+            <a href="tel:9413288891" className="btn-primary" style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}>
+              <Phone size={18} /> (941) 328-8891
+            </a>
+            <a href="mailto:info@gotmdigital.com" style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              padding: "1rem 2.5rem",
+              border: "1px solid rgba(255,255,255,0.25)",
+              color: "#FFFFFF",
+              fontSize: "0.9rem",
+              fontWeight: 600,
+              letterSpacing: "0.05em",
+              textDecoration: "none",
+            }}>
+              info@gotmdigital.com
+            </a>
+          </div>
+
+          <div style={{ fontSize: "0.65rem", letterSpacing: "0.25em", color: "#555555", textTransform: "uppercase" }}>
+            GOTM Digital · gotmdigital.com · Serving Local Businesses Nationwide
+          </div>
+        </div>
+      </section>
 
       <SiteFooter />
     </div>

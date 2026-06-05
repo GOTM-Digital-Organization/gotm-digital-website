@@ -428,7 +428,7 @@ export default function Home() {
               },
             ].map((item, i) => (
               <div key={i} className="fade-up" data-delay={String(i * 80)}>
-                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(200,16,46,0.12)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(200,16,46,0.35)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
                   {item.num}
                 </div>
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>

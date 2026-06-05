@@ -193,7 +193,7 @@ export default function Services() {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "4rem",
                     fontWeight: 900,
-                    color: "rgba(200,16,46,0.1)",
+                    color: "rgba(200,16,46,0.35)",
                     lineHeight: 1,
                     marginBottom: "1.5rem",
                     letterSpacing: "-0.05em",
@@ -291,7 +291,7 @@ export default function Services() {
                 onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
                 onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
               >
-                <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "rgba(200,16,46,0.12)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
+                <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "rgba(200,16,46,0.35)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
                   {item.num}
                 </div>
                 <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.75rem", letterSpacing: "-0.01em" }}>
