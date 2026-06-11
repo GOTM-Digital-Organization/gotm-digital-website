@@ -13,21 +13,21 @@ const footerLinks = [
 export default function SiteFooter() {
   return (
     <footer style={{
-      background: "#050505",
-      borderTop: "1px solid rgba(255,255,255,0.05)",
-      padding: "4rem 0 2rem",
+      background: "#0D0D0D",
+      borderTop: "3px solid #C8102E",
+      padding: "5rem 0 2.5rem",
     }}>
       <div className="container">
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
           gap: "3rem",
-          marginBottom: "3rem",
+          marginBottom: "3.5rem",
         }}>
           {/* Brand */}
           <div>
             <GotmLogo size={130} />
-            <p style={{ fontSize: "0.8rem", color: "#444444", marginTop: "1.25rem", lineHeight: 1.8, maxWidth: 260 }}>
+            <p style={{ fontSize: "0.82rem", color: "#999999", marginTop: "1.25rem", lineHeight: 1.8, maxWidth: 260 }}>
               Honest digital marketing for local service businesses across the USA. No setup fees. No big promises. Just results.
             </p>
           </div>
@@ -49,9 +49,9 @@ export default function SiteFooter() {
                 <Link
                   key={href}
                   href={href}
-                  style={{ color: "#555555", textDecoration: "none", fontSize: "0.825rem", transition: "color 0.2s", letterSpacing: "0.02em" }}
+                  style={{ color: "#AAAAAA", textDecoration: "none", fontSize: "0.825rem", transition: "color 0.2s", letterSpacing: "0.02em" }}
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#555555")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#AAAAAA")}
                 >
                   {label}
                 </Link>
@@ -85,15 +85,15 @@ export default function SiteFooter() {
               </a>
               <a href="mailto:info@gotmdigital.com" style={{
                 display: "flex", alignItems: "center", gap: "0.625rem",
-                color: "#555555", textDecoration: "none", fontSize: "0.825rem",
+                color: "#AAAAAA", textDecoration: "none", fontSize: "0.825rem",
                 transition: "color 0.2s",
               }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#555555")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#AAAAAA")}
               >
                 <Mail size={13} style={{ color: "#C8102E", flexShrink: 0 }} /> info@gotmdigital.com
               </a>
-              <p style={{ fontSize: "0.775rem", color: "#333333", lineHeight: 1.7, margin: 0 }}>
+              <p style={{ fontSize: "0.775rem", color: "#777777", lineHeight: 1.7, margin: 0 }}>
                 Serving local service businesses<br />anywhere in the USA
               </p>
             </div>
@@ -101,13 +101,13 @@ export default function SiteFooter() {
         </div>
 
         {/* Divider */}
-        <div style={{ height: "1px", background: "rgba(255,255,255,0.05)", margin: "0 0 1.5rem" }} />
+        <div style={{ height: "1px", background: "rgba(255,255,255,0.1)", margin: "0 0 1.5rem" }} />
 
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "0.75rem" }}>
-          <p style={{ fontSize: "0.7rem", color: "#333333", margin: 0 }}>
+          <p style={{ fontSize: "0.7rem", color: "#666666", margin: 0 }}>
             © {new Date().getFullYear()} GOTM Digital. All rights reserved.
           </p>
-          <p style={{ fontSize: "0.7rem", color: "#333333", margin: 0, letterSpacing: "0.05em" }}>
+          <p style={{ fontSize: "0.7rem", color: "#666666", margin: 0, letterSpacing: "0.05em" }}>
             No setup fees · No long-term contracts · Honest results
           </p>
         </div>

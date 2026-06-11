@@ -271,6 +271,53 @@
   }
   .btn-link:hover { border-color: #C8102E; color: #C8102E; }
 
+  /* ── btn-primary on light backgrounds ── */
+  .btn-primary-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: #111111;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.4);
+    transition: border-color 0.2s cubic-bezier(0.23,1,0.32,1),
+                background 0.2s cubic-bezier(0.23,1,0.32,1),
+                transform 0.16s;
+  }
+  .btn-primary-light:hover {
+    border-color: #111111;
+    background: rgba(0,0,0,0.05);
+  }
+  .btn-primary-light:active { transform: scale(0.97); }
+
+  /* ── White button — for use on colored (red) backgrounds ── */
+  .btn-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #FFFFFF;
+    color: #C8102E;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.875rem 2rem;
+    border: 2px solid #FFFFFF;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, transform 0.16s cubic-bezier(0.23,1,0.32,1);
+    cursor: pointer;
+  }
+  .btn-white:hover { background: rgba(255,255,255,0.9); }
+  .btn-white:active { transform: scale(0.97); }
+
   /* ── Dark card — cinematic ── */
   .card-dark {
     background: #111111;

@@ -45,7 +45,7 @@ function useCounter(end: number, duration = 1800, start = false) {
   return count;
 }
 
-function StatCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
+function StatCounter({ value, suffix, label, light = false }: { value: number; suffix: string; label: string; light?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
   const count = useCounter(value, 1800, started);
@@ -59,10 +59,10 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
   }, []);
   return (
     <div ref={ref} style={{ padding: "2rem 1.5rem" }}>
-      <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.03em" }}>
+      <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 900, color: light ? "#111111" : "#FFFFFF", lineHeight: 1, letterSpacing: "-0.03em" }}>
         {count}{suffix}
       </div>
-      <div style={{ fontSize: "0.62rem", color: "#AAAAAA", marginTop: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
+      <div style={{ fontSize: "0.62rem", color: light ? "#555555" : "#AAAAAA", marginTop: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
     </div>
   );
 }
@@ -91,17 +91,17 @@ const faqs = [
   },
 ];
 
-function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
+function FaqItem({ item, index, light = false }: { item: (typeof faqs)[0]; index: number; light?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="fade-up" data-delay={String(index * 60)} style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+    <div className="fade-up" data-delay={String(index * 60)} style={{ borderBottom: `1px solid ${light ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.06)"}` }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
           width: "100%",
           background: "transparent",
           border: "none",
-          color: "#FFFFFF",
+          color: light ? "#111111" : "#FFFFFF",
           padding: "1.5rem 0",
           display: "flex",
           alignItems: "center",
@@ -110,7 +110,7 @@ function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
           textAlign: "left",
         }}
       >
-        <span style={{ flex: 1, fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", fontWeight: 600, color: "#FFFFFF", letterSpacing: "-0.01em" }}>{item.q}</span>
+        <span style={{ flex: 1, fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", fontWeight: 600, color: light ? "#111111" : "#FFFFFF", letterSpacing: "-0.01em" }}>{item.q}</span>
         <ChevronDown
           size={16}
           style={{ color: "#C8102E", flexShrink: 0, transition: "transform 0.25s cubic-bezier(0.23,1,0.32,1)", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
@@ -121,7 +121,7 @@ function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
           paddingBottom: "1.5rem",
           fontSize: "0.9rem",
           lineHeight: 1.8,
-          color: "#C8C8C8",
+          color: light ? "#444444" : "#C8C8C8",
           fontFamily: "'DM Sans', sans-serif",
         }}>
           {item.a}
@@ -200,7 +200,7 @@ export default function Home() {
       <Navbar />
 
       {/* ═══════════════════════════════════════════════
-          HERO — Full-bleed cinematic
+          HERO — Full-bleed cinematic  [DARK]
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
         <div style={{
@@ -276,9 +276,9 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          STATS BAR
+          STATS BAR  [LIGHT]
           ═══════════════════════════════════════════════ */}
-      <section style={{ background: "#0D0D0D", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <section style={{ background: "#F5F5F5", borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
         <div className="container" style={{ padding: 0 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
             {[
@@ -287,8 +287,8 @@ export default function Home() {
               { value: 3, suffix: "yr", label: "Avg. Client Growth" },
               { value: 5, suffix: "★", label: "Average Review Score" },
             ].map((stat, i) => (
-              <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none" }}>
-                <StatCounter value={stat.value} suffix={stat.suffix} label={stat.label} />
+              <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(0,0,0,0.08)" : "none" }}>
+                <StatCounter value={stat.value} suffix={stat.suffix} label={stat.label} light={true} />
               </div>
             ))}
           </div>
@@ -296,7 +296,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHILOSOPHY / ABOUT — split layout with photo
+          PHILOSOPHY / ABOUT  [DARK]
           ═══════════════════════════════════════════════ */}
       <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
         <div className="container">
@@ -374,17 +374,18 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHOTO BREAK — Florida coastal / local business
+          PHOTO BREAK — Florida coastal  [PHOTO, brighter]
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", height: "40vh", minHeight: 280, overflow: "hidden" }}>
         <img
           src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80"
           alt="Florida coast"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.35) saturate(0.8)" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.6) saturate(0.9)" }}
         />
+        {/* Lighter overlay so photo is visible */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.9) 100%)",
+          background: "linear-gradient(to right, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.65) 100%)",
         }} />
         <div style={{
           position: "absolute", inset: 0,
@@ -392,23 +393,23 @@ export default function Home() {
           flexDirection: "column", gap: "0.75rem", textAlign: "center", padding: "0 1.5rem",
         }}>
           <div className="fade-up eyebrow" data-delay="0">Serving Local Businesses Across Florida</div>
-          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em", maxWidth: 700 }}>
+          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em", maxWidth: 700, textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
             From Siesta Key to Sarasota — we build the digital presence that gets your phone ringing.
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SERVICES — 4-column grid
+          SERVICES  [LIGHT]
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "8rem 0", background: "#FFFFFF", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
         <div className="container">
           <div style={{ marginBottom: "4rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What We Do</div>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#C8102E" }}>What We Do</div>
             <h2 className="fade-up" data-delay="80" style={{
               fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#FFFFFF",
+              color: "#111111",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
               maxWidth: 600,
@@ -417,36 +418,36 @@ export default function Home() {
               One Unified Strategy.
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(0,0,0,0.08)" }}>
             {services.map((service, i) => (
               <div
                 key={i}
                 className="fade-up"
                 data-delay={String(i * 80)}
                 style={{
-                  background: "#111111",
+                  background: "#FFFFFF",
                   padding: "2.5rem 2rem",
                   transition: "background 0.2s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
-                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
+                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#F8F8F8"}
+                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#FFFFFF"}
               >
                 <div style={{ color: "#C8102E", marginBottom: "1.5rem" }}>{service.icon}</div>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
+                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#111111", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
                   {service.title}
                 </h3>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.75, color: "#C0C0C0" }}>{service.desc}</p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.75, color: "#555555" }}>{service.desc}</p>
               </div>
             ))}
           </div>
           <div className="fade-up" data-delay="200" style={{ marginTop: "3rem" }}>
-            <Link href="/services" className="btn-link">See Full Service Details →</Link>
+            <Link href="/services" className="btn-link" style={{ color: "#C8102E" }}>See Full Service Details →</Link>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PORTFOLIO — ALL 6 clients, always visible
+          PORTFOLIO  [DARK]
           ═══════════════════════════════════════════════ */}
       <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
         <div className="container">
@@ -484,20 +485,20 @@ export default function Home() {
                 className="fade-up"
                 data-delay={String((i % 3) * 80)}
                 style={{
-                  background: "#111111",
+                  background: "#161616",
                   textDecoration: "none",
                   display: "flex",
                   flexDirection: "column",
                   overflow: "hidden",
-                  border: "1px solid rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.1)",
                   transition: "border-color 0.2s, transform 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,16,46,0.4)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,16,46,0.5)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
@@ -512,20 +513,6 @@ export default function Home() {
                   />
                   {/* Red accent bar */}
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "linear-gradient(to right, #C8102E, rgba(200,16,46,0.3))" }} />
-                  {/* Visit overlay on hover */}
-                  <div style={{
-                    position: "absolute", inset: 0,
-                    background: "rgba(200,16,46,0.15)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    opacity: 0, transition: "opacity 0.2s",
-                  }}
-                    onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.opacity = "1"}
-                    onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.opacity = "0"}
-                  >
-                    <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", background: "rgba(10,10,10,0.85)", padding: "0.5rem 1rem", fontSize: "0.7rem", color: "#FFFFFF", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>
-                      <ExternalLink size={12} /> Visit Site
-                    </div>
-                  </div>
                 </div>
 
                 {/* Card body */}
@@ -536,7 +523,7 @@ export default function Home() {
                     <MapPin size={10} /> {site.location}
                   </div>
                   <p style={{ fontSize: "0.82rem", lineHeight: 1.7, color: "#BBBBBB", flex: 1 }}>{site.desc}</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700, marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700, marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
                     <ExternalLink size={11} /> Visit Website
                   </div>
                 </div>
@@ -547,16 +534,16 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          AI SEARCH SHIFT — dark section with photo accent
+          AI SEARCH SHIFT  [LIGHT]
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "8rem 0", background: "#F5F5F5", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
         <div className="container" style={{ maxWidth: 1000 }}>
           <div style={{ marginBottom: "4rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Is Changing Fast</div>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#C8102E" }}>Modern Search Is Changing Fast</div>
             <h2 className="fade-up" data-delay="80" style={{
               fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#FFFFFF",
+              color: "#111111",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
               maxWidth: 700,
@@ -585,13 +572,13 @@ export default function Home() {
               },
             ].map((item, i) => (
               <div key={i} className="fade-up" data-delay={String(i * 80)}>
-                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(200,16,46,0.72)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "#C8102E", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em", opacity: 0.8 }}>
                   {item.num}
                 </div>
-                <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
+                <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#111111", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
                   {item.heading}
                 </h3>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#C0C0C0" }}>{item.text}</p>
+                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#555555" }}>{item.text}</p>
               </div>
             ))}
           </div>
@@ -605,34 +592,35 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHOTO BREAK 2 — dark boat / water
+          PHOTO BREAK 2 — boat / water  [PHOTO, brighter]
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", height: "35vh", minHeight: 240, overflow: "hidden" }}>
         <img
           src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=80"
           alt="Florida fishing boat on the water"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.3) saturate(0.7)" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.75) saturate(0.9)" }}
         />
+        {/* Lighter overlay so photo shows through clearly */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(17,17,17,1) 0%, transparent 20%, transparent 80%, rgba(10,10,10,1) 100%)",
+          background: "linear-gradient(to bottom, rgba(245,245,245,0.6) 0%, transparent 20%, transparent 70%, rgba(10,10,10,0.7) 100%)",
         }} />
         <div style={{
           position: "absolute", inset: 0,
           display: "flex", alignItems: "center", justifyContent: "center",
           flexDirection: "column", gap: "0.5rem", textAlign: "center", padding: "0 1.5rem",
         }}>
-          <div className="fade-up eyebrow" data-delay="0">Simple, Honest Pricing</div>
-          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em" }}>
+          <div className="fade-up eyebrow" data-delay="0" style={{ color: "#C8102E" }}>Simple, Honest Pricing</div>
+          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em", textShadow: "0 2px 16px rgba(0,0,0,0.7)" }}>
             Starting at $100/month. No setup fees. No surprises.
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PRICING — dark cards
+          PRICING  [DARK — cards clearly defined on dark bg]
           ═══════════════════════════════════════════════ */}
-      <section id="pricing" style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+      <section id="pricing" style={{ padding: "8rem 0", background: "#111827" }}>
         <div className="container">
           <div style={{ marginBottom: "4rem" }}>
             <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple, Honest Pricing</div>
@@ -648,13 +636,15 @@ export default function Home() {
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", maxWidth: 1000 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem", maxWidth: 1000 }}>
             {[
               {
                 name: "Starter",
                 tagline: "Your foundation, done right",
                 price: "$100",
                 featured: false,
+                bg: "#FFFFFF",
+                border: "1px solid rgba(0,0,0,0.1)",
                 features: [
                   "High-performing custom HTML website",
                   "Fully SEO-optimized from day one",
@@ -670,6 +660,8 @@ export default function Home() {
                 tagline: "Stay active, stay visible",
                 price: "$300",
                 featured: true,
+                bg: "#C8102E",
+                border: "2px solid #C8102E",
                 features: [
                   "Everything in Starter",
                   "Weekly posts added to your website",
@@ -685,6 +677,8 @@ export default function Home() {
                 tagline: "Leads now + growth long-term",
                 price: "$500",
                 featured: false,
+                bg: "#FFFFFF",
+                border: "1px solid rgba(0,0,0,0.1)",
                 features: [
                   "Everything in Growth",
                   "Full Google Ads campaign management",
@@ -696,44 +690,45 @@ export default function Home() {
               },
             ].map((plan, i) => (
               <div key={i} style={{
-                background: plan.featured ? "#111111" : "#0A0A0A",
+                background: plan.bg,
                 padding: "2.5rem 2rem",
                 position: "relative",
-                borderTop: plan.featured ? "2px solid #C8102E" : "2px solid transparent",
+                border: plan.border,
+                borderRadius: 2,
               }}
                 className="fade-up"
                 data-delay={String(i * 80)}
               >
                 {plan.featured && (
-                  <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "1rem" }}>
+                  <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "rgba(255,255,255,0.85)", textTransform: "uppercase", fontWeight: 700, marginBottom: "1rem" }}>
                     Most Popular
                   </div>
                 )}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
                   <div>
-                    <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
-                    <div style={{ fontSize: "0.75rem", color: "#AAAAAA" }}>{plan.tagline}</div>
+                    <div style={{ fontSize: "1.1rem", fontWeight: 800, color: plan.featured ? "#FFFFFF" : "#111111", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
+                    <div style={{ fontSize: "0.75rem", color: plan.featured ? "rgba(255,255,255,0.75)" : "#666666" }}>{plan.tagline}</div>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>{plan.price}</div>
-                    <div style={{ fontSize: "0.65rem", color: "#AAAAAA", letterSpacing: "0.1em", textTransform: "uppercase" }}>/ month</div>
+                    <div style={{ fontSize: "2.5rem", fontWeight: 900, color: plan.featured ? "#FFFFFF" : "#111111", lineHeight: 1, letterSpacing: "-0.04em" }}>{plan.price}</div>
+                    <div style={{ fontSize: "0.65rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#888888", letterSpacing: "0.1em", textTransform: "uppercase" }}>/ month</div>
                   </div>
                 </div>
-                <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1.5rem" }} />
+                <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.1)", marginBottom: "1.5rem" }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.features.map((f, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.85rem", lineHeight: 1.6, color: "#C8C8C8", marginBottom: "0.875rem" }}>
-                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.85rem", lineHeight: 1.6, color: plan.featured ? "rgba(255,255,255,0.9)" : "#333333", marginBottom: "0.875rem" }}>
+                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: plan.featured ? "rgba(255,255,255,0.8)" : "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                       {f}
                     </li>
                   ))}
                 </ul>
                 {plan.note && (
-                  <div style={{ fontSize: "0.75rem", color: "#AAAAAA", lineHeight: 1.6, marginBottom: "1.5rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                  <div style={{ fontSize: "0.75rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#666666", lineHeight: 1.6, marginBottom: "1.5rem", paddingTop: "1rem", borderTop: `1px solid ${plan.featured ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.08)"}` }}>
                     {plan.note}
                   </div>
                 )}
-                <a href="tel:9413288891" className={plan.featured ? "btn-gold" : "btn-primary"} style={{ width: "100%", justifyContent: "center" }}>
+                <a href="tel:9413288891" className={plan.featured ? "btn-white" : "btn-primary-light"} style={{ width: "100%", justifyContent: "center" }}>
                   <Phone size={14} /> {plan.featured ? "Call to Get Started" : "Get Started"}
                 </a>
               </div>
@@ -743,17 +738,17 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          FAQ — dark editorial
+          FAQ  [LIGHT]
           ═══════════════════════════════════════════════ */}
-      <section id="faq" style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section id="faq" style={{ padding: "8rem 0", background: "#FFFFFF", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "5rem", alignItems: "start" }}>
             <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What You Need to Know</div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#C8102E" }}>What You Need to Know</div>
               <h2 className="fade-up" data-delay="80" style={{
                 fontSize: "clamp(2rem, 4vw, 3rem)",
                 fontWeight: 900,
-                color: "#FFFFFF",
+                color: "#111111",
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
                 marginBottom: "2rem",
@@ -763,12 +758,12 @@ export default function Home() {
                 Will Give You.
               </h2>
               <div className="fade-up" data-delay="160">
-                <Link href="/flyer" className="btn-link">Download Our Flyer →</Link>
+                <Link href="/flyer" className="btn-link" style={{ color: "#C8102E" }}>Download Our Flyer →</Link>
               </div>
             </div>
             <div>
               {faqs.map((item, i) => (
-                <FaqItem key={i} item={item} index={i} />
+                <FaqItem key={i} item={item} index={i} light={true} />
               ))}
             </div>
           </div>
@@ -776,7 +771,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          FINAL CTA — full-bleed dark
+          FINAL CTA  [DARK]
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", padding: "10rem 0", overflow: "hidden" }}>
         <div style={{

@@ -26,3 +26,9 @@
 - [x] GotmLogo updated to crosshair-style target with tick marks
 - [x] Section numbers brightened, grey text brightened sitewide
 - [x] Homepage fully rewritten: all 6 portfolio cards always visible, photo section breaks (Unsplash), scroll-reveal animations, counter animations in stats bar, split philosophy/about section
+- [x] Homepage: alternating dark/light sections with proper text contrast
+- [x] Dive photo opacity lightened (brightness 0.75, lighter overlay)
+- [x] Pricing cards: white Starter/Full Service + red Growth card on dark navy bg
+- [x] Pricing card text colors updated dynamically per background
+- [x] btn-white CSS class added for red Growth card CTA button
+- [x] SiteFooter: improved text contrast (#999999, #AAAAAA) and red top border
