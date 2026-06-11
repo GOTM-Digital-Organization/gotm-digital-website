@@ -20,14 +20,14 @@ function AccordionSection({
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+    <div style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
       <button
         onClick={() => setOpen(!open)}
         style={{
           width: "100%",
           background: "transparent",
           border: "none",
-          color: "#FFFFFF",
+          color: "#111111",
           padding: "1.5rem 0",
           display: "flex",
           alignItems: "center",
@@ -51,7 +51,7 @@ function AccordionSection({
           fontFamily: "'DM Sans', sans-serif",
           fontSize: "1rem",
           fontWeight: 700,
-          color: "#FFFFFF",
+          color: "#111111",
           letterSpacing: "-0.01em",
         }}>
           {title}
@@ -200,8 +200,8 @@ export default function Flyer() {
       {/* ── RED DIVIDER ── */}
       <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #C8102E 30%, #C8102E 70%, transparent)" }} />
 
-      {/* ── STATS BAR ── */}
-      <section style={{ background: "#0D0D0D", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      {/* ── STATS BAR ── WHITE */}
+      <section style={{ background: "#FFFFFF", borderTop: "3px solid #C8102E", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "2.5rem 2rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "2rem" }}>
           {[
             { num: "100+", label: "Clients Served" },
@@ -210,22 +210,23 @@ export default function Flyer() {
             { num: "1–2 wks", label: "Avg. Launch Time" },
           ].map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, marginBottom: "0.4rem" }}>{s.num}</div>
-              <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#C0C0C0", textTransform: "uppercase" }}>{s.label}</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2rem", fontWeight: 900, color: "#C8102E", lineHeight: 1, marginBottom: "0.4rem" }}>{s.num}</div>
+              <div style={{ fontSize: "0.65rem", letterSpacing: "0.2em", color: "#666666", textTransform: "uppercase", fontWeight: 600 }}>{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── ACCORDION CONTENT ── */}
-      <section style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 2rem" }}>
+      {/* ── ACCORDION CONTENT ── WHITE SECTION */}
+      <section style={{ background: "#F7F7F7", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 2rem" }}>
 
-        <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>The Honest Truth</div>
+        <div className="eyebrow" style={{ marginBottom: "0.75rem", color: "#888888" }}>The Honest Truth</div>
         <h2 style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
           fontWeight: 900,
-          color: "#FFFFFF",
+          color: "#111111",
           lineHeight: 1.15,
           marginBottom: "3rem",
           letterSpacing: "-0.02em",
@@ -233,7 +234,6 @@ export default function Flyer() {
           What Nobody Else Will Tell You About{" "}
           <span style={{ color: "#C8102E" }}>Digital Marketing</span>
         </h2>
-
         <AccordionSection num="01" title="New Websites Take Time — Here's Why" defaultOpen={true}>
           <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
             A brand-new domain won't rank on Google overnight. It typically takes <strong style={{ color: "#FFFFFF" }}>1–3 years</strong> to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal.
@@ -279,14 +279,14 @@ export default function Flyer() {
               { phase: "Year 2–3", title: "Organic Leads Flow", desc: "ROI accelerates. Ads become optional. Your website works while you sleep." },
             ].map((step, i) => (
               <div key={i} style={{
-                background: "#111111",
-                border: "1px solid rgba(255,255,255,0.06)",
+                background: "#FFFFFF",
+                border: "1px solid rgba(0,0,0,0.08)",
                 borderTop: "2px solid #C8102E",
                 padding: "1.25rem",
               }}>
                 <div style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>{step.phase}</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{step.title}</div>
-                <div style={{ fontSize: "0.78rem", lineHeight: 1.7, color: "#C8C8C8" }}>{step.desc}</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.4rem" }}>{step.title}</div>
+                <div style={{ fontSize: "0.78rem", lineHeight: 1.7, color: "#555555" }}>{step.desc}</div>
               </div>
             ))}
           </div>
@@ -312,31 +312,32 @@ export default function Flyer() {
               },
             ].map((plan, i) => (
               <div key={i} style={{
-                background: plan.featured ? "#111111" : "#0D0D0D",
-                border: `1px solid ${plan.featured ? "rgba(200,16,46,0.5)" : "rgba(255,255,255,0.06)"}`,
-                borderTop: `2px solid ${plan.featured ? "#C8102E" : "rgba(255,255,255,0.1)"}`,
+                background: plan.featured ? "#C8102E" : "#FFFFFF",
+                border: `1px solid ${plan.featured ? "transparent" : "rgba(0,0,0,0.1)"}`,
+                borderTop: `3px solid ${plan.featured ? "transparent" : "#C8102E"}`,
                 overflow: "hidden",
+                boxShadow: plan.featured ? "0 8px 32px rgba(200,16,46,0.25)" : "0 2px 8px rgba(0,0,0,0.06)",
               }}>
                 {plan.featured && (
-                  <div style={{ background: "#C8102E", color: "#FFFFFF", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", padding: "0.3rem" }}>
+                  <div style={{ background: "rgba(0,0,0,0.2)", color: "#FFFFFF", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", padding: "0.3rem" }}>
                     Most Popular
                   </div>
                 )}
                 <div style={{ padding: "1.25rem" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
                     <div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "#FFFFFF" }}>{plan.name}</div>
-                      <div style={{ fontSize: "0.72rem", color: "#C0C0C0" }}>{plan.tagline}</div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: plan.featured ? "#FFFFFF" : "#111111" }}>{plan.name}</div>
+                      <div style={{ fontSize: "0.72rem", color: plan.featured ? "rgba(255,255,255,0.75)" : "#777777" }}>{plan.tagline}</div>
                     </div>
                     <div style={{ textAlign: "right" }}>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: "#C8102E", lineHeight: 1 }}>{plan.price}</div>
-                      <div style={{ fontSize: "0.62rem", color: "#C0C0C0" }}>/month</div>
+                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: plan.featured ? "#FFFFFF" : "#C8102E", lineHeight: 1 }}>{plan.price}</div>
+                      <div style={{ fontSize: "0.62rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#888888" }}>/month</div>
                     </div>
                   </div>
-                  <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1rem" }} />
+                  <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.08)", marginBottom: "1rem" }} />
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {plan.features.map((f, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.8rem", lineHeight: 1.7, color: "#AAAAAA", marginBottom: "0.4rem" }}>
+                      <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.8rem", lineHeight: 1.7, color: plan.featured ? "rgba(255,255,255,0.9)" : "#444444", marginBottom: "0.4rem" }}>
                         <CheckCircle2 size={13} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} /> {f}
                       </li>
                     ))}
@@ -346,22 +347,22 @@ export default function Flyer() {
             ))}
           </div>
           <div style={{
-            background: "rgba(200,16,46,0.06)",
+            background: "#FFF5F5",
             border: "1px solid rgba(200,16,46,0.2)",
             padding: "0.875rem 1rem",
             fontSize: "0.78rem",
-            color: "#AAAAAA",
+            color: "#555555",
             lineHeight: 1.65,
           }}>
-            📌 <strong style={{ color: "#FFFFFF" }}>Ad spend for Google Ads is paid directly by you to Google.</strong> Our fee covers strategy, setup, and management only. You stay in full control of your budget.
+            📌 <strong style={{ color: "#111111" }}>Ad spend for Google Ads is paid directly by you to Google.</strong> Our fee covers strategy, setup, and management only. You stay in full control of your budget.
           </div>
         </AccordionSection>
 
         <AccordionSection num="07" title="AI Search Optimization — Built Into Everything We Do">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0 0 1rem" }}>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#555555", margin: "0 0 1rem" }}>
             Search is changing. Customers are no longer just typing short keywords into Google. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted.
           </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0 0 1.5rem" }}>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#555555", margin: "0 0 1.5rem" }}>
             Got'm Digital builds every website, Google profile, and content strategy so your business is easier to find, understand, and trust in modern search — including traditional rankings, map results, conversational queries, and AI-answer readiness.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.875rem" }}>
@@ -371,9 +372,9 @@ export default function Flyer() {
               { title: "Reviews & Trust Signals", desc: "Review strategy that builds credibility with customers and AI-powered search." },
               { title: "Content That Answers Questions", desc: "What you do, where you work, what it costs — in a format search engines can use." },
             ].map((item, i) => (
-              <div key={i} style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{item.title}</div>
-                <div style={{ fontSize: "0.78rem", color: "#C8C8C8", lineHeight: 1.7 }}>{item.desc}</div>
+              <div key={i} style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.4rem" }}>{item.title}</div>
+                <div style={{ fontSize: "0.78rem", color: "#555555", lineHeight: 1.7 }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -381,12 +382,13 @@ export default function Flyer() {
 
         <AccordionSection num="08" title="Why GOTM Digital — Built Different. On Purpose.">
           <div style={{
-            background: "#111111",
+            background: "#FFF5F5",
             borderLeft: "3px solid #C8102E",
+            border: "1px solid rgba(200,16,46,0.15)",
             padding: "1.25rem 1.5rem",
             marginBottom: "1.5rem",
           }}>
-            <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", fontStyle: "italic", margin: 0 }}>
+            <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#444444", fontStyle: "italic", margin: 0 }}>
               "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay. I built this company to be honest about how it really works, keep your upfront costs low with no setup fees, and grow with you as you grow."
             </p>
           </div>
@@ -397,21 +399,19 @@ export default function Flyer() {
               { title: "Grows With You", desc: "No upselling until you're ready." },
               { title: "Local Service Focus", desc: "Exclusively for local service businesses." },
             ].map((item, i) => (
-              <div key={i} style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)", padding: "1.25rem" }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.3rem" }}>{item.title}</div>
-                <div style={{ fontSize: "0.78rem", color: "#C8C8C8", lineHeight: 1.7 }}>{item.desc}</div>
+              <div key={i} style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", padding: "1.25rem" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.3rem" }}>{item.title}</div>
+                <div style={{ fontSize: "0.78rem", color: "#555555", lineHeight: 1.7 }}>{item.desc}</div>
               </div>
             ))}
           </div>
         </AccordionSection>
 
+      </div>
       </section>
 
-      {/* ── RED DIVIDER ── */}
-      <div style={{ height: 1, background: "linear-gradient(90deg, transparent, #C8102E 30%, #C8102E 70%, transparent)" }} />
-
-      {/* ── AUDIT OFFER ── */}
-      <section style={{ background: "#0D0D0D", padding: "5rem 2rem" }}>
+      {/* ── AUDIT OFFER ── DARK SECTION */}
+      <section style={{ background: "#111827", padding: "5rem 2rem", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>New Offer</div>
           <h2 style={{
@@ -430,17 +430,17 @@ export default function Flyer() {
             A clear, honest review of your current website, Google Business Profile, reviews, local citations, and AI search readiness — with specific recommendations for what to fix, update, or improve.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)", marginBottom: "3rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)", marginBottom: "3rem" }}>
             {[
               { label: "Website Review", items: ["Page speed & mobile", "Service page clarity", "Schema & structured data", "Meta tags & headings"] },
               { label: "Google Business Profile", items: ["Profile completeness", "Category accuracy", "Review patterns", "Posts & Q&A activity"] },
               { label: "AI Search Readiness", items: ["Business description clarity", "FAQ & Q&A content", "Citation consistency", "Trust signal assessment"] },
             ].map((col, i) => (
-              <div key={i} style={{ background: "#0D0D0D", padding: "2rem" }}>
+              <div key={i} style={{ background: "#111827", padding: "2rem" }}>
                 <div className="eyebrow" style={{ marginBottom: "1rem" }}>{col.label}</div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {col.items.map((item, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.85rem", lineHeight: 1.7, color: "#AAAAAA", marginBottom: "0.5rem" }}>
+                    <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.85rem", lineHeight: 1.7, color: "#C0C0C0", marginBottom: "0.5rem" }}>
                       <CheckCircle2 size={13} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.2rem" }} /> {item}
                     </li>
                   ))}

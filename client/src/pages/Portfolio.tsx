@@ -89,7 +89,7 @@ export default function Portfolio() {
       <Navbar />
 
       {/* ═══════════════════════════════════════════════
-          PAGE HEADER — full-bleed cinematic
+          PAGE HEADER — cinematic dark hero
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
         <div style={{
@@ -123,25 +123,58 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          CLIENT GRID
+          STATS BAR — WHITE SECTION
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "6rem 0", background: "#0A0A0A" }}>
+      <section style={{ background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}>
+            {[
+              { num: "6", label: "Active Client Websites" },
+              { num: "100%", label: "Custom HTML — No Templates" },
+              { num: "5★", label: "Average Client Review Score" },
+              { num: "$0", label: "Setup Fees. Ever." },
+            ].map((stat, i) => (
+              <div key={i} className="fade-up" data-delay={String(i * 60)} style={{
+                textAlign: "center",
+                padding: "2rem 1.5rem",
+                borderRight: i < 3 ? "1px solid rgba(0,0,0,0.08)" : "none",
+              }}>
+                <div style={{ fontSize: "2.25rem", fontWeight: 900, color: "#C8102E", lineHeight: 1, letterSpacing: "-0.04em", marginBottom: "0.4rem" }}>{stat.num}</div>
+                <div style={{ fontSize: "0.7rem", color: "#666666", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          CLIENT GRID — WHITE SECTION
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "6rem 0", background: "#F7F7F7" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1.5rem" }}>
             {clients.map((client, i) => (
               <div
                 key={i}
                 className="fade-up"
                 data-delay={String((i % 3) * 80)}
                 style={{
-                  background: "#0A0A0A",
+                  background: "#FFFFFF",
+                  border: "1px solid rgba(0,0,0,0.08)",
                   overflow: "hidden",
                   display: "flex",
                   flexDirection: "column",
-                  transition: "background 0.2s",
+                  transition: "box-shadow 0.2s, transform 0.2s",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
                 }}
-                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#0F0F0F"}
-                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#0A0A0A"}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.12)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                }}
               >
                 {/* OG Image thumbnail — clickable */}
                 <a
@@ -181,31 +214,31 @@ export default function Portfolio() {
                 </a>
 
                 {/* Red accent bar */}
-                <div style={{ height: 2, background: "linear-gradient(90deg, #C8102E 0%, rgba(200,16,46,0.2) 100%)" }} />
+                <div style={{ height: 3, background: "linear-gradient(90deg, #C8102E 0%, rgba(200,16,46,0.2) 100%)" }} />
 
                 <div style={{ padding: "1.75rem", flex: 1, display: "flex", flexDirection: "column" }}>
                   {/* Header */}
                   <div style={{ marginBottom: "1rem" }}>
-                    <div className="eyebrow" style={{ marginBottom: "0.4rem", fontSize: "0.6rem" }}>
+                    <div style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8102E", marginBottom: "0.4rem" }}>
                       {client.industry}
                     </div>
                     <h3 style={{
                       fontSize: "1.05rem",
                       fontWeight: 800,
-                      color: "#FFFFFF",
+                      color: "#111111",
                       lineHeight: 1.25,
                       marginBottom: "0.35rem",
                       letterSpacing: "-0.01em",
                     }}>
                       {client.name}
                     </h3>
-                    <div style={{ fontSize: "0.72rem", color: "#AAAAAA", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                    <div style={{ fontSize: "0.72rem", color: "#888888", display: "flex", alignItems: "center", gap: "0.3rem" }}>
                       <MapPin size={10} /> {client.location}
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#C0C0C0", marginBottom: "1.25rem", flex: 1 }}>
+                  <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#555555", marginBottom: "1.25rem", flex: 1 }}>
                     {client.desc}
                   </p>
 
@@ -213,13 +246,14 @@ export default function Portfolio() {
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "1.5rem" }}>
                     {client.services.map((s, j) => (
                       <span key={j} style={{
-                        border: "1px solid rgba(200,16,46,0.25)",
+                        border: "1px solid rgba(200,16,46,0.3)",
                         color: "#C8102E",
                         fontSize: "0.65rem",
                         fontWeight: 600,
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
                         padding: "0.2rem 0.6rem",
+                        background: "rgba(200,16,46,0.04)",
                       }}>
                         {s}
                       </span>
@@ -231,7 +265,7 @@ export default function Portfolio() {
                     href={client.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary"
+                    className="btn-primary-light"
                     style={{ justifyContent: "center" }}
                   >
                     <ExternalLink size={13} /> Visit {client.name.split(" ")[0]} Website
@@ -244,7 +278,65 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          CTA — full-bleed dark
+          WHAT'S NEXT — DARK SECTION
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "7rem 0", background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "4rem", alignItems: "center" }}>
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Your Business Could Be Next</div>
+              <h2 className="fade-up" data-delay="80" style={{
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.25rem",
+              }}>
+                Every Business Here<br />
+                Started With a<br />
+                <span style={{ color: "#C8102E" }}>Single Conversation.</span>
+              </h2>
+              <p className="fade-up" data-delay="160" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#C0C0C0", marginBottom: "2rem" }}>
+                No setup fees, no pressure — just an honest discussion about what's possible for your business and what timeline is realistic.
+              </p>
+              <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+                <a href="tel:9413288891" className="btn-gold">
+                  <Phone size={16} /> (941) 328-8891
+                </a>
+                <Link href="/contact" className="btn-primary">
+                  Send a Message →
+                </Link>
+              </div>
+            </div>
+            <div className="fade-up" data-delay="120">
+              {[
+                { num: "01", title: "Quick call to understand your business", desc: "We talk through your goals, your market, and what's realistic." },
+                { num: "02", title: "Honest assessment of what's possible", desc: "No inflated promises — just a clear picture of what we can build and when." },
+                { num: "03", title: "Website live within 1–2 weeks", desc: "Fast launch, no setup fees, and you start building from day one." },
+              ].map((step, i) => (
+                <div key={i} style={{
+                  display: "flex", gap: "1.25rem", alignItems: "flex-start",
+                  padding: "1.25rem 0",
+                  borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                }}>
+                  <div style={{
+                    fontSize: "1.5rem", fontWeight: 900, color: "rgba(200,16,46,0.6)",
+                    lineHeight: 1, letterSpacing: "-0.04em", minWidth: "2.5rem", flexShrink: 0,
+                  }}>{step.num}</div>
+                  <div>
+                    <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.3rem" }}>{step.title}</div>
+                    <div style={{ fontSize: "0.8rem", color: "#AAAAAA", lineHeight: 1.6 }}>{step.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          CTA — full-bleed dark photo
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", padding: "8rem 0", overflow: "hidden" }}>
         <div style={{

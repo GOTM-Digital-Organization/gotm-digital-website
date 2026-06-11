@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { Phone, CheckCircle2, Globe, Search, Star, Megaphone, ArrowRight, Clock, TrendingUp, Shield } from "lucide-react";
+import { Phone, Globe, Search, Star, Megaphone, Clock, TrendingUp, Shield } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -42,6 +42,7 @@ const services = [
     timeline: "Live within 1–2 weeks of getting started",
     price: "Included in all plans starting at $100/month",
     note: null,
+    light: false,
   },
   {
     icon: <Search size={28} />,
@@ -60,6 +61,7 @@ const services = [
     timeline: "Results typically visible at 6–18 months",
     price: "Included in Growth ($300/mo) and Full Service ($500/mo)",
     note: null,
+    light: true,
   },
   {
     icon: <Star size={28} />,
@@ -78,6 +80,7 @@ const services = [
     timeline: "Can start generating results within 2–8 weeks",
     price: "Included in all plans starting at $100/month",
     note: null,
+    light: false,
   },
   {
     icon: <Megaphone size={28} />,
@@ -96,6 +99,7 @@ const services = [
     timeline: "Campaigns live within 3–5 business days",
     price: "Included in Full Service ($500/mo) — ad spend paid directly to Google",
     note: "Ad spend is paid directly by you to Google. Our fee covers strategy, setup, and management only. You stay in full control of your budget.",
+    light: true,
   },
 ];
 
@@ -107,7 +111,7 @@ export default function Services() {
       <Navbar />
 
       {/* ═══════════════════════════════════════════════
-          PAGE HEADER — full-bleed cinematic
+          PAGE HEADER — cinematic dark hero
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
         <div style={{
@@ -142,9 +146,9 @@ export default function Services() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WHY BAR
+          WHY BAR — WHITE SECTION
           ═══════════════════════════════════════════════ */}
-      <section style={{ background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
         <div className="container" style={{ padding: 0 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
             {[
@@ -155,12 +159,12 @@ export default function Services() {
               <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
                 display: "flex", gap: "1rem", alignItems: "flex-start",
                 padding: "2rem 1.75rem",
-                borderRight: i < 2 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                borderRight: i < 2 ? "1px solid rgba(0,0,0,0.08)" : "none",
               }}>
                 <div style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }}>{item.icon}</div>
                 <div>
-                  <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.25rem" }}>{item.title}</div>
-                  <div style={{ fontSize: "0.8rem", color: "#C0C0C0", lineHeight: 1.6 }}>{item.desc}</div>
+                  <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.25rem" }}>{item.title}</div>
+                  <div style={{ fontSize: "0.8rem", color: "#555555", lineHeight: 1.6 }}>{item.desc}</div>
                 </div>
               </div>
             ))}
@@ -169,97 +173,103 @@ export default function Services() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SERVICE DETAILS — alternating layout
+          SERVICE DETAILS — alternating dark / light rows
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "6rem 0", background: "#0A0A0A" }}>
-        <div className="container">
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-            {services.map((service, i) => (
-              <div
-                key={i}
-                className="fade-up"
-                data-delay="0"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                  gap: "0",
-                  borderBottom: "1px solid rgba(255,255,255,0.05)",
-                  paddingBottom: "0",
-                }}
-              >
-                {/* Left: Info */}
-                <div style={{ padding: "4rem 3rem 4rem 0", borderRight: "1px solid rgba(255,255,255,0.05)" }}>
+      {services.map((service, i) => (
+        <section
+          key={i}
+          style={{
+            padding: "6rem 0",
+            background: service.light ? "#F7F7F7" : "#0A0A0A",
+            borderTop: service.light ? "none" : "1px solid rgba(255,255,255,0.04)",
+          }}
+        >
+          <div className="container">
+            <div
+              className="fade-up"
+              data-delay="0"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "0",
+                borderBottom: `1px solid ${service.light ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.05)"}`,
+                paddingBottom: "0",
+              }}
+            >
+              {/* Left: Info */}
+              <div style={{
+                padding: "4rem 3rem 4rem 0",
+                borderRight: `1px solid ${service.light ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.05)"}`,
+              }}>
+                <div style={{
+                  fontSize: "4rem",
+                  fontWeight: 900,
+                  color: service.light ? "rgba(200,16,46,0.55)" : "rgba(200,16,46,0.72)",
+                  lineHeight: 1,
+                  marginBottom: "1.5rem",
+                  letterSpacing: "-0.05em",
+                }}>
+                  {service.num}
+                </div>
+                <div style={{ color: "#C8102E", marginBottom: "1.25rem" }}>{service.icon}</div>
+                <div className="eyebrow" style={{ marginBottom: "0.75rem", color: service.light ? "#888888" : undefined }}>{service.tagline}</div>
+                <h2 style={{
+                  fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
+                  fontWeight: 800,
+                  color: service.light ? "#111111" : "#FFFFFF",
+                  lineHeight: 1.15,
+                  marginBottom: "1.25rem",
+                  letterSpacing: "-0.02em",
+                }}>
+                  {service.title}
+                </h2>
+                <p style={{ fontSize: "0.875rem", lineHeight: 1.85, color: service.light ? "#444444" : "#C0C0C0", marginBottom: "1.75rem" }}>
+                  {service.desc}
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: service.note ? "1.5rem" : "0" }}>
+                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: service.light ? "#666666" : "#AAAAAA" }}>
+                    <Clock size={12} style={{ color: "#C8102E", flexShrink: 0 }} />
+                    {service.timeline}
+                  </div>
+                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: service.light ? "#666666" : "#AAAAAA" }}>
+                    <TrendingUp size={12} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
+                    {service.price}
+                  </div>
+                </div>
+                {service.note && (
                   <div style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "4rem",
-                    fontWeight: 900,
-                    color: "rgba(200,16,46,0.72)",
-                    lineHeight: 1,
-                    marginBottom: "1.5rem",
-                    letterSpacing: "-0.05em",
+                    borderLeft: "2px solid rgba(200,16,46,0.4)",
+                    paddingLeft: "1rem",
+                    fontSize: "0.75rem",
+                    color: service.light ? "#666666" : "#AAAAAA",
+                    lineHeight: 1.7,
                   }}>
-                    {service.num}
+                    {service.note}
                   </div>
-                  <div style={{ color: "#C8102E", marginBottom: "1.25rem" }}>{service.icon}</div>
-                  <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>{service.tagline}</div>
-                  <h2 style={{
-                    fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
-                    fontWeight: 800,
-                    color: "#FFFFFF",
-                    lineHeight: 1.15,
-                    marginBottom: "1.25rem",
-                    letterSpacing: "-0.02em",
-                  }}>
-                    {service.title}
-                  </h2>
-                  <p style={{ fontSize: "0.875rem", lineHeight: 1.85, color: "#C0C0C0", marginBottom: "1.75rem" }}>
-                    {service.desc}
-                  </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: service.note ? "1.5rem" : "0" }}>
-                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: "#AAAAAA" }}>
-                      <Clock size={12} style={{ color: "#C8102E", flexShrink: 0 }} />
-                      {service.timeline}
-                    </div>
-                    <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: "#AAAAAA" }}>
-                      <TrendingUp size={12} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
-                      {service.price}
-                    </div>
-                  </div>
-                  {service.note && (
-                    <div style={{
-                      borderLeft: "2px solid rgba(200,16,46,0.4)",
-                      paddingLeft: "1rem",
-                      fontSize: "0.75rem",
-                      color: "#AAAAAA",
-                      lineHeight: 1.7,
-                    }}>
-                      {service.note}
-                    </div>
-                  )}
-                </div>
-
-                {/* Right: Bullets */}
-                <div style={{ padding: "4rem 0 4rem 3rem" }}>
-                  <div className="eyebrow" style={{ marginBottom: "1.5rem" }}>What's Included</div>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                    {service.bullets.map((bullet, j) => (
-                      <li key={j} style={{ display: "flex", gap: "1rem", fontSize: "0.875rem", lineHeight: 1.7, color: "#C8C8C8", marginBottom: "1rem" }}>
-                        <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.5rem" }} />
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                )}
               </div>
-            ))}
+
+              {/* Right: Bullets */}
+              <div style={{ padding: "4rem 0 4rem 3rem" }}>
+                <div className="eyebrow" style={{ marginBottom: "1.5rem", color: service.light ? "#888888" : undefined }}>What's Included</div>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {service.bullets.map((bullet, j) => (
+                    <li key={j} style={{ display: "flex", gap: "1rem", fontSize: "0.875rem", lineHeight: 1.7, color: service.light ? "#444444" : "#C8C8C8", marginBottom: "1rem" }}>
+                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.5rem" }} />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* ═══════════════════════════════════════════════
-          AI SEARCH OPTIMIZATION
+          AI SEARCH OPTIMIZATION — DARK SECTION
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "8rem 0", background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="container" style={{ maxWidth: 1000 }}>
           <div style={{ marginBottom: "4rem" }}>
             <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Strategy</div>
@@ -305,30 +315,30 @@ export default function Services() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WEB PRESENCE AUDIT OFFER
+          WEB PRESENCE AUDIT OFFER — WHITE SECTION
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+      <section style={{ padding: "8rem 0", background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
         <div className="container" style={{ maxWidth: 900 }}>
           <div style={{ marginBottom: "3.5rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>New Offer</div>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#888888" }}>New Offer</div>
             <h2 className="fade-up" data-delay="80" style={{
               fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
-              color: "#FFFFFF",
+              color: "#111111",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
             }}>
               Web Presence &amp; AI Search<br />
               <span style={{ color: "#C8102E" }}>Readiness Audit.</span>
             </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#C0C0C0", maxWidth: 600, marginTop: "1.25rem" }}>
+            <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#444444", maxWidth: 600, marginTop: "1.25rem" }}>
               A clear, honest review of your current website, Google Business Profile, reviews, local citations, and overall AI search readiness — with specific recommendations for what to fix, update, or improve.
             </p>
           </div>
 
           <div className="fade-up" style={{
-            border: "1px solid rgba(255,255,255,0.07)",
-            background: "#111111",
+            border: "1px solid rgba(0,0,0,0.1)",
+            background: "#F7F7F7",
             padding: "3rem",
             marginBottom: "2rem",
           }}>
@@ -348,10 +358,10 @@ export default function Services() {
                 },
               ].map((col, i) => (
                 <div key={i}>
-                  <div className="eyebrow" style={{ marginBottom: "1.25rem" }}>{col.section}</div>
+                  <div className="eyebrow" style={{ marginBottom: "1.25rem", color: "#888888" }}>{col.section}</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {col.items.map((item, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", lineHeight: 1.7, color: "#C8C8C8", marginBottom: "0.75rem" }}>
+                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", lineHeight: 1.7, color: "#444444", marginBottom: "0.75rem" }}>
                         <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                         {item}
                       </li>
@@ -361,32 +371,32 @@ export default function Services() {
               ))}
             </div>
 
-            <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
+            <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
               <div>
-                <div style={{ fontSize: "3rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>$97</div>
-                <div style={{ fontSize: "0.75rem", color: "#AAAAAA", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
+                <div style={{ fontSize: "3rem", fontWeight: 900, color: "#111111", lineHeight: 1, letterSpacing: "-0.04em" }}>$97</div>
+                <div style={{ fontSize: "0.75rem", color: "#777777", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                 <a href="tel:9413288891" className="btn-gold">
                   <Phone size={15} /> Call to Book Your Audit
                 </a>
-                <Link href="/contact" className="btn-primary">
+                <Link href="/contact" className="btn-primary-light">
                   Request Audit Online →
                 </Link>
               </div>
             </div>
           </div>
 
-          <p className="fade-up" style={{ fontSize: "0.8rem", color: "#444444", lineHeight: 1.75, maxWidth: 580 }}>
+          <p className="fade-up" style={{ fontSize: "0.8rem", color: "#999999", lineHeight: 1.75, maxWidth: 580 }}>
             If you become a Got'm Digital client after the audit, the $97 fee is credited toward your first month. The audit report is yours to keep regardless.
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PRICING SUMMARY
+          PRICING SUMMARY — DARK SECTION
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <section style={{ padding: "8rem 0", background: "#111827", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="container" style={{ maxWidth: 900 }}>
           <div style={{ marginBottom: "4rem" }}>
             <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple Pricing</div>
@@ -403,36 +413,37 @@ export default function Services() {
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.06)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
             {[
               { name: "Starter", price: "$100", period: "/mo", featured: false, includes: ["Custom HTML Website", "SEO Setup", "AI Search Optimization Built In", "Google Business Profile", "Unlimited Updates"] },
               { name: "Growth", price: "$300", period: "/mo", featured: true, includes: ["Everything in Starter", "Weekly Website Posts", "Weekly GBP Posts", "AI Search & Conversational Query Targeting", "Content Strategy"] },
               { name: "Full Service", price: "$500", period: "/mo", featured: false, includes: ["Everything in Growth", "Google Ads Management", "AI-Ready Landing Page Content", "Custom Landing Pages", "Ad Optimization"] },
             ].map((plan, i) => (
               <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
-                background: plan.featured ? "#111111" : "#0D0D0D",
+                background: plan.featured ? "#C8102E" : "#FFFFFF",
                 padding: "2.5rem 2rem",
-                borderTop: plan.featured ? "2px solid #C8102E" : "2px solid transparent",
+                borderTop: plan.featured ? "none" : "3px solid rgba(255,255,255,0.15)",
                 position: "relative",
+                boxShadow: plan.featured ? "0 8px 32px rgba(200,16,46,0.35)" : "0 2px 12px rgba(0,0,0,0.25)",
               }}>
                 {plan.featured && (
-                  <div className="eyebrow" style={{ marginBottom: "1rem", color: "#C8102E" }}>Most Popular</div>
+                  <div style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "1rem" }}>Most Popular</div>
                 )}
-                <div style={{ fontSize: "1rem", fontWeight: 800, color: "#FFFFFF", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
+                <div style={{ fontSize: "1rem", fontWeight: 800, color: plan.featured ? "#FFFFFF" : "#111111", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: "0.25rem", marginBottom: "1.5rem" }}>
-                  <span style={{ fontSize: "2.5rem", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-0.04em" }}>{plan.price}</span>
-                  <span style={{ fontSize: "0.75rem", color: "#AAAAAA", letterSpacing: "0.1em", textTransform: "uppercase" }}>{plan.period}</span>
+                  <span style={{ fontSize: "2.5rem", fontWeight: 900, color: plan.featured ? "#FFFFFF" : "#111111", letterSpacing: "-0.04em" }}>{plan.price}</span>
+                  <span style={{ fontSize: "0.75rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#777777", letterSpacing: "0.1em", textTransform: "uppercase" }}>{plan.period}</span>
                 </div>
-                <div style={{ height: 1, background: "rgba(255,255,255,0.06)", marginBottom: "1.5rem" }} />
+                <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.1)", marginBottom: "1.5rem" }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.includes.map((item, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", color: "#C8C8C8", marginBottom: "0.75rem", lineHeight: 1.5 }}>
-                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", color: plan.featured ? "rgba(255,255,255,0.9)" : "#444444", marginBottom: "0.75rem", lineHeight: 1.5 }}>
+                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: plan.featured ? "rgba(255,255,255,0.7)" : "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <a href="tel:9413288891" className={plan.featured ? "btn-gold" : "btn-primary"} style={{ width: "100%", justifyContent: "center" }}>
+                <a href="tel:9413288891" className={plan.featured ? "btn-white" : "btn-primary-light"} style={{ width: "100%", justifyContent: "center" }}>
                   <Phone size={13} /> Get Started
                 </a>
               </div>
@@ -442,7 +453,7 @@ export default function Services() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          CTA — full-bleed dark
+          CTA — full-bleed dark photo
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", padding: "8rem 0", overflow: "hidden" }}>
         <div style={{

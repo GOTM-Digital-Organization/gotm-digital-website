@@ -32,3 +32,7 @@
 - [x] Pricing card text colors updated dynamically per background
 - [x] btn-white CSS class added for red Growth card CTA button
 - [x] SiteFooter: improved text contrast (#999999, #AAAAAA) and red top border
+- [x] Services page: alternating dark/light sections, white stats bar, dark text on light sections
+- [x] Portfolio page: white stats bar with red numbers, client cards visible in grid
+- [x] Contact page: white form section with dark text inputs, dark FAQ section below
+- [x] Flyer page: white stats bar, white accordion section with dark text, dark audit offer section
