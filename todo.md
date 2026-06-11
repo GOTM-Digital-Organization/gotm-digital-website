@@ -18,3 +18,11 @@
 - [x] Save checkpoint
 - [x] Rewrite Flyer.tsx: light grey backgrounds (#E8E8E8, #F4F4F4, #F8F8F8), 7 accordion/dropdown sections, dark header/footer with red accents
 - [x] Install dotenv package to fix ERR_MODULE_NOT_FOUND server error
+- [x] Full cinematic dark redesign (Home, Services, Portfolio, Contact, Flyer, Navbar, Footer, CSS)
+- [x] AI Search Optimization messaging added across Home, Services, Flyer pages
+- [x] Hamburger mobile menu implemented in Navbar (JS resize-based)
+- [x] Portfolio OG image thumbnails for all 6 clients
+- [x] Red crosshair favicon and OG social share image
+- [x] GotmLogo updated to crosshair-style target with tick marks
+- [x] Section numbers brightened, grey text brightened sitewide
+- [x] Homepage fully rewritten: all 6 portfolio cards always visible, photo section breaks (Unsplash), scroll-reveal animations, counter animations in stats bar, split philosophy/about section

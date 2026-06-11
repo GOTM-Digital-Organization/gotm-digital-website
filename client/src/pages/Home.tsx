@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 import {
-  Phone, CheckCircle2, ChevronDown, ChevronRight,
-  MapPin, Star, TrendingUp, Globe, Search, Megaphone, ExternalLink, ArrowRight
+  Phone, ChevronDown, MapPin, Star, TrendingUp, Globe, Search, Megaphone, ExternalLink, ArrowRight, CheckCircle2
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
@@ -132,11 +131,56 @@ function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
   );
 }
 
-// ── Real client portfolio items ─────────────────────────────
+// ── All 6 client portfolio items ────────────────────────────
 const clientSites = [
-  { name: "Siesta Key Sport Fishing Charters", url: "https://siestakeysportfishingcharters.com", industry: "Fishing Charters", location: "Siesta Key, FL", desc: "Custom website for a premier sport fishing charter service on Siesta Key." },
-  { name: "Titan Up Marine Services", url: "https://titanupmarineservices.com", industry: "Marine Services", location: "Florida", desc: "Professional marine services website built for maximum local visibility." },
-  { name: "Reel Smart Charters", url: "https://www.reelsmartcharters.com", industry: "Fishing Charters", location: "Florida", desc: "Conversion-focused charter fishing website with SEO-optimized content." },
+  {
+    name: "Siesta Key Sport Fishing Charters",
+    url: "https://siestakeysportfishingcharters.com",
+    industry: "Sport Fishing Charters",
+    location: "Siesta Key, FL",
+    ogImage: "/manus-storage/siesta_e3b43ce3.png",
+    desc: "Custom website for a premier sport fishing charter service on Siesta Key.",
+  },
+  {
+    name: "Titan Up Marine Services",
+    url: "https://titanupmarineservices.com",
+    industry: "Marine Services",
+    location: "Sarasota, FL",
+    ogImage: "/manus-storage/titan-og_debe9c5d.png",
+    desc: "Professional marine services website built for maximum local visibility.",
+  },
+  {
+    name: "Reel Smart Charters",
+    url: "https://www.reelsmartcharters.com",
+    industry: "Fishing Charters",
+    location: "Florida",
+    ogImage: "/manus-storage/reel-og_b3fb7408.jpg",
+    desc: "Conversion-focused charter fishing website built for mobile bookings.",
+  },
+  {
+    name: "Pool Leak Sarasota",
+    url: "https://poolleaksarasota.com",
+    industry: "Pool Leak Detection",
+    location: "Sarasota, FL",
+    ogImage: "/manus-storage/pool_0c57702f.webp",
+    desc: "Hyper-local SEO site targeting homeowners searching for pool leak repair.",
+  },
+  {
+    name: "SRQ Wash",
+    url: "https://srqwash.com",
+    industry: "Pressure Washing",
+    location: "Sarasota, FL",
+    ogImage: "/manus-storage/srqwash_fc8827dc.webp",
+    desc: "Pressure washing company with weekly content posts and Google profile management.",
+  },
+  {
+    name: "Sarasota Wash and Seal",
+    url: "https://sarasotawashandseal.com",
+    industry: "Exterior Cleaning & Sealing",
+    location: "Sarasota, FL",
+    ogImage: "/manus-storage/sarasotawashandseal_45ddc10a.png",
+    desc: "Full-service exterior cleaning site targeting homeowners and commercial properties.",
+  },
 ];
 
 // ── Services data ───────────────────────────────────────────
@@ -159,19 +203,16 @@ export default function Home() {
           HERO — Full-bleed cinematic
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        {/* Background image */}
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "center 30%",
         }} />
-        {/* Dark cinematic overlay — heavier at bottom */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.85) 75%, rgba(10,10,10,1) 100%)",
         }} />
-        {/* Subtle red glow */}
         <div style={{
           position: "absolute", bottom: "20%", left: "5%",
           width: 600, height: 600,
@@ -180,12 +221,9 @@ export default function Home() {
         }} />
 
         <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "10rem", paddingBottom: "7rem", width: "100%" }}>
-          {/* Eyebrow */}
           <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.75rem" }}>
             Honest Digital Marketing · Local Service Businesses
           </div>
-
-          {/* Main headline — large editorial */}
           <h1 className="fade-up" data-delay="80" style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "clamp(3rem, 8vw, 6.5rem)",
@@ -200,8 +238,6 @@ export default function Home() {
             Found on Google,<br />
             <span style={{ color: "#C8102E" }}>Maps & AI Search.</span>
           </h1>
-
-          {/* Subtext */}
           <p className="fade-up" data-delay="160" style={{
             fontSize: "clamp(0.95rem, 1.5vw, 1.15rem)",
             color: "#C8C8C8",
@@ -212,8 +248,6 @@ export default function Home() {
             No setup fees. No big promises. No disappearing after you sign up.
             Honest digital marketing starting at <span style={{ color: "#FFFFFF", fontWeight: 700 }}>$100/month</span>.
           </p>
-
-          {/* CTAs */}
           <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center", marginBottom: "3rem" }}>
             <a href="tel:9413288891" className="btn-gold">
               <Phone size={16} /> Call (941) 328-8891
@@ -222,8 +256,6 @@ export default function Home() {
               View Our Work →
             </Link>
           </div>
-
-          {/* Trust pills */}
           <div className="fade-up" data-delay="320" style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
             {["No setup fees", "No long-term contracts", "No empty promises"].map((item) => (
               <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "#AAAAAA", letterSpacing: "0.05em" }}>
@@ -234,7 +266,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div style={{
           position: "absolute", bottom: "2rem", right: "2rem", zIndex: 2,
           display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem",
@@ -247,7 +278,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════
           STATS BAR
           ═══════════════════════════════════════════════ */}
-      <section style={{ background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <section style={{ background: "#0D0D0D", borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="container" style={{ padding: 0 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
             {[
@@ -265,79 +296,77 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHILOSOPHY / ABOUT — split layout
+          PHILOSOPHY / ABOUT — split layout with photo
           ═══════════════════════════════════════════════ */}
       <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "5rem", alignItems: "center" }}>
-            {/* Image */}
+            {/* Image side */}
             <div className="fade-up" data-delay="0" style={{ position: "relative" }}>
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-local-business-gneDyCA3b7hrCUyM7FV78F.webp"
-                alt="Local service businesses across the USA"
-                style={{ width: "100%", display: "block", filter: "brightness(0.7)" }}
-              />
-              {/* Location badge */}
               <div style={{
-                position: "absolute", bottom: "1.5rem", left: "1.5rem",
-                background: "rgba(10,10,10,0.9)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                padding: "0.875rem 1.25rem",
-                backdropFilter: "blur(12px)",
+                position: "relative",
+                aspectRatio: "4/5",
+                overflow: "hidden",
+                background: "#111111",
               }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <MapPin size={16} style={{ color: "#C8102E", flexShrink: 0 }} />
-                  <div>
-                    <div style={{ fontSize: "0.6rem", color: "#AAAAAA", letterSpacing: "0.2em", textTransform: "uppercase" }}>Serving Local Businesses</div>
-                    <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF" }}>Anywhere in the USA</div>
-                  </div>
+                <img
+                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80"
+                  alt="Local business owner working on digital marketing"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.75) contrast(1.1)" }}
+                />
+                <div style={{
+                  position: "absolute", inset: 0,
+                  background: "linear-gradient(135deg, rgba(200,16,46,0.15) 0%, transparent 60%)",
+                }} />
+                {/* Floating stat card */}
+                <div style={{
+                  position: "absolute", bottom: "2rem", right: "-1.5rem",
+                  background: "#C8102E",
+                  padding: "1.25rem 1.5rem",
+                  minWidth: 160,
+                }}>
+                  <div style={{ fontSize: "2rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>6+</div>
+                  <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.8)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "0.25rem" }}>Local Businesses<br />Ranked & Growing</div>
                 </div>
               </div>
             </div>
 
-            {/* Text */}
+            {/* Text side */}
             <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>About GOTM Digital</div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Why Got'm Digital</div>
               <h2 className="fade-up" data-delay="80" style={{
                 fontSize: "clamp(2rem, 4vw, 3.25rem)",
                 fontWeight: 900,
                 color: "#FFFFFF",
                 lineHeight: 1.1,
-                marginBottom: "2rem",
                 letterSpacing: "-0.02em",
-              }}>
-                The Honest Truth About<br />
-                <span style={{ color: "#C8102E" }}>Growing Online</span>
-              </h2>
-
-              <blockquote className="fade-up" data-delay="160" style={{
-                borderLeft: "2px solid #C8102E",
-                paddingLeft: "1.5rem",
                 marginBottom: "2rem",
               }}>
-                <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "#C8C8C8", fontStyle: "italic" }}>
-                  "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay."
-                </p>
-              </blockquote>
-
-              <div className="fade-up" data-delay="240" style={{ display: "flex", flexDirection: "column", gap: "1.25rem", marginBottom: "2.5rem" }}>
+                Marketing That<br />
+                <span style={{ color: "#C8102E" }}>Actually Works</span><br />
+                for Local Businesses.
+              </h2>
+              <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.9, color: "#C4C4C4", marginBottom: "1.5rem" }}>
+                Most digital marketing agencies overpromise and underdeliver. We don't. Got'm Digital works exclusively with local service businesses — the plumbers, charter captains, marine techs, and pressure washers who need real customers, not vanity metrics.
+              </p>
+              <p className="fade-up" data-delay="200" style={{ fontSize: "0.95rem", lineHeight: 1.9, color: "#C4C4C4", marginBottom: "2.5rem" }}>
+                Every strategy we build is designed to compound over time — your website, Google profile, reviews, and content all working together to make your business the obvious choice in your market.
+              </p>
+              <div className="fade-up" data-delay="280" style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2.5rem" }}>
                 {[
-                  "Zero setup fees on anything. You pay monthly, starting small.",
-                  "Your investment compounds over time — like a savings account for your business.",
-                  "My services grow with you. No upselling until you're ready.",
-                  "Focused exclusively on local service businesses across the USA.",
-                ].map((text, i) => (
-                  <div key={i} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-                    <span style={{ width: 1, height: 16, background: "#C8102E", flexShrink: 0, marginTop: "0.3rem" }} />
-                    <span style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "#C8C8C8" }}>{text}</span>
+                  "No setup fees — ever",
+                  "Custom HTML websites that outrank templates",
+                  "Google & AI search optimization built in",
+                  "Honest timelines, no overnight promises",
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.875rem", color: "#C8C8C8" }}>
+                    <CheckCircle2 size={15} style={{ color: "#C8102E", flexShrink: 0 }} />
+                    {item}
                   </div>
                 ))}
               </div>
-
               <div className="fade-up" data-delay="320">
-                <Link href="/services" className="btn-link">
-                  Our Services →
-                </Link>
+                <Link href="/contact" className="btn-gold">Start a Conversation →</Link>
               </div>
             </div>
           </div>
@@ -345,36 +374,60 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SERVICES — dark grid
+          PHOTO BREAK — Florida coastal / local business
           ═══════════════════════════════════════════════ */}
-      <section id="services" style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="container">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1.5rem" }}>
-            <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What We Do</div>
-              <h2 className="fade-up" data-delay="80" style={{
-                fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                fontWeight: 900,
-                color: "#FFFFFF",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-              }}>
-                Everything You Need to<br />
-                Get Found & Get Leads.
-              </h2>
-            </div>
-            <div className="fade-up" data-delay="120">
-              <Link href="/services" className="btn-link">View All Services →</Link>
-            </div>
-          </div>
+      <section style={{ position: "relative", height: "40vh", minHeight: 280, overflow: "hidden" }}>
+        <img
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80"
+          alt="Florida coast"
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.35) saturate(0.8)" }}
+        />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to right, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.9) 100%)",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          flexDirection: "column", gap: "0.75rem", textAlign: "center", padding: "0 1.5rem",
+        }}>
+          <div className="fade-up eyebrow" data-delay="0">Serving Local Businesses Across Florida</div>
+          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em", maxWidth: 700 }}>
+            From Siesta Key to Sarasota — we build the digital presence that gets your phone ringing.
+          </p>
+        </div>
+      </section>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
+      {/* ═══════════════════════════════════════════════
+          SERVICES — 4-column grid
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container">
+          <div style={{ marginBottom: "4rem" }}>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What We Do</div>
+            <h2 className="fade-up" data-delay="80" style={{
+              fontSize: "clamp(2rem, 4vw, 3.25rem)",
+              fontWeight: 900,
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              maxWidth: 600,
+            }}>
+              Four Services.<br />
+              One Unified Strategy.
+            </h2>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
             {services.map((service, i) => (
-              <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
-                background: "#111111",
-                padding: "2.5rem 2rem",
-                transition: "background 0.2s",
-              }}
+              <div
+                key={i}
+                className="fade-up"
+                data-delay={String(i * 80)}
+                style={{
+                  background: "#111111",
+                  padding: "2.5rem 2rem",
+                  transition: "background 0.2s",
+                }}
                 onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
                 onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
               >
@@ -386,13 +439,117 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="fade-up" data-delay="200" style={{ marginTop: "3rem" }}>
+            <Link href="/services" className="btn-link">See Full Service Details →</Link>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          AI SEARCH SHIFT
+          PORTFOLIO — ALL 6 clients, always visible
           ═══════════════════════════════════════════════ */}
       <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+        <div className="container">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1.5rem" }}>
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Selected Work</div>
+              <h2 className="fade-up" data-delay="80" style={{
+                fontSize: "clamp(2rem, 4vw, 3.25rem)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+              }}>
+                Local Businesses We've<br />
+                Put on the Map.
+              </h2>
+            </div>
+            <div className="fade-up" data-delay="120">
+              <Link href="/portfolio" className="btn-link">View Full Portfolio →</Link>
+            </div>
+          </div>
+
+          {/* 3-column grid — all 6 cards always visible */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: "1.5rem",
+          }}>
+            {clientSites.map((site, i) => (
+              <a
+                key={i}
+                href={site.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fade-up"
+                data-delay={String((i % 3) * 80)}
+                style={{
+                  background: "#111111",
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  transition: "border-color 0.2s, transform 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,16,46,0.4)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                }}
+              >
+                {/* OG image thumbnail */}
+                <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", background: "#0D0D0D" }}>
+                  <img
+                    src={site.ogImage}
+                    alt={site.name}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s cubic-bezier(0.23,1,0.32,1)" }}
+                    onMouseEnter={(e) => (e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)"}
+                    onMouseLeave={(e) => (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"}
+                  />
+                  {/* Red accent bar */}
+                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "linear-gradient(to right, #C8102E, rgba(200,16,46,0.3))" }} />
+                  {/* Visit overlay on hover */}
+                  <div style={{
+                    position: "absolute", inset: 0,
+                    background: "rgba(200,16,46,0.15)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    opacity: 0, transition: "opacity 0.2s",
+                  }}
+                    onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.opacity = "1"}
+                    onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.opacity = "0"}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", background: "rgba(10,10,10,0.85)", padding: "0.5rem 1rem", fontSize: "0.7rem", color: "#FFFFFF", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>
+                      <ExternalLink size={12} /> Visit Site
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card body */}
+                <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                  <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.5rem" }}>{site.industry}</div>
+                  <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem", letterSpacing: "-0.01em", lineHeight: 1.3 }}>{site.name}</h3>
+                  <div style={{ fontSize: "0.72rem", color: "#888888", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "0.875rem" }}>
+                    <MapPin size={10} /> {site.location}
+                  </div>
+                  <p style={{ fontSize: "0.82rem", lineHeight: 1.7, color: "#BBBBBB", flex: 1 }}>{site.desc}</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700, marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                    <ExternalLink size={11} /> Visit Website
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          AI SEARCH SHIFT — dark section with photo accent
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="container" style={{ maxWidth: 1000 }}>
           <div style={{ marginBottom: "4rem" }}>
             <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Is Changing Fast</div>
@@ -448,60 +605,27 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PORTFOLIO PREVIEW — dark cards
+          PHOTO BREAK 2 — dark boat / water
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="container">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1.5rem" }}>
-            <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Selected Work</div>
-              <h2 className="fade-up" data-delay="80" style={{
-                fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                fontWeight: 900,
-                color: "#FFFFFF",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-              }}>
-                Local Businesses We've<br />
-                Put on the Map.
-              </h2>
-            </div>
-            <div className="fade-up" data-delay="120">
-              <Link href="/portfolio" className="btn-link">View All 6 Sites →</Link>
-            </div>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
-            {clientSites.map((site, i) => (
-              <a
-                key={i}
-                href={site.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="fade-up"
-                data-delay={String(i * 80)}
-                style={{
-                  background: "#111111",
-                  padding: "2.5rem 2rem",
-                  textDecoration: "none",
-                  display: "block",
-                  transition: "background 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
-                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
-              >
-                <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.75rem" }}>{site.industry}</div>
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{site.name}</h3>
-                <div style={{ fontSize: "0.75rem", color: "#AAAAAA", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "1rem" }}>
-                  <MapPin size={10} /> {site.location}
-                </div>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#C0C0C0", marginBottom: "1.5rem" }}>{site.desc}</p>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>
-                  <ExternalLink size={11} /> Visit Website
-                </div>
-              </a>
-            ))}
-          </div>
+      <section style={{ position: "relative", height: "35vh", minHeight: 240, overflow: "hidden" }}>
+        <img
+          src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=80"
+          alt="Florida fishing boat on the water"
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.3) saturate(0.7)" }}
+        />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to bottom, rgba(17,17,17,1) 0%, transparent 20%, transparent 80%, rgba(10,10,10,1) 100%)",
+        }} />
+        <div style={{
+          position: "absolute", inset: 0,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          flexDirection: "column", gap: "0.5rem", textAlign: "center", padding: "0 1.5rem",
+        }}>
+          <div className="fade-up eyebrow" data-delay="0">Simple, Honest Pricing</div>
+          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em" }}>
+            Starting at $100/month. No setup fees. No surprises.
+          </p>
         </div>
       </section>
 
