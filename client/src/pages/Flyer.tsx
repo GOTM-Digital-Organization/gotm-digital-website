@@ -170,7 +170,7 @@ export default function Flyer() {
             <a href="tel:9413288891" className="btn-primary" style={{ fontSize: "1rem", padding: "0.875rem 2rem" }}>
               <Phone size={16} /> (941) 328-8891
             </a>
-            <a href="mailto:info@gotmdigital.com" style={{
+            <a href="mailto:tom@gotmdigital.com" style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
               padding: "0.875rem 2rem",
               border: "1px solid rgba(255,255,255,0.25)",
@@ -181,7 +181,7 @@ export default function Flyer() {
               textDecoration: "none",
               transition: "border-color 0.2s",
             }}>
-              info@gotmdigital.com
+              tom@gotmdigital.com
             </a>
           </div>
 
@@ -506,7 +506,7 @@ export default function Flyer() {
             <a href="tel:9413288891" className="btn-primary" style={{ fontSize: "1.1rem", padding: "1rem 2.5rem" }}>
               <Phone size={18} /> (941) 328-8891
             </a>
-            <a href="mailto:info@gotmdigital.com" style={{
+            <a href="mailto:tom@gotmdigital.com" style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
               padding: "1rem 2.5rem",
               border: "1px solid rgba(255,255,255,0.25)",
@@ -516,7 +516,7 @@ export default function Flyer() {
               letterSpacing: "0.05em",
               textDecoration: "none",
             }}>
-              info@gotmdigital.com
+              tom@gotmdigital.com
             </a>
           </div>
 

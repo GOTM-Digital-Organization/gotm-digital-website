@@ -149,7 +149,7 @@ export default function Contact() {
                     </div>
                   </a>
 
-                  <a href="mailto:info@gotmdigital.com" style={{
+                  <a href="mailto:tom@gotmdigital.com" style={{
                     display: "flex", gap: "1.25rem", alignItems: "center", textDecoration: "none",
                     background: "#F7F7F7", padding: "1.5rem",
                     transition: "background 0.2s",
@@ -164,7 +164,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#555555" }}>Email</div>
-                      <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "#111111" }}>info@gotmdigital.com</div>
+                      <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "#111111" }}>tom@gotmdigital.com</div>
                     </div>
                   </a>
 

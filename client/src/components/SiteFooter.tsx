@@ -83,7 +83,7 @@ export default function SiteFooter() {
               >
                 <Phone size={14} style={{ color: "#C8102E", flexShrink: 0 }} /> (941) 328-8891
               </a>
-              <a href="mailto:info@gotmdigital.com" style={{
+              <a href="mailto:tom@gotmdigital.com" style={{
                 display: "flex", alignItems: "center", gap: "0.625rem",
                 color: "#AAAAAA", textDecoration: "none", fontSize: "0.825rem",
                 transition: "color 0.2s",
@@ -91,7 +91,7 @@ export default function SiteFooter() {
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#AAAAAA")}
               >
-                <Mail size={13} style={{ color: "#C8102E", flexShrink: 0 }} /> info@gotmdigital.com
+                <Mail size={13} style={{ color: "#C8102E", flexShrink: 0 }} /> tom@gotmdigital.com
               </a>
               <p style={{ fontSize: "0.775rem", color: "#777777", lineHeight: 1.7, margin: 0 }}>
                 Serving local service businesses<br />anywhere in the USA

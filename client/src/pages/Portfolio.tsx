@@ -79,6 +79,16 @@ const clients = [
     desc: "Full-service exterior cleaning and sealing company. Their website targets homeowners and commercial property managers looking for driveway sealing, roof cleaning, and exterior washing services across the greater Sarasota region.",
     services: ["Custom HTML Website", "Local SEO", "Google Ads Landing Page"],
   },
+  {
+    name: "MNSS Inc.",
+    url: "https://mnss-inc.com",
+    industry: "Commercial Services",
+    location: "Florida",
+    ogImage: "",
+    desc: "New custom HTML website currently in active development — built from scratch with full SEO structure, AI search optimization, and mobile-first design. Launching soon.",
+    services: ["Custom HTML Website", "SEO Optimization", "AI Search Ready"],
+    wip: true,
+  },
 ];
 
 export default function Portfolio() {
@@ -129,7 +139,7 @@ export default function Portfolio() {
         <div className="container" style={{ padding: 0 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}>
             {[
-              { num: "6", label: "Active Client Websites" },
+              { num: "7", label: "Active Client Websites" },
               { num: "100%", label: "Custom HTML — No Templates" },
               { num: "5★", label: "Average Client Review Score" },
               { num: "$0", label: "Setup Fees. Ever." },
@@ -176,42 +186,55 @@ export default function Portfolio() {
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
-                {/* OG Image thumbnail — clickable */}
-                <a
-                  href={client.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: "block", overflow: "hidden", lineHeight: 0, position: "relative" }}
-                >
-                  <img
-                    src={client.ogImage}
-                    alt={`${client.name} website preview`}
-                    style={{
-                      width: "100%",
-                      height: 210,
-                      objectFit: "cover",
-                      objectPosition: "top",
-                      display: "block",
-                      transition: "transform 0.5s cubic-bezier(0.23,1,0.32,1)",
-                    }}
-                    onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)")}
-                    onMouseLeave={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
-                  />
-                  {/* Hover overlay */}
+                {/* OG Image thumbnail — clickable or WIP placeholder */}
+                {(client as any).wip ? (
                   <div style={{
-                    position: "absolute", inset: 0,
-                    background: "rgba(200,16,46,0.0)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    transition: "background 0.3s",
-                  }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0.15)"}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0)"}
-                  >
-                    <ExternalLink size={28} style={{ color: "#FFFFFF", opacity: 0, transition: "opacity 0.3s" }}
-                      onMouseEnter={e => (e.currentTarget as SVGElement).style.opacity = "1"}
-                    />
+                    height: 210, display: "flex", flexDirection: "column",
+                    alignItems: "center", justifyContent: "center",
+                    background: "linear-gradient(135deg, #1a0a0d 0%, #2a0d12 50%, #1a0a0d 100%)",
+                    gap: "0.75rem", position: "relative",
+                  }}>
+                    <div style={{ fontSize: "0.6rem", letterSpacing: "0.3em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, border: "1px solid rgba(200,16,46,0.5)", padding: "0.3rem 0.75rem" }}>🔧 In Progress</div>
+                    <div style={{ fontSize: "1.1rem", fontWeight: 900, color: "rgba(255,255,255,0.2)", letterSpacing: "0.05em" }}>mnss-inc.com</div>
+                    <div style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.3)" }}>Launching Soon</div>
                   </div>
-                </a>
+                ) : (
+                  <a
+                    href={client.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "block", overflow: "hidden", lineHeight: 0, position: "relative" }}
+                  >
+                    <img
+                      src={client.ogImage}
+                      alt={`${client.name} website preview`}
+                      style={{
+                        width: "100%",
+                        height: 210,
+                        objectFit: "cover",
+                        objectPosition: "top",
+                        display: "block",
+                        transition: "transform 0.5s cubic-bezier(0.23,1,0.32,1)",
+                      }}
+                      onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)")}
+                      onMouseLeave={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
+                    />
+                    {/* Hover overlay */}
+                    <div style={{
+                      position: "absolute", inset: 0,
+                      background: "rgba(200,16,46,0.0)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      transition: "background 0.3s",
+                    }}
+                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0.15)"}
+                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0)"}
+                    >
+                      <ExternalLink size={28} style={{ color: "#FFFFFF", opacity: 0, transition: "opacity 0.3s" }}
+                        onMouseEnter={e => (e.currentTarget as SVGElement).style.opacity = "1"}
+                      />
+                    </div>
+                  </a>
+                )}
 
                 {/* Red accent bar */}
                 <div style={{ height: 3, background: "linear-gradient(90deg, #C8102E 0%, rgba(200,16,46,0.2) 100%)" }} />
@@ -261,18 +284,78 @@ export default function Portfolio() {
                   </div>
 
                   {/* CTA */}
-                  <a
-                    href={client.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary-light"
-                    style={{ justifyContent: "center" }}
-                  >
-                    <ExternalLink size={13} /> Visit {client.name.split(" ")[0]} Website
-                  </a>
+                  {(client as any).wip ? (
+                    <a
+                      href="/contact"
+                      className="btn-primary-light"
+                      style={{ justifyContent: "center" }}
+                    >
+                      Get a Website Like This →
+                    </a>
+                  ) : (
+                    <a
+                      href={client.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary-light"
+                      style={{ justifyContent: "center" }}
+                    >
+                      <ExternalLink size={13} /> Visit {client.name.split(" ")[0]} Website
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          WORK IN PROGRESS BANNER — WHITE SECTION
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "4rem 0", background: "#F7F7F7", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div className="container">
+          <div className="fade-up" data-delay="0" style={{
+            background: "#FFFFFF",
+            border: "2px solid rgba(200,16,46,0.25)",
+            padding: "2rem 2.5rem",
+            display: "grid",
+            gridTemplateColumns: "auto 1fr auto",
+            gap: "2rem",
+            alignItems: "center",
+          }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+              <div style={{ position: "relative", width: 52, height: 52 }}>
+                <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "rgba(200,16,46,0.15)", animation: "pulse 2s ease-in-out infinite" }} />
+                <div style={{ position: "absolute", inset: 8, borderRadius: "50%", background: "#C8102E", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontSize: "0.9rem" }}>🔧</span>
+                </div>
+              </div>
+              <div style={{ fontSize: "0.55rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, whiteSpace: "nowrap" }}>This Week</div>
+            </div>
+            <div>
+              <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#888888", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.35rem" }}>Work in Progress</div>
+              <h3 style={{ fontSize: "clamp(1rem, 2vw, 1.4rem)", fontWeight: 900, color: "#111111", letterSpacing: "-0.02em", marginBottom: "0.4rem", lineHeight: 1.2 }}>
+                Currently Building: <span style={{ color: "#C8102E" }}>mnss-inc.com</span>
+              </h3>
+              <p style={{ fontSize: "0.85rem", color: "#555555", lineHeight: 1.7, margin: 0, maxWidth: 500 }}>
+                A new custom HTML website in active development this week — built from scratch with full SEO structure, AI search optimization, and mobile-first design. Launching soon.
+              </p>
+            </div>
+            <div style={{ flexShrink: 0 }}>
+              <a href="/contact" style={{
+                display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase",
+                fontWeight: 700, color: "#C8102E", textDecoration: "none",
+                border: "1px solid rgba(200,16,46,0.4)", padding: "0.75rem 1.25rem",
+                transition: "background 0.2s, color 0.2s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#C8102E"; (e.currentTarget as HTMLElement).style.color = "#FFFFFF"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#C8102E"; }}
+              >
+                Get One Like This →
+              </a>
+            </div>
           </div>
         </div>
       </section>

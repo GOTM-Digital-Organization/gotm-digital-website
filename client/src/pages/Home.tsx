@@ -181,6 +181,15 @@ const clientSites = [
     ogImage: "/manus-storage/sarasotawashandseal_45ddc10a.png",
     desc: "Full-service exterior cleaning site targeting homeowners and commercial properties.",
   },
+  {
+    name: "MNSS Inc.",
+    url: "https://mnss-inc.com",
+    industry: "Commercial Services",
+    location: "Florida",
+    ogImage: "",
+    desc: "New website currently in development — launching soon with full SEO and AI search optimization built in.",
+    wip: true,
+  },
 ];
 
 // ── Services data ───────────────────────────────────────────
@@ -282,7 +291,7 @@ export default function Home() {
         <div className="container" style={{ padding: 0 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
             {[
-              { value: 6, suffix: "+", label: "Client Websites Live" },
+              { value: 7, suffix: "+", label: "Client Websites Live" },
               { value: 100, suffix: "%", label: "No Setup Fees" },
               { value: 3, suffix: "yr", label: "Avg. Client Growth" },
               { value: 5, suffix: "★", label: "Average Review Score" },
@@ -470,7 +479,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 3-column grid — all 6 cards always visible */}
+          {/* 3-column grid — all 7 cards always visible */}
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
@@ -502,15 +511,22 @@ export default function Home() {
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                 }}
               >
-                {/* OG image thumbnail */}
+                {/* OG image thumbnail or WIP placeholder */}
                 <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", background: "#0D0D0D" }}>
-                  <img
-                    src={site.ogImage}
-                    alt={site.name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s cubic-bezier(0.23,1,0.32,1)" }}
-                    onMouseEnter={(e) => (e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)"}
-                    onMouseLeave={(e) => (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"}
-                  />
+                  {(site as any).wip ? (
+                    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #1a0a0d 0%, #2a0d12 50%, #1a0a0d 100%)", gap: "0.75rem" }}>
+                      <div style={{ fontSize: "0.6rem", letterSpacing: "0.3em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, border: "1px solid rgba(200,16,46,0.5)", padding: "0.3rem 0.75rem" }}>🔧 In Progress</div>
+                      <div style={{ fontSize: "1.1rem", fontWeight: 900, color: "rgba(255,255,255,0.15)", letterSpacing: "0.05em" }}>mnss-inc.com</div>
+                    </div>
+                  ) : (
+                    <img
+                      src={site.ogImage}
+                      alt={site.name}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s cubic-bezier(0.23,1,0.32,1)" }}
+                      onMouseEnter={(e) => (e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)"}
+                      onMouseLeave={(e) => (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"}
+                    />
+                  )}
                   {/* Red accent bar */}
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "linear-gradient(to right, #C8102E, rgba(200,16,46,0.3))" }} />
                 </div>
@@ -529,6 +545,67 @@ export default function Home() {
                 </div>
               </a>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          WORK IN PROGRESS  [LIGHT]
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "5rem 0", background: "#F5F5F5", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <div className="container">
+          <div className="fade-up" data-delay="0" style={{
+            background: "#FFFFFF",
+            border: "2px solid rgba(200,16,46,0.25)",
+            padding: "2.5rem 3rem",
+            display: "grid",
+            gridTemplateColumns: "auto 1fr auto",
+            gap: "2rem",
+            alignItems: "center",
+          }}>
+            {/* Pulsing badge */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
+              <div style={{ position: "relative", width: 56, height: 56 }}>
+                <div style={{
+                  position: "absolute", inset: 0, borderRadius: "50%",
+                  background: "rgba(200,16,46,0.15)",
+                  animation: "pulse 2s ease-in-out infinite",
+                }} />
+                <div style={{
+                  position: "absolute", inset: 8, borderRadius: "50%",
+                  background: "#C8102E",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  <span style={{ fontSize: "1rem" }}>🔧</span>
+                </div>
+              </div>
+              <div style={{ fontSize: "0.55rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, whiteSpace: "nowrap" }}>This Week</div>
+            </div>
+            {/* Content */}
+            <div>
+              <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#888888", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>Work in Progress</div>
+              <h3 style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)", fontWeight: 900, color: "#111111", letterSpacing: "-0.02em", marginBottom: "0.5rem", lineHeight: 1.2 }}>
+                Currently Building: <span style={{ color: "#C8102E" }}>mnss-inc.com</span>
+              </h3>
+              <p style={{ fontSize: "0.875rem", color: "#555555", lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
+                A new custom HTML website in active development this week — built from scratch with full SEO structure, AI search optimization, and mobile-first design. Launching soon.
+              </p>
+            </div>
+            {/* CTA */}
+            <div style={{ flexShrink: 0 }}>
+              <a href="/contact" style={{
+                display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase",
+                fontWeight: 700, color: "#C8102E", textDecoration: "none",
+                border: "1px solid rgba(200,16,46,0.4)", padding: "0.75rem 1.25rem",
+                transition: "background 0.2s, color 0.2s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#C8102E"; (e.currentTarget as HTMLElement).style.color = "#FFFFFF"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#C8102E"; }}
+              >
+                Get One Like This →
+              </a>
+            </div>
           </div>
         </div>
       </section>
