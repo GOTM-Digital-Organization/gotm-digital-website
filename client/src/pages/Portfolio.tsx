@@ -232,7 +232,7 @@ export default function Portfolio() {
                     }}>
                       {client.name}
                     </h3>
-                    <div style={{ fontSize: "0.72rem", color: "#888888", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                    <div style={{ fontSize: "0.72rem", color: "#555555", display: "flex", alignItems: "center", gap: "0.3rem" }}>
                       <MapPin size={10} /> {client.location}
                     </div>
                   </div>

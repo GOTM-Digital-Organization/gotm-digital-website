@@ -221,7 +221,7 @@ export default function Flyer() {
       <section style={{ background: "#F7F7F7", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 2rem" }}>
 
-        <div className="eyebrow" style={{ marginBottom: "0.75rem", color: "#888888" }}>The Honest Truth</div>
+        <div className="eyebrow" style={{ marginBottom: "0.75rem", color: "#555555" }}>The Honest Truth</div>
         <h2 style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
@@ -235,38 +235,38 @@ export default function Flyer() {
           <span style={{ color: "#C8102E" }}>Digital Marketing</span>
         </h2>
         <AccordionSection num="01" title="New Websites Take Time — Here's Why" defaultOpen={true}>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
-            A brand-new domain won't rank on Google overnight. It typically takes <strong style={{ color: "#FFFFFF" }}>1–3 years</strong> to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal.
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
+            A brand-new domain won't rank on Google overnight. It typically takes <strong style={{ color: "#111111" }}>1–3 years</strong> to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal.
           </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
-            Think of your website as an investment that <strong style={{ color: "#FFFFFF" }}>compounds over time</strong>. The businesses that stay consistent are the ones that win. That's why we keep your monthly costs low — so you can stay in the game long enough for it to pay off.
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
+            Think of your website as an investment that <strong style={{ color: "#111111" }}>compounds over time</strong>. The businesses that stay consistent are the ones that win. That's why we keep your monthly costs low — so you can stay in the game long enough for it to pay off.
           </p>
         </AccordionSection>
 
         <AccordionSection num="02" title="Why Custom HTML Beats WordPress & Others">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
-            Custom HTML sites <strong style={{ color: "#FFFFFF" }}>load faster and rank better</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one: meta tags, schema markup, mobile layout, image compression, and site structure.
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
+            Custom HTML sites <strong style={{ color: "#111111" }}>load faster and rank better</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one: meta tags, schema markup, mobile layout, image compression, and site structure.
           </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
             Over time, this foundation consistently outperforms WordPress, GoHighLevel, Wix, and Squarespace — especially for local service businesses where page speed and local SEO signals matter most.
           </p>
         </AccordionSection>
 
         <AccordionSection num="03" title="Google Business Profile — Your Most Powerful Free Tool">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
-            Your Google Business Profile is your most powerful free tool while your website grows. <strong style={{ color: "#FFFFFF" }}>Ask every single customer for a review — every time, no exceptions.</strong> Reviews build local trust fast and can start showing results within weeks.
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
+            Your Google Business Profile is your most powerful free tool while your website grows. <strong style={{ color: "#111111" }}>Ask every single customer for a review — every time, no exceptions.</strong> Reviews build local trust fast and can start showing results within weeks.
           </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
             Keep your profile active: photos, hours, services, and regular posts all signal credibility to Google. This works independently of your website's age — it's your fastest path to local visibility right now.
           </p>
         </AccordionSection>
 
         <AccordionSection num="04" title="Need Leads Right Now? — Google Ads">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: 0 }}>
-            Google Ads put you in front of people <strong style={{ color: "#FFFFFF" }}>actively searching for your services today</strong> — not in two years. We build dedicated landing pages in the same clean HTML format — fast, focused, and built to convert.
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
+            Google Ads put you in front of people <strong style={{ color: "#111111" }}>actively searching for your services today</strong> — not in two years. We build dedicated landing pages in the same clean HTML format — fast, focused, and built to convert.
           </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#AAAAAA", margin: "0.75rem 0 0" }}>
-            You control the budget and only pay when someone clicks your ad. Ads bridge the gap while your organic SEO matures — scale back once the site takes off. <strong style={{ color: "#FFFFFF" }}>Ad spend is paid directly by you to Google</strong> — our fee covers strategy, setup, and management only.
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
+            You control the budget and only pay when someone clicks your ad. Ads bridge the gap while your organic SEO matures — scale back once the site takes off. <strong style={{ color: "#111111" }}>Ad spend is paid directly by you to Google</strong> — our fee covers strategy, setup, and management only.
           </p>
         </AccordionSection>
 
@@ -290,7 +290,7 @@ export default function Flyer() {
               </div>
             ))}
           </div>
-          <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#C0C0C0", margin: 0, fontStyle: "italic" }}>
+          <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#555555", margin: 0, fontStyle: "italic" }}>
             The key is staying consistent — most businesses quit before the compounding kicks in.
           </p>
         </AccordionSection>

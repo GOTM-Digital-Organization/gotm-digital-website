@@ -144,7 +144,7 @@ export default function Contact() {
                       <Phone size={16} style={{ color: "#C8102E" }} />
                     </div>
                     <div>
-                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#888888" }}>Call or Text</div>
+                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#555555" }}>Call or Text</div>
                       <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "#111111" }}>(941) 328-8891</div>
                     </div>
                   </a>
@@ -163,7 +163,7 @@ export default function Contact() {
                       <Mail size={16} style={{ color: "#C8102E" }} />
                     </div>
                     <div>
-                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#888888" }}>Email</div>
+                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#555555" }}>Email</div>
                       <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "#111111" }}>info@gotmdigital.com</div>
                     </div>
                   </a>
@@ -178,7 +178,7 @@ export default function Contact() {
                       <MapPin size={16} style={{ color: "#C8102E" }} />
                     </div>
                     <div>
-                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#888888" }}>Service Area</div>
+                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#555555" }}>Service Area</div>
                       <div style={{ fontSize: "0.95rem", fontWeight: 600, color: "#111111" }}>Serving Local Businesses Nationwide</div>
                     </div>
                   </div>
@@ -315,7 +315,7 @@ export default function Contact() {
                   </div>
 
                   <div style={{ marginBottom: "1rem" }}>
-                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#444444", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                       I'm Interested In
                     </label>
                     <select
@@ -323,7 +323,7 @@ export default function Contact() {
                       onChange={e => setForm({ ...form, service: e.target.value })}
                       style={{ ...inputStyle, color: form.service ? "#111111" : "#888888" }}
                       onFocus={e => (e.target.style.borderColor = "#C8102E")}
-                      onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                      onBlur={e => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
                     >
                       <option value="">Select a service...</option>
                       <option value="starter">Starter — Website Only ($100/mo)</option>
@@ -334,7 +334,7 @@ export default function Contact() {
                   </div>
 
                   <div style={{ marginBottom: "1.5rem" }}>
-                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#AAAAAA", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
+                    <label style={{ fontSize: "0.65rem", letterSpacing: "0.15em", color: "#444444", textTransform: "uppercase", fontWeight: 600, display: "block", marginBottom: "0.5rem" }}>
                       Tell Me About Your Business
                     </label>
                     <textarea
@@ -344,7 +344,7 @@ export default function Contact() {
                       rows={4}
                       style={{ ...inputStyle, resize: "vertical" }}
                       onFocus={e => (e.target.style.borderColor = "#C8102E")}
-                      onBlur={e => (e.target.style.borderColor = "rgba(255,255,255,0.08)")}
+                      onBlur={e => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
                     />
                   </div>
 
@@ -358,7 +358,7 @@ export default function Contact() {
                     {submitContact.isPending ? "Sending..." : "Send Message"}
                   </button>
 
-                  <p style={{ fontSize: "0.72rem", color: "#888888", textAlign: "center", marginTop: "1rem", lineHeight: 1.6 }}>
+                  <p style={{ fontSize: "0.72rem", color: "#555555", textAlign: "center", marginTop: "1rem", lineHeight: 1.6 }}>
                     Or call/text directly: <a href="tel:9413288891" style={{ color: "#C8102E", textDecoration: "none" }}>(941) 328-8891</a>
                   </p>
                 </form>

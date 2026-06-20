@@ -212,7 +212,7 @@ export default function Services() {
                   {service.num}
                 </div>
                 <div style={{ color: "#C8102E", marginBottom: "1.25rem" }}>{service.icon}</div>
-                <div className="eyebrow" style={{ marginBottom: "0.75rem", color: service.light ? "#888888" : undefined }}>{service.tagline}</div>
+                <div className="eyebrow" style={{ marginBottom: "0.75rem", color: service.light ? "#555555" : undefined }}>{service.tagline}</div>
                 <h2 style={{
                   fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
                   fontWeight: 800,
@@ -227,11 +227,11 @@ export default function Services() {
                   {service.desc}
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: service.note ? "1.5rem" : "0" }}>
-                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: service.light ? "#666666" : "#AAAAAA" }}>
+                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: service.light ? "#444444" : "#AAAAAA" }}>
                     <Clock size={12} style={{ color: "#C8102E", flexShrink: 0 }} />
                     {service.timeline}
                   </div>
-                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: service.light ? "#666666" : "#AAAAAA" }}>
+                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: service.light ? "#444444" : "#AAAAAA" }}>
                     <TrendingUp size={12} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
                     {service.price}
                   </div>
@@ -241,7 +241,7 @@ export default function Services() {
                     borderLeft: "2px solid rgba(200,16,46,0.4)",
                     paddingLeft: "1rem",
                     fontSize: "0.75rem",
-                    color: service.light ? "#666666" : "#AAAAAA",
+                    color: service.light ? "#444444" : "#AAAAAA",
                     lineHeight: 1.7,
                   }}>
                     {service.note}
@@ -251,7 +251,7 @@ export default function Services() {
 
               {/* Right: Bullets */}
               <div style={{ padding: "4rem 0 4rem 3rem" }}>
-                <div className="eyebrow" style={{ marginBottom: "1.5rem", color: service.light ? "#888888" : undefined }}>What's Included</div>
+                <div className="eyebrow" style={{ marginBottom: "1.5rem", color: service.light ? "#555555" : undefined }}>What's Included</div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {service.bullets.map((bullet, j) => (
                     <li key={j} style={{ display: "flex", gap: "1rem", fontSize: "0.875rem", lineHeight: 1.7, color: service.light ? "#444444" : "#C8C8C8", marginBottom: "1rem" }}>
@@ -320,7 +320,7 @@ export default function Services() {
       <section style={{ padding: "8rem 0", background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
         <div className="container" style={{ maxWidth: 900 }}>
           <div style={{ marginBottom: "3.5rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#888888" }}>New Offer</div>
+            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#555555" }}>New Offer</div>
             <h2 className="fade-up" data-delay="80" style={{
               fontSize: "clamp(2rem, 4vw, 3.25rem)",
               fontWeight: 900,
@@ -358,7 +358,7 @@ export default function Services() {
                 },
               ].map((col, i) => (
                 <div key={i}>
-                  <div className="eyebrow" style={{ marginBottom: "1.25rem", color: "#888888" }}>{col.section}</div>
+                  <div className="eyebrow" style={{ marginBottom: "1.25rem", color: "#555555" }}>{col.section}</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {col.items.map((item, j) => (
                       <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", lineHeight: 1.7, color: "#444444", marginBottom: "0.75rem" }}>
@@ -374,7 +374,7 @@ export default function Services() {
             <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
               <div>
                 <div style={{ fontSize: "3rem", fontWeight: 900, color: "#111111", lineHeight: 1, letterSpacing: "-0.04em" }}>$97</div>
-                <div style={{ fontSize: "0.75rem", color: "#777777", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
+                <div style={{ fontSize: "0.75rem", color: "#555555", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                 <a href="tel:9413288891" className="btn-gold">
@@ -387,7 +387,7 @@ export default function Services() {
             </div>
           </div>
 
-          <p className="fade-up" style={{ fontSize: "0.8rem", color: "#999999", lineHeight: 1.75, maxWidth: 580 }}>
+          <p className="fade-up" style={{ fontSize: "0.8rem", color: "#555555", lineHeight: 1.75, maxWidth: 580 }}>
             If you become a Got'm Digital client after the audit, the $97 fee is credited toward your first month. The audit report is yours to keep regardless.
           </p>
         </div>
