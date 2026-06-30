@@ -419,7 +419,7 @@ export default function Contact() {
             { q: "How long does it take to get a website live?", a: "Typically 1–2 weeks from the time we get started. We move fast once we have your content and preferences." },
             { q: "Do I have to sign a long-term contract?", a: "No long-term contracts. You stay because it's working, not because you're locked in." },
             { q: "How long does SEO take to work?", a: "Honestly? 6–18 months for meaningful organic results. We'll tell you this upfront because it's the truth. Google Ads can bridge the gap while your site matures." },
-            { q: "What kinds of businesses do you work with?", a: "Local service businesses — contractors, marine services, outdoor recreation, cleaning, landscaping, and similar trades. We specialize in the Florida market but work with businesses nationwide." },
+            { q: "What kinds of businesses do you work with?", a: "Local service businesses — contractors, marine services, outdoor recreation, cleaning, landscaping, and similar trades. If you run a local service business and need honest digital marketing, we work with you regardless of where you’re located." },
           ].map((faq, i) => (
             <div key={i} className="fade-up" data-delay={String(i * 60)} style={{
               padding: "1.75rem 0",

@@ -401,9 +401,9 @@ export default function Home() {
           display: "flex", alignItems: "center", justifyContent: "center",
           flexDirection: "column", gap: "0.75rem", textAlign: "center", padding: "0 1.5rem",
         }}>
-          <div className="fade-up eyebrow" data-delay="0">Serving Local Businesses Across Florida</div>
+          <div className="fade-up eyebrow" data-delay="0">Wherever Local Service Businesses Need Honest Digital Marketing</div>
           <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em", maxWidth: 700, textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
-            From Siesta Key to Sarasota — we build the digital presence that gets your phone ringing.
+            Wherever you are, whatever you do — we build the digital presence that gets your phone ringing.
           </p>
         </div>
       </section>
