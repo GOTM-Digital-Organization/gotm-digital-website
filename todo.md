@@ -36,3 +36,11 @@
 - [x] Portfolio page: white stats bar with red numbers, client cards visible in grid
 - [x] Contact page: white form section with dark text inputs, dark FAQ section below
 - [x] Flyer page: white stats bar, white accordion section with dark text, dark audit offer section
+- [x] All pages: fixed light-on-light text contrast (accordion body text #333333, bold #111111, eyebrow labels #555555)
+- [x] Client count updated to 7 active websites across all pages
+- [x] MNSS Inc. (mnss-inc.com) added as 7th WIP client card with "In Progress" badge
+- [x] Work in Progress featured banner section added to Home and Portfolio pages
+- [x] All email addresses updated to tom@gotmdigital.com across all pages and backend
+- [x] Web3Forms client-side integration added to Contact.tsx for email delivery
+- [x] Platform comparison table added to Flyer page (HTML vs WordPress vs GHL vs Wix)
+- [x] Flyer page: converted all 8 accordion sections to fully expanded scroll-through sections with alternating dark/light backgrounds

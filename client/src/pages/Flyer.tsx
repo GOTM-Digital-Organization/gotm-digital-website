@@ -1,84 +1,41 @@
 import { useState } from "react";
-import { Phone, CheckCircle2, ChevronDown } from "lucide-react";
+import { Phone, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp";
 
-// ── Dark Accordion ──────────────────────────────────────────
-function AccordionSection({
-  title,
-  children,
-  defaultOpen = false,
-  num,
-}: {
-  title: string;
-  children: React.ReactNode;
-  defaultOpen?: boolean;
-  num?: string;
-}) {
-  const [open, setOpen] = useState(defaultOpen);
-
+// ── Reusable section heading ──────────────────────────────────
+function SectionHeading({ num, title, light = false }: { num: string; title: string; light?: boolean }) {
   return (
-    <div style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
-      <button
-        onClick={() => setOpen(!open)}
-        style={{
-          width: "100%",
-          background: "transparent",
-          border: "none",
-          color: "#111111",
-          padding: "1.5rem 0",
-          display: "flex",
-          alignItems: "center",
-          gap: "1rem",
-          cursor: "pointer",
-          textAlign: "left",
-        }}
-      >
-        {num && (
-          <span style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "1.1rem",
-            fontWeight: 900,
-            color: "rgba(200,16,46,0.5)",
-            minWidth: "2rem",
-            letterSpacing: "-0.02em",
-          }}>{num}</span>
-        )}
-        <span style={{
-          flex: 1,
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: "1rem",
-          fontWeight: 700,
-          color: "#111111",
-          letterSpacing: "-0.01em",
-        }}>
-          {title}
-        </span>
-        <ChevronDown
-          size={18}
-          style={{
-            color: "#C8102E",
-            flexShrink: 0,
-            transition: "transform 0.25s cubic-bezier(0.23,1,0.32,1)",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
-          }}
-        />
-      </button>
-      {open && (
-        <div style={{
-          paddingBottom: "1.75rem",
-          paddingLeft: num ? "3rem" : "0",
-        }}>
-          {children}
-        </div>
-      )}
+    <div style={{ display: "flex", alignItems: "flex-start", gap: "1.25rem", marginBottom: "2rem" }}>
+      <span style={{
+        fontFamily: "'Playfair Display', serif",
+        fontSize: "2.5rem",
+        fontWeight: 900,
+        color: "rgba(200,16,46,0.35)",
+        lineHeight: 1,
+        minWidth: "3rem",
+        letterSpacing: "-0.04em",
+        flexShrink: 0,
+        marginTop: "0.1rem",
+      }}>{num}</span>
+      <h2 style={{
+        fontFamily: "'Playfair Display', serif",
+        fontSize: "clamp(1.35rem, 2.5vw, 1.9rem)",
+        fontWeight: 900,
+        color: light ? "#FFFFFF" : "#111111",
+        lineHeight: 1.2,
+        letterSpacing: "-0.02em",
+        margin: 0,
+      }}>{title}</h2>
     </div>
   );
 }
 
 export default function Flyer() {
+  const [_unused] = useState(false); // keep useState import used
+
   return (
     <div style={{ background: "#0A0A0A", color: "#FFFFFF", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
       <Navbar />
@@ -91,7 +48,6 @@ export default function Flyer() {
         alignItems: "center",
         overflow: "hidden",
       }}>
-        {/* Background image */}
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(${HERO_BG})`,
@@ -99,26 +55,20 @@ export default function Flyer() {
           backgroundPosition: "center",
           opacity: 0.35,
         }} />
-        {/* Dark overlay */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(160deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.72) 50%, rgba(5,5,10,0.88) 100%)",
         }} />
-        {/* Red glow */}
         <div style={{
           position: "absolute", top: "40%", left: "50%", transform: "translate(-50%, -50%)",
           width: 800, height: 800,
           background: "radial-gradient(circle, rgba(200,16,46,0.08) 0%, transparent 70%)",
           pointerEvents: "none",
         }} />
-
-        {/* Corner accents */}
         <div style={{ position: "absolute", top: 80, left: 32, width: 48, height: 48, borderTop: "1px solid rgba(200,16,46,0.6)", borderLeft: "1px solid rgba(200,16,46,0.6)", zIndex: 2 }} />
         <div style={{ position: "absolute", top: 80, right: 32, width: 48, height: 48, borderTop: "1px solid rgba(200,16,46,0.6)", borderRight: "1px solid rgba(200,16,46,0.6)", zIndex: 2 }} />
 
         <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: 900, margin: "0 auto", padding: "8rem 2rem 5rem" }}>
-
-          {/* Logo SVG */}
           <div style={{ marginBottom: "2.5rem" }}>
             <svg width={200} height={200 * (110 / 300)} viewBox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -179,7 +129,6 @@ export default function Flyer() {
               fontWeight: 600,
               letterSpacing: "0.05em",
               textDecoration: "none",
-              transition: "border-color 0.2s",
             }}>
               tom@gotmdigital.com
             </a>
@@ -193,7 +142,6 @@ export default function Flyer() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -206,7 +154,7 @@ export default function Flyer() {
           {[
             { num: "100+", label: "Clients Served" },
             { num: "$0", label: "Setup Fees. Ever." },
-            { num: "6", label: "Active Client Sites" },
+            { num: "7", label: "Active Client Sites" },
             { num: "1–2 wks", label: "Avg. Launch Time" },
           ].map((s, i) => (
             <div key={i} style={{ textAlign: "center" }}>
@@ -217,346 +165,313 @@ export default function Flyer() {
         </div>
       </section>
 
-      {/* ── ACCORDION CONTENT ── WHITE SECTION */}
-      <section style={{ background: "#F7F7F7", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 2rem" }}>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 01 — New Websites Take Time (WHITE)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#FFFFFF", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <div className="eyebrow" style={{ marginBottom: "0.75rem", color: "#555555" }}>The Honest Truth</div>
+          <SectionHeading num="01" title="New Websites Take Time — Here's Why" />
+          <div style={{ maxWidth: 720, paddingLeft: "4.25rem" }}>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#333333", margin: "0 0 1rem" }}>
+              A brand-new domain won't rank on Google overnight. It typically takes <strong style={{ color: "#111111" }}>1–3 years</strong> to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal.
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
+              Think of your website as an investment that <strong style={{ color: "#111111" }}>compounds over time</strong>. The businesses that stay consistent are the ones that win. That's why we keep your monthly costs low — so you can stay in the game long enough for it to pay off.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <div className="eyebrow" style={{ marginBottom: "0.75rem", color: "#555555" }}>The Honest Truth</div>
-        <h2 style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-          fontWeight: 900,
-          color: "#111111",
-          lineHeight: 1.15,
-          marginBottom: "3rem",
-          letterSpacing: "-0.02em",
-        }}>
-          What Nobody Else Will Tell You About{" "}
-          <span style={{ color: "#C8102E" }}>Digital Marketing</span>
-        </h2>
-        <AccordionSection num="01" title="New Websites Take Time — Here's Why" defaultOpen={true}>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
-            A brand-new domain won't rank on Google overnight. It typically takes <strong style={{ color: "#111111" }}>1–3 years</strong> to fully mature. Your competitors have months or years of search history, backlinks, and reviews ahead of you — you're starting from zero, and that's completely normal.
-          </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
-            Think of your website as an investment that <strong style={{ color: "#111111" }}>compounds over time</strong>. The businesses that stay consistent are the ones that win. That's why we keep your monthly costs low — so you can stay in the game long enough for it to pay off.
-          </p>
-        </AccordionSection>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 02 — Why Custom HTML Beats WordPress (DARK)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#111111", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <SectionHeading num="02" title="Why Custom HTML Beats WordPress & Others" light />
+          <div style={{ paddingLeft: "4.25rem" }}>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#CCCCCC", margin: "0 0 2rem" }}>
+              Custom HTML sites <strong style={{ color: "#FFFFFF" }}>load faster, rank higher, and cost less to maintain</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one.
+            </p>
 
-        <AccordionSection num="02" title="Why Custom HTML Beats WordPress & Others">
-          {/* Intro */}
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0 0 1.5rem" }}>
-            Custom HTML sites <strong style={{ color: "#111111" }}>load faster, rank higher, and cost less to maintain</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one.
-          </p>
-
-          {/* Comparison Table */}
-          <div style={{ overflowX: "auto", marginBottom: "1.5rem" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.82rem", fontFamily: "'DM Sans', sans-serif" }}>
-              <thead>
-                <tr style={{ background: "#111111", color: "#FFFFFF" }}>
-                  <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Platform</th>
-                  <th style={{ padding: "0.75rem 0.75rem", textAlign: "center", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Speed</th>
-                  <th style={{ padding: "0.75rem 0.75rem", textAlign: "center", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>SEO</th>
-                  <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Best For</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  {
-                    platform: "Custom HTML/CSS",
-                    badge: "WE BUILD THIS",
-                    speed: 5,
-                    seo: 5,
-                    use: "Maximum speed, local service businesses",
-                    highlight: true,
-                  },
-                  {
-                    platform: "Astro / Next.js",
-                    badge: null,
-                    speed: 5,
-                    seo: 5,
-                    use: "Large professional / e-commerce sites",
-                    highlight: false,
-                  },
-                  {
-                    platform: "Webflow",
-                    badge: null,
-                    speed: 4,
-                    seo: 4,
-                    use: "Marketing / design-heavy sites",
-                    highlight: false,
-                  },
-                  {
-                    platform: "WordPress (optimized)",
-                    badge: null,
-                    speed: 3,
-                    seo: 4,
-                    use: "Blogs, content sites, plugins",
-                    highlight: false,
-                  },
-                  {
-                    platform: "GoHighLevel (GHL)",
-                    badge: null,
-                    speed: 2,
-                    seo: 3,
-                    use: "Funnels, CRM, automation",
-                    highlight: false,
-                  },
-                  {
-                    platform: "Wix / Squarespace",
-                    badge: null,
-                    speed: 2,
-                    seo: 3,
-                    use: "Basic DIY sites",
-                    highlight: false,
-                  },
-                ].map((row, i) => (
-                  <tr
-                    key={i}
-                    style={{
-                      background: row.highlight ? "rgba(200,16,46,0.06)" : i % 2 === 0 ? "#FAFAFA" : "#FFFFFF",
-                      borderLeft: row.highlight ? "3px solid #C8102E" : "3px solid transparent",
-                    }}
-                  >
-                    <td style={{ padding: "0.75rem 1rem", fontWeight: row.highlight ? 700 : 500, color: row.highlight ? "#111111" : "#333333" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
-                        {row.platform}
-                        {row.badge && (
-                          <span style={{
-                            background: "#C8102E",
-                            color: "#FFFFFF",
-                            fontSize: "0.6rem",
-                            fontWeight: 800,
-                            padding: "0.15rem 0.45rem",
-                            letterSpacing: "0.06em",
-                            borderRadius: "2px",
-                            textTransform: "uppercase",
-                          }}>{row.badge}</span>
-                        )}
-                      </div>
-                    </td>
-                    <td style={{ padding: "0.75rem 0.75rem", textAlign: "center" }}>
-                      <div style={{ display: "flex", justifyContent: "center", gap: "2px" }}>
-                        {[1,2,3,4,5].map(s => (
-                          <span key={s} style={{
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-                            background: s <= row.speed
-                              ? (row.speed >= 5 ? "#16a34a" : row.speed >= 4 ? "#ca8a04" : "#dc2626")
-                              : "#E5E7EB",
-                            display: "inline-block",
-                          }} />
-                        ))}
-                      </div>
-                    </td>
-                    <td style={{ padding: "0.75rem 0.75rem", textAlign: "center" }}>
-                      <div style={{ display: "flex", justifyContent: "center", gap: "2px" }}>
-                        {[1,2,3,4,5].map(s => (
-                          <span key={s} style={{
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-                            background: s <= row.seo
-                              ? (row.seo >= 5 ? "#16a34a" : row.seo >= 4 ? "#ca8a04" : "#dc2626")
-                              : "#E5E7EB",
-                            display: "inline-block",
-                          }} />
-                        ))}
-                      </div>
-                    </td>
-                    <td style={{ padding: "0.75rem 1rem", color: "#555555", fontSize: "0.8rem" }}>{row.use}</td>
+            {/* Comparison Table */}
+            <div style={{ overflowX: "auto", marginBottom: "1.5rem" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.82rem", fontFamily: "'DM Sans', sans-serif" }}>
+                <thead>
+                  <tr style={{ background: "#000000", color: "#FFFFFF" }}>
+                    <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Platform</th>
+                    <th style={{ padding: "0.75rem 0.75rem", textAlign: "center", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Speed</th>
+                    <th style={{ padding: "0.75rem 0.75rem", textAlign: "center", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>SEO</th>
+                    <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Best For</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {[
+                    { platform: "Custom HTML/CSS", badge: "WE BUILD THIS", speed: 5, seo: 5, use: "Maximum speed, local service businesses", highlight: true },
+                    { platform: "Astro / Next.js", badge: null, speed: 5, seo: 5, use: "Large professional / e-commerce sites", highlight: false },
+                    { platform: "Webflow", badge: null, speed: 4, seo: 4, use: "Marketing / design-heavy sites", highlight: false },
+                    { platform: "WordPress (optimized)", badge: null, speed: 3, seo: 4, use: "Blogs, content sites, plugins", highlight: false },
+                    { platform: "GoHighLevel (GHL)", badge: null, speed: 2, seo: 3, use: "Funnels, CRM, automation", highlight: false },
+                    { platform: "Wix / Squarespace", badge: null, speed: 2, seo: 3, use: "Basic DIY sites", highlight: false },
+                  ].map((row, i) => (
+                    <tr key={i} style={{
+                      background: row.highlight ? "rgba(200,16,46,0.12)" : i % 2 === 0 ? "#1A1A1A" : "#161616",
+                      borderLeft: row.highlight ? "3px solid #C8102E" : "3px solid transparent",
+                    }}>
+                      <td style={{ padding: "0.75rem 1rem", fontWeight: row.highlight ? 700 : 500, color: row.highlight ? "#FFFFFF" : "#CCCCCC" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                          {row.platform}
+                          {row.badge && (
+                            <span style={{ background: "#C8102E", color: "#FFFFFF", fontSize: "0.6rem", fontWeight: 800, padding: "0.15rem 0.45rem", letterSpacing: "0.06em", borderRadius: "2px", textTransform: "uppercase" }}>{row.badge}</span>
+                          )}
+                        </div>
+                      </td>
+                      <td style={{ padding: "0.75rem 0.75rem", textAlign: "center" }}>
+                        <div style={{ display: "flex", justifyContent: "center", gap: "2px" }}>
+                          {[1,2,3,4,5].map(s => (
+                            <span key={s} style={{ width: "10px", height: "10px", borderRadius: "50%", background: s <= row.speed ? (row.speed >= 5 ? "#16a34a" : row.speed >= 4 ? "#ca8a04" : "#dc2626") : "#444444", display: "inline-block" }} />
+                          ))}
+                        </div>
+                      </td>
+                      <td style={{ padding: "0.75rem 0.75rem", textAlign: "center" }}>
+                        <div style={{ display: "flex", justifyContent: "center", gap: "2px" }}>
+                          {[1,2,3,4,5].map(s => (
+                            <span key={s} style={{ width: "10px", height: "10px", borderRadius: "50%", background: s <= row.seo ? (row.seo >= 5 ? "#16a34a" : row.seo >= 4 ? "#ca8a04" : "#dc2626") : "#444444", display: "inline-block" }} />
+                          ))}
+                        </div>
+                      </td>
+                      <td style={{ padding: "0.75rem 1rem", color: "#AAAAAA", fontSize: "0.8rem" }}>{row.use}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-          {/* Legend */}
-          <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", marginBottom: "1.5rem", fontSize: "0.75rem", color: "#555555" }}>
-            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#16a34a", display: "inline-block" }} />
-              Excellent (4–5)
-            </span>
-            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ca8a04", display: "inline-block" }} />
-              Good (3–4)
-            </span>
-            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#dc2626", display: "inline-block" }} />
-              Limited (1–2)
-            </span>
-          </div>
+            {/* Legend */}
+            <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", marginBottom: "1.5rem", fontSize: "0.75rem", color: "#AAAAAA" }}>
+              <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#16a34a", display: "inline-block" }} /> Excellent (4–5)
+              </span>
+              <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ca8a04", display: "inline-block" }} /> Good (3–4)
+              </span>
+              <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#dc2626", display: "inline-block" }} /> Limited (1–2)
+              </span>
+            </div>
 
-          {/* Key takeaway callout */}
-          <div style={{
-            background: "#111111",
-            borderLeft: "4px solid #C8102E",
-            padding: "1rem 1.25rem",
-            borderRadius: "0 4px 4px 0",
-          }}>
-            <p style={{ fontSize: "0.85rem", color: "#FFFFFF", margin: 0, lineHeight: 1.7 }}>
-              <strong style={{ color: "#C8102E" }}>The bottom line:</strong> The fastest websites on the internet are not WordPress. They are static or hand-coded HTML sites delivered through a CDN. A 20-page business site built in clean HTML can load in <strong style={{ color: "#FFFFFF" }}>under one second</strong> — and Google notices.
+            {/* Callout */}
+            <div style={{ background: "#0A0A0A", borderLeft: "4px solid #C8102E", padding: "1rem 1.25rem", borderRadius: "0 4px 4px 0" }}>
+              <p style={{ fontSize: "0.9rem", color: "#FFFFFF", margin: 0, lineHeight: 1.7 }}>
+                <strong style={{ color: "#C8102E" }}>The bottom line:</strong> The fastest websites on the internet are not WordPress. They are static or hand-coded HTML sites delivered through a CDN. A 20-page business site built in clean HTML can load in <strong style={{ color: "#FFFFFF" }}>under one second</strong> — and Google notices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 03 — Google Business Profile (WHITE)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#FFFFFF", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <SectionHeading num="03" title="Google Business Profile — Your Most Powerful Free Tool" />
+          <div style={{ maxWidth: 720, paddingLeft: "4.25rem" }}>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#333333", margin: "0 0 1rem" }}>
+              Your Google Business Profile is your most powerful free tool while your website grows. <strong style={{ color: "#111111" }}>Ask every single customer for a review — every time, no exceptions.</strong> Reviews build local trust fast and can start showing results within weeks.
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
+              Keep your profile active: photos, hours, services, and regular posts all signal credibility to Google. This works independently of your website's age — it's your fastest path to local visibility right now.
             </p>
           </div>
-        </AccordionSection>
+        </div>
+      </section>
 
-        <AccordionSection num="03" title="Google Business Profile — Your Most Powerful Free Tool">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
-            Your Google Business Profile is your most powerful free tool while your website grows. <strong style={{ color: "#111111" }}>Ask every single customer for a review — every time, no exceptions.</strong> Reviews build local trust fast and can start showing results within weeks.
-          </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
-            Keep your profile active: photos, hours, services, and regular posts all signal credibility to Google. This works independently of your website's age — it's your fastest path to local visibility right now.
-          </p>
-        </AccordionSection>
-
-        <AccordionSection num="04" title="Need Leads Right Now? — Google Ads">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
-            Google Ads put you in front of people <strong style={{ color: "#111111" }}>actively searching for your services today</strong> — not in two years. We build dedicated landing pages in the same clean HTML format — fast, focused, and built to convert.
-          </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
-            You control the budget and only pay when someone clicks your ad. Ads bridge the gap while your organic SEO matures — scale back once the site takes off. <strong style={{ color: "#111111" }}>Ad spend is paid directly by you to Google</strong> — our fee covers strategy, setup, and management only.
-          </p>
-        </AccordionSection>
-
-        <AccordionSection num="05" title="The Growth Timeline — What to Expect">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "1rem", marginBottom: "1rem" }}>
-            {[
-              { phase: "Day 1", title: "We Get to Work", desc: "Website live, SEO configured, Google Business Profile optimized." },
-              { phase: "Months 1–6", title: "Foundation Built", desc: "Profile active, reviews rolling in, ads running if budget allows." },
-              { phase: "Months 6–18", title: "SEO Gains Traction", desc: "Domain builds authority. Content starts paying off. Rankings improve." },
-              { phase: "Year 2–3", title: "Organic Leads Flow", desc: "ROI accelerates. Ads become optional. Your website works while you sleep." },
-            ].map((step, i) => (
-              <div key={i} style={{
-                background: "#FFFFFF",
-                border: "1px solid rgba(0,0,0,0.08)",
-                borderTop: "2px solid #C8102E",
-                padding: "1.25rem",
-              }}>
-                <div style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>{step.phase}</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.4rem" }}>{step.title}</div>
-                <div style={{ fontSize: "0.78rem", lineHeight: 1.7, color: "#555555" }}>{step.desc}</div>
-              </div>
-            ))}
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 04 — Google Ads (LIGHT GRAY)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#F7F7F7", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <SectionHeading num="04" title="Need Leads Right Now? — Google Ads" />
+          <div style={{ maxWidth: 720, paddingLeft: "4.25rem" }}>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#333333", margin: "0 0 1rem" }}>
+              Google Ads put you in front of people <strong style={{ color: "#111111" }}>actively searching for your services today</strong> — not in two years. We build dedicated landing pages in the same clean HTML format — fast, focused, and built to convert.
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#333333", margin: "0 0 1.5rem" }}>
+              You control the budget and only pay when someone clicks your ad. Ads bridge the gap while your organic SEO matures — scale back once the site takes off.
+            </p>
+            <div style={{ background: "#FFF5F5", border: "1px solid rgba(200,16,46,0.2)", padding: "0.875rem 1rem", fontSize: "0.85rem", color: "#444444", lineHeight: 1.65 }}>
+              📌 <strong style={{ color: "#111111" }}>Ad spend is paid directly by you to Google.</strong> Our fee covers strategy, setup, and management only. You stay in full control of your budget.
+            </div>
           </div>
-          <p style={{ fontSize: "0.85rem", lineHeight: 1.7, color: "#555555", margin: 0, fontStyle: "italic" }}>
-            The key is staying consistent — most businesses quit before the compounding kicks in.
-          </p>
-        </AccordionSection>
+        </div>
+      </section>
 
-        <AccordionSection num="06" title="Services & Pricing — No Setup Fees. No Surprises. Ever.">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem", marginBottom: "1rem" }}>
-            {[
-              {
-                name: "Starter", price: "$100", tagline: "Your foundation, done right", featured: false,
-                features: ["Custom HTML website", "Full SEO optimization", "AI search optimization built in", "Google Business Profile setup", "Unlimited updates & edits", "Mobile-responsive design"],
-              },
-              {
-                name: "Growth", price: "$300", tagline: "Stay active, stay visible", featured: true,
-                features: ["Everything in Starter", "Weekly website posts", "Weekly Google Business posts", "AI search & conversational query targeting", "Content strategy & keywords", "Monthly performance report"],
-              },
-              {
-                name: "Full Service", price: "$500", tagline: "Leads now + growth long-term", featured: false,
-                features: ["Everything in Growth", "Google Ads management", "Custom landing pages", "AI-ready landing page content", "Ongoing ad optimization", "Full ROI reporting"],
-              },
-            ].map((plan, i) => (
-              <div key={i} style={{
-                background: plan.featured ? "#C8102E" : "#FFFFFF",
-                border: `1px solid ${plan.featured ? "transparent" : "rgba(0,0,0,0.1)"}`,
-                borderTop: `3px solid ${plan.featured ? "transparent" : "#C8102E"}`,
-                overflow: "hidden",
-                boxShadow: plan.featured ? "0 8px 32px rgba(200,16,46,0.25)" : "0 2px 8px rgba(0,0,0,0.06)",
-              }}>
-                {plan.featured && (
-                  <div style={{ background: "rgba(0,0,0,0.2)", color: "#FFFFFF", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", padding: "0.3rem" }}>
-                    Most Popular
-                  </div>
-                )}
-                <div style={{ padding: "1.25rem" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
-                    <div>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: plan.featured ? "#FFFFFF" : "#111111" }}>{plan.name}</div>
-                      <div style={{ fontSize: "0.72rem", color: plan.featured ? "rgba(255,255,255,0.75)" : "#777777" }}>{plan.tagline}</div>
-                    </div>
-                    <div style={{ textAlign: "right" }}>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: plan.featured ? "#FFFFFF" : "#C8102E", lineHeight: 1 }}>{plan.price}</div>
-                      <div style={{ fontSize: "0.62rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#888888" }}>/month</div>
-                    </div>
-                  </div>
-                  <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.08)", marginBottom: "1rem" }} />
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                    {plan.features.map((f, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.8rem", lineHeight: 1.7, color: plan.featured ? "rgba(255,255,255,0.9)" : "#444444", marginBottom: "0.4rem" }}>
-                        <CheckCircle2 size={13} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} /> {f}
-                      </li>
-                    ))}
-                  </ul>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 05 — Growth Timeline (DARK)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#0A0A0A", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <SectionHeading num="05" title="The Growth Timeline — What to Expect" light />
+          <div style={{ paddingLeft: "4.25rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "1rem", marginBottom: "1.5rem" }}>
+              {[
+                { phase: "Day 1", title: "We Get to Work", desc: "Website live, SEO configured, Google Business Profile optimized." },
+                { phase: "Months 1–6", title: "Foundation Built", desc: "Profile active, reviews rolling in, ads running if budget allows." },
+                { phase: "Months 6–18", title: "SEO Gains Traction", desc: "Domain builds authority. Content starts paying off. Rankings improve." },
+                { phase: "Year 2–3", title: "Organic Leads Flow", desc: "ROI accelerates. Ads become optional. Your website works while you sleep." },
+              ].map((step, i) => (
+                <div key={i} style={{ background: "#161616", border: "1px solid rgba(255,255,255,0.06)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
+                  <div style={{ fontSize: "0.6rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>{step.phase}</div>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{step.title}</div>
+                  <div style={{ fontSize: "0.8rem", lineHeight: 1.7, color: "#AAAAAA" }}>{step.desc}</div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div style={{
-            background: "#FFF5F5",
-            border: "1px solid rgba(200,16,46,0.2)",
-            padding: "0.875rem 1rem",
-            fontSize: "0.78rem",
-            color: "#555555",
-            lineHeight: 1.65,
-          }}>
-            📌 <strong style={{ color: "#111111" }}>Ad spend for Google Ads is paid directly by you to Google.</strong> Our fee covers strategy, setup, and management only. You stay in full control of your budget.
-          </div>
-        </AccordionSection>
-
-        <AccordionSection num="07" title="AI Search Optimization — Built Into Everything We Do">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#555555", margin: "0 0 1rem" }}>
-            Search is changing. Customers are no longer just typing short keywords into Google. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted.
-          </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#555555", margin: "0 0 1.5rem" }}>
-            Got'm Digital builds every website, Google profile, and content strategy so your business is easier to find, understand, and trust in modern search — including traditional rankings, map results, conversational queries, and AI-answer readiness.
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.875rem" }}>
-            {[
-              { title: "AI-Ready Websites", desc: "Clear service pages, FAQs, schema, and structured content AI tools can read and recommend." },
-              { title: "Profile & Citation Match", desc: "Business info consistent across your site, Google profile, and directories." },
-              { title: "Reviews & Trust Signals", desc: "Review strategy that builds credibility with customers and AI-powered search." },
-              { title: "Content That Answers Questions", desc: "What you do, where you work, what it costs — in a format search engines can use." },
-            ].map((item, i) => (
-              <div key={i} style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.4rem" }}>{item.title}</div>
-                <div style={{ fontSize: "0.78rem", color: "#555555", lineHeight: 1.7 }}>{item.desc}</div>
-              </div>
-            ))}
-          </div>
-        </AccordionSection>
-
-        <AccordionSection num="08" title="Why GOTM Digital — Built Different. On Purpose.">
-          <div style={{
-            background: "#FFF5F5",
-            borderLeft: "3px solid #C8102E",
-            border: "1px solid rgba(200,16,46,0.15)",
-            padding: "1.25rem 1.5rem",
-            marginBottom: "1.5rem",
-          }}>
-            <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#444444", fontStyle: "italic", margin: 0 }}>
-              "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay. I built this company to be honest about how it really works, keep your upfront costs low with no setup fees, and grow with you as you grow."
+              ))}
+            </div>
+            <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "#AAAAAA", margin: 0, fontStyle: "italic" }}>
+              The key is staying consistent — most businesses quit before the compounding kicks in.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "1rem" }}>
-            {[
-              { title: "Zero Setup Fees", desc: "On anything. You pay monthly, starting small." },
-              { title: "Compounds Over Time", desc: "Like a savings account for your business." },
-              { title: "Grows With You", desc: "No upselling until you're ready." },
-              { title: "Local Service Focus", desc: "Exclusively for local service businesses." },
-            ].map((item, i) => (
-              <div key={i} style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", padding: "1.25rem" }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.3rem" }}>{item.title}</div>
-                <div style={{ fontSize: "0.78rem", color: "#555555", lineHeight: 1.7 }}>{item.desc}</div>
-              </div>
-            ))}
-          </div>
-        </AccordionSection>
+        </div>
+      </section>
 
-      </div>
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 06 — Services & Pricing (WHITE)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#FFFFFF", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <SectionHeading num="06" title="Services & Pricing — No Setup Fees. No Surprises. Ever." />
+          <div style={{ paddingLeft: "4.25rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem", marginBottom: "1.25rem" }}>
+              {[
+                {
+                  name: "Starter", price: "$100", tagline: "Your foundation, done right", featured: false,
+                  features: ["Custom HTML website", "Full SEO optimization", "AI search optimization built in", "Google Business Profile setup", "Unlimited updates & edits", "Mobile-responsive design"],
+                },
+                {
+                  name: "Growth", price: "$300", tagline: "Stay active, stay visible", featured: true,
+                  features: ["Everything in Starter", "Weekly website posts", "Weekly Google Business posts", "AI search & conversational query targeting", "Content strategy & keywords", "Monthly performance report"],
+                },
+                {
+                  name: "Full Service", price: "$500", tagline: "Leads now + growth long-term", featured: false,
+                  features: ["Everything in Growth", "Google Ads management", "Custom landing pages", "AI-ready landing page content", "Ongoing ad optimization", "Full ROI reporting"],
+                },
+              ].map((plan, i) => (
+                <div key={i} style={{
+                  background: plan.featured ? "#C8102E" : "#FFFFFF",
+                  border: `1px solid ${plan.featured ? "transparent" : "rgba(0,0,0,0.1)"}`,
+                  borderTop: `3px solid ${plan.featured ? "transparent" : "#C8102E"}`,
+                  overflow: "hidden",
+                  boxShadow: plan.featured ? "0 8px 32px rgba(200,16,46,0.25)" : "0 2px 8px rgba(0,0,0,0.06)",
+                }}>
+                  {plan.featured && (
+                    <div style={{ background: "rgba(0,0,0,0.2)", color: "#FFFFFF", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", padding: "0.3rem" }}>
+                      Most Popular
+                    </div>
+                  )}
+                  <div style={{ padding: "1.25rem" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+                      <div>
+                        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: plan.featured ? "#FFFFFF" : "#111111" }}>{plan.name}</div>
+                        <div style={{ fontSize: "0.72rem", color: plan.featured ? "rgba(255,255,255,0.75)" : "#777777" }}>{plan.tagline}</div>
+                      </div>
+                      <div style={{ textAlign: "right" }}>
+                        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.75rem", fontWeight: 900, color: plan.featured ? "#FFFFFF" : "#C8102E", lineHeight: 1 }}>{plan.price}</div>
+                        <div style={{ fontSize: "0.62rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#888888" }}>/month</div>
+                      </div>
+                    </div>
+                    <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.08)", marginBottom: "1rem" }} />
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                      {plan.features.map((f, j) => (
+                        <li key={j} style={{ display: "flex", gap: "0.5rem", fontSize: "0.8rem", lineHeight: 1.7, color: plan.featured ? "rgba(255,255,255,0.9)" : "#444444", marginBottom: "0.4rem" }}>
+                          <CheckCircle2 size={13} style={{ color: plan.featured ? "rgba(255,255,255,0.7)" : "#C8102E", flexShrink: 0, marginTop: "0.15rem" }} /> {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <div style={{ marginTop: "1.25rem" }}>
+                      <a href="tel:9413288891" style={{
+                        display: "block", textAlign: "center",
+                        padding: "0.65rem",
+                        background: plan.featured ? "rgba(255,255,255,0.15)" : "transparent",
+                        border: `1px solid ${plan.featured ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.2)"}`,
+                        color: plan.featured ? "#FFFFFF" : "#111111",
+                        fontSize: "0.78rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase",
+                        textDecoration: "none",
+                      }}>
+                        Get Started
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ background: "#FFF5F5", border: "1px solid rgba(200,16,46,0.2)", padding: "0.875rem 1rem", fontSize: "0.78rem", color: "#555555", lineHeight: 1.65 }}>
+              📌 <strong style={{ color: "#111111" }}>Ad spend for Google Ads is paid directly by you to Google.</strong> Our fee covers strategy, setup, and management only. You stay in full control of your budget.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 07 — AI Search Optimization (DARK)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#111111", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <SectionHeading num="07" title="AI Search Optimization — Built Into Everything We Do" light />
+          <div style={{ paddingLeft: "4.25rem" }}>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#CCCCCC", margin: "0 0 1rem" }}>
+              Search is changing. Customers are no longer just typing short keywords into Google. They are asking detailed questions through Google, maps, voice search, and AI tools — questions like who to hire, who serves their area, who has the best reviews, and who can be trusted.
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#CCCCCC", margin: "0 0 2rem" }}>
+              Got'm Digital builds every website, Google profile, and content strategy so your business is easier to find, understand, and trust in modern search — including traditional rankings, map results, conversational queries, and AI-answer readiness.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.875rem" }}>
+              {[
+                { title: "AI-Ready Websites", desc: "Clear service pages, FAQs, schema, and structured content AI tools can read and recommend." },
+                { title: "Profile & Citation Match", desc: "Business info consistent across your site, Google profile, and directories." },
+                { title: "Reviews & Trust Signals", desc: "Review strategy that builds credibility with customers and AI-powered search." },
+                { title: "Content That Answers Questions", desc: "What you do, where you work, what it costs — in a format search engines can use." },
+              ].map((item, i) => (
+                <div key={i} style={{ background: "#1A1A1A", border: "1px solid rgba(255,255,255,0.06)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem" }}>{item.title}</div>
+                  <div style={{ fontSize: "0.78rem", color: "#AAAAAA", lineHeight: 1.7 }}>{item.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════
+          SECTION 08 — Why GOTM Digital (WHITE)
+      ═══════════════════════════════════════════════════════════ */}
+      <section style={{ background: "#F7F7F7", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 2rem" }}>
+          <SectionHeading num="08" title="Why GOTM Digital — Built Different. On Purpose." />
+          <div style={{ paddingLeft: "4.25rem" }}>
+            <div style={{ background: "#FFFFFF", borderLeft: "3px solid #C8102E", border: "1px solid rgba(200,16,46,0.15)", padding: "1.5rem 1.75rem", marginBottom: "2rem" }}>
+              <p style={{ fontSize: "1rem", lineHeight: 1.9, color: "#444444", fontStyle: "italic", margin: 0 }}>
+                "I started GOTM Digital because I was tired of watching agencies charge big upfront fees and make promises they couldn't keep. The truth is, digital marketing takes time — and that's okay. I built this company to be honest about how it really works, keep your upfront costs low with no setup fees, and grow with you as you grow."
+              </p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: "1rem" }}>
+              {[
+                { title: "Zero Setup Fees", desc: "On anything. You pay monthly, starting small." },
+                { title: "Compounds Over Time", desc: "Like a savings account for your business." },
+                { title: "Grows With You", desc: "No upselling until you're ready." },
+                { title: "Local Service Focus", desc: "Exclusively for local service businesses." },
+              ].map((item, i) => (
+                <div key={i} style={{ background: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", borderTop: "2px solid #C8102E", padding: "1.25rem" }}>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.3rem" }}>{item.title}</div>
+                  <div style={{ fontSize: "0.78rem", color: "#555555", lineHeight: 1.7 }}>{item.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── AUDIT OFFER ── DARK SECTION */}
@@ -615,23 +530,9 @@ export default function Flyer() {
 
       {/* ── CTA FOOTER ── */}
       <section style={{ position: "relative", overflow: "hidden", padding: "8rem 2rem" }}>
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: `url(${HERO_BG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.25,
-        }} />
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.75) 50%, rgba(5,5,10,0.92) 100%)",
-        }} />
-        <div style={{
-          position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          width: 700, height: 700,
-          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_BG})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.25 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.75) 50%, rgba(5,5,10,0.92) 100%)" }} />
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 700, height: 700, background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         <div style={{ position: "relative", zIndex: 2, maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <div className="eyebrow" style={{ marginBottom: "1rem" }}>Ready to Get on the Map?</div>
