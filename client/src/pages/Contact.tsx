@@ -52,23 +52,53 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const submitContact = trpc.contact.submit.useMutation({
-    onSuccess: () => {
-      setSubmitted(true);
-      toast.success("Message sent! We'll be in touch soon.");
-    },
-    onError: () => {
-      toast.error("Something went wrong. Please call us directly at (941) 328-8891.");
-    },
-  });
+  const submitContact = trpc.contact.submit.useMutation();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.phone) {
       toast.error("Please provide your name and phone number.");
       return;
     }
-    submitContact.mutate(form);
+
+    setIsSubmitting(true);
+    try {
+      // Submit directly to Web3Forms (client-side — free tier)
+      const web3Payload = {
+        access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+        subject: `New Lead from GOTM Digital: ${form.name} — ${form.phone}`,
+        from_name: "GOTM Digital Contact Form",
+        name: form.name,
+        phone: form.phone,
+        email: form.email || "(not provided)",
+        business: form.business || "(not provided)",
+        service_interest: form.service || "(not provided)",
+        message: form.message || "(not provided)",
+      };
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(web3Payload),
+      });
+      const data = await res.json() as { success: boolean; message?: string };
+
+      if (!data.success) {
+        throw new Error(data.message || "Web3Forms submission failed");
+      }
+
+      // Also fire the tRPC mutation for Manus owner notification (best-effort)
+      submitContact.mutate(form);
+
+      setSubmitted(true);
+      toast.success("Message sent! We'll be in touch soon.");
+    } catch (err) {
+      console.error("[Contact] Submission error:", err);
+      toast.error("Something went wrong. Please call us directly at (941) 328-8891.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -350,12 +380,12 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    disabled={submitContact.isPending}
+                    disabled={isSubmitting}
                     className="btn-gold"
-                    style={{ width: "100%", justifyContent: "center", opacity: submitContact.isPending ? 0.7 : 1 }}
+                    style={{ width: "100%", justifyContent: "center", opacity: isSubmitting ? 0.7 : 1 }}
                   >
                     <Send size={15} />
-                    {submitContact.isPending ? "Sending..." : "Send Message"}
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
 
                   <p style={{ fontSize: "0.72rem", color: "#555555", textAlign: "center", marginTop: "1rem", lineHeight: 1.6 }}>

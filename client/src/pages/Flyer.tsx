@@ -244,12 +244,161 @@ export default function Flyer() {
         </AccordionSection>
 
         <AccordionSection num="02" title="Why Custom HTML Beats WordPress & Others">
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: 0 }}>
-            Custom HTML sites <strong style={{ color: "#111111" }}>load faster and rank better</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one: meta tags, schema markup, mobile layout, image compression, and site structure.
+          {/* Intro */}
+          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0 0 1.5rem" }}>
+            Custom HTML sites <strong style={{ color: "#111111" }}>load faster, rank higher, and cost less to maintain</strong> — Google rewards speed and clean code. No bloated plugins, no unnecessary scripts. Just lean, purpose-built code optimized from day one.
           </p>
-          <p style={{ fontSize: "0.9rem", lineHeight: 1.9, color: "#333333", margin: "0.75rem 0 0" }}>
-            Over time, this foundation consistently outperforms WordPress, GoHighLevel, Wix, and Squarespace — especially for local service businesses where page speed and local SEO signals matter most.
-          </p>
+
+          {/* Comparison Table */}
+          <div style={{ overflowX: "auto", marginBottom: "1.5rem" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.82rem", fontFamily: "'DM Sans', sans-serif" }}>
+              <thead>
+                <tr style={{ background: "#111111", color: "#FFFFFF" }}>
+                  <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Platform</th>
+                  <th style={{ padding: "0.75rem 0.75rem", textAlign: "center", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Speed</th>
+                  <th style={{ padding: "0.75rem 0.75rem", textAlign: "center", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>SEO</th>
+                  <th style={{ padding: "0.75rem 1rem", textAlign: "left", fontWeight: 700, letterSpacing: "0.04em", fontSize: "0.72rem", textTransform: "uppercase" }}>Best For</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    platform: "Custom HTML/CSS",
+                    badge: "WE BUILD THIS",
+                    speed: 5,
+                    seo: 5,
+                    use: "Maximum speed, local service businesses",
+                    highlight: true,
+                  },
+                  {
+                    platform: "Astro / Next.js",
+                    badge: null,
+                    speed: 5,
+                    seo: 5,
+                    use: "Large professional / e-commerce sites",
+                    highlight: false,
+                  },
+                  {
+                    platform: "Webflow",
+                    badge: null,
+                    speed: 4,
+                    seo: 4,
+                    use: "Marketing / design-heavy sites",
+                    highlight: false,
+                  },
+                  {
+                    platform: "WordPress (optimized)",
+                    badge: null,
+                    speed: 3,
+                    seo: 4,
+                    use: "Blogs, content sites, plugins",
+                    highlight: false,
+                  },
+                  {
+                    platform: "GoHighLevel (GHL)",
+                    badge: null,
+                    speed: 2,
+                    seo: 3,
+                    use: "Funnels, CRM, automation",
+                    highlight: false,
+                  },
+                  {
+                    platform: "Wix / Squarespace",
+                    badge: null,
+                    speed: 2,
+                    seo: 3,
+                    use: "Basic DIY sites",
+                    highlight: false,
+                  },
+                ].map((row, i) => (
+                  <tr
+                    key={i}
+                    style={{
+                      background: row.highlight ? "rgba(200,16,46,0.06)" : i % 2 === 0 ? "#FAFAFA" : "#FFFFFF",
+                      borderLeft: row.highlight ? "3px solid #C8102E" : "3px solid transparent",
+                    }}
+                  >
+                    <td style={{ padding: "0.75rem 1rem", fontWeight: row.highlight ? 700 : 500, color: row.highlight ? "#111111" : "#333333" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                        {row.platform}
+                        {row.badge && (
+                          <span style={{
+                            background: "#C8102E",
+                            color: "#FFFFFF",
+                            fontSize: "0.6rem",
+                            fontWeight: 800,
+                            padding: "0.15rem 0.45rem",
+                            letterSpacing: "0.06em",
+                            borderRadius: "2px",
+                            textTransform: "uppercase",
+                          }}>{row.badge}</span>
+                        )}
+                      </div>
+                    </td>
+                    <td style={{ padding: "0.75rem 0.75rem", textAlign: "center" }}>
+                      <div style={{ display: "flex", justifyContent: "center", gap: "2px" }}>
+                        {[1,2,3,4,5].map(s => (
+                          <span key={s} style={{
+                            width: "10px",
+                            height: "10px",
+                            borderRadius: "50%",
+                            background: s <= row.speed
+                              ? (row.speed >= 5 ? "#16a34a" : row.speed >= 4 ? "#ca8a04" : "#dc2626")
+                              : "#E5E7EB",
+                            display: "inline-block",
+                          }} />
+                        ))}
+                      </div>
+                    </td>
+                    <td style={{ padding: "0.75rem 0.75rem", textAlign: "center" }}>
+                      <div style={{ display: "flex", justifyContent: "center", gap: "2px" }}>
+                        {[1,2,3,4,5].map(s => (
+                          <span key={s} style={{
+                            width: "10px",
+                            height: "10px",
+                            borderRadius: "50%",
+                            background: s <= row.seo
+                              ? (row.seo >= 5 ? "#16a34a" : row.seo >= 4 ? "#ca8a04" : "#dc2626")
+                              : "#E5E7EB",
+                            display: "inline-block",
+                          }} />
+                        ))}
+                      </div>
+                    </td>
+                    <td style={{ padding: "0.75rem 1rem", color: "#555555", fontSize: "0.8rem" }}>{row.use}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Legend */}
+          <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", marginBottom: "1.5rem", fontSize: "0.75rem", color: "#555555" }}>
+            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#16a34a", display: "inline-block" }} />
+              Excellent (4–5)
+            </span>
+            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ca8a04", display: "inline-block" }} />
+              Good (3–4)
+            </span>
+            <span style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#dc2626", display: "inline-block" }} />
+              Limited (1–2)
+            </span>
+          </div>
+
+          {/* Key takeaway callout */}
+          <div style={{
+            background: "#111111",
+            borderLeft: "4px solid #C8102E",
+            padding: "1rem 1.25rem",
+            borderRadius: "0 4px 4px 0",
+          }}>
+            <p style={{ fontSize: "0.85rem", color: "#FFFFFF", margin: 0, lineHeight: 1.7 }}>
+              <strong style={{ color: "#C8102E" }}>The bottom line:</strong> The fastest websites on the internet are not WordPress. They are static or hand-coded HTML sites delivered through a CDN. A 20-page business site built in clean HTML can load in <strong style={{ color: "#FFFFFF" }}>under one second</strong> — and Google notices.
+            </p>
+          </div>
         </AccordionSection>
 
         <AccordionSection num="03" title="Google Business Profile — Your Most Powerful Free Tool">
