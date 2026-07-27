@@ -220,7 +220,7 @@ export default function Home() {
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.85) 75%, rgba(10,10,10,1) 100%)",
+          background: "linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.75) 75%, rgba(10,10,10,1) 100%)",
         }} />
         <div style={{
           position: "absolute", bottom: "20%", left: "5%",
@@ -389,12 +389,12 @@ export default function Home() {
         <img
           src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80"
           alt="Florida coast"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.6) saturate(0.9)" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.85) saturate(1.0)" }}
         />
         {/* Lighter overlay so photo is visible */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(10,10,10,0.65) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.65) 100%)",
+          background: "linear-gradient(to right, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.1) 50%, rgba(10,10,10,0.4) 100%)",
         }} />
         <div style={{
           position: "absolute", inset: 0,
@@ -675,12 +675,12 @@ export default function Home() {
         <img
           src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=80"
           alt="Florida fishing boat on the water"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.75) saturate(0.9)" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.9) saturate(1.0)" }}
         />
         {/* Lighter overlay so photo shows through clearly */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(245,245,245,0.6) 0%, transparent 20%, transparent 70%, rgba(10,10,10,0.7) 100%)",
+          background: "linear-gradient(to bottom, rgba(245,245,245,0.3) 0%, transparent 20%, transparent 65%, rgba(10,10,10,0.65) 100%)",
         }} />
         <div style={{
           position: "absolute", inset: 0,

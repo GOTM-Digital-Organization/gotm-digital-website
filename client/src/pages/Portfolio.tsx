@@ -110,7 +110,7 @@ export default function Portfolio() {
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.9) 80%, rgba(10,10,10,1) 100%)",
+          background: "linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.8) 80%, rgba(10,10,10,1) 100%)",
         }} />
         <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
           <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>Our Work</div>

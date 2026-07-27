@@ -53,11 +53,11 @@ export default function Flyer() {
           backgroundImage: `url(${HERO_BG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.35,
+          opacity: 0.55,
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(160deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.72) 50%, rgba(5,5,10,0.88) 100%)",
+          background: "linear-gradient(160deg, rgba(5,5,10,0.6) 0%, rgba(5,5,10,0.4) 50%, rgba(5,5,10,0.6) 100%)",
         }} />
         <div style={{
           position: "absolute", top: "40%", left: "50%", transform: "translate(-50%, -50%)",
@@ -530,8 +530,8 @@ export default function Flyer() {
 
       {/* ── CTA FOOTER ── */}
       <section style={{ position: "relative", overflow: "hidden", padding: "8rem 2rem" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_BG})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.25 }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,5,10,0.92) 0%, rgba(5,5,10,0.75) 50%, rgba(5,5,10,0.92) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_BG})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.4 }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(5,5,10,0.75) 0%, rgba(5,5,10,0.6) 50%, rgba(5,5,10,0.75) 100%)" }} />
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 700, height: 700, background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         <div style={{ position: "relative", zIndex: 2, maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
