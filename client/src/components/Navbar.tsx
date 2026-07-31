@@ -40,84 +40,60 @@ export default function Navbar() {
       <nav
         style={{
           position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
+          top: 0, left: 0, right: 0,
           zIndex: 100,
-          background: scrolled ? "rgba(8,8,8,0.96)" : "transparent",
+          height: 68,
+          display: "flex",
+          alignItems: "center",
+          padding: "0 2rem",
+          background: scrolled ? "rgba(255,251,255,0.92)" : "transparent",
           backdropFilter: scrolled ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "1px solid transparent",
-          transition: "background 0.5s cubic-bezier(0.23,1,0.32,1), border-color 0.5s, backdrop-filter 0.5s",
+          WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(99,102,241,0.12)" : "1px solid transparent",
+          transition: "background 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, backdrop-filter 0.4s",
         }}
       >
-        <div
-          style={{
-            maxWidth: 1440,
-            margin: "0 auto",
-            padding: "0 2.5rem",
-            height: 76,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           {/* Logo */}
           <Link href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-            <GotmLogo size={130} textColor="#FFFFFF" />
+            <GotmLogo size={120} textColor={scrolled ? "#1E1040" : "#1E1040"} />
           </Link>
 
           {/* Desktop nav */}
           {!isMobile && (
-            <div style={{ display: "flex", alignItems: "center", gap: "2.75rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "2.5rem" }}>
               {navLinks.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
                   style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: "0.65rem",
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontSize: "0.82rem",
                     fontWeight: 600,
-                    letterSpacing: "0.22em",
-                    textTransform: "uppercase" as const,
-                    color: location === href ? "#FFFFFF" : "rgba(255,255,255,0.55)",
+                    letterSpacing: "0.04em",
+                    color: location === href ? "#D946EF" : "#4A3F6B",
                     textDecoration: "none",
                     transition: "color 0.2s",
-                    borderBottom: location === href ? "1px solid #C8102E" : "1px solid transparent",
-                    paddingBottom: "3px",
+                    borderBottom: location === href ? "2px solid #D946EF" : "2px solid transparent",
+                    paddingBottom: "2px",
                   }}
                   onMouseEnter={(e) => {
-                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.9)";
+                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "#D946EF";
                   }}
                   onMouseLeave={(e) => {
-                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.55)";
+                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "#4A3F6B";
                   }}
                 >
                   {label}
                 </Link>
               ))}
-              <a
-                href="tel:9413288891"
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "0.65rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase" as const,
-                  color: "#FFFFFF",
-                  textDecoration: "none",
-                  background: "#C8102E",
-                  padding: "0.6rem 1.4rem",
-                  transition: "background 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#E8304A";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#C8102E";
-                }}
+              <Link
+                href="/contact"
+                className="btn-primary"
+                style={{ padding: "0.55rem 1.4rem", fontSize: "0.78rem" }}
               >
-                (941) 328-8891
-              </a>
+                Free Review →
+              </Link>
             </div>
           )}
 
@@ -126,29 +102,19 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              style={{
-                background: "none",
-                border: "none",
-                padding: "0.5rem",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                gap: "5px",
-              }}
+              style={{ background: "none", border: "none", padding: "0.5rem", cursor: "pointer", display: "flex", flexDirection: "column", gap: "5px" }}
             >
               {[0, 1, 2].map((i) => (
                 <span
                   key={i}
                   style={{
-                    display: "block",
-                    width: 24,
-                    height: 1.5,
-                    background: "#FFFFFF",
-                    borderRadius: 0,
+                    display: "block", width: 24, height: 2,
+                    background: "#1E1040",
+                    borderRadius: 2,
                     transition: "transform 0.25s, opacity 0.25s",
                     transform: mobileOpen
-                      ? i === 0 ? "translateY(6.5px) rotate(45deg)"
-                      : i === 2 ? "translateY(-6.5px) rotate(-45deg)"
+                      ? i === 0 ? "translateY(7px) rotate(45deg)"
+                      : i === 2 ? "translateY(-7px) rotate(-45deg)"
                       : "scaleX(0)"
                       : "none",
                     opacity: mobileOpen && i === 1 ? 0 : 1,
@@ -160,48 +126,35 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile full-screen drawer */}
+      {/* Mobile drawer */}
       {isMobile && (
         <div
           style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 99,
-            background: "#080808",
+            position: "fixed", inset: 0, zIndex: 99,
+            background: "#FFFBFF",
             transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
             transition: "transform 0.4s cubic-bezier(0.23,1,0.32,1)",
-            display: "flex",
-            flexDirection: "column",
-            paddingTop: 96,
-            paddingLeft: "2.5rem",
-            paddingRight: "2.5rem",
+            display: "flex", flexDirection: "column",
+            paddingTop: 80, paddingLeft: "2rem", paddingRight: "2rem",
           }}
         >
-          {/* Red accent line at top */}
-          <div style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 3,
-            background: "#C8102E",
-          }} />
+          {/* Gradient top bar */}
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, #D946EF, #6366F1, #F97316)" }} />
 
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
             {[{ href: "/", label: "Home" }, ...navLinks].map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
                 style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontSize: "clamp(2.5rem, 9vw, 3.5rem)",
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "clamp(2rem, 8vw, 3rem)",
                   fontWeight: 800,
-                  letterSpacing: "0.02em",
-                  textTransform: "uppercase",
-                  color: location === link.href ? "#C8102E" : "#FFFFFF",
+                  letterSpacing: "-0.02em",
+                  color: location === link.href ? "#D946EF" : "#1E1040",
                   textDecoration: "none",
-                  padding: "0.65rem 0",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                  padding: "0.6rem 0",
+                  borderBottom: "1px solid rgba(99,102,241,0.1)",
                   transition: `color 0.2s, opacity 0.35s ${i * 50}ms, transform 0.35s ${i * 50}ms`,
                   opacity: mobileOpen ? 1 : 0,
                   transform: mobileOpen ? "translateX(0)" : "translateX(30px)",
@@ -216,37 +169,15 @@ export default function Navbar() {
           <div style={{ marginTop: "auto", paddingBottom: "3rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             <a
               href="tel:9413288891"
-              style={{
-                display: "block",
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.85rem",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "#FFFFFF",
-                textDecoration: "none",
-                background: "#C8102E",
-                padding: "1rem 1.5rem",
-                textAlign: "center",
-              }}
+              className="btn-primary"
+              style={{ textAlign: "center", justifyContent: "center" }}
             >
               Call (941) 328-8891
             </a>
             <Link
               href="/contact"
-              style={{
-                display: "block",
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                color: "#FFFFFF",
-                textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.2)",
-                padding: "1rem 1.5rem",
-                textAlign: "center",
-              }}
+              className="btn-secondary"
+              style={{ textAlign: "center", justifyContent: "center" }}
             >
               Get a Free Consultation
             </Link>

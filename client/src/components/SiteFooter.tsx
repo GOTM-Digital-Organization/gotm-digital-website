@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import { Phone, Mail } from "lucide-react";
 import GotmLogo from "./GotmLogo";
 
 const footerLinks = [
@@ -12,57 +11,35 @@ const footerLinks = [
 
 export default function SiteFooter() {
   return (
-    <footer style={{
-      background: "#0A0A0A",
-      borderTop: "3px solid #C8102E",
-      padding: "5rem 0 2.5rem",
-      fontFamily: "'Inter', sans-serif",
-    }}>
-      <div className="container">
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "3rem",
-          marginBottom: "4rem",
-        }}>
+    <footer style={{ background: "var(--bg-dark)", color: "var(--text-on-dark)", fontFamily: "var(--font-body)" }}>
+      {/* Gradient top border */}
+      <div style={{ height: "3px", background: "linear-gradient(90deg, var(--blob-fuchsia), var(--blob-indigo), var(--blob-orange))" }} />
+
+      <div className="container" style={{ paddingTop: "4rem", paddingBottom: "2rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "3rem", marginBottom: "3rem" }}>
           {/* Brand */}
           <div>
-            <GotmLogo size={130} />
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.82rem", fontStyle: "italic", color: "#888888", marginTop: "1.25rem", lineHeight: 1.85, maxWidth: 260 }}>
-              Honest digital marketing for local service businesses across the USA. No setup fees. No big promises. Just results.
+            <div style={{ marginBottom: "1rem" }}>
+              <GotmLogo size={120} textColor="#FFFFFF" />
+            </div>
+            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: "240px" }}>
+              Honest digital marketing for local service businesses. No setup fees. No contracts. Just results.
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* Nav links */}
           <div>
-            <div style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.6rem",
-              letterSpacing: "0.2em",
-              color: "#C8102E",
-              textTransform: "uppercase",
-              fontWeight: 700,
-              marginBottom: "1.25rem",
-            }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "var(--blob-pink)", marginBottom: "1.25rem" }}>
               Navigation
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
               {footerLinks.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
-                  style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    color: "#888888",
-                    textDecoration: "none",
-                    fontSize: "0.95rem",
-                    fontWeight: 600,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    transition: "color 0.2s",
-                  }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#888888")}
+                  style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "color 0.2s" }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E879F9")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
                 >
                   {label}
                 </Link>
@@ -72,59 +49,43 @@ export default function SiteFooter() {
 
           {/* Contact */}
           <div>
-            <div style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "0.6rem",
-              letterSpacing: "0.2em",
-              color: "#C8102E",
-              textTransform: "uppercase",
-              fontWeight: 700,
-              marginBottom: "1.25rem",
-            }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "var(--blob-pink)", marginBottom: "1.25rem" }}>
               Get In Touch
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <a href="tel:9413288891" style={{
-                display: "flex", alignItems: "center", gap: "0.625rem",
-                color: "#FFFFFF", textDecoration: "none",
-                fontFamily: "'Barlow Condensed', sans-serif",
-                fontSize: "1.4rem", fontWeight: 900,
-                textTransform: "uppercase", letterSpacing: "0.02em",
-                transition: "color 0.2s",
-              }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#C8102E")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              <a
+                href="tel:9413288891"
+                style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "color 0.2s" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E879F9")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
               >
-                <Phone size={14} style={{ color: "#C8102E", flexShrink: 0 }} /> (941) 328-8891
+                (941) 328-8891
               </a>
-              <a href="mailto:tom@gotmdigital.com" style={{
-                display: "flex", alignItems: "center", gap: "0.625rem",
-                color: "#888888", textDecoration: "none",
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "0.825rem",
-                transition: "color 0.2s",
-              }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#888888")}
+              <a
+                href="mailto:jonathansmart4@gmail.com"
+                style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "color 0.2s" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E879F9")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
               >
-                <Mail size={13} style={{ color: "#C8102E", flexShrink: 0 }} /> tom@gotmdigital.com
+                jonathansmart4@gmail.com
               </a>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.775rem", color: "#555555", lineHeight: 1.75, margin: 0 }}>
-                Serving local service businesses<br />anywhere in the USA
-              </p>
+              <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>
+                Serving businesses across the USA
+              </span>
             </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div style={{ height: "1px", background: "rgba(255,255,255,0.07)", margin: "0 0 1.75rem" }} />
+        <div style={{ height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "1.5rem" }} />
 
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "0.75rem" }}>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "#444444", margin: 0 }}>
-            © {new Date().getFullYear()} GOTM Digital. All rights reserved.
+        {/* Bottom row */}
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+          <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", margin: 0 }}>
+            © {new Date().getFullYear()} Got'm Digital · All rights reserved
           </p>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "#444444", margin: 0, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-            No Setup Fees · No Long-Term Contracts · Honest Results
+          <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.25)", margin: 0, letterSpacing: "0.06em" }}>
+            No Setup Fees · No Contracts · Marketing That Works
           </p>
         </div>
       </div>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Phone, Mail, MapPin, CheckCircle2, Send } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 import { trpc } from "@/lib/trpc";
@@ -7,388 +7,189 @@ import { toast } from "sonner";
 
 function useScrollReveal() {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement;
-            const delay = parseInt(el.dataset.delay || "0");
-            setTimeout(() => el.classList.add("visible"), delay);
-            observer.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.08 }
+    const els = document.querySelectorAll(".fade-up, .fade-in, .slide-left, .slide-right");
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      { threshold: 0.1 }
     );
-    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 }
 
-const inputStyle: React.CSSProperties = {
-  width: "100%",
-  background: "#FFFFFF",
-  border: "1px solid rgba(0,0,0,0.15)",
-  padding: "0.875rem 1rem",
-  color: "#111111",
-  fontSize: "0.875rem",
-  outline: "none",
-  boxSizing: "border-box",
-  fontFamily: "'Inter', sans-serif",
-  transition: "border-color 0.2s",
-  borderRadius: 0,
-};
+const SERVICE_OPTIONS = [
+  "Custom Website",
+  "Local SEO & AI Search",
+  "Google Business Profile",
+  "Google Ads",
+  "Web Presence Audit ($97)",
+  "Full Package",
+  "Not Sure — Let's Talk",
+];
 
 export default function Contact() {
   useScrollReveal();
 
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    business: "",
-    service: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", business: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const submitContact = trpc.contact.submit.useMutation();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const contactMutation = trpc.contact.submit.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      toast.success("Message sent! We'll be in touch within 24 hours.");
+    },
+    onError: () => {
+      toast.error("Something went wrong. Please try calling us directly.");
+    },
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.phone) {
-      toast.error("Please provide your name and phone number.");
-      return;
-    }
+    if (!form.name.trim()) { toast.error("Please enter your name."); return; }
+    if (!form.phone.trim()) { toast.error("Please enter your phone number."); return; }
 
-    setIsSubmitting(true);
+    // Web3Forms submission
     try {
-      const web3Payload = {
-        access_key: import.meta.env.VITE_WEB3FORMS_KEY,
-        subject: `New Lead from GOTM Digital: ${form.name} — ${form.phone}`,
-        from_name: "GOTM Digital Contact Form",
-        name: form.name,
-        phone: form.phone,
-        email: form.email || "(not provided)",
-        business: form.business || "(not provided)",
-        service_interest: form.service || "(not provided)",
-        message: form.message || "(not provided)",
-      };
-
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(web3Payload),
-      });
-      const data = await res.json() as { success: boolean; message?: string };
-
-      if (!data.success) {
-        throw new Error(data.message || "Web3Forms submission failed");
+      const web3Key = import.meta.env.VITE_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      if (web3Key) {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ access_key: web3Key, ...form, subject: `New Contact: ${form.name} — ${form.service || "General Inquiry"}` }),
+        });
       }
+    } catch (_) { /* silent */ }
 
-      submitContact.mutate(form);
-      setSubmitted(true);
-      toast.success("Message sent! We'll be in touch soon.");
-    } catch (err) {
-      console.error("[Contact] Submission error:", err);
-      toast.error("Something went wrong. Please call us directly at (941) 328-8891.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    contactMutation.mutate(form);
   };
 
   return (
-    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ background: "var(--bg-base)", color: "var(--text-primary)", fontFamily: "var(--font-body)" }}>
       <Navbar />
 
-      {/* ═══════════════════════════════════════════════
-          PAGE HERO — editorial full-bleed
-          ═══════════════════════════════════════════════ */}
-      <section style={{ minHeight: "55vh", display: "flex", alignItems: "flex-end", background: "#0A0A0A", borderBottom: "3px solid #C8102E" }}>
-        <div className="container" style={{ paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
-          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", maxWidth: 860 }}>
-            <div className="accent-bar" style={{ height: 120, marginTop: "0.5rem" }} />
-            <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>Get In Touch</div>
-              <h1
-                className="fade-up editorial-headline"
-                data-delay="80"
-                style={{
-                  fontSize: "clamp(2.8rem, 7vw, 6rem)",
-                  color: "#FFFFFF",
-                  marginBottom: "1.5rem",
-                  maxWidth: 700,
-                }}
-              >
-                Let's Talk About<br />
-                <span style={{ color: "#C8102E" }}>Your Business.</span>
-              </h1>
-              <p className="fade-up" data-delay="160" style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "1rem",
-                fontStyle: "italic",
-                color: "rgba(255,255,255,0.65)",
-                lineHeight: 1.85,
-                maxWidth: 520,
-              }}>
-                No sales pitch. No pressure. Just an honest conversation about where your business is and what digital marketing can realistically do for you.
-              </p>
-            </div>
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="mesh-hero" style={{ minHeight: "45vh", display: "flex", alignItems: "center", paddingTop: "68px" }}>
+        <div className="mesh-blob mesh-blob-1" />
+        <div className="mesh-blob mesh-blob-2" />
+        <div className="mesh-blob mesh-blob-3" />
+        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: "5rem", paddingBottom: "4rem" }}>
+          <div className="gradient-badge fade-in" style={{ marginBottom: "1.25rem" }}>
+            <span>✦</span><span>Let's Talk</span>
           </div>
+          <h1 className="display-headline fade-up" style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", maxWidth: "700px", marginBottom: "1.25rem" }}>
+            Start With a{" "}
+            <span className="gradient-text">Free Review</span>
+          </h1>
+          <p className="fade-up" style={{ color: "var(--text-secondary)", maxWidth: "480px", lineHeight: 1.75, fontSize: "1.05rem" }}>
+            Tell us about your business. We'll audit your current online presence and show you exactly what's holding you back — free, no strings attached.
+          </p>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          CONTACT CONTENT — two-column — LIGHT
-          ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "7rem 0", background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
+      {/* ── MAIN CONTENT ─────────────────────────────────────── */}
+      <section style={{ padding: "6rem 0", background: "var(--bg-section)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "5rem", alignItems: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", alignItems: "start" }}>
 
-            {/* ── Left: Contact Info ── */}
-            <div>
-              <div className="fade-up" data-delay="0">
-                <h2
-                  className="editorial-headline"
-                  style={{
-                    fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
-                    color: "#0A0A0A",
-                    marginBottom: "2rem",
-                  }}
-                >
-                  The Fastest Way<br />to Reach Me
-                </h2>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2.5rem" }}>
-                  <a href="tel:9413288891" style={{
-                    display: "flex", gap: "1.25rem", alignItems: "center", textDecoration: "none",
-                    background: "#F5F4F2", padding: "1.5rem",
-                    transition: "background 0.2s",
-                    border: "1px solid rgba(0,0,0,0.08)",
-                  }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "#FFF5F5")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "#F5F4F2")}
-                  >
-                    <div style={{ width: 40, height: 40, border: "1px solid rgba(200,16,46,0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <Phone size={16} style={{ color: "#C8102E" }} />
+            {/* Left: info */}
+            <div className="slide-left">
+              <h2 className="section-headline" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginBottom: "1.5rem" }}>
+                What Happens Next
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginBottom: "2.5rem" }}>
+                {[
+                  { num: "01", title: "We review your submission", desc: "Within 24 hours, we'll look at your current website, GBP, and local rankings." },
+                  { num: "02", title: "Free audit call", desc: "We'll walk you through what we found and what we'd recommend — no sales pressure." },
+                  { num: "03", title: "You decide", desc: "If it makes sense to work together, we'll put together a simple plan. No contracts, no setup fees." },
+                ].map((step, i) => (
+                  <div key={i} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
+                    <div style={{ width: 40, height: 40, borderRadius: "50%", background: "linear-gradient(135deg, var(--blob-fuchsia), var(--blob-indigo))", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <span style={{ color: "#fff", fontSize: "0.72rem", fontWeight: 700 }}>{step.num}</span>
                     </div>
                     <div>
-                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#888888" }}>Call or Text</div>
-                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.4rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", color: "#0A0A0A" }}>(941) 328-8891</div>
-                    </div>
-                  </a>
-
-                  <a href="mailto:tom@gotmdigital.com" style={{
-                    display: "flex", gap: "1.25rem", alignItems: "center", textDecoration: "none",
-                    background: "#F5F4F2", padding: "1.5rem",
-                    transition: "background 0.2s",
-                    border: "1px solid rgba(0,0,0,0.08)",
-                  }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "#FFF5F5")}
-                    onMouseLeave={(e) => (e.currentTarget.style.background = "#F5F4F2")}
-                  >
-                    <div style={{ width: 40, height: 40, border: "1px solid rgba(200,16,46,0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <Mail size={16} style={{ color: "#C8102E" }} />
-                    </div>
-                    <div>
-                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#888888" }}>Email</div>
-                      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 600, color: "#0A0A0A" }}>tom@gotmdigital.com</div>
-                    </div>
-                  </a>
-
-                  <div style={{
-                    display: "flex", gap: "1.25rem", alignItems: "center",
-                    background: "#F5F4F2", padding: "1.5rem",
-                    border: "1px solid rgba(0,0,0,0.08)",
-                  }}>
-                    <div style={{ width: 40, height: 40, border: "1px solid rgba(200,16,46,0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <MapPin size={16} style={{ color: "#C8102E" }} />
-                    </div>
-                    <div>
-                      <div className="eyebrow" style={{ marginBottom: "0.2rem", fontSize: "0.6rem", color: "#888888" }}>Service Area</div>
-                      <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", fontWeight: 600, color: "#0A0A0A" }}>Serving Local Businesses Nationwide</div>
+                      <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.3rem", color: "var(--text-primary)" }}>{step.title}</div>
+                      <div style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.6 }}>{step.desc}</div>
                     </div>
                   </div>
-                </div>
-
-                {/* What to expect callout */}
-                <div style={{
-                  borderLeft: "3px solid #C8102E",
-                  paddingLeft: "1.25rem",
-                  marginBottom: "2.5rem",
-                }}>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.85, fontStyle: "italic", color: "#555555", margin: 0 }}>
-                    <span style={{ color: "#0A0A0A", fontStyle: "normal", fontWeight: 700 }}>What to expect:</span> I'll ask about your business, your goals, and your budget. I'll tell you honestly what I think will work and what timeline is realistic. No pressure, no upsell.
-                  </p>
-                </div>
+                ))}
               </div>
 
-              <div className="fade-up" data-delay="160">
-                <div className="eyebrow" style={{ marginBottom: "1.25rem" }}>What Happens After You Reach Out</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-                  {[
-                    "We have a quick call to understand your business and goals",
-                    "I give you an honest assessment of what's possible and when",
-                    "If it's a fit, we get your website live within 1–2 weeks",
-                    "You start building your online presence from day one",
-                  ].map((step, i) => (
-                    <div key={i} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start", padding: "1rem 0", borderBottom: i < 3 ? "1px solid rgba(0,0,0,0.07)" : "none" }}>
-                      <div style={{
-                        width: 24, height: 24,
-                        border: "1px solid rgba(200,16,46,0.4)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        fontFamily: "'Barlow Condensed', sans-serif",
-                        fontSize: "0.75rem", fontWeight: 800, color: "#C8102E",
-                        flexShrink: 0, marginTop: "0.1rem",
-                      }}>
-                        {i + 1}
-                      </div>
-                      <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.85rem", lineHeight: 1.75, color: "#444444" }}>{step}</span>
-                    </div>
-                  ))}
+              {/* Contact details */}
+              <div className="card" style={{ padding: "1.75rem" }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "var(--accent-main)", marginBottom: "1.25rem" }}>
+                  Direct Contact
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                  <a href="tel:9413288891" style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--text-primary)", textDecoration: "none", fontSize: "1.1rem", fontFamily: "var(--font-display)", fontWeight: 700 }}>
+                    <span style={{ fontSize: "1.1rem" }}>📞</span> (941) 328-8891
+                  </a>
+                  <a href="mailto:jonathansmart4@gmail.com" style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.88rem" }}>
+                    <span>✉️</span> jonathansmart4@gmail.com
+                  </a>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--text-muted)", fontSize: "0.82rem" }}>
+                    <span>📍</span> Serving businesses across the USA
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* ── Right: Form ── */}
-            <div className="fade-up" data-delay="80">
+            {/* Right: form */}
+            <div className="slide-right">
               {submitted ? (
-                <div style={{
-                  border: "1px solid rgba(200,16,46,0.2)",
-                  background: "#FFF5F5",
-                  padding: "3.5rem 2.5rem",
-                  textAlign: "center",
-                }}>
-                  <CheckCircle2 size={44} style={{ color: "#C8102E", margin: "0 auto 1.5rem" }} />
-                  <h3 className="editorial-headline" style={{ fontSize: "2rem", color: "#0A0A0A", marginBottom: "0.75rem" }}>
-                    Message Received.
+                <div className="card" style={{ padding: "3rem", textAlign: "center" }}>
+                  <div style={{ fontSize: "3rem", marginBottom: "1.25rem" }}>🎉</div>
+                  <h3 className="section-headline" style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>
+                    <span className="gradient-text">Message Sent!</span>
                   </h3>
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", color: "#555555", lineHeight: 1.85, marginBottom: "2rem" }}>
-                    I'll be in touch within 24 hours. If you need to talk sooner, call or text me directly at (941) 328-8891.
+                  <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "2rem" }}>
+                    We'll review your information and reach out within 24 hours with your free audit findings.
                   </p>
-                  <a href="tel:9413288891" className="btn-primary" style={{ justifyContent: "center" }}>
-                    <Phone size={16} /> (941) 328-8891
-                  </a>
+                  <Link href="/" className="btn-secondary">← Back to Home</Link>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} style={{
-                  border: "1px solid rgba(0,0,0,0.1)",
-                  background: "#F5F4F2",
-                  padding: "2.5rem",
-                }}>
-                  <div className="eyebrow" style={{ marginBottom: "1.5rem" }}>Send a Message</div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
+                <form onSubmit={handleSubmit} className="card" style={{ padding: "2.5rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                  <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1.2rem", marginBottom: "0.25rem", color: "var(--text-primary)" }}>
+                    Request Your Free Review
+                  </h3>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
                     <div>
-                      <label style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "#666666", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.5rem" }}>
-                        Your Name *
-                      </label>
-                      <input
-                        type="text"
-                        value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        placeholder="John Smith"
-                        required
-                        style={inputStyle}
-                        onFocus={(e) => (e.target.style.borderColor = "#C8102E")}
-                        onBlur={(e) => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
-                      />
+                      <label style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "var(--text-muted)", display: "block", marginBottom: "0.4rem" }}>Name *</label>
+                      <input className="input-field" placeholder="Your name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
                     </div>
                     <div>
-                      <label style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "#666666", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.5rem" }}>
-                        Phone Number *
-                      </label>
-                      <input
-                        type="tel"
-                        value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        placeholder="(555) 000-0000"
-                        required
-                        style={inputStyle}
-                        onFocus={(e) => (e.target.style.borderColor = "#C8102E")}
-                        onBlur={(e) => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
-                      />
+                      <label style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "var(--text-muted)", display: "block", marginBottom: "0.4rem" }}>Phone *</label>
+                      <input className="input-field" type="tel" placeholder="(555) 000-0000" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} required />
                     </div>
                   </div>
-
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
-                    <div>
-                      <label style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "#666666", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.5rem" }}>
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        placeholder="john@yourbusiness.com"
-                        style={inputStyle}
-                        onFocus={(e) => (e.target.style.borderColor = "#C8102E")}
-                        onBlur={(e) => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
-                      />
-                    </div>
-                    <div>
-                      <label style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "#666666", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.5rem" }}>
-                        Business Name
-                      </label>
-                      <input
-                        type="text"
-                        value={form.business}
-                        onChange={(e) => setForm({ ...form, business: e.target.value })}
-                        placeholder="Your Business LLC"
-                        style={inputStyle}
-                        onFocus={(e) => (e.target.style.borderColor = "#C8102E")}
-                        onBlur={(e) => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
-                      />
-                    </div>
+                  <div>
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "var(--text-muted)", display: "block", marginBottom: "0.4rem" }}>Email</label>
+                    <input className="input-field" type="email" placeholder="you@yourbusiness.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                   </div>
-
-                  <div style={{ marginBottom: "1rem" }}>
-                    <label style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "#666666", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.5rem" }}>
-                      I'm Interested In
-                    </label>
-                    <select
-                      value={form.service}
-                      onChange={(e) => setForm({ ...form, service: e.target.value })}
-                      style={{ ...inputStyle, color: form.service ? "#111111" : "#888888" }}
-                      onFocus={(e) => (e.target.style.borderColor = "#C8102E")}
-                      onBlur={(e) => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
-                    >
+                  <div>
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "var(--text-muted)", display: "block", marginBottom: "0.4rem" }}>Business Name</label>
+                    <input className="input-field" placeholder="Your business name" value={form.business} onChange={(e) => setForm({ ...form, business: e.target.value })} />
+                  </div>
+                  <div>
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "var(--text-muted)", display: "block", marginBottom: "0.4rem" }}>I'm Interested In</label>
+                    <select className="input-field" value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })}>
                       <option value="">Select a service...</option>
-                      <option value="starter">Starter — Website Only ($100/mo)</option>
-                      <option value="growth">Growth — Website + SEO ($300/mo)</option>
-                      <option value="full-service">Full Service — Website + SEO + Ads ($500/mo)</option>
-                      <option value="not-sure">Not sure yet — just want to talk</option>
+                      {SERVICE_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
-
-                  <div style={{ marginBottom: "1.5rem" }}>
-                    <label style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", letterSpacing: "0.12em", color: "#666666", textTransform: "uppercase", fontWeight: 700, display: "block", marginBottom: "0.5rem" }}>
-                      Tell Me About Your Business
-                    </label>
-                    <textarea
-                      value={form.message}
-                      onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      placeholder="What do you do, where are you located, and what are your goals?"
-                      rows={4}
-                      style={{ ...inputStyle, resize: "vertical" }}
-                      onFocus={(e) => (e.target.style.borderColor = "#C8102E")}
-                      onBlur={(e) => (e.target.style.borderColor = "rgba(0,0,0,0.15)")}
-                    />
+                  <div>
+                    <label style={{ fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "var(--text-muted)", display: "block", marginBottom: "0.4rem" }}>Message</label>
+                    <textarea className="input-field" rows={4} placeholder="Tell us about your business and what you're looking to achieve..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} style={{ resize: "vertical" }} />
                   </div>
-
                   <button
                     type="submit"
-                    disabled={isSubmitting}
                     className="btn-primary"
-                    style={{ width: "100%", justifyContent: "center", opacity: isSubmitting ? 0.7 : 1 }}
+                    disabled={contactMutation.isPending}
+                    style={{ justifyContent: "center", opacity: contactMutation.isPending ? 0.7 : 1 }}
                   >
-                    <Send size={15} />
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {contactMutation.isPending ? "Sending..." : "Send My Request →"}
                   </button>
-
-                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.72rem", color: "#666666", textAlign: "center", marginTop: "1rem", lineHeight: 1.6 }}>
-                    Or call/text directly: <a href="tel:9413288891" style={{ color: "#C8102E", textDecoration: "none" }}>(941) 328-8891</a>
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", textAlign: "center" }}>
+                    No spam. No setup fees. We'll respond within 24 hours.
                   </p>
                 </form>
               )}
@@ -397,39 +198,28 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          FAQ — DARK
-          ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "7rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="container" style={{ maxWidth: 800 }}>
-          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "4rem" }}>
-            <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
-            <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Common Questions</div>
-              <h2
-                className="fade-up editorial-headline"
-                data-delay="80"
-                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", color: "#FFFFFF" }}
-              >
-                Questions Before You Call?
-              </h2>
-            </div>
+      {/* ── FAQ ──────────────────────────────────────────────── */}
+      <section style={{ padding: "6rem 0", background: "var(--bg-base)" }}>
+        <div className="container" style={{ maxWidth: "720px" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <div className="eyebrow fade-up" style={{ marginBottom: "1rem" }}>Common Questions</div>
+            <h2 className="section-headline fade-up" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>
+              Before You Reach Out
+            </h2>
           </div>
-          {[
-            { q: "Is there really no setup fee?", a: "Correct — zero setup fees on anything. You pay monthly, starting at $100. That's it." },
-            { q: "How long does it take to get a website live?", a: "Typically 1–2 weeks from the time we get started. We move fast once we have your content and preferences." },
-            { q: "Do I have to sign a long-term contract?", a: "No long-term contracts. You stay because it's working, not because you're locked in." },
-            { q: "How long does SEO take to work?", a: "Honestly? 6–18 months for meaningful organic results. We'll tell you this upfront because it's the truth. Google Ads can bridge the gap while your site matures." },
-            { q: "What kinds of businesses do you work with?", a: "Local service businesses — contractors, marine services, outdoor recreation, cleaning, landscaping, and similar trades. If you run a local service business and need honest digital marketing, we work with you regardless of where you're located." },
-          ].map((faq, i) => (
-            <div key={i} className="fade-up" data-delay={String(i * 60)} style={{
-              padding: "1.75rem 0",
-              borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.06)" : "none",
-            }}>
-              <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.1rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", color: "#FFFFFF", marginBottom: "0.6rem" }}>{faq.q}</h3>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", color: "#AAAAAA", lineHeight: 1.85, margin: 0, fontStyle: "italic" }}>{faq.a}</p>
-            </div>
-          ))}
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {[
+              { q: "Is the web presence review really free?", a: "Yes. We'll look at your current site, GBP, and local rankings and give you honest feedback — no charge, no obligation." },
+              { q: "Are there setup fees?", a: "No setup fees, ever. You pay the monthly rate and that's it. We don't believe in charging you to start working with us." },
+              { q: "Do I need to sign a contract?", a: "No long-term contracts. We work month-to-month. If you're not happy, you can cancel anytime." },
+              { q: "How quickly can you get my site live?", a: "Most websites are live within 2–3 weeks. Google Ads campaigns go live in 5–7 days." },
+            ].map((faq, i) => (
+              <div key={i} className="card fade-up" style={{ padding: "1.5rem", animationDelay: `${i * 0.08}s` }}>
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.95rem", marginBottom: "0.5rem", color: "var(--text-primary)" }}>{faq.q}</div>
+                <div style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.65 }}>{faq.a}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
