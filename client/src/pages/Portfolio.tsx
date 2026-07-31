@@ -95,11 +95,11 @@ export default function Portfolio() {
   useScrollReveal();
 
   return (
-    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'Inter', sans-serif" }}>
       <Navbar />
 
       {/* ═══════════════════════════════════════════════
-          PAGE HEADER — cinematic dark hero
+          PAGE HERO — editorial full-bleed
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
         <div style={{
@@ -110,32 +110,45 @@ export default function Portfolio() {
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.8) 80%, rgba(10,10,10,1) 100%)",
+          background: "linear-gradient(105deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.6) 50%, rgba(8,8,8,0.3) 100%)",
         }} />
         <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
-          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>Our Work</div>
-          <h1 className="fade-up" data-delay="80" style={{
-            fontSize: "clamp(2.5rem, 6vw, 5rem)",
-            fontWeight: 900,
-            color: "#FFFFFF",
-            lineHeight: 1.0,
-            marginBottom: "1.5rem",
-            letterSpacing: "-0.03em",
-            maxWidth: 800,
-          }}>
-            Local Businesses We've<br />
-            <span style={{ color: "#C8102E" }}>Put on the Map.</span>
-          </h1>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, maxWidth: 540 }}>
-            Every one of these businesses started exactly where you are — with no online presence and no idea where to begin. Here's what we built for them.
-          </p>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", maxWidth: 860 }}>
+            <div className="accent-bar" style={{ height: 120, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>Our Work</div>
+              <h1
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.8rem, 7vw, 6rem)",
+                  color: "#FFFFFF",
+                  marginBottom: "1.5rem",
+                  maxWidth: 800,
+                }}
+              >
+                Local Businesses We've<br />
+                <span style={{ color: "#C8102E" }}>Put on the Map.</span>
+              </h1>
+              <p className="fade-up" data-delay="160" style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "1rem",
+                fontStyle: "italic",
+                color: "rgba(255,255,255,0.65)",
+                lineHeight: 1.85,
+                maxWidth: 540,
+              }}>
+                Every one of these businesses started exactly where you are — with no online presence and no idea where to begin. Here's what we built for them.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          STATS BAR — WHITE SECTION
+          STATS BAR — DARK
           ═══════════════════════════════════════════════ */}
-      <section style={{ background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
+      <section style={{ background: "#111111", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="container" style={{ padding: 0 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}>
             {[
@@ -147,10 +160,10 @@ export default function Portfolio() {
               <div key={i} className="fade-up" data-delay={String(i * 60)} style={{
                 textAlign: "center",
                 padding: "2rem 1.5rem",
-                borderRight: i < 3 ? "1px solid rgba(0,0,0,0.08)" : "none",
+                borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none",
               }}>
-                <div style={{ fontSize: "2.25rem", fontWeight: 900, color: "#C8102E", lineHeight: 1, letterSpacing: "-0.04em", marginBottom: "0.4rem" }}>{stat.num}</div>
-                <div style={{ fontSize: "0.7rem", color: "#666666", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>{stat.label}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "2.5rem", fontWeight: 900, color: "#C8102E", lineHeight: 1, letterSpacing: "0.01em", marginBottom: "0.4rem" }}>{stat.num}</div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "#666666", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 600 }}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -158,11 +171,11 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          CLIENT GRID — WHITE SECTION
+          CLIENT GRID — LIGHT
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "6rem 0", background: "#F7F7F7" }}>
+      <section style={{ padding: "6rem 0", background: "#F5F4F2" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "1.5rem" }}>
             {clients.map((client, i) => (
               <div
                 key={i}
@@ -174,29 +187,30 @@ export default function Portfolio() {
                   overflow: "hidden",
                   display: "flex",
                   flexDirection: "column",
-                  transition: "box-shadow 0.2s, transform 0.2s",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                  transition: "border-color 0.2s, transform 0.2s, box-shadow 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.12)";
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,16,46,0.35)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.08)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,0,0,0.08)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
                 }}
               >
-                {/* OG Image thumbnail — clickable or WIP placeholder */}
+                {/* OG Image thumbnail or WIP placeholder */}
                 {(client as any).wip ? (
                   <div style={{
-                    height: 210, display: "flex", flexDirection: "column",
+                    height: 200, display: "flex", flexDirection: "column",
                     alignItems: "center", justifyContent: "center",
-                    background: "linear-gradient(135deg, #1a0a0d 0%, #2a0d12 50%, #1a0a0d 100%)",
+                    background: "linear-gradient(135deg, #0A0A0A 0%, #1A0A0D 50%, #0A0A0A 100%)",
                     gap: "0.75rem", position: "relative",
                   }}>
                     <div style={{ fontSize: "0.6rem", letterSpacing: "0.3em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, border: "1px solid rgba(200,16,46,0.5)", padding: "0.3rem 0.75rem" }}>🔧 In Progress</div>
-                    <div style={{ fontSize: "1.1rem", fontWeight: 900, color: "rgba(255,255,255,0.2)", letterSpacing: "0.05em" }}>mnss-inc.com</div>
-                    <div style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.3)" }}>Launching Soon</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.2rem", fontWeight: 800, color: "rgba(255,255,255,0.15)", letterSpacing: "0.05em", textTransform: "uppercase" }}>mnss-inc.com</div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "rgba(255,255,255,0.3)" }}>Launching Soon</div>
                   </div>
                 ) : (
                   <a
@@ -210,58 +224,41 @@ export default function Portfolio() {
                       alt={`${client.name} website preview`}
                       style={{
                         width: "100%",
-                        height: 210,
+                        height: 200,
                         objectFit: "cover",
                         objectPosition: "top",
                         display: "block",
                         transition: "transform 0.5s cubic-bezier(0.23,1,0.32,1)",
                       }}
-                      onMouseEnter={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)")}
-                      onMouseLeave={e => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
+                      onMouseEnter={(e) => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1.05)")}
+                      onMouseLeave={(e) => ((e.currentTarget as HTMLImageElement).style.transform = "scale(1)")}
                     />
-                    {/* Hover overlay */}
-                    <div style={{
-                      position: "absolute", inset: 0,
-                      background: "rgba(200,16,46,0.0)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      transition: "background 0.3s",
-                    }}
-                      onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0.15)"}
-                      onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = "rgba(200,16,46,0)"}
-                    >
-                      <ExternalLink size={28} style={{ color: "#FFFFFF", opacity: 0, transition: "opacity 0.3s" }}
-                        onMouseEnter={e => (e.currentTarget as SVGElement).style.opacity = "1"}
-                      />
-                    </div>
                   </a>
                 )}
 
                 {/* Red accent bar */}
-                <div style={{ height: 3, background: "linear-gradient(90deg, #C8102E 0%, rgba(200,16,46,0.2) 100%)" }} />
+                <div style={{ height: 3, background: "#C8102E" }} />
 
                 <div style={{ padding: "1.75rem", flex: 1, display: "flex", flexDirection: "column" }}>
-                  {/* Header */}
-                  <div style={{ marginBottom: "1rem" }}>
-                    <div style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#C8102E", marginBottom: "0.4rem" }}>
-                      {client.industry}
-                    </div>
-                    <h3 style={{
-                      fontSize: "1.05rem",
-                      fontWeight: 800,
-                      color: "#111111",
-                      lineHeight: 1.25,
-                      marginBottom: "0.35rem",
-                      letterSpacing: "-0.01em",
-                    }}>
-                      {client.name}
-                    </h3>
-                    <div style={{ fontSize: "0.72rem", color: "#555555", display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                      <MapPin size={10} /> {client.location}
-                    </div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C8102E", marginBottom: "0.4rem" }}>
+                    {client.industry}
                   </div>
-
-                  {/* Description */}
-                  <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#555555", marginBottom: "1.25rem", flex: 1 }}>
+                  <h3 style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontSize: "1.25rem",
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.02em",
+                    color: "#0A0A0A",
+                    lineHeight: 1.2,
+                    marginBottom: "0.35rem",
+                  }}>
+                    {client.name}
+                  </h3>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "#888888", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "0.875rem" }}>
+                    <MapPin size={10} /> {client.location}
+                  </div>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.825rem", lineHeight: 1.8, color: "#555555", marginBottom: "1.25rem", flex: 1 }}>
                     {client.desc}
                   </p>
 
@@ -271,9 +268,10 @@ export default function Portfolio() {
                       <span key={j} style={{
                         border: "1px solid rgba(200,16,46,0.3)",
                         color: "#C8102E",
-                        fontSize: "0.65rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.08em",
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: "0.6rem",
+                        fontWeight: 700,
+                        letterSpacing: "0.12em",
                         textTransform: "uppercase",
                         padding: "0.2rem 0.6rem",
                         background: "rgba(200,16,46,0.04)",
@@ -285,19 +283,15 @@ export default function Portfolio() {
 
                   {/* CTA */}
                   {(client as any).wip ? (
-                    <a
-                      href="/contact"
-                      className="btn-primary-light"
-                      style={{ justifyContent: "center" }}
-                    >
+                    <Link href="/contact" className="btn-primary" style={{ justifyContent: "center" }}>
                       Get a Website Like This →
-                    </a>
+                    </Link>
                   ) : (
                     <a
                       href={client.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-primary-light"
+                      className="btn-outline-dark"
                       style={{ justifyContent: "center" }}
                     >
                       <ExternalLink size={13} /> Visit {client.name.split(" ")[0]} Website
@@ -311,18 +305,17 @@ export default function Portfolio() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WORK IN PROGRESS BANNER — WHITE SECTION
+          WORK IN PROGRESS BANNER — DARK
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "4rem 0", background: "#F7F7F7", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+      <section style={{ padding: "4rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div className="container">
           <div className="fade-up" data-delay="0" style={{
-            background: "#FFFFFF",
-            border: "2px solid rgba(200,16,46,0.25)",
-            padding: "2rem 2.5rem",
             display: "grid",
             gridTemplateColumns: "auto 1fr auto",
             gap: "2rem",
             alignItems: "center",
+            borderLeft: "3px solid #C8102E",
+            paddingLeft: "2rem",
           }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
               <div style={{ position: "relative", width: 52, height: 52 }}>
@@ -331,63 +324,55 @@ export default function Portfolio() {
                   <span style={{ fontSize: "0.9rem" }}>🔧</span>
                 </div>
               </div>
-              <div style={{ fontSize: "0.55rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, whiteSpace: "nowrap" }}>This Week</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.5rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, whiteSpace: "nowrap" }}>This Week</div>
             </div>
             <div>
-              <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#888888", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.35rem" }}>Work in Progress</div>
-              <h3 style={{ fontSize: "clamp(1rem, 2vw, 1.4rem)", fontWeight: 900, color: "#111111", letterSpacing: "-0.02em", marginBottom: "0.4rem", lineHeight: 1.2 }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", letterSpacing: "0.25em", color: "#666666", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.35rem" }}>Work in Progress</div>
+              <h3 className="editorial-headline" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", color: "#FFFFFF", marginBottom: "0.4rem" }}>
                 Currently Building: <span style={{ color: "#C8102E" }}>mnss-inc.com</span>
               </h3>
-              <p style={{ fontSize: "0.85rem", color: "#555555", lineHeight: 1.7, margin: 0, maxWidth: 500 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.85rem", color: "#AAAAAA", lineHeight: 1.7, margin: 0, maxWidth: 500 }}>
                 A new custom HTML website in active development this week — built from scratch with full SEO structure, AI search optimization, and mobile-first design. Launching soon.
               </p>
             </div>
             <div style={{ flexShrink: 0 }}>
-              <a href="/contact" style={{
-                display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase",
-                fontWeight: 700, color: "#C8102E", textDecoration: "none",
-                border: "1px solid rgba(200,16,46,0.4)", padding: "0.75rem 1.25rem",
-                transition: "background 0.2s, color 0.2s",
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#C8102E"; (e.currentTarget as HTMLElement).style.color = "#FFFFFF"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#C8102E"; }}
-              >
+              <Link href="/contact" className="btn-gold-outline">
                 Get One Like This →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WHAT'S NEXT — DARK SECTION
+          WHAT'S NEXT — DARK
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "7rem 0", background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="container" style={{ maxWidth: 900 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "4rem", alignItems: "center" }}>
+      <section style={{ padding: "7rem 0", background: "#0A0A0A" }}>
+        <div className="container" style={{ maxWidth: 1000 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "5rem", alignItems: "center" }}>
             <div>
               <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Your Business Could Be Next</div>
-              <h2 className="fade-up" data-delay="80" style={{
-                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
-                fontWeight: 900,
-                color: "#FFFFFF",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-                marginBottom: "1.25rem",
-              }}>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  color: "#FFFFFF",
+                  marginBottom: "1.25rem",
+                }}
+              >
                 Every Business Here<br />
                 Started With a<br />
                 <span style={{ color: "#C8102E" }}>Single Conversation.</span>
               </h2>
-              <p className="fade-up" data-delay="160" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#C0C0C0", marginBottom: "2rem" }}>
+              <p className="fade-up" data-delay="160" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", lineHeight: 1.85, fontStyle: "italic", color: "#AAAAAA", marginBottom: "2rem" }}>
                 No setup fees, no pressure — just an honest discussion about what's possible for your business and what timeline is realistic.
               </p>
               <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-                <a href="tel:9413288891" className="btn-gold">
+                <a href="tel:9413288891" className="btn-primary">
                   <Phone size={16} /> (941) 328-8891
                 </a>
-                <Link href="/contact" className="btn-primary">
+                <Link href="/contact" className="btn-outline">
                   Send a Message →
                 </Link>
               </div>
@@ -400,16 +385,13 @@ export default function Portfolio() {
               ].map((step, i) => (
                 <div key={i} style={{
                   display: "flex", gap: "1.25rem", alignItems: "flex-start",
-                  padding: "1.25rem 0",
+                  padding: "1.5rem 0",
                   borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.05)" : "none",
                 }}>
-                  <div style={{
-                    fontSize: "1.5rem", fontWeight: 900, color: "rgba(200,16,46,0.6)",
-                    lineHeight: 1, letterSpacing: "-0.04em", minWidth: "2.5rem", flexShrink: 0,
-                  }}>{step.num}</div>
+                  <div className="section-number" style={{ fontSize: "2rem", minWidth: "2.5rem", flexShrink: 0 }}>{step.num}</div>
                   <div>
-                    <div style={{ fontSize: "0.875rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.3rem" }}>{step.title}</div>
-                    <div style={{ fontSize: "0.8rem", color: "#AAAAAA", lineHeight: 1.6 }}>{step.desc}</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#FFFFFF", marginBottom: "0.3rem" }}>{step.title}</div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", color: "#888888", lineHeight: 1.7 }}>{step.desc}</div>
                   </div>
                 </div>
               ))}
@@ -429,29 +411,39 @@ export default function Portfolio() {
           backgroundPosition: "center",
           filter: "brightness(0.12)",
         }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.75)" }} />
-        <div className="container" style={{ maxWidth: 700, textAlign: "center", position: "relative", zIndex: 2 }}>
-          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Start?</div>
-          <h2 className="fade-up" data-delay="80" style={{
-            fontSize: "clamp(2rem, 4vw, 3.5rem)",
-            fontWeight: 900,
-            color: "#FFFFFF",
-            lineHeight: 1.0,
-            letterSpacing: "-0.03em",
-            marginBottom: "1.5rem",
-          }}>
-            Want Your Business Here?
-          </h2>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
-            Every business on this page started with a single conversation. No setup fees, no pressure — just an honest discussion about what's possible for your business.
-          </p>
-          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-            <a href="tel:9413288891" className="btn-gold">
-              <Phone size={16} /> (941) 328-8891
-            </a>
-            <Link href="/contact" className="btn-primary">
-              Send a Message →
-            </Link>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(8,8,8,0.75)" }} />
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", maxWidth: 700 }}>
+            <div className="accent-bar" style={{ height: 100, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Start?</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#FFFFFF", marginBottom: "1.5rem" }}
+              >
+                Want Your Business Here?
+              </h2>
+              <p className="fade-up" data-delay="160" style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "1rem",
+                fontStyle: "italic",
+                color: "rgba(255,255,255,0.65)",
+                lineHeight: 1.85,
+                marginBottom: "3rem",
+                maxWidth: 480,
+              }}>
+                Every business on this page started with a single conversation. No setup fees, no pressure — just an honest discussion about what's possible for your business.
+              </p>
+              <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+                <a href="tel:9413288891" className="btn-primary">
+                  <Phone size={16} /> (941) 328-8891
+                </a>
+                <Link href="/contact" className="btn-outline">
+                  Send a Message →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

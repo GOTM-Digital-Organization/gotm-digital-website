@@ -44,3 +44,9 @@
 - [x] Web3Forms client-side integration added to Contact.tsx for email delivery
 - [x] Platform comparison table added to Flyer page (HTML vs WordPress vs GHL vs Wix)
 - [x] Flyer page: converted all 8 accordion sections to fully expanded scroll-through sections with alternating dark/light backgrounds
+- [x] Full editorial redesign: new global CSS with Barlow Condensed/Inter fonts, transparent white nav, editorial typography system
+- [x] Home.tsx: full-bleed hero with vertical red accent bar, all-caps right-aligned headline, italic body, scrolling marquee strip
+- [x] Services.tsx: editorial style with full-bleed section photos and right-anchored text
+- [x] Portfolio.tsx: editorial style with large client cards and full-bleed imagery
+- [x] Contact.tsx: editorial style with split layout
+- [x] Flyer.tsx: editorial style scroll-through sections

@@ -26,7 +26,7 @@ function useScrollReveal() {
 
 const services = [
   {
-    icon: <Globe size={28} />,
+    icon: <Globe size={24} />,
     num: "01",
     title: "Website Design & AI-Ready Local SEO",
     tagline: "The foundation of everything",
@@ -45,7 +45,7 @@ const services = [
     light: false,
   },
   {
-    icon: <Search size={28} />,
+    icon: <Search size={24} />,
     num: "02",
     title: "Local SEO & AI Search Optimization",
     tagline: "The long game that pays off",
@@ -64,7 +64,7 @@ const services = [
     light: true,
   },
   {
-    icon: <Star size={28} />,
+    icon: <Star size={24} />,
     num: "03",
     title: "Google Business Profile Authority Build",
     tagline: "Your most powerful free tool",
@@ -83,7 +83,7 @@ const services = [
     light: false,
   },
   {
-    icon: <Megaphone size={28} />,
+    icon: <Megaphone size={24} />,
     num: "04",
     title: "Google Ads & Conversion Tracking",
     tagline: "Leads today, not in two years",
@@ -107,11 +107,11 @@ export default function Services() {
   useScrollReveal();
 
   return (
-    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'Inter', sans-serif" }}>
       <Navbar />
 
       {/* ═══════════════════════════════════════════════
-          PAGE HEADER — cinematic dark hero
+          PAGE HERO — editorial full-bleed
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
         <div style={{
@@ -122,33 +122,46 @@ export default function Services() {
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.8) 80%, rgba(10,10,10,1) 100%)",
+          background: "linear-gradient(105deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.6) 50%, rgba(8,8,8,0.3) 100%)",
         }} />
         <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
-          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>What We Do</div>
-          <h1 className="fade-up" data-delay="80" style={{
-            fontSize: "clamp(2.5rem, 6vw, 5rem)",
-            fontWeight: 900,
-            color: "#FFFFFF",
-            lineHeight: 1.0,
-            marginBottom: "1.5rem",
-            letterSpacing: "-0.03em",
-            maxWidth: 800,
-          }}>
-            Websites, Google Ads,<br />
-            and Local SEO Built for<br />
-            <span style={{ color: "#C8102E" }}>the New Way Customers Search.</span>
-          </h1>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, maxWidth: 560 }}>
-            Get found on Google, Maps, and AI-powered search with a modern online presence that clearly shows who you are, what you do, where you work, and why customers should trust you.
-          </p>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", maxWidth: 860 }}>
+            <div className="accent-bar" style={{ height: 120, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.25rem" }}>What We Do</div>
+              <h1
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.8rem, 7vw, 6rem)",
+                  color: "#FFFFFF",
+                  marginBottom: "1.5rem",
+                  maxWidth: 800,
+                }}
+              >
+                Websites, Google Ads,<br />
+                and Local SEO Built for<br />
+                <span style={{ color: "#C8102E" }}>the New Way Customers Search.</span>
+              </h1>
+              <p className="fade-up" data-delay="160" style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "1rem",
+                fontStyle: "italic",
+                color: "rgba(255,255,255,0.65)",
+                lineHeight: 1.85,
+                maxWidth: 560,
+              }}>
+                Get found on Google, Maps, and AI-powered search with a modern online presence that clearly shows who you are, what you do, where you work, and why customers should trust you.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WHY BAR — WHITE SECTION
+          WHY BAR — DARK STATS
           ═══════════════════════════════════════════════ */}
-      <section style={{ background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
+      <section style={{ background: "#111111", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div className="container" style={{ padding: 0 }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
             {[
@@ -159,12 +172,12 @@ export default function Services() {
               <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
                 display: "flex", gap: "1rem", alignItems: "flex-start",
                 padding: "2rem 1.75rem",
-                borderRight: i < 2 ? "1px solid rgba(0,0,0,0.08)" : "none",
+                borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none",
               }}>
                 <div style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }}>{item.icon}</div>
                 <div>
-                  <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#111111", marginBottom: "0.25rem" }}>{item.title}</div>
-                  <div style={{ fontSize: "0.8rem", color: "#555555", lineHeight: 1.6 }}>{item.desc}</div>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em", color: "#FFFFFF", marginBottom: "0.25rem" }}>{item.title}</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", color: "#888888", lineHeight: 1.6 }}>{item.desc}</div>
                 </div>
               </div>
             ))}
@@ -180,8 +193,7 @@ export default function Services() {
           key={i}
           style={{
             padding: "6rem 0",
-            background: service.light ? "#F7F7F7" : "#0A0A0A",
-            borderTop: service.light ? "none" : "1px solid rgba(255,255,255,0.04)",
+            background: service.light ? "#F5F4F2" : "#0A0A0A",
           }}
         >
           <div className="container">
@@ -201,48 +213,50 @@ export default function Services() {
                 padding: "4rem 3rem 4rem 0",
                 borderRight: `1px solid ${service.light ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.05)"}`,
               }}>
-                <div style={{
-                  fontSize: "4rem",
-                  fontWeight: 900,
-                  color: service.light ? "rgba(200,16,46,0.55)" : "rgba(200,16,46,0.72)",
-                  lineHeight: 1,
-                  marginBottom: "1.5rem",
-                  letterSpacing: "-0.05em",
-                }}>
+                <div className="section-number" style={{ marginBottom: "1.5rem", color: service.light ? "rgba(200,16,46,0.12)" : "rgba(200,16,46,0.15)" }}>
                   {service.num}
                 </div>
                 <div style={{ color: "#C8102E", marginBottom: "1.25rem" }}>{service.icon}</div>
-                <div className="eyebrow" style={{ marginBottom: "0.75rem", color: service.light ? "#555555" : undefined }}>{service.tagline}</div>
-                <h2 style={{
-                  fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
-                  fontWeight: 800,
-                  color: service.light ? "#111111" : "#FFFFFF",
-                  lineHeight: 1.15,
-                  marginBottom: "1.25rem",
-                  letterSpacing: "-0.02em",
-                }}>
+                <div className="eyebrow" style={{ marginBottom: "0.75rem", color: service.light ? "#888888" : undefined }}>{service.tagline}</div>
+                <h2
+                  className="editorial-headline"
+                  style={{
+                    fontSize: "clamp(1.6rem, 3vw, 2.5rem)",
+                    color: service.light ? "#0A0A0A" : "#FFFFFF",
+                    marginBottom: "1.25rem",
+                  }}
+                >
                   {service.title}
                 </h2>
-                <p style={{ fontSize: "0.875rem", lineHeight: 1.85, color: service.light ? "#444444" : "#C0C0C0", marginBottom: "1.75rem" }}>
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.875rem",
+                  lineHeight: 1.9,
+                  fontStyle: "italic",
+                  color: service.light ? "#444444" : "#AAAAAA",
+                  marginBottom: "1.75rem",
+                }}>
                   {service.desc}
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: service.note ? "1.5rem" : "0" }}>
-                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontSize: "0.75rem", color: service.light ? "#444444" : "#AAAAAA" }}>
+                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "center", fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: service.light ? "#555555" : "#888888" }}>
                     <Clock size={12} style={{ color: "#C8102E", flexShrink: 0 }} />
                     {service.timeline}
                   </div>
-                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontSize: "0.75rem", color: service.light ? "#444444" : "#AAAAAA" }}>
+                  <div style={{ display: "flex", gap: "0.625rem", alignItems: "flex-start", fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: service.light ? "#555555" : "#888888" }}>
                     <TrendingUp size={12} style={{ color: "#C8102E", flexShrink: 0, marginTop: "0.1rem" }} />
                     {service.price}
                   </div>
                 </div>
                 {service.note && (
                   <div style={{
-                    borderLeft: "2px solid rgba(200,16,46,0.4)",
+                    borderLeft: "3px solid #C8102E",
                     paddingLeft: "1rem",
+                    fontFamily: "'Inter', sans-serif",
                     fontSize: "0.75rem",
-                    color: service.light ? "#444444" : "#AAAAAA",
+                    color: service.light ? "#444444" : "#888888",
                     lineHeight: 1.7,
+                    fontStyle: "italic",
                   }}>
                     {service.note}
                   </div>
@@ -251,11 +265,11 @@ export default function Services() {
 
               {/* Right: Bullets */}
               <div style={{ padding: "4rem 0 4rem 3rem" }}>
-                <div className="eyebrow" style={{ marginBottom: "1.5rem", color: service.light ? "#555555" : undefined }}>What's Included</div>
+                <div className="eyebrow" style={{ marginBottom: "1.5rem", color: service.light ? "#888888" : undefined }}>What's Included</div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {service.bullets.map((bullet, j) => (
-                    <li key={j} style={{ display: "flex", gap: "1rem", fontSize: "0.875rem", lineHeight: 1.7, color: service.light ? "#444444" : "#C8C8C8", marginBottom: "1rem" }}>
-                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.5rem" }} />
+                    <li key={j} style={{ display: "flex", gap: "1rem", fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.75, color: service.light ? "#444444" : "#BBBBBB", marginBottom: "1rem" }}>
+                      <span style={{ width: 4, height: 4, background: "#C8102E", flexShrink: 0, marginTop: "0.5rem" }} />
                       {bullet}
                     </li>
                   ))}
@@ -267,23 +281,27 @@ export default function Services() {
       ))}
 
       {/* ═══════════════════════════════════════════════
-          AI SEARCH OPTIMIZATION — DARK SECTION
+          AI SEARCH OPTIMIZATION — DARK
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#0A0A0A", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="container" style={{ maxWidth: 1000 }}>
-          <div style={{ marginBottom: "4rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Strategy</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              fontWeight: 900,
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              maxWidth: 700,
-            }}>
-              AI Search Optimization Built Into<br />
-              Every Digital Strategy.
-            </h2>
+      <section style={{ padding: "8rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container" style={{ maxWidth: 1200 }}>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "5rem" }}>
+            <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Strategy</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  color: "#FFFFFF",
+                  maxWidth: 700,
+                }}
+              >
+                AI Search Optimization Built Into<br />
+                Every Digital Strategy.
+              </h2>
+            </div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
@@ -293,21 +311,19 @@ export default function Services() {
               { num: "03", title: "Reviews & Trust Signals", text: "Reviews, response patterns, and verified business information help AI tools identify your business as a credible local option worth recommending." },
               { num: "04", title: "Content That Answers Real Questions", text: "We create content that answers the questions customers actually ask — what you do, where you work, what it costs, and why you can be trusted — in a format search engines and AI tools can use." },
             ].map((item, i) => (
-              <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
-                background: "#111111",
-                padding: "2.5rem 2rem",
-                transition: "background 0.2s",
-              }}
-                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#161616"}
-                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
+              <div
+                key={i}
+                className="fade-up"
+                data-delay={String(i * 80)}
+                style={{ background: "#0A0A0A", padding: "2.5rem 2rem", transition: "background 0.2s" }}
+                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#141414"}
+                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#0A0A0A"}
               >
-                <div style={{ fontSize: "2.5rem", fontWeight: 900, color: "rgba(200,16,46,0.72)", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em" }}>
-                  {item.num}
-                </div>
-                <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.75rem", letterSpacing: "-0.01em" }}>
+                <div className="section-number" style={{ marginBottom: "1.25rem" }}>{item.num}</div>
+                <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.2rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", color: "#FFFFFF", marginBottom: "0.75rem" }}>
                   {item.title}
                 </h3>
-                <p style={{ fontSize: "0.825rem", lineHeight: 1.8, color: "#C0C0C0" }}>{item.text}</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.825rem", lineHeight: 1.85, color: "#AAAAAA", fontStyle: "italic" }}>{item.text}</p>
               </div>
             ))}
           </div>
@@ -315,30 +331,34 @@ export default function Services() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WEB PRESENCE AUDIT OFFER — WHITE SECTION
+          WEB PRESENCE AUDIT OFFER — LIGHT
           ═══════════════════════════════════════════════ */}
       <section style={{ padding: "8rem 0", background: "#FFFFFF", borderTop: "3px solid #C8102E" }}>
-        <div className="container" style={{ maxWidth: 900 }}>
-          <div style={{ marginBottom: "3.5rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#555555" }}>New Offer</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-            }}>
-              Web Presence &amp; AI Search<br />
-              <span style={{ color: "#C8102E" }}>Readiness Audit.</span>
-            </h2>
-            <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "#444444", maxWidth: 600, marginTop: "1.25rem" }}>
-              A clear, honest review of your current website, Google Business Profile, reviews, local citations, and overall AI search readiness — with specific recommendations for what to fix, update, or improve.
-            </p>
+        <div className="container" style={{ maxWidth: 1000 }}>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "4rem" }}>
+            <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>New Offer</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  color: "#0A0A0A",
+                }}
+              >
+                Web Presence &amp; AI Search<br />
+                <span style={{ color: "#C8102E" }}>Readiness Audit.</span>
+              </h2>
+              <p className="fade-up" data-delay="160" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", lineHeight: 1.85, fontStyle: "italic", color: "#444444", maxWidth: 600, marginTop: "1.25rem" }}>
+                A clear, honest review of your current website, Google Business Profile, reviews, local citations, and overall AI search readiness — with specific recommendations for what to fix, update, or improve.
+              </p>
+            </div>
           </div>
 
           <div className="fade-up" style={{
             border: "1px solid rgba(0,0,0,0.1)",
-            background: "#F7F7F7",
+            background: "#F5F4F2",
             padding: "3rem",
             marginBottom: "2rem",
           }}>
@@ -358,11 +378,11 @@ export default function Services() {
                 },
               ].map((col, i) => (
                 <div key={i}>
-                  <div className="eyebrow" style={{ marginBottom: "1.25rem", color: "#555555" }}>{col.section}</div>
+                  <div className="eyebrow" style={{ marginBottom: "1.25rem", color: "#888888" }}>{col.section}</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                     {col.items.map((item, j) => (
-                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", lineHeight: 1.7, color: "#444444", marginBottom: "0.75rem" }}>
-                        <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
+                      <li key={j} style={{ display: "flex", gap: "0.75rem", fontFamily: "'Inter', sans-serif", fontSize: "0.825rem", lineHeight: 1.7, color: "#444444", marginBottom: "0.75rem" }}>
+                        <span style={{ width: 4, height: 4, background: "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                         {item}
                       </li>
                     ))}
@@ -373,44 +393,45 @@ export default function Services() {
 
             <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: "2rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
               <div>
-                <div style={{ fontSize: "3rem", fontWeight: 900, color: "#111111", lineHeight: 1, letterSpacing: "-0.04em" }}>$97</div>
-                <div style={{ fontSize: "0.75rem", color: "#555555", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "3.5rem", fontWeight: 900, color: "#0A0A0A", lineHeight: 1, letterSpacing: "0.01em" }}>$97</div>
+                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: "#666666", marginTop: "0.3rem", letterSpacing: "0.05em" }}>One-time fee — no ongoing commitment required</div>
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-                <a href="tel:9413288891" className="btn-gold">
+                <a href="tel:9413288891" className="btn-primary">
                   <Phone size={15} /> Call to Book Your Audit
                 </a>
-                <Link href="/contact" className="btn-primary-light">
+                <Link href="/contact" className="btn-outline-dark">
                   Request Audit Online →
                 </Link>
               </div>
             </div>
           </div>
 
-          <p className="fade-up" style={{ fontSize: "0.8rem", color: "#555555", lineHeight: 1.75, maxWidth: 580 }}>
+          <p className="fade-up" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.8rem", color: "#666666", lineHeight: 1.75, maxWidth: 580, fontStyle: "italic" }}>
             If you become a Got'm Digital client after the audit, the $97 fee is credited toward your first month. The audit report is yours to keep regardless.
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PRICING SUMMARY — DARK SECTION
+          PRICING SUMMARY — DARK
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#111827", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <div className="container" style={{ maxWidth: 900 }}>
-          <div style={{ marginBottom: "4rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple Pricing</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              fontWeight: 900,
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-            }}>
-              All Services.<br />
-              No Setup Fees.<br />
-              Start at $100/Month.
-            </h2>
+      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+        <div className="container" style={{ maxWidth: 1000 }}>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "5rem" }}>
+            <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple Pricing</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "#FFFFFF" }}
+              >
+                All Services.<br />
+                No Setup Fees.<br />
+                Start at $100/Month.
+              </h2>
+            </div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.5rem" }}>
@@ -420,30 +441,29 @@ export default function Services() {
               { name: "Full Service", price: "$500", period: "/mo", featured: false, includes: ["Everything in Growth", "Google Ads Management", "AI-Ready Landing Page Content", "Custom Landing Pages", "Ad Optimization"] },
             ].map((plan, i) => (
               <div key={i} className="fade-up" data-delay={String(i * 80)} style={{
-                background: plan.featured ? "#C8102E" : "#FFFFFF",
+                background: plan.featured ? "#C8102E" : "#111111",
                 padding: "2.5rem 2rem",
-                borderTop: plan.featured ? "none" : "3px solid rgba(255,255,255,0.15)",
+                border: plan.featured ? "2px solid #C8102E" : "1px solid rgba(255,255,255,0.08)",
                 position: "relative",
-                boxShadow: plan.featured ? "0 8px 32px rgba(200,16,46,0.35)" : "0 2px 12px rgba(0,0,0,0.25)",
               }}>
                 {plan.featured && (
-                  <div style={{ fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "1rem" }}>Most Popular</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", marginBottom: "1rem" }}>Most Popular</div>
                 )}
-                <div style={{ fontSize: "1rem", fontWeight: 800, color: plan.featured ? "#FFFFFF" : "#111111", marginBottom: "0.5rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.4rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", color: "#FFFFFF", marginBottom: "0.5rem" }}>{plan.name}</div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: "0.25rem", marginBottom: "1.5rem" }}>
-                  <span style={{ fontSize: "2.5rem", fontWeight: 900, color: plan.featured ? "#FFFFFF" : "#111111", letterSpacing: "-0.04em" }}>{plan.price}</span>
-                  <span style={{ fontSize: "0.75rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#777777", letterSpacing: "0.1em", textTransform: "uppercase" }}>{plan.period}</span>
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "3rem", fontWeight: 900, color: "#FFFFFF", letterSpacing: "0.01em" }}>{plan.price}</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#666666", letterSpacing: "0.15em", textTransform: "uppercase" }}>{plan.period}</span>
                 </div>
-                <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.1)", marginBottom: "1.5rem" }} />
+                <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.08)", marginBottom: "1.5rem" }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.includes.map((item, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.825rem", color: plan.featured ? "rgba(255,255,255,0.9)" : "#444444", marginBottom: "0.75rem", lineHeight: 1.5 }}>
-                      <span style={{ width: 4, height: 4, borderRadius: "50%", background: plan.featured ? "rgba(255,255,255,0.7)" : "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontFamily: "'Inter', sans-serif", fontSize: "0.825rem", color: plan.featured ? "rgba(255,255,255,0.9)" : "#CCCCCC", marginBottom: "0.75rem", lineHeight: 1.5 }}>
+                      <span style={{ width: 4, height: 4, background: plan.featured ? "rgba(255,255,255,0.7)" : "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <a href="tel:9413288891" className={plan.featured ? "btn-white" : "btn-primary-light"} style={{ width: "100%", justifyContent: "center" }}>
+                <a href="tel:9413288891" className={plan.featured ? "btn-white" : "btn-outline"} style={{ width: "100%", justifyContent: "center" }}>
                   <Phone size={13} /> Get Started
                 </a>
               </div>
@@ -461,31 +481,41 @@ export default function Services() {
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "brightness(0.15)",
+          filter: "brightness(0.12)",
         }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.7)" }} />
-        <div className="container" style={{ maxWidth: 700, textAlign: "center", position: "relative", zIndex: 2 }}>
-          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Start?</div>
-          <h2 className="fade-up" data-delay="80" style={{
-            fontSize: "clamp(2rem, 4vw, 3.5rem)",
-            fontWeight: 900,
-            color: "#FFFFFF",
-            lineHeight: 1.0,
-            letterSpacing: "-0.03em",
-            marginBottom: "1.5rem",
-          }}>
-            Not Sure Where to Start?
-          </h2>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", color: "#C8C8C8", lineHeight: 1.8, marginBottom: "3rem", maxWidth: 480, margin: "0 auto 3rem" }}>
-            Call me and we'll talk through your situation honestly. No sales pitch, no pressure — just a real conversation about what makes sense for your business right now.
-          </p>
-          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-            <a href="tel:9413288891" className="btn-gold">
-              <Phone size={16} /> (941) 328-8891
-            </a>
-            <Link href="/contact" className="btn-primary">
-              Send a Message →
-            </Link>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(8,8,8,0.75)" }} />
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", maxWidth: 700 }}>
+            <div className="accent-bar" style={{ height: 100, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Start?</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: "#FFFFFF", marginBottom: "1.5rem" }}
+              >
+                Not Sure Where to Start?
+              </h2>
+              <p className="fade-up" data-delay="160" style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "1rem",
+                fontStyle: "italic",
+                color: "rgba(255,255,255,0.65)",
+                lineHeight: 1.85,
+                marginBottom: "3rem",
+                maxWidth: 480,
+              }}>
+                Call me and we'll talk through your situation honestly. No sales pitch, no pressure — just a real conversation about what makes sense for your business right now.
+              </p>
+              <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+                <a href="tel:9413288891" className="btn-primary">
+                  <Phone size={16} /> (941) 328-8891
+                </a>
+                <Link href="/contact" className="btn-outline">
+                  Send a Message →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

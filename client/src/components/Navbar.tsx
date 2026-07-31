@@ -16,14 +16,14 @@ export default function Navbar() {
   const [location] = useLocation();
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < 900);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -44,18 +44,18 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 100,
-          background: scrolled ? "rgba(10,10,10,0.95)" : "transparent",
-          backdropFilter: scrolled ? "blur(16px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
-          transition: "background 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, backdrop-filter 0.4s",
+          background: scrolled ? "rgba(8,8,8,0.96)" : "transparent",
+          backdropFilter: scrolled ? "blur(20px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "1px solid transparent",
+          transition: "background 0.5s cubic-bezier(0.23,1,0.32,1), border-color 0.5s, backdrop-filter 0.5s",
         }}
       >
         <div
           style={{
-            maxWidth: 1400,
+            maxWidth: 1440,
             margin: "0 auto",
-            padding: "0 2rem",
-            height: 72,
+            padding: "0 2.5rem",
+            height: 76,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -68,25 +68,29 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           {!isMobile && (
-            <div style={{ display: "flex", alignItems: "center", gap: "2.5rem" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "2.75rem" }}>
               {navLinks.map(({ href, label }) => (
                 <Link
                   key={href}
                   href={href}
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     fontSize: "0.65rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.2em",
+                    fontWeight: 600,
+                    letterSpacing: "0.22em",
                     textTransform: "uppercase" as const,
-                    color: location === href ? "#C8102E" : "#AAAAAA",
+                    color: location === href ? "#FFFFFF" : "rgba(255,255,255,0.55)",
                     textDecoration: "none",
                     transition: "color 0.2s",
                     borderBottom: location === href ? "1px solid #C8102E" : "1px solid transparent",
-                    paddingBottom: "2px",
+                    paddingBottom: "3px",
                   }}
-                  onMouseEnter={(e) => { if (location !== href) (e.currentTarget as HTMLElement).style.color = "#FFFFFF"; }}
-                  onMouseLeave={(e) => { if (location !== href) (e.currentTarget as HTMLElement).style.color = "#AAAAAA"; }}
+                  onMouseEnter={(e) => {
+                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.9)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.55)";
+                  }}
                 >
                   {label}
                 </Link>
@@ -94,25 +98,22 @@ export default function Navbar() {
               <a
                 href="tel:9413288891"
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: "0.65rem",
                   fontWeight: 700,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase" as const,
                   color: "#FFFFFF",
                   textDecoration: "none",
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  padding: "0.55rem 1.25rem",
-                  borderRadius: "2px",
-                  transition: "border-color 0.2s, color 0.2s",
+                  background: "#C8102E",
+                  padding: "0.6rem 1.4rem",
+                  transition: "background 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#C8102E";
-                  (e.currentTarget as HTMLElement).style.color = "#C8102E";
+                  (e.currentTarget as HTMLElement).style.background = "#E8304A";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.3)";
-                  (e.currentTarget as HTMLElement).style.color = "#FFFFFF";
+                  (e.currentTarget as HTMLElement).style.background = "#C8102E";
                 }}
               >
                 (941) 328-8891
@@ -143,7 +144,7 @@ export default function Navbar() {
                     width: 24,
                     height: 1.5,
                     background: "#FFFFFF",
-                    borderRadius: 1,
+                    borderRadius: 0,
                     transition: "transform 0.25s, opacity 0.25s",
                     transform: mobileOpen
                       ? i === 0 ? "translateY(6.5px) rotate(45deg)"
@@ -166,33 +167,45 @@ export default function Navbar() {
             position: "fixed",
             inset: 0,
             zIndex: 99,
-            background: "#0A0A0A",
+            background: "#080808",
             transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
-            transition: "transform 0.35s cubic-bezier(0.23,1,0.32,1)",
+            transition: "transform 0.4s cubic-bezier(0.23,1,0.32,1)",
             display: "flex",
             flexDirection: "column",
             paddingTop: 96,
-            paddingLeft: "2rem",
-            paddingRight: "2rem",
+            paddingLeft: "2.5rem",
+            paddingRight: "2.5rem",
           }}
         >
+          {/* Red accent line at top */}
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 3,
+            background: "#C8102E",
+          }} />
+
           <div style={{ display: "flex", flexDirection: "column" }}>
             {[{ href: "/", label: "Home" }, ...navLinks].map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "clamp(1.75rem, 7vw, 2.5rem)",
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontSize: "clamp(2.5rem, 9vw, 3.5rem)",
                   fontWeight: 800,
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "0.02em",
+                  textTransform: "uppercase",
                   color: location === link.href ? "#C8102E" : "#FFFFFF",
                   textDecoration: "none",
-                  padding: "0.85rem 0",
+                  padding: "0.65rem 0",
                   borderBottom: "1px solid rgba(255,255,255,0.06)",
-                  transition: `color 0.2s, opacity 0.3s ${i * 40}ms, transform 0.3s ${i * 40}ms`,
+                  transition: `color 0.2s, opacity 0.35s ${i * 50}ms, transform 0.35s ${i * 50}ms`,
                   opacity: mobileOpen ? 1 : 0,
-                  transform: mobileOpen ? "translateX(0)" : "translateX(20px)",
+                  transform: mobileOpen ? "translateX(0)" : "translateX(30px)",
+                  lineHeight: 1.1,
                 }}
               >
                 {link.label}
@@ -205,15 +218,15 @@ export default function Navbar() {
               href="tel:9413288891"
               style={{
                 display: "block",
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1rem",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.85rem",
                 fontWeight: 700,
-                letterSpacing: "0.05em",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
                 color: "#FFFFFF",
                 textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.2)",
+                background: "#C8102E",
                 padding: "1rem 1.5rem",
-                borderRadius: "2px",
                 textAlign: "center",
               }}
             >
@@ -223,16 +236,15 @@ export default function Navbar() {
               href="/contact"
               style={{
                 display: "block",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 color: "#FFFFFF",
                 textDecoration: "none",
-                background: "#C8102E",
+                border: "1px solid rgba(255,255,255,0.2)",
                 padding: "1rem 1.5rem",
-                borderRadius: "2px",
                 textAlign: "center",
               }}
             >

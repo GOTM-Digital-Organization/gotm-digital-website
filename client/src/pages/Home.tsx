@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import {
-  Phone, ChevronDown, MapPin, Star, TrendingUp, Globe, Search, Megaphone, ExternalLink, ArrowRight, CheckCircle2
-} from "lucide-react";
+import { Phone, MapPin, ExternalLink, CheckCircle2, ChevronDown, Globe, Search, Star, Megaphone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -45,7 +43,7 @@ function useCounter(end: number, duration = 1800, start = false) {
   return count;
 }
 
-function StatCounter({ value, suffix, label, light = false }: { value: number; suffix: string; label: string; light?: boolean }) {
+function StatCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
   const count = useCounter(value, 1800, started);
@@ -58,11 +56,9 @@ function StatCounter({ value, suffix, label, light = false }: { value: number; s
     return () => observer.disconnect();
   }, []);
   return (
-    <div ref={ref} style={{ padding: "2rem 1.5rem" }}>
-      <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 4vw, 2.75rem)", fontWeight: 900, color: light ? "#111111" : "#FFFFFF", lineHeight: 1, letterSpacing: "-0.03em" }}>
-        {count}{suffix}
-      </div>
-      <div style={{ fontSize: "0.62rem", color: light ? "#555555" : "#AAAAAA", marginTop: "0.5rem", letterSpacing: "0.2em", textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
+    <div ref={ref} className="stats-bar-item">
+      <div className="stats-bar-number">{count}{suffix}</div>
+      <div className="stats-bar-label">{label}</div>
     </div>
   );
 }
@@ -91,17 +87,21 @@ const faqs = [
   },
 ];
 
-function FaqItem({ item, index, light = false }: { item: (typeof faqs)[0]; index: number; light?: boolean }) {
+function FaqItem({ item, index }: { item: (typeof faqs)[0]; index: number }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="fade-up" data-delay={String(index * 60)} style={{ borderBottom: `1px solid ${light ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.06)"}` }}>
+    <div
+      className="fade-up"
+      data-delay={String(index * 60)}
+      style={{ borderBottom: "1px solid rgba(0,0,0,0.1)" }}
+    >
       <button
         onClick={() => setOpen(!open)}
         style={{
           width: "100%",
           background: "transparent",
           border: "none",
-          color: light ? "#111111" : "#FFFFFF",
+          color: "#111111",
           padding: "1.5rem 0",
           display: "flex",
           alignItems: "center",
@@ -110,19 +110,34 @@ function FaqItem({ item, index, light = false }: { item: (typeof faqs)[0]; index
           textAlign: "left",
         }}
       >
-        <span style={{ flex: 1, fontFamily: "'DM Sans', sans-serif", fontSize: "1rem", fontWeight: 600, color: light ? "#111111" : "#FFFFFF", letterSpacing: "-0.01em" }}>{item.q}</span>
+        <span style={{
+          flex: 1,
+          fontFamily: "'Inter', sans-serif",
+          fontSize: "0.95rem",
+          fontWeight: 600,
+          color: "#111111",
+          letterSpacing: "-0.01em",
+        }}>
+          {item.q}
+        </span>
         <ChevronDown
           size={16}
-          style={{ color: "#C8102E", flexShrink: 0, transition: "transform 0.25s cubic-bezier(0.23,1,0.32,1)", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+          style={{
+            color: "#C8102E",
+            flexShrink: 0,
+            transition: "transform 0.25s cubic-bezier(0.23,1,0.32,1)",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
         />
       </button>
       {open && (
         <div style={{
           paddingBottom: "1.5rem",
-          fontSize: "0.9rem",
-          lineHeight: 1.8,
-          color: light ? "#444444" : "#C8C8C8",
-          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "0.875rem",
+          lineHeight: 1.85,
+          color: "#444444",
+          fontFamily: "'Inter', sans-serif",
+          fontStyle: "italic",
         }}>
           {item.a}
         </div>
@@ -131,7 +146,7 @@ function FaqItem({ item, index, light = false }: { item: (typeof faqs)[0]; index
   );
 }
 
-// ── All 6 client portfolio items ────────────────────────────
+// ── Client portfolio data ────────────────────────────────────
 const clientSites = [
   {
     name: "Siesta Key Sport Fishing Charters",
@@ -192,141 +207,190 @@ const clientSites = [
   },
 ];
 
-// ── Services data ───────────────────────────────────────────
+// ── Services data ────────────────────────────────────────────
 const services = [
-  { icon: <Globe size={22} />, title: "Custom HTML Websites", desc: "Modern, conversion-focused websites built to clearly communicate who you are, what you do, and where you work — optimized for Google, maps, and AI-powered search from day one." },
-  { icon: <Search size={22} />, title: "Local SEO & AI Search Optimization", desc: "Modern search visibility built for how customers search now — traditional rankings, map results, conversational queries, structured content, and AI-answer readiness." },
-  { icon: <Star size={22} />, title: "Google Business Profile Authority", desc: "Your most powerful free tool. We optimize your profile so customers, Google, and AI-powered search results can clearly understand your business and local relevance." },
-  { icon: <Megaphone size={22} />, title: "Google Ads & Conversion Tracking", desc: "Get leads now while your organic SEO matures. Ads connected to strong landing pages, clear service messaging, and conversion tracking that improves your entire online presence." },
+  { icon: <Globe size={20} />, title: "Custom HTML Websites", desc: "Modern, conversion-focused websites built to clearly communicate who you are, what you do, and where you work — optimized for Google, maps, and AI-powered search from day one." },
+  { icon: <Search size={20} />, title: "Local SEO & AI Search Optimization", desc: "Modern search visibility built for how customers search now — traditional rankings, map results, conversational queries, structured content, and AI-answer readiness." },
+  { icon: <Star size={20} />, title: "Google Business Profile Authority", desc: "Your most powerful free tool. We optimize your profile so customers, Google, and AI-powered search results can clearly understand your business and local relevance." },
+  { icon: <Megaphone size={20} />, title: "Google Ads & Conversion Tracking", desc: "Get leads now while your organic SEO matures. Ads connected to strong landing pages, clear service messaging, and conversion tracking that improves your entire online presence." },
 ];
 
-// ── Main Home Component ─────────────────────────────────────
+// ── Marquee items ────────────────────────────────────────────
+const marqueeItems = [
+  "Custom HTML Websites",
+  "Local SEO",
+  "Google Business Profile",
+  "Google Ads",
+  "AI Search Optimization",
+  "No Setup Fees",
+  "Conversion Tracking",
+  "Mobile-First Design",
+  "Honest Timelines",
+  "Local Service Businesses",
+];
+
+// ── Main Home Component ──────────────────────────────────────
 export default function Home() {
   useScrollReveal();
 
   return (
-    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: "#0A0A0A", color: "#E8E8E8", minHeight: "100vh", fontFamily: "'Inter', sans-serif" }}>
       <Navbar />
 
       {/* ═══════════════════════════════════════════════
-          HERO — Full-bleed cinematic  [DARK]
+          HERO — Editorial full-bleed split layout
           ═══════════════════════════════════════════════ */}
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
+      <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+        {/* Full-bleed background photo */}
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "center 30%",
         }} />
+        {/* Gradient overlay — lighter so photo shows */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.75) 75%, rgba(10,10,10,1) 100%)",
-        }} />
-        <div style={{
-          position: "absolute", bottom: "20%", left: "5%",
-          width: 600, height: 600,
-          background: "radial-gradient(circle, rgba(200,16,46,0.07) 0%, transparent 65%)",
-          pointerEvents: "none",
+          background: "linear-gradient(105deg, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.55) 45%, rgba(8,8,8,0.25) 100%)",
         }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "10rem", paddingBottom: "7rem", width: "100%" }}>
-          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.75rem" }}>
-            Honest Digital Marketing · Local Service Businesses
-          </div>
-          <h1 className="fade-up" data-delay="80" style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "clamp(3rem, 8vw, 6.5rem)",
-            fontWeight: 900,
-            color: "#FFFFFF",
-            lineHeight: 1.0,
-            marginBottom: "2rem",
-            letterSpacing: "-0.03em",
-            maxWidth: 900,
-          }}>
-            Get Your Business<br />
-            Found on Google,<br />
-            <span style={{ color: "#C8102E" }}>Maps & AI Search.</span>
-          </h1>
-          <p className="fade-up" data-delay="160" style={{
-            fontSize: "clamp(0.95rem, 1.5vw, 1.15rem)",
-            color: "#C8C8C8",
-            lineHeight: 1.8,
-            marginBottom: "3rem",
-            maxWidth: 520,
-          }}>
-            No setup fees. No big promises. No disappearing after you sign up.
-            Honest digital marketing starting at <span style={{ color: "#FFFFFF", fontWeight: 700 }}>$100/month</span>.
-          </p>
-          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center", marginBottom: "3rem" }}>
-            <a href="tel:9413288891" className="btn-gold">
-              <Phone size={16} /> Call (941) 328-8891
-            </a>
-            <Link href="/portfolio" className="btn-primary">
-              View Our Work →
-            </Link>
-          </div>
-          <div className="fade-up" data-delay="320" style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
-            {["No setup fees", "No long-term contracts", "No empty promises"].map((item) => (
-              <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "#AAAAAA", letterSpacing: "0.05em" }}>
-                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C8102E", flexShrink: 0 }} />
-                {item}
+        {/* Hero content */}
+        <div style={{
+          position: "relative", zIndex: 2,
+          flex: 1,
+          display: "flex",
+          alignItems: "flex-end",
+          paddingTop: "10rem",
+          paddingBottom: "6rem",
+        }}>
+          <div className="container" style={{ width: "100%" }}>
+            <div style={{ display: "flex", gap: "2.5rem", alignItems: "flex-start", maxWidth: 900 }}>
+              {/* Vertical red accent bar */}
+              <div className="accent-bar" style={{ height: "auto", alignSelf: "stretch", minHeight: 180, marginTop: "0.5rem" }} />
+
+              {/* Text block */}
+              <div style={{ flex: 1 }}>
+                <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>
+                  Honest Digital Marketing · Local Service Businesses Nationwide
+                </div>
+                <h1
+                  className="fade-up editorial-headline"
+                  data-delay="80"
+                  style={{
+                    fontSize: "clamp(3.2rem, 9vw, 7.5rem)",
+                    color: "#FFFFFF",
+                    marginBottom: "2rem",
+                    maxWidth: 820,
+                  }}
+                >
+                  Honest Digital<br />
+                  Marketing That<br />
+                  <span style={{ color: "#C8102E" }}>Gets Your Phone<br />Ringing.</span>
+                </h1>
+                <p
+                  className="fade-up"
+                  data-delay="160"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)",
+                    fontStyle: "italic",
+                    color: "rgba(255,255,255,0.7)",
+                    lineHeight: 1.85,
+                    marginBottom: "2.75rem",
+                    maxWidth: 520,
+                  }}
+                >
+                  No setup fees. No big promises. No disappearing after you sign up.
+                  Custom websites, local SEO, and Google Ads starting at{" "}
+                  <span style={{ color: "#FFFFFF", fontStyle: "normal", fontWeight: 700 }}>$100/month</span>.
+                </p>
+                <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center", marginBottom: "2.5rem" }}>
+                  <a href="tel:9413288891" className="btn-primary">
+                    <Phone size={15} /> Call (941) 328-8891
+                  </a>
+                  <Link href="/portfolio" className="btn-outline">
+                    View Our Work →
+                  </Link>
+                </div>
+                <div className="fade-up" data-delay="320" style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
+                  {["No setup fees", "No long-term contracts", "No empty promises"].map((item) => (
+                    <div key={item} style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "rgba(255,255,255,0.45)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+                      <span style={{ width: 4, height: 4, background: "#C8102E", flexShrink: 0 }} />
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
 
+        {/* Scroll indicator */}
         <div style={{
-          position: "absolute", bottom: "2rem", right: "2rem", zIndex: 2,
+          position: "absolute", bottom: "6rem", right: "2.5rem", zIndex: 2,
           display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem",
         }}>
-          <div style={{ width: 1, height: 48, background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.3))" }} />
-          <span style={{ fontSize: "0.55rem", letterSpacing: "0.3em", color: "#444444", textTransform: "uppercase", writingMode: "vertical-rl" }}>Scroll</span>
+          <div style={{ width: 1, height: 56, background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.25))" }} />
+          <span style={{ fontSize: "0.5rem", letterSpacing: "0.35em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase", writingMode: "vertical-rl" }}>Scroll</span>
         </div>
-      </section>
 
-      {/* ═══════════════════════════════════════════════
-          STATS BAR  [LIGHT]
-          ═══════════════════════════════════════════════ */}
-      <section style={{ background: "#F5F5F5", borderTop: "1px solid rgba(0,0,0,0.08)", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
-        <div className="container" style={{ padding: 0 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
-            {[
-              { value: 7, suffix: "+", label: "Client Websites Live" },
-              { value: 100, suffix: "%", label: "No Setup Fees" },
-              { value: 3, suffix: "yr", label: "Avg. Client Growth" },
-              { value: 5, suffix: "★", label: "Average Review Score" },
-            ].map((stat, i) => (
-              <div key={i} style={{ borderRight: i < 3 ? "1px solid rgba(0,0,0,0.08)" : "none" }}>
-                <StatCounter value={stat.value} suffix={stat.suffix} label={stat.label} light={true} />
-              </div>
+        {/* Marquee strip at bottom of hero */}
+        <div style={{
+          position: "relative", zIndex: 2,
+          background: "#C8102E",
+          overflow: "hidden",
+          padding: "0.85rem 0",
+          borderTop: "1px solid rgba(255,255,255,0.1)",
+        }}>
+          <div className="marquee-track">
+            {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+              <span key={i} style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.3em",
+                textTransform: "uppercase",
+                color: "#FFFFFF",
+                padding: "0 2.5rem",
+                whiteSpace: "nowrap",
+                opacity: i % 2 === 0 ? 1 : 0.6,
+              }}>
+                {item}
+                {i % 2 === 0 && <span style={{ marginLeft: "2.5rem", color: "rgba(255,255,255,0.4)" }}>—</span>}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHILOSOPHY / ABOUT  [DARK]
+          STATS BAR  [DARK]
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+      <section style={{ background: "#111111", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="container" style={{ padding: 0 }}>
+          <div className="stats-bar">
+            <StatCounter value={7} suffix="+" label="Client Websites Live" />
+            <StatCounter value={100} suffix="%" label="No Setup Fees" />
+            <StatCounter value={3} suffix="yr" label="Avg. Client Growth" />
+            <StatCounter value={5} suffix="★" label="Average Review Score" />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          PHILOSOPHY / ABOUT  [LIGHT]
+          ═══════════════════════════════════════════════ */}
+      <section style={{ padding: "8rem 0", background: "#F5F4F2" }}>
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "5rem", alignItems: "center" }}>
             {/* Image side */}
             <div className="fade-up" data-delay="0" style={{ position: "relative" }}>
-              <div style={{
-                position: "relative",
-                aspectRatio: "4/5",
-                overflow: "hidden",
-                background: "#111111",
-              }}>
+              <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden" }}>
                 <img
                   src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80"
                   alt="Local business owner working on digital marketing"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.75) contrast(1.1)" }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.85) contrast(1.05)" }}
                 />
-                <div style={{
-                  position: "absolute", inset: 0,
-                  background: "linear-gradient(135deg, rgba(200,16,46,0.15) 0%, transparent 60%)",
-                }} />
                 {/* Floating stat card */}
                 <div style={{
                   position: "absolute", bottom: "2rem", right: "-1.5rem",
@@ -334,8 +398,15 @@ export default function Home() {
                   padding: "1.25rem 1.5rem",
                   minWidth: 160,
                 }}>
-                  <div style={{ fontSize: "2rem", fontWeight: 900, color: "#FFFFFF", lineHeight: 1, letterSpacing: "-0.04em" }}>6+</div>
-                  <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.8)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "0.25rem" }}>Local Businesses<br />Ranked & Growing</div>
+                  <div style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontSize: "2.5rem",
+                    fontWeight: 900,
+                    color: "#FFFFFF",
+                    lineHeight: 1,
+                    letterSpacing: "0.01em",
+                  }}>7+</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", color: "rgba(255,255,255,0.8)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: "0.3rem" }}>Local Businesses<br />Ranked & Growing</div>
                 </div>
               </div>
             </div>
@@ -343,22 +414,36 @@ export default function Home() {
             {/* Text side */}
             <div>
               <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Why Got'm Digital</div>
-              <h2 className="fade-up" data-delay="80" style={{
-                fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                fontWeight: 900,
-                color: "#FFFFFF",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-                marginBottom: "2rem",
-              }}>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                  color: "#0A0A0A",
+                  marginBottom: "2rem",
+                }}
+              >
                 Marketing That<br />
                 <span style={{ color: "#C8102E" }}>Actually Works</span><br />
                 for Local Businesses.
               </h2>
-              <p className="fade-up" data-delay="160" style={{ fontSize: "0.95rem", lineHeight: 1.9, color: "#C4C4C4", marginBottom: "1.5rem" }}>
+              <p className="fade-up" data-delay="160" style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.95rem",
+                lineHeight: 1.9,
+                fontStyle: "italic",
+                color: "#444444",
+                marginBottom: "1.5rem",
+              }}>
                 Most digital marketing agencies overpromise and underdeliver. We don't. Got'm Digital works exclusively with local service businesses — the plumbers, charter captains, marine techs, and pressure washers who need real customers, not vanity metrics.
               </p>
-              <p className="fade-up" data-delay="200" style={{ fontSize: "0.95rem", lineHeight: 1.9, color: "#C4C4C4", marginBottom: "2.5rem" }}>
+              <p className="fade-up" data-delay="200" style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.95rem",
+                lineHeight: 1.9,
+                color: "#444444",
+                marginBottom: "2.5rem",
+              }}>
                 Every strategy we build is designed to compound over time — your website, Google profile, reviews, and content all working together to make your business the obvious choice in your market.
               </p>
               <div className="fade-up" data-delay="280" style={{ display: "flex", flexDirection: "column", gap: "0.75rem", marginBottom: "2.5rem" }}>
@@ -368,14 +453,14 @@ export default function Home() {
                   "Google & AI search optimization built in",
                   "Honest timelines, no overnight promises",
                 ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.875rem", color: "#C8C8C8" }}>
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", color: "#333333" }}>
                     <CheckCircle2 size={15} style={{ color: "#C8102E", flexShrink: 0 }} />
                     {item}
                   </div>
                 ))}
               </div>
               <div className="fade-up" data-delay="320">
-                <Link href="/contact" className="btn-gold">Start a Conversation →</Link>
+                <Link href="/contact" className="btn-primary">Start a Conversation →</Link>
               </div>
             </div>
           </div>
@@ -383,103 +468,132 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHOTO BREAK — Florida coastal  [PHOTO, brighter]
+          PHOTO BREAK — coastal  [PHOTO]
           ═══════════════════════════════════════════════ */}
-      <section style={{ position: "relative", height: "40vh", minHeight: 280, overflow: "hidden" }}>
+      <section style={{ position: "relative", height: "42vh", minHeight: 300, overflow: "hidden" }}>
         <img
           src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80"
-          alt="Florida coast"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.85) saturate(1.0)" }}
+          alt="Coastal landscape"
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.85) saturate(1.05)" }}
         />
-        {/* Lighter overlay so photo is visible */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.1) 50%, rgba(10,10,10,0.4) 100%)",
+          background: "linear-gradient(to right, rgba(8,8,8,0.65) 0%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0.5) 100%)",
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          flexDirection: "column", gap: "0.75rem", textAlign: "center", padding: "0 1.5rem",
+          display: "flex", alignItems: "center",
+          padding: "0 4rem",
         }}>
-          <div className="fade-up eyebrow" data-delay="0">Wherever Local Service Businesses Need Honest Digital Marketing</div>
-          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em", maxWidth: 700, textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
-            Wherever you are, whatever you do — we build the digital presence that gets your phone ringing.
-          </p>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", maxWidth: 700 }}>
+            <div style={{ width: 3, background: "#C8102E", alignSelf: "stretch", minHeight: 80, flexShrink: 0 }} />
+            <div>
+              <div className="eyebrow" style={{ marginBottom: "1rem", color: "rgba(255,255,255,0.6)" }}>
+                Wherever Local Service Businesses Need Honest Digital Marketing
+              </div>
+              <p className="fade-up editorial-headline" data-delay="0" style={{
+                fontSize: "clamp(1.5rem, 3.5vw, 2.75rem)",
+                color: "#FFFFFF",
+                textShadow: "0 2px 20px rgba(0,0,0,0.5)",
+              }}>
+                Wherever you are, whatever you do — we build the digital presence that gets your phone ringing.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          SERVICES  [LIGHT]
+          SERVICES  [DARK]
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#FFFFFF", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
         <div className="container">
-          <div style={{ marginBottom: "4rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#C8102E" }}>What We Do</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              maxWidth: 600,
-            }}>
-              Four Services.<br />
-              One Unified Strategy.
-            </h2>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "5rem" }}>
+            <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What We Do</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                  color: "#FFFFFF",
+                  maxWidth: 600,
+                }}
+              >
+                Four Services.<br />
+                One Unified Strategy.
+              </h2>
+            </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(0,0,0,0.08)" }}>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1px", background: "rgba(255,255,255,0.05)" }}>
             {services.map((service, i) => (
               <div
                 key={i}
                 className="fade-up"
                 data-delay={String(i * 80)}
                 style={{
-                  background: "#FFFFFF",
+                  background: "#0A0A0A",
                   padding: "2.5rem 2rem",
                   transition: "background 0.2s",
+                  cursor: "default",
                 }}
-                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#F8F8F8"}
-                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#FFFFFF"}
+                onMouseEnter={(e) => (e.currentTarget as HTMLElement).style.background = "#111111"}
+                onMouseLeave={(e) => (e.currentTarget as HTMLElement).style.background = "#0A0A0A"}
               >
                 <div style={{ color: "#C8102E", marginBottom: "1.5rem" }}>{service.icon}</div>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#111111", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
+                <h3 style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontSize: "1.3rem",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                  color: "#FFFFFF",
+                  marginBottom: "0.875rem",
+                }}>
                   {service.title}
                 </h3>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.75, color: "#555555" }}>{service.desc}</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.85rem", lineHeight: 1.8, color: "#AAAAAA" }}>{service.desc}</p>
               </div>
             ))}
           </div>
+
           <div className="fade-up" data-delay="200" style={{ marginTop: "3rem" }}>
-            <Link href="/services" className="btn-link" style={{ color: "#C8102E" }}>See Full Service Details →</Link>
+            <Link href="/services" className="btn-link">See Full Service Details →</Link>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PORTFOLIO  [DARK]
+          PORTFOLIO  [LIGHT]
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#0A0A0A" }}>
+      <section style={{ padding: "8rem 0", background: "#FFFFFF" }}>
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "4rem", flexWrap: "wrap", gap: "1.5rem" }}>
-            <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Selected Work</div>
-              <h2 className="fade-up" data-delay="80" style={{
-                fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                fontWeight: 900,
-                color: "#FFFFFF",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-              }}>
-                Local Businesses We've<br />
-                Put on the Map.
-              </h2>
+            <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+              <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
+              <div>
+                <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Selected Work</div>
+                <h2
+                  className="fade-up editorial-headline"
+                  data-delay="80"
+                  style={{
+                    fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                    color: "#0A0A0A",
+                  }}
+                >
+                  Local Businesses We've<br />
+                  Put on the Map.
+                </h2>
+              </div>
             </div>
             <div className="fade-up" data-delay="120">
-              <Link href="/portfolio" className="btn-link">View Full Portfolio →</Link>
+              <Link href="/portfolio" className="btn-link" style={{ color: "#C8102E", borderBottomColor: "rgba(200,16,46,0.3)" }}>View Full Portfolio →</Link>
             </div>
           </div>
 
-          {/* 3-column grid — all 7 cards always visible */}
+          {/* 3-column grid — all 7 cards */}
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
@@ -494,29 +608,36 @@ export default function Home() {
                 className="fade-up"
                 data-delay={String((i % 3) * 80)}
                 style={{
-                  background: "#161616",
+                  background: "#F5F4F2",
                   textDecoration: "none",
                   display: "flex",
                   flexDirection: "column",
                   overflow: "hidden",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  transition: "border-color 0.2s, transform 0.2s",
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  transition: "border-color 0.2s, transform 0.2s, box-shadow 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,16,46,0.5)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,16,46,0.4)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.08)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,0,0,0.08)";
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
                 }}
               >
                 {/* OG image thumbnail or WIP placeholder */}
-                <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", background: "#0D0D0D" }}>
+                <div style={{ position: "relative", aspectRatio: "16/9", overflow: "hidden", background: "#EBEBEB" }}>
                   {(site as any).wip ? (
-                    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #1a0a0d 0%, #2a0d12 50%, #1a0a0d 100%)", gap: "0.75rem" }}>
+                    <div style={{
+                      width: "100%", height: "100%",
+                      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                      background: "linear-gradient(135deg, #0A0A0A 0%, #1A0A0D 50%, #0A0A0A 100%)",
+                      gap: "0.75rem",
+                    }}>
                       <div style={{ fontSize: "0.6rem", letterSpacing: "0.3em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, border: "1px solid rgba(200,16,46,0.5)", padding: "0.3rem 0.75rem" }}>🔧 In Progress</div>
-                      <div style={{ fontSize: "1.1rem", fontWeight: 900, color: "rgba(255,255,255,0.15)", letterSpacing: "0.05em" }}>mnss-inc.com</div>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.2rem", fontWeight: 800, color: "rgba(255,255,255,0.15)", letterSpacing: "0.05em", textTransform: "uppercase" }}>mnss-inc.com</div>
                     </div>
                   ) : (
                     <img
@@ -527,19 +648,19 @@ export default function Home() {
                       onMouseLeave={(e) => (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"}
                     />
                   )}
-                  {/* Red accent bar */}
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "linear-gradient(to right, #C8102E, rgba(200,16,46,0.3))" }} />
+                  {/* Red accent bar at bottom of image */}
+                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "#C8102E" }} />
                 </div>
 
                 {/* Card body */}
                 <div style={{ padding: "1.5rem", flex: 1, display: "flex", flexDirection: "column" }}>
-                  <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.5rem" }}>{site.industry}</div>
-                  <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "0.4rem", letterSpacing: "-0.01em", lineHeight: 1.3 }}>{site.name}</h3>
-                  <div style={{ fontSize: "0.72rem", color: "#888888", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "0.875rem" }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", letterSpacing: "0.25em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.5rem" }}>{site.industry}</div>
+                  <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.2rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", color: "#0A0A0A", marginBottom: "0.4rem", lineHeight: 1.2 }}>{site.name}</h3>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "#888888", display: "flex", alignItems: "center", gap: "0.3rem", marginBottom: "0.875rem" }}>
                     <MapPin size={10} /> {site.location}
                   </div>
-                  <p style={{ fontSize: "0.82rem", lineHeight: 1.7, color: "#BBBBBB", flex: 1 }}>{site.desc}</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700, marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                  <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.82rem", lineHeight: 1.7, color: "#555555", flex: 1 }}>{site.desc}</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "#C8102E", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700, marginTop: "1.25rem", paddingTop: "1rem", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
                     <ExternalLink size={11} /> Visit Website
                   </div>
                 </div>
@@ -550,61 +671,43 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          WORK IN PROGRESS  [LIGHT]
+          WORK IN PROGRESS  [DARK]
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "5rem 0", background: "#F5F5F5", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+      <section style={{ padding: "4rem 0", background: "#111111", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div className="container">
           <div className="fade-up" data-delay="0" style={{
-            background: "#FFFFFF",
-            border: "2px solid rgba(200,16,46,0.25)",
-            padding: "2.5rem 3rem",
             display: "grid",
             gridTemplateColumns: "auto 1fr auto",
             gap: "2rem",
             alignItems: "center",
+            borderLeft: "3px solid #C8102E",
+            paddingLeft: "2rem",
           }}>
             {/* Pulsing badge */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
               <div style={{ position: "relative", width: 56, height: 56 }}>
-                <div style={{
-                  position: "absolute", inset: 0, borderRadius: "50%",
-                  background: "rgba(200,16,46,0.15)",
-                  animation: "pulse 2s ease-in-out infinite",
-                }} />
-                <div style={{
-                  position: "absolute", inset: 8, borderRadius: "50%",
-                  background: "#C8102E",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
+                <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "rgba(200,16,46,0.15)", animation: "pulse 2s ease-in-out infinite" }} />
+                <div style={{ position: "absolute", inset: 8, borderRadius: "50%", background: "#C8102E", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <span style={{ fontSize: "1rem" }}>🔧</span>
                 </div>
               </div>
-              <div style={{ fontSize: "0.55rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, whiteSpace: "nowrap" }}>This Week</div>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.5rem", letterSpacing: "0.2em", color: "#C8102E", textTransform: "uppercase", fontWeight: 700, whiteSpace: "nowrap" }}>This Week</div>
             </div>
             {/* Content */}
             <div>
-              <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "#888888", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>Work in Progress</div>
-              <h3 style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)", fontWeight: 900, color: "#111111", letterSpacing: "-0.02em", marginBottom: "0.5rem", lineHeight: 1.2 }}>
+              <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", letterSpacing: "0.25em", color: "#666666", textTransform: "uppercase", fontWeight: 700, marginBottom: "0.4rem" }}>Work in Progress</div>
+              <h3 className="editorial-headline" style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.75rem)", color: "#FFFFFF", marginBottom: "0.5rem" }}>
                 Currently Building: <span style={{ color: "#C8102E" }}>mnss-inc.com</span>
               </h3>
-              <p style={{ fontSize: "0.875rem", color: "#555555", lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", color: "#AAAAAA", lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
                 A new custom HTML website in active development this week — built from scratch with full SEO structure, AI search optimization, and mobile-first design. Launching soon.
               </p>
             </div>
             {/* CTA */}
             <div style={{ flexShrink: 0 }}>
-              <a href="/contact" style={{
-                display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase",
-                fontWeight: 700, color: "#C8102E", textDecoration: "none",
-                border: "1px solid rgba(200,16,46,0.4)", padding: "0.75rem 1.25rem",
-                transition: "background 0.2s, color 0.2s",
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#C8102E"; (e.currentTarget as HTMLElement).style.color = "#FFFFFF"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#C8102E"; }}
-              >
+              <Link href="/contact" className="btn-gold-outline">
                 Get One Like This →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -613,24 +716,28 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════
           AI SEARCH SHIFT  [LIGHT]
           ═══════════════════════════════════════════════ */}
-      <section style={{ padding: "8rem 0", background: "#F5F5F5", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-        <div className="container" style={{ maxWidth: 1000 }}>
-          <div style={{ marginBottom: "4rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#C8102E" }}>Modern Search Is Changing Fast</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              fontWeight: 900,
-              color: "#111111",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              maxWidth: 700,
-            }}>
-              Is Your Business Ready for<br />
-              the <span style={{ color: "#C8102E" }}>New Way Customers Search?</span>
-            </h2>
+      <section style={{ padding: "8rem 0", background: "#F5F4F2" }}>
+        <div className="container" style={{ maxWidth: 1200 }}>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "5rem" }}>
+            <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Modern Search Is Changing Fast</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                  color: "#0A0A0A",
+                  maxWidth: 700,
+                }}
+              >
+                Is Your Business Ready for<br />
+                the <span style={{ color: "#C8102E" }}>New Way Customers Search?</span>
+              </h2>
+            </div>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem", marginBottom: "3.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "0", background: "rgba(0,0,0,0.06)", marginBottom: "3.5rem" }}>
             {[
               {
                 num: "01",
@@ -648,20 +755,36 @@ export default function Home() {
                 text: "The businesses that win online will be the ones whose websites, Google profiles, reviews, ads, and content are built for how people search now — and how they will search next. Your full presence should work together.",
               },
             ].map((item, i) => (
-              <div key={i} className="fade-up" data-delay={String(i * 80)}>
-                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", fontWeight: 900, color: "#C8102E", lineHeight: 1, marginBottom: "1.25rem", letterSpacing: "-0.04em", opacity: 0.8 }}>
-                  {item.num}
-                </div>
-                <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#111111", marginBottom: "0.875rem", letterSpacing: "-0.01em" }}>
+              <div
+                key={i}
+                className="fade-up"
+                data-delay={String(i * 80)}
+                style={{
+                  background: "#FFFFFF",
+                  padding: "3rem 2.5rem",
+                  borderRight: i < 2 ? "1px solid rgba(0,0,0,0.06)" : "none",
+                  position: "relative",
+                }}
+              >
+                <div className="section-number" style={{ marginBottom: "1.5rem" }}>{item.num}</div>
+                <h3 style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontSize: "1.3rem",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                  color: "#0A0A0A",
+                  marginBottom: "1rem",
+                }}>
                   {item.heading}
                 </h3>
-                <p style={{ fontSize: "0.85rem", lineHeight: 1.8, color: "#555555" }}>{item.text}</p>
+                <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.85, color: "#555555", fontStyle: "italic" }}>{item.text}</p>
               </div>
             ))}
           </div>
 
           <div className="fade-up" data-delay="0">
-            <Link href="/contact" className="btn-gold">
+            <Link href="/contact" className="btn-primary">
               Request a Web Presence Review →
             </Link>
           </div>
@@ -669,48 +792,55 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHOTO BREAK 2 — boat / water  [PHOTO, brighter]
+          PHOTO BREAK 2 — boat / water  [PHOTO]
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", height: "35vh", minHeight: 240, overflow: "hidden" }}>
         <img
           src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=80"
-          alt="Florida fishing boat on the water"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.9) saturate(1.0)" }}
+          alt="Fishing boat on the water"
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.85) saturate(1.0)" }}
         />
-        {/* Lighter overlay so photo shows through clearly */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(245,245,245,0.3) 0%, transparent 20%, transparent 65%, rgba(10,10,10,0.65) 100%)",
+          background: "linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, transparent 30%, transparent 60%, rgba(8,8,8,0.7) 100%)",
         }} />
         <div style={{
-          position: "absolute", inset: 0,
+          position: "absolute", bottom: "2.5rem", left: 0, right: 0,
           display: "flex", alignItems: "center", justifyContent: "center",
           flexDirection: "column", gap: "0.5rem", textAlign: "center", padding: "0 1.5rem",
         }}>
-          <div className="fade-up eyebrow" data-delay="0" style={{ color: "#C8102E" }}>Simple, Honest Pricing</div>
-          <p className="fade-up" data-delay="80" style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", fontWeight: 700, color: "#FFFFFF", letterSpacing: "-0.02em", textShadow: "0 2px 16px rgba(0,0,0,0.7)" }}>
+          <div className="eyebrow" style={{ color: "rgba(255,255,255,0.6)" }}>Simple, Honest Pricing</div>
+          <p className="fade-up editorial-headline" data-delay="0" style={{
+            fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+            color: "#FFFFFF",
+            textShadow: "0 2px 20px rgba(0,0,0,0.7)",
+          }}>
             Starting at $100/month. No setup fees. No surprises.
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PRICING  [DARK — cards clearly defined on dark bg]
+          PRICING  [DARK]
           ═══════════════════════════════════════════════ */}
-      <section id="pricing" style={{ padding: "8rem 0", background: "#111827" }}>
+      <section id="pricing" style={{ padding: "8rem 0", background: "#0A0A0A" }}>
         <div className="container">
-          <div style={{ marginBottom: "4rem" }}>
-            <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple, Honest Pricing</div>
-            <h2 className="fade-up" data-delay="80" style={{
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              fontWeight: 900,
-              color: "#FFFFFF",
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-            }}>
-              No Setup Fees.<br />
-              No Surprises. Ever.
-            </h2>
+          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", marginBottom: "5rem" }}>
+            <div className="accent-bar" style={{ height: 80, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>Simple, Honest Pricing</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                  color: "#FFFFFF",
+                }}
+              >
+                No Setup Fees.<br />
+                No Surprises. Ever.
+              </h2>
+            </div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem", maxWidth: 1000 }}>
@@ -720,8 +850,10 @@ export default function Home() {
                 tagline: "Your foundation, done right",
                 price: "$100",
                 featured: false,
-                bg: "#FFFFFF",
-                border: "1px solid rgba(0,0,0,0.1)",
+                bg: "#111111",
+                textColor: "#FFFFFF",
+                mutedColor: "#AAAAAA",
+                border: "1px solid rgba(255,255,255,0.08)",
                 features: [
                   "High-performing custom HTML website",
                   "Fully SEO-optimized from day one",
@@ -738,6 +870,8 @@ export default function Home() {
                 price: "$300",
                 featured: true,
                 bg: "#C8102E",
+                textColor: "#FFFFFF",
+                mutedColor: "rgba(255,255,255,0.75)",
                 border: "2px solid #C8102E",
                 features: [
                   "Everything in Starter",
@@ -754,8 +888,10 @@ export default function Home() {
                 tagline: "Leads now + growth long-term",
                 price: "$500",
                 featured: false,
-                bg: "#FFFFFF",
-                border: "1px solid rgba(0,0,0,0.1)",
+                bg: "#111111",
+                textColor: "#FFFFFF",
+                mutedColor: "#AAAAAA",
+                border: "1px solid rgba(255,255,255,0.08)",
                 features: [
                   "Everything in Growth",
                   "Full Google Ads campaign management",
@@ -766,46 +902,47 @@ export default function Home() {
                 note: "Ad spend is paid directly by you to Google — this fee covers strategy, setup, and management only.",
               },
             ].map((plan, i) => (
-              <div key={i} style={{
-                background: plan.bg,
-                padding: "2.5rem 2rem",
-                position: "relative",
-                border: plan.border,
-                borderRadius: 2,
-              }}
+              <div
+                key={i}
                 className="fade-up"
                 data-delay={String(i * 80)}
+                style={{
+                  background: plan.bg,
+                  padding: "2.5rem 2rem",
+                  position: "relative",
+                  border: plan.border,
+                }}
               >
                 {plan.featured && (
-                  <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", color: "rgba(255,255,255,0.85)", textTransform: "uppercase", fontWeight: 700, marginBottom: "1rem" }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", letterSpacing: "0.25em", color: "rgba(255,255,255,0.85)", textTransform: "uppercase", fontWeight: 700, marginBottom: "1rem" }}>
                     Most Popular
                   </div>
                 )}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
                   <div>
-                    <div style={{ fontSize: "1.1rem", fontWeight: 800, color: plan.featured ? "#FFFFFF" : "#111111", marginBottom: "0.25rem", letterSpacing: "-0.01em" }}>{plan.name}</div>
-                    <div style={{ fontSize: "0.75rem", color: plan.featured ? "rgba(255,255,255,0.75)" : "#666666" }}>{plan.tagline}</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "1.4rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.02em", color: plan.textColor, marginBottom: "0.25rem" }}>{plan.name}</div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: plan.mutedColor }}>{plan.tagline}</div>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <div style={{ fontSize: "2.5rem", fontWeight: 900, color: plan.featured ? "#FFFFFF" : "#111111", lineHeight: 1, letterSpacing: "-0.04em" }}>{plan.price}</div>
-                    <div style={{ fontSize: "0.65rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#888888", letterSpacing: "0.1em", textTransform: "uppercase" }}>/ month</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "3rem", fontWeight: 900, color: plan.textColor, lineHeight: 1, letterSpacing: "0.01em" }}>{plan.price}</div>
+                    <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.6rem", color: plan.mutedColor, letterSpacing: "0.15em", textTransform: "uppercase" }}>/ month</div>
                   </div>
                 </div>
-                <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.1)", marginBottom: "1.5rem" }} />
+                <div style={{ height: 1, background: plan.featured ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.08)", marginBottom: "1.5rem" }} />
                 <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem" }}>
                   {plan.features.map((f, j) => (
-                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontSize: "0.85rem", lineHeight: 1.6, color: plan.featured ? "rgba(255,255,255,0.9)" : "#333333", marginBottom: "0.875rem" }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: plan.featured ? "rgba(255,255,255,0.8)" : "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
+                    <li key={j} style={{ display: "flex", gap: "0.75rem", fontFamily: "'Inter', sans-serif", fontSize: "0.85rem", lineHeight: 1.6, color: plan.featured ? "rgba(255,255,255,0.9)" : "#CCCCCC", marginBottom: "0.875rem" }}>
+                      <span style={{ width: 5, height: 5, background: plan.featured ? "rgba(255,255,255,0.8)" : "#C8102E", flexShrink: 0, marginTop: "0.45rem" }} />
                       {f}
                     </li>
                   ))}
                 </ul>
                 {plan.note && (
-                  <div style={{ fontSize: "0.75rem", color: plan.featured ? "rgba(255,255,255,0.7)" : "#666666", lineHeight: 1.6, marginBottom: "1.5rem", paddingTop: "1rem", borderTop: `1px solid ${plan.featured ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.08)"}` }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.75rem", color: plan.mutedColor, lineHeight: 1.6, marginBottom: "1.5rem", paddingTop: "1rem", borderTop: `1px solid ${plan.featured ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.08)"}` }}>
                     {plan.note}
                   </div>
                 )}
-                <a href="tel:9413288891" className={plan.featured ? "btn-white" : "btn-primary-light"} style={{ width: "100%", justifyContent: "center" }}>
+                <a href="tel:9413288891" className={plan.featured ? "btn-white" : "btn-outline"} style={{ width: "100%", justifyContent: "center" }}>
                   <Phone size={14} /> {plan.featured ? "Call to Get Started" : "Get Started"}
                 </a>
               </div>
@@ -821,26 +958,30 @@ export default function Home() {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "5rem", alignItems: "start" }}>
             <div>
-              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem", color: "#C8102E" }}>What You Need to Know</div>
-              <h2 className="fade-up" data-delay="80" style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                fontWeight: 900,
-                color: "#111111",
-                lineHeight: 1.1,
-                letterSpacing: "-0.02em",
-                marginBottom: "2rem",
-              }}>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1rem" }}>What You Need to Know</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  color: "#0A0A0A",
+                  marginBottom: "2rem",
+                }}
+              >
                 The Honest Answers<br />
                 Nobody Else<br />
                 Will Give You.
               </h2>
-              <div className="fade-up" data-delay="160">
-                <Link href="/flyer" className="btn-link" style={{ color: "#C8102E" }}>Download Our Flyer →</Link>
+              <p className="fade-up" data-delay="160" style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", lineHeight: 1.85, color: "#555555", fontStyle: "italic", marginBottom: "2.5rem" }}>
+                We believe in setting realistic expectations. These are the things most agencies won't tell you upfront — but we will.
+              </p>
+              <div className="fade-up" data-delay="200">
+                <Link href="/flyer" className="btn-outline-dark">Download Our Flyer →</Link>
               </div>
             </div>
             <div>
               {faqs.map((item, i) => (
-                <FaqItem key={i} item={item} index={i} light={true} />
+                <FaqItem key={i} item={item} index={i} />
               ))}
             </div>
           </div>
@@ -848,7 +989,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          FINAL CTA  [DARK]
+          FINAL CTA  [DARK — full-bleed photo]
           ═══════════════════════════════════════════════ */}
       <section style={{ position: "relative", padding: "10rem 0", overflow: "hidden" }}>
         <div style={{
@@ -856,33 +997,49 @@ export default function Home() {
           backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "brightness(0.15)",
+          filter: "brightness(0.12)",
         }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,10,10,0.7)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(8,8,8,0.75)" }} />
 
-        <div className="container" style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
-          <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Build?</div>
-          <h2 className="fade-up" data-delay="80" style={{
-            fontSize: "clamp(2.5rem, 6vw, 5rem)",
-            fontWeight: 900,
-            color: "#FFFFFF",
-            lineHeight: 1.0,
-            letterSpacing: "-0.03em",
-            marginBottom: "2rem",
-          }}>
-            Let's Get Your Business<br />
-            <span style={{ color: "#C8102E" }}>On the Map.</span>
-          </h2>
-          <p className="fade-up" data-delay="160" style={{ fontSize: "1rem", lineHeight: 1.8, color: "#C8C8C8", marginBottom: "3rem", maxWidth: 560, margin: "0 auto 3rem" }}>
-            I'm not going to promise overnight results — because nobody who's honest can. What I <strong style={{ color: "#FFFFFF" }}>will</strong> promise is that every dollar you invest is building something that compounds over time.
-          </p>
-          <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>
-            <a href="tel:9413288891" className="btn-gold" style={{ fontSize: "1rem", padding: "1rem 2.5rem" }}>
-              <Phone size={18} /> (941) 328-8891
-            </a>
-            <Link href="/contact" className="btn-primary" style={{ fontSize: "1rem", padding: "1rem 2.5rem" }}>
-              Send a Message →
-            </Link>
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", maxWidth: 800 }}>
+            <div className="accent-bar" style={{ height: 120, marginTop: "0.5rem" }} />
+            <div>
+              <div className="fade-up eyebrow" data-delay="0" style={{ marginBottom: "1.5rem" }}>Ready to Build?</div>
+              <h2
+                className="fade-up editorial-headline"
+                data-delay="80"
+                style={{
+                  fontSize: "clamp(3rem, 7vw, 6rem)",
+                  color: "#FFFFFF",
+                  marginBottom: "2rem",
+                }}
+              >
+                Let's Get Your Business<br />
+                <span style={{ color: "#C8102E" }}>On the Map.</span>
+              </h2>
+              <p className="fade-up" data-delay="160" style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "1rem",
+                lineHeight: 1.85,
+                fontStyle: "italic",
+                color: "rgba(255,255,255,0.65)",
+                marginBottom: "3rem",
+                maxWidth: 520,
+              }}>
+                I'm not going to promise overnight results — because nobody who's honest can. What I{" "}
+                <strong style={{ color: "#FFFFFF", fontStyle: "normal" }}>will</strong>{" "}
+                promise is that every dollar you invest is building something that compounds over time.
+              </p>
+              <div className="fade-up" data-delay="240" style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+                <a href="tel:9413288891" className="btn-primary" style={{ fontSize: "0.8rem", padding: "1rem 2.5rem" }}>
+                  <Phone size={16} /> (941) 328-8891
+                </a>
+                <Link href="/contact" className="btn-outline" style={{ fontSize: "0.8rem", padding: "1rem 2.5rem" }}>
+                  Send a Message →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

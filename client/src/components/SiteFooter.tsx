@@ -13,21 +13,22 @@ const footerLinks = [
 export default function SiteFooter() {
   return (
     <footer style={{
-      background: "#0D0D0D",
+      background: "#0A0A0A",
       borderTop: "3px solid #C8102E",
       padding: "5rem 0 2.5rem",
+      fontFamily: "'Inter', sans-serif",
     }}>
       <div className="container">
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
           gap: "3rem",
-          marginBottom: "3.5rem",
+          marginBottom: "4rem",
         }}>
           {/* Brand */}
           <div>
             <GotmLogo size={130} />
-            <p style={{ fontSize: "0.82rem", color: "#999999", marginTop: "1.25rem", lineHeight: 1.8, maxWidth: 260 }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.82rem", fontStyle: "italic", color: "#888888", marginTop: "1.25rem", lineHeight: 1.85, maxWidth: 260 }}>
               Honest digital marketing for local service businesses across the USA. No setup fees. No big promises. Just results.
             </p>
           </div>
@@ -35,6 +36,7 @@ export default function SiteFooter() {
           {/* Navigation */}
           <div>
             <div style={{
+              fontFamily: "'Inter', sans-serif",
               fontSize: "0.6rem",
               letterSpacing: "0.2em",
               color: "#C8102E",
@@ -49,9 +51,18 @@ export default function SiteFooter() {
                 <Link
                   key={href}
                   href={href}
-                  style={{ color: "#AAAAAA", textDecoration: "none", fontSize: "0.825rem", transition: "color 0.2s", letterSpacing: "0.02em" }}
+                  style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    color: "#888888",
+                    textDecoration: "none",
+                    fontSize: "0.95rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    transition: "color 0.2s",
+                  }}
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#AAAAAA")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#888888")}
                 >
                   {label}
                 </Link>
@@ -62,6 +73,7 @@ export default function SiteFooter() {
           {/* Contact */}
           <div>
             <div style={{
+              fontFamily: "'Inter', sans-serif",
               fontSize: "0.6rem",
               letterSpacing: "0.2em",
               color: "#C8102E",
@@ -75,7 +87,9 @@ export default function SiteFooter() {
               <a href="tel:9413288891" style={{
                 display: "flex", alignItems: "center", gap: "0.625rem",
                 color: "#FFFFFF", textDecoration: "none",
-                fontSize: "1rem", fontWeight: 700,
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontSize: "1.4rem", fontWeight: 900,
+                textTransform: "uppercase", letterSpacing: "0.02em",
                 transition: "color 0.2s",
               }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#C8102E")}
@@ -85,15 +99,17 @@ export default function SiteFooter() {
               </a>
               <a href="mailto:tom@gotmdigital.com" style={{
                 display: "flex", alignItems: "center", gap: "0.625rem",
-                color: "#AAAAAA", textDecoration: "none", fontSize: "0.825rem",
+                color: "#888888", textDecoration: "none",
+                fontFamily: "'Inter', sans-serif",
+                fontSize: "0.825rem",
                 transition: "color 0.2s",
               }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#FFFFFF")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#AAAAAA")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#888888")}
               >
                 <Mail size={13} style={{ color: "#C8102E", flexShrink: 0 }} /> tom@gotmdigital.com
               </a>
-              <p style={{ fontSize: "0.775rem", color: "#777777", lineHeight: 1.7, margin: 0 }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.775rem", color: "#555555", lineHeight: 1.75, margin: 0 }}>
                 Serving local service businesses<br />anywhere in the USA
               </p>
             </div>
@@ -101,14 +117,14 @@ export default function SiteFooter() {
         </div>
 
         {/* Divider */}
-        <div style={{ height: "1px", background: "rgba(255,255,255,0.1)", margin: "0 0 1.5rem" }} />
+        <div style={{ height: "1px", background: "rgba(255,255,255,0.07)", margin: "0 0 1.75rem" }} />
 
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "0.75rem" }}>
-          <p style={{ fontSize: "0.7rem", color: "#666666", margin: 0 }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.7rem", color: "#444444", margin: 0 }}>
             © {new Date().getFullYear()} GOTM Digital. All rights reserved.
           </p>
-          <p style={{ fontSize: "0.7rem", color: "#666666", margin: 0, letterSpacing: "0.05em" }}>
-            No setup fees · No long-term contracts · Honest results
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "#444444", margin: 0, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            No Setup Fees · No Long-Term Contracts · Honest Results
           </p>
         </div>
       </div>
