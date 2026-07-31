@@ -105,18 +105,8 @@ export default function Contact() {
       {/* ═══════════════════════════════════════════════
           PAGE HERO — editorial full-bleed
           ═══════════════════════════════════════════════ */}
-      <section style={{ position: "relative", minHeight: "55vh", display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center 30%",
-        }} />
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(105deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.6) 50%, rgba(8,8,8,0.3) 100%)",
-        }} />
-        <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
+      <section style={{ minHeight: "55vh", display: "flex", alignItems: "flex-end", background: "#0A0A0A", borderBottom: "3px solid #C8102E" }}>
+        <div className="container" style={{ paddingTop: "9rem", paddingBottom: "5rem", width: "100%" }}>
           <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", maxWidth: 860 }}>
             <div className="accent-bar" style={{ height: 120, marginTop: "0.5rem" }} />
             <div>

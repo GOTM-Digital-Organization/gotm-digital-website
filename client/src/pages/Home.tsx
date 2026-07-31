@@ -240,23 +240,10 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════
           HERO — Editorial full-bleed split layout
           ═══════════════════════════════════════════════ */}
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
-        {/* Full-bleed background photo */}
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center 30%",
-        }} />
-        {/* Gradient overlay — lighter so photo shows */}
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(105deg, rgba(8,8,8,0.82) 0%, rgba(8,8,8,0.55) 45%, rgba(8,8,8,0.25) 100%)",
-        }} />
+      <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", background: "#0A0A0A" }}>
 
         {/* Hero content */}
         <div style={{
-          position: "relative", zIndex: 2,
           flex: 1,
           display: "flex",
           alignItems: "flex-end",
@@ -327,7 +314,7 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <div style={{
-          position: "absolute", bottom: "6rem", right: "2.5rem", zIndex: 2,
+          position: "relative", alignSelf: "flex-end", marginBottom: "6rem", marginRight: "2.5rem",
           display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem",
         }}>
           <div style={{ width: 1, height: 56, background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.25))" }} />
@@ -336,7 +323,7 @@ export default function Home() {
 
         {/* Marquee strip at bottom of hero */}
         <div style={{
-          position: "relative", zIndex: 2,
+          position: "relative",
           background: "#C8102E",
           overflow: "hidden",
           padding: "0.85rem 0",
@@ -386,11 +373,11 @@ export default function Home() {
             {/* Image side */}
             <div className="fade-up" data-delay="0" style={{ position: "relative" }}>
               <div style={{ position: "relative", aspectRatio: "4/5", overflow: "hidden" }}>
-                <img
-                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80"
-                  alt="Local business owner working on digital marketing"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.85) contrast(1.05)" }}
-                />
+                {/* Photo placeholder — replace with a real photo of Tom or a client */}
+                <div style={{ width: "100%", height: "100%", background: "#111111", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "0.75rem" }}>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "clamp(2rem, 6vw, 4rem)", fontWeight: 900, color: "rgba(200,16,46,0.12)", letterSpacing: "0.05em", textTransform: "uppercase", textAlign: "center", lineHeight: 1 }}>GOT'M<br />DIGITAL</div>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.65rem", color: "#333333", letterSpacing: "0.2em", textTransform: "uppercase" }}>Add Your Photo Here</div>
+                </div>
                 {/* Floating stat card */}
                 <div style={{
                   position: "absolute", bottom: "2rem", right: "-1.5rem",
@@ -468,37 +455,24 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHOTO BREAK — coastal  [PHOTO]
+          QUOTE BANNER — replaces coastal photo
           ═══════════════════════════════════════════════ */}
-      <section style={{ position: "relative", height: "42vh", minHeight: 300, overflow: "hidden" }}>
-        <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80"
-          alt="Coastal landscape"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%", filter: "brightness(0.85) saturate(1.05)" }}
-        />
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(to right, rgba(8,8,8,0.65) 0%, rgba(8,8,8,0.2) 50%, rgba(8,8,8,0.5) 100%)",
-        }} />
-        <div style={{
-          position: "absolute", inset: 0,
-          display: "flex", alignItems: "center",
-          padding: "0 4rem",
-        }}>
-          <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", maxWidth: 700 }}>
-            <div style={{ width: 3, background: "#C8102E", alignSelf: "stretch", minHeight: 80, flexShrink: 0 }} />
-            <div>
-              <div className="eyebrow" style={{ marginBottom: "1rem", color: "rgba(255,255,255,0.6)" }}>
-                Wherever Local Service Businesses Need Honest Digital Marketing
-              </div>
-              <p className="fade-up editorial-headline" data-delay="0" style={{
-                fontSize: "clamp(1.5rem, 3.5vw, 2.75rem)",
-                color: "#FFFFFF",
-                textShadow: "0 2px 20px rgba(0,0,0,0.5)",
-              }}>
-                Wherever you are, whatever you do — we build the digital presence that gets your phone ringing.
-              </p>
-            </div>
+      <section style={{ background: "#C8102E", padding: "4rem 0" }}>
+        <div className="container">
+          <div style={{ display: "flex", gap: "2rem", alignItems: "center", maxWidth: 900 }}>
+            <div style={{ width: 3, background: "rgba(255,255,255,0.4)", alignSelf: "stretch", minHeight: 60, flexShrink: 0 }} />
+            <p style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontSize: "clamp(1.5rem, 3.5vw, 2.5rem)",
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: "0.03em",
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              margin: 0,
+            }}>
+              Wherever you are, whatever you do — we build the digital presence that gets your phone ringing.
+            </p>
           </div>
         </div>
       </section>
@@ -792,28 +766,20 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          PHOTO BREAK 2 — boat / water  [PHOTO]
+          PRICING INTRO BANNER — replaces boat photo
           ═══════════════════════════════════════════════ */}
-      <section style={{ position: "relative", height: "35vh", minHeight: 240, overflow: "hidden" }}>
-        <img
-          src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=80"
-          alt="Fishing boat on the water"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 50%", filter: "brightness(0.85) saturate(1.0)" }}
-        />
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, transparent 30%, transparent 60%, rgba(8,8,8,0.7) 100%)",
-        }} />
-        <div style={{
-          position: "absolute", bottom: "2.5rem", left: 0, right: 0,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          flexDirection: "column", gap: "0.5rem", textAlign: "center", padding: "0 1.5rem",
-        }}>
-          <div className="eyebrow" style={{ color: "rgba(255,255,255,0.6)" }}>Simple, Honest Pricing</div>
-          <p className="fade-up editorial-headline" data-delay="0" style={{
-            fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+      <section style={{ background: "#111111", borderTop: "3px solid #C8102E", borderBottom: "3px solid #C8102E", padding: "3rem 0" }}>
+        <div className="container" style={{ textAlign: "center" }}>
+          <div className="eyebrow" style={{ marginBottom: "0.75rem" }}>Simple, Honest Pricing</div>
+          <p style={{
+            fontFamily: "'Barlow Condensed', sans-serif",
+            fontSize: "clamp(1.75rem, 4vw, 3rem)",
+            fontWeight: 900,
+            textTransform: "uppercase",
+            letterSpacing: "0.03em",
             color: "#FFFFFF",
-            textShadow: "0 2px 20px rgba(0,0,0,0.7)",
+            lineHeight: 1.1,
+            margin: 0,
           }}>
             Starting at $100/month. No setup fees. No surprises.
           </p>
@@ -989,19 +955,10 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          FINAL CTA  [DARK — full-bleed photo]
+          FINAL CTA  [DARK — solid, no photo]
           ═══════════════════════════════════════════════ */}
-      <section style={{ position: "relative", padding: "10rem 0", overflow: "hidden" }}>
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "brightness(0.12)",
-        }} />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(8,8,8,0.75)" }} />
-
-        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+      <section style={{ background: "#0A0A0A", borderTop: "3px solid #C8102E", padding: "10rem 0" }}>
+        <div className="container">
           <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", maxWidth: 800 }}>
             <div className="accent-bar" style={{ height: 120, marginTop: "0.5rem" }} />
             <div>

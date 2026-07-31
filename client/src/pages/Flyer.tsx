@@ -3,7 +3,7 @@ import { Phone, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/Y9UzuBYSjHjJVLgWHPPpvA/gotm-hero-bg-mdRDU6srReC2h3CwXmSnNa.webp";
+
 
 function SectionHeading({ num, title, light = false }: { num: string; title: string; light?: boolean }) {
   return (
@@ -42,25 +42,13 @@ export default function Flyer() {
 
       {/* ── HERO ── */}
       <section style={{
-        position: "relative",
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        overflow: "hidden",
+        background: "#0A0A0A",
+        borderBottom: "3px solid #C8102E",
       }}>
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: `url(${HERO_BG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.45,
-        }} />
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(105deg, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.5) 60%, rgba(8,8,8,0.3) 100%)",
-        }} />
-
-        <div style={{ position: "relative", zIndex: 3, width: "100%", maxWidth: 960, margin: "0 auto", padding: "8rem 2rem 5rem" }}>
+        <div style={{ width: "100%", maxWidth: 960, margin: "0 auto", padding: "8rem 2rem 5rem" }}>
           <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
             <div className="accent-bar" style={{ height: 160, marginTop: "0.5rem" }} />
             <div>
@@ -483,11 +471,8 @@ export default function Flyer() {
       </section>
 
       {/* ── CTA FOOTER ── */}
-      <section style={{ position: "relative", overflow: "hidden", padding: "8rem 2rem" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${HERO_BG})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.35 }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, rgba(8,8,8,0.88) 0%, rgba(8,8,8,0.6) 60%, rgba(8,8,8,0.4) 100%)" }} />
-
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 960, margin: "0 auto" }}>
+      <section style={{ background: "#0A0A0A", borderTop: "3px solid #C8102E", padding: "8rem 2rem" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
           <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", maxWidth: 700 }}>
             <div className="accent-bar" style={{ height: 120, marginTop: "0.5rem" }} />
             <div>
