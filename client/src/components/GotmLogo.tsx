@@ -1,9 +1,12 @@
 export default function GotmLogo({ size = 200, textColor = "#0D0D1A" }: { size?: number; textColor?: string }) {
+  // viewBox: 340 wide × 90 tall — enough room for icon + "GOTM" + "DIGITAL"
+  const vw = 340;
+  const vh = 90;
   return (
     <svg
       width={size}
-      height={size * (110 / 300)}
-      viewBox="0 0 300 110"
+      height={size * (vh / vw)}
+      viewBox={`0 0 ${vw} ${vh}`}
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
@@ -13,7 +16,7 @@ export default function GotmLogo({ size = 200, textColor = "#0D0D1A" }: { size?:
           <stop offset="100%" style={{ stopColor: "#6366F1", stopOpacity: 1 }} />
         </linearGradient>
         <filter id="glowLogo">
-          <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+          <feGaussianBlur stdDeviation="1.2" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
@@ -21,30 +24,56 @@ export default function GotmLogo({ size = 200, textColor = "#0D0D1A" }: { size?:
         </filter>
       </defs>
 
-      {/* ── Crosshair target icon ── centred at (36, 36) in a 72×72 box */}
-      <g transform="translate(18, 10)" filter="url(#glowLogo)">
-        {/* Outer circle */}
-        <circle cx="36" cy="36" r="30" fill="none" stroke="url(#brandGradLogo)" strokeWidth="2.5" />
-        {/* Inner circle */}
-        <circle cx="36" cy="36" r="18" fill="none" stroke="url(#brandGradLogo)" strokeWidth="2" />
-        {/* Centre dot */}
-        <circle cx="36" cy="36" r="3.5" fill="url(#brandGradLogo)" />
-
-        {/* Top tick */}
-        <line x1="36" y1="0"  x2="36" y2="14" stroke="url(#brandGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Bottom tick */}
-        <line x1="36" y1="58" x2="36" y2="72" stroke="url(#brandGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Left tick */}
-        <line x1="0"  y1="36" x2="14" y2="36" stroke="url(#brandGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Right tick */}
-        <line x1="58" y1="36" x2="72" y2="36" stroke="url(#brandGradLogo)" strokeWidth="2.5" strokeLinecap="round" />
+      {/* ── Crosshair icon — 60×60 box, centred at (30,30), offset (8,15) ── */}
+      <g transform="translate(8, 15)" filter="url(#glowLogo)">
+        <circle cx="30" cy="30" r="24" fill="none" stroke="url(#brandGradLogo)" strokeWidth="2.2" />
+        <circle cx="30" cy="30" r="14" fill="none" stroke="url(#brandGradLogo)" strokeWidth="1.8" />
+        <circle cx="30" cy="30" r="3"  fill="url(#brandGradLogo)" />
+        {/* ticks */}
+        <line x1="30" y1="0"  x2="30" y2="12" stroke="url(#brandGradLogo)" strokeWidth="2.2" strokeLinecap="round" />
+        <line x1="30" y1="48" x2="30" y2="60" stroke="url(#brandGradLogo)" strokeWidth="2.2" strokeLinecap="round" />
+        <line x1="0"  y1="30" x2="12" y2="30" stroke="url(#brandGradLogo)" strokeWidth="2.2" strokeLinecap="round" />
+        <line x1="48" y1="30" x2="60" y2="30" stroke="url(#brandGradLogo)" strokeWidth="2.2" strokeLinecap="round" />
       </g>
 
-      {/* ── Wordmark ── */}
-      <text x="100" y="58" fontFamily="Syne, DM Sans, sans-serif" fontWeight="900" fontSize="56" fill={textColor} letterSpacing="-1">GOTM</text>
-      <line x1="100" y1="68" x2="294" y2="68" stroke="url(#brandGradLogo)" strokeWidth="1" opacity="0.6" />
-      <text x="197" y="84" fontFamily="Syne, DM Sans, sans-serif" fontWeight="700" fontSize="13" fill="url(#brandGradLogo)" textAnchor="middle" letterSpacing="5">DIGITAL</text>
-      <text x="197" y="100" fontFamily="Plus Jakarta Sans, DM Sans, sans-serif" fontWeight="400" fontSize="10" fill="#888899" textAnchor="middle" letterSpacing="2">MARKETING THAT WORKS</text>
+      {/* ── Wordmark — starts at x=80 ── */}
+      {/* "GOTM" — large, bold */}
+      <text
+        x="80" y="52"
+        fontFamily="Syne, DM Sans, sans-serif"
+        fontWeight="900"
+        fontSize="46"
+        fill={textColor}
+        letterSpacing="-1"
+      >
+        GOTM
+      </text>
+      {/* Thin rule under GOTM */}
+      <line x1="80" y1="60" x2="334" y2="60" stroke="url(#brandGradLogo)" strokeWidth="0.8" opacity="0.55" />
+      {/* "DIGITAL" — spaced caps */}
+      <text
+        x="207" y="74"
+        fontFamily="Syne, DM Sans, sans-serif"
+        fontWeight="700"
+        fontSize="11"
+        fill="url(#brandGradLogo)"
+        textAnchor="middle"
+        letterSpacing="5"
+      >
+        DIGITAL
+      </text>
+      {/* "MARKETING THAT WORKS" — tiny tagline */}
+      <text
+        x="207" y="87"
+        fontFamily="Plus Jakarta Sans, DM Sans, sans-serif"
+        fontWeight="400"
+        fontSize="8.5"
+        fill="#8888AA"
+        textAnchor="middle"
+        letterSpacing="2"
+      >
+        MARKETING THAT WORKS
+      </text>
     </svg>
   );
 }
