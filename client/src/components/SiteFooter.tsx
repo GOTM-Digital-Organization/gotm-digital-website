@@ -62,12 +62,12 @@ export default function SiteFooter() {
                 (941) 328-8891
               </a>
               <a
-                href="mailto:jonathansmart4@gmail.com"
+                href="mailto:tom@gotmdigital.com"
                 style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "color 0.2s" }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E879F9")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
               >
-                jonathansmart4@gmail.com
+                tom@gotmdigital.com
               </a>
               <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>
                 Serving businesses across the USA

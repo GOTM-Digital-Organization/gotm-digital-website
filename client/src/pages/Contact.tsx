@@ -123,8 +123,8 @@ export default function Contact() {
                   <a href="tel:9413288891" style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--text-primary)", textDecoration: "none", fontSize: "1.1rem", fontFamily: "var(--font-display)", fontWeight: 700 }}>
                     <span style={{ fontSize: "1.1rem" }}>📞</span> (941) 328-8891
                   </a>
-                  <a href="mailto:jonathansmart4@gmail.com" style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.88rem" }}>
-                    <span>✉️</span> jonathansmart4@gmail.com
+                  <a href="mailto:tom@gotmdigital.com" style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--text-secondary)", textDecoration: "none", fontSize: "0.88rem" }}>
+                    <span>✉️</span> tom@gotmdigital.com
                   </a>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", color: "var(--text-muted)", fontSize: "0.82rem" }}>
                     <span>📍</span> Serving businesses across the USA
