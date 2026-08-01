@@ -181,6 +181,7 @@
 }
 
 /* ── Mesh hero wrapper ────────────────────────────────────────── */
+@layer components {
 .mesh-hero {
   position: relative;
   overflow: hidden;
@@ -549,6 +550,8 @@
 }
 
 /* ── Container ────────────────────────────────────────────────── */
+}
+
 @layer utilities {
   .container {
     width: 100%;

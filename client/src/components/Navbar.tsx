@@ -5,6 +5,7 @@ import GotmLogo from "./GotmLogo";
 const navLinks = [
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/enterprise", label: "Enterprise", badge: true },
   { href: "/contact", label: "Contact" },
   { href: "/flyer", label: "Our Flyer" },
 ];
@@ -62,30 +63,67 @@ export default function Navbar() {
           {/* Desktop nav */}
           {!isMobile && (
             <div style={{ display: "flex", alignItems: "center", gap: "2.5rem" }}>
-              {navLinks.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontSize: "0.82rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.04em",
-                    color: location === href ? "#D946EF" : "#4A3F6B",
-                    textDecoration: "none",
-                    transition: "color 0.2s",
-                    borderBottom: location === href ? "2px solid #D946EF" : "2px solid transparent",
-                    paddingBottom: "2px",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "#D946EF";
-                  }}
-                  onMouseLeave={(e) => {
-                    if (location !== href) (e.currentTarget as HTMLElement).style.color = "#4A3F6B";
-                  }}
-                >
-                  {label}
-                </Link>
+              {navLinks.map(({ href, label, badge }) => (
+                badge ? (
+                  <Link
+                    key={href}
+                    href={href}
+                    style={{
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontSize: "0.78rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.04em",
+                      color: "#fff",
+                      textDecoration: "none",
+                      padding: "0.35rem 0.85rem",
+                      borderRadius: "999px",
+                      background: location === href
+                        ? "linear-gradient(135deg, #D946EF, #6366F1)"
+                        : "linear-gradient(135deg, #D946EF99, #6366F199)",
+                      transition: "background 0.2s, box-shadow 0.2s",
+                      boxShadow: location === href ? "0 2px 12px rgba(217,70,239,0.35)" : "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.3rem",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg, #D946EF, #6366F1)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 16px rgba(217,70,239,0.45)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (location !== href) {
+                        (e.currentTarget as HTMLElement).style.background = "linear-gradient(135deg, #D946EF99, #6366F199)";
+                        (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                      }
+                    }}
+                  >
+                    <span style={{ fontSize: "0.65rem" }}>✦</span> {label}
+                  </Link>
+                ) : (
+                  <Link
+                    key={href}
+                    href={href}
+                    style={{
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      fontSize: "0.82rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.04em",
+                      color: location === href ? "#D946EF" : "#4A3F6B",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                      borderBottom: location === href ? "2px solid #D946EF" : "2px solid transparent",
+                      paddingBottom: "2px",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (location !== href) (e.currentTarget as HTMLElement).style.color = "#D946EF";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (location !== href) (e.currentTarget as HTMLElement).style.color = "#4A3F6B";
+                    }}
+                  >
+                    {label}
+                  </Link>
+                )
               ))}
               <Link
                 href="/contact"
