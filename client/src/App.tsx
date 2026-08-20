@@ -4,22 +4,12 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import Portfolio from "./pages/Portfolio";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import Flyer from "./pages/Flyer";
-import EnterpriseServices from "./pages/EnterpriseServices";
+import { PUBLIC_ROUTES } from "./routes";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/portfolio" component={Portfolio} />
-      <Route path="/services" component={Services} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/flyer" component={Flyer} />
-      <Route path="/enterprise" component={EnterpriseServices} />
+      {PUBLIC_ROUTES.map((route) => <Route key={route.path} path={route.path} component={route.component} />)}
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

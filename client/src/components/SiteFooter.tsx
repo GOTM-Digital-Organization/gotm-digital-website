@@ -1,94 +1,49 @@
 import { Link } from "wouter";
-import GotmLogo from "./GotmLogo";
 
-const footerLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
+const links = [
+  { href: "/services", label: "Capabilities" },
+  { href: "/enterprise", label: "Healthcare & Multi-Location" },
+  { href: "/portfolio", label: "Selected Work" },
+  { href: "/local-services", label: "Local Service Businesses" },
   { href: "/contact", label: "Contact" },
-  { href: "/flyer", label: "Our Flyer" },
 ];
 
 export default function SiteFooter() {
   return (
-    <footer style={{ background: "var(--bg-dark)", color: "var(--text-on-dark)", fontFamily: "var(--font-body)" }}>
-      {/* Gradient top border */}
-      <div style={{ height: "3px", background: "linear-gradient(90deg, var(--blob-fuchsia), var(--blob-indigo), var(--blob-orange))" }} />
-
-      <div className="container" style={{ paddingTop: "4rem", paddingBottom: "2rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "3rem", marginBottom: "3rem" }}>
-          {/* Brand */}
+    <footer style={{ background: "var(--paper-warm)", borderTop: "1px solid var(--line-strong)" }}>
+      <div className="container" style={{ paddingTop: "4.75rem", paddingBottom: "1.45rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.15fr) minmax(180px, 0.6fr) minmax(230px, 0.7fr)", gap: "3rem", paddingBottom: "3.5rem" }} className="footer-grid">
           <div>
-            <div style={{ marginBottom: "1rem" }}>
-              <GotmLogo size={120} textColor="#FFFFFF" />
-            </div>
-            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: "240px" }}>
-              Honest digital marketing for local service businesses. No setup fees. No contracts. Just results.
+            <p className="section-kicker">GOTM Digital</p>
+            <p style={{ maxWidth: "440px", marginTop: "1.1rem", color: "var(--graphite)", fontFamily: "var(--font-display)", fontSize: "clamp(1.55rem, 2.4vw, 2.2rem)", fontWeight: 600, letterSpacing: "-0.055em", lineHeight: 1 }}>
+              Digital systems that make complex organizations easier to find, choose, and grow.
             </p>
           </div>
-
-          {/* Nav links */}
           <div>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "var(--blob-pink)", marginBottom: "1.25rem" }}>
-              Navigation
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-              {footerLinks.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "color 0.2s" }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E879F9")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
-                >
-                  {label}
+            <p className="system-mono" style={{ color: "var(--copper)", marginBottom: "1rem" }}>Navigate</p>
+            <div style={{ display: "grid", gap: "0.55rem" }}>
+              {links.map((link) => (
+                <Link key={`${link.href}-${link.label}`} href={link.href} style={{ color: "var(--graphite-soft)", fontSize: "0.88rem", textDecoration: "none" }}>
+                  {link.label}
                 </Link>
               ))}
             </div>
           </div>
-
-          {/* Contact */}
           <div>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "var(--blob-pink)", marginBottom: "1.25rem" }}>
-              Get In Touch
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-              <a
-                href="tel:9413288891"
-                style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "color 0.2s" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E879F9")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
-              >
-                (941) 328-8891
-              </a>
-              <a
-                href="mailto:tom@gotmdigital.com"
-                style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "color 0.2s" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E879F9")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.6)")}
-              >
-                tom@gotmdigital.com
-              </a>
-              <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>
-                Serving businesses across the USA
-              </span>
+            <p className="system-mono" style={{ color: "var(--copper)", marginBottom: "1rem" }}>Start a conversation</p>
+            <div style={{ display: "grid", gap: "0.7rem" }}>
+              <a href="tel:9413288891" style={{ color: "var(--graphite)", fontFamily: "var(--font-display)", fontSize: "1.22rem", fontWeight: 600, letterSpacing: "-0.04em", textDecoration: "none" }}>(941) 328-8891</a>
+              <a href="mailto:tom@gotmdigital.com" style={{ color: "var(--graphite-soft)", fontSize: "0.92rem", textDecoration: "none" }}>tom@gotmdigital.com</a>
+              <span className="system-mono">Nationwide / Remote collaboration</span>
             </div>
           </div>
         </div>
-
-        {/* Divider */}
-        <div style={{ height: "1px", background: "rgba(255,255,255,0.08)", marginBottom: "1.5rem" }} />
-
-        {/* Bottom row */}
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
-          <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.3)", margin: 0 }}>
-            © {new Date().getFullYear()} Got'm Digital · All rights reserved
-          </p>
-          <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.25)", margin: 0, letterSpacing: "0.06em" }}>
-            No Setup Fees · No Contracts · Marketing That Works
-          </p>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "1rem", paddingTop: "1.25rem", borderTop: "1px solid var(--line)" }}>
+          <span className="system-mono">© {new Date().getFullYear()} GOTM Digital. All rights reserved.</span>
+          <span className="system-mono">Platform · Presence · Demand · Intelligence</span>
         </div>
       </div>
+      <style>{`@media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr !important; gap: 2.25rem !important; } }`}</style>
     </footer>
   );
 }
