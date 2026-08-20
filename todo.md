@@ -61,3 +61,4 @@
 - [x] Add meaningful Vitest coverage proving public routes resolve to their intended page components
 - [x] Add meaningful Vitest coverage for contact validation and Web3Forms plus tRPC submission behavior
 - [x] Approve the inclusive hybrid market positioning: complex organizations with healthcare, multi-location, and local-service pathways
+- [x] Replace the legacy social-share image with a premium GOTM Digital systems-design image and update metadata
