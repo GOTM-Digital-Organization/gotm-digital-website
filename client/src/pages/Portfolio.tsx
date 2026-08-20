@@ -4,12 +4,12 @@ import Navbar from "@/components/Navbar";
 import SiteFooter from "@/components/SiteFooter";
 
 const clients = [
-  { name: "Siesta Key Sport Fishing Charters", url: "https://siestakeysportfishingcharters.com", industry: "Sport Fishing Charters", location: "Siesta Key, FL", image: "/manus-storage/siesta_e3b43ce3.png", tags: ["Website", "Local SEO", "Google Profile"] },
-  { name: "Titan Up Marine Services", url: "https://titanupmarineservices.com", industry: "Marine Services", location: "Sarasota, FL", image: "/manus-storage/titan-og_debe9c5d.png", tags: ["Website", "Google Ads", "Local SEO"] },
-  { name: "Reel Smart Charters", url: "https://www.reelsmartcharters.com", industry: "Fishing Charters", location: "Florida", image: "/manus-storage/reel-og_b3fb7408.jpg", tags: ["Website", "Local SEO"] },
-  { name: "Pool Leak Sarasota", url: "https://poolleaksarasota.com", industry: "Pool Leak Detection", location: "Sarasota, FL", image: "/manus-storage/pool_0c57702f.webp", tags: ["Website", "Local SEO", "Google Profile"] },
-  { name: "SRQ Wash", url: "https://srqwash.com", industry: "Pressure Washing", location: "Sarasota, FL", image: "/manus-storage/srqwash_fc8827dc.webp", tags: ["Website", "Google Profile", "Content"] },
-  { name: "Sarasota Wash and Seal", url: "https://sarasotawashandseal.com", industry: "Exterior Cleaning & Sealing", location: "Sarasota, FL", image: "/manus-storage/sarasotawashandseal_45ddc10a.png", tags: ["Website", "Local SEO"] },
+  { name: "Siesta Key Sport Fishing Charters", url: "https://siestakeysportfishingcharters.com", industry: "Sport Fishing Charters", location: "Siesta Key, FL", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/BCgM3Y9UJiEyufxv5452KL/hero-fishing-charter-UYxgLoGDvzgtZXUvVuv2jJ.webp", tags: ["Website", "Local SEO", "Google Profile"] },
+  { name: "Titan Up Marine Services", url: "https://titanupmarineservices.com", industry: "Marine Services", location: "Sarasota, FL", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/BEDpW4q6bc7ZsyysM8qY5P/og-image-Hc9i5wVKYYLLf9qVMtGdBY.png", tags: ["Website", "Google Ads", "Local SEO"] },
+  { name: "Reel Smart Charters", url: "https://www.reelsmartcharters.com", industry: "Fishing Charters", location: "Florida", image: "https://reelsmartcharters.netlify.app/images/hero-boat.jpeg", tags: ["Website", "Local SEO"] },
+  { name: "Pool Leak Sarasota", url: "https://poolleaksarasota.com", industry: "Pool Leak Detection", location: "Sarasota, FL", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/JMgMHXdyKGkKSmwRvjUx9i/captain-jons-hero-v2-YELGswNeS5Qt2bSPBSodH4.png", tags: ["Website", "Local SEO", "Google Profile"] },
+  { name: "SRQ Wash", url: "https://srqwash.com", industry: "Pressure Washing", location: "Sarasota, FL", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/S8hJyhgpkGHR2RfqK8Ywnb/hero-roof-cleaning-barrel-tile-Fcd9LpuSZXD5dwY46PvXzH.webp", tags: ["Website", "Google Profile", "Content"] },
+  { name: "Sarasota Wash and Seal", url: "https://sarasotawashandseal.com", industry: "Exterior Cleaning & Sealing", location: "Sarasota, FL", image: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028316757/2odGnpGFJGwoA24EW2bwTc/og-image-7kP2MVeWURhC9SLrBZ2Uqd.png", tags: ["Website", "Local SEO"] },
   { name: "MNSS Inc.", url: "https://mnss-inc.com", industry: "Commercial Services", location: "Florida", image: "", tags: ["In Development"], wip: true },
 ];
 
